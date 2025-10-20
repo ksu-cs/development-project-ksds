@@ -1,11 +1,22 @@
-<script setup></script>
+<script setup>
+import BaseMap from './components/BaseMap.vue'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div class="container">
+    <input type="range" name="year" min="0" max="10" />
+    <BaseMap />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+input {
+  width: 60%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>
