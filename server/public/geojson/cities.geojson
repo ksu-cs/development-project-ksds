@@ -1,0 +1,7385 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.3443,37.6895 ]
+    },
+    "properties": {
+    "City Name":"Wichita"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.687,38.887 ]
+    },
+    "properties": {
+    "City Name":"Overland Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.7443,39.1235 ]
+    },
+    "properties": {
+    "City Name":"Kansas City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6955,39.0346 ]
+    },
+    "properties": {
+    "City Name":"Topeka"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.82,38.8833 ]
+    },
+    "properties": {
+    "City Name":"Olathe"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.2642,38.9597 ]
+    },
+    "properties": {
+    "City Name":"Lawrence"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.8076,39.0158 ]
+    },
+    "properties": {
+    "City Name":"Shawnee"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.8018,38.9609 ]
+    },
+    "properties": {
+    "City Name":"Lenexa"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.6048,39.1886 ]
+    },
+    "properties": {
+    "City Name":"Manhattan"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.6143,38.8136 ]
+    },
+    "properties": {
+    "City Name":"Salina"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.9081,38.0671 ]
+    },
+    "properties": {
+    "City Name":"Hutchinson"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.924,39.3239 ]
+    },
+    "properties": {
+    "City Name":"Leavenworth"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6258,38.9075 ]
+    },
+    "properties": {
+    "City Name":"Leawood"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.8527,37.9753 ]
+    },
+    "properties": {
+    "City Name":"Garden City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.0182,37.7611 ]
+    },
+    "properties": {
+    "City Name":"Dodge City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2551,37.5571 ]
+    },
+    "properties": {
+    "City Name":"Derby"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.1932,38.4028 ]
+    },
+    "properties": {
+    "City Name":"Emporia"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.9275,38.8122 ]
+    },
+    "properties": {
+    "City Name":"Gardner"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6362,38.9874 ]
+    },
+    "properties": {
+    "City Name":"Prairie Village"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.8508,39.0277 ]
+    },
+    "properties": {
+    "City Name":"Junction City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.3221,38.8821 ]
+    },
+    "properties": {
+    "City Name":"Hays"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6985,37.4129 ]
+    },
+    "properties": {
+    "City Name":"Pittsburg"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.9295,37.0466 ]
+    },
+    "properties": {
+    "City Name":"Liberal"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.3449,38.0368 ]
+    },
+    "properties": {
+    "City Name":"Newton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.1352,37.6873 ]
+    },
+    "properties": {
+    "City Name":"Andover"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.8015,38.3593 ]
+    },
+    "properties": {
+    "City Name":"Great Bend"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.6605,38.3714 ]
+    },
+    "properties": {
+    "City Name":"McPherson"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.8613,37.821 ]
+    },
+    "properties": {
+    "City Name":"El Dorado"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.2636,38.5996 ]
+    },
+    "properties": {
+    "City Name":"Ottawa"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.0385,37.0726 ]
+    },
+    "properties": {
+    "City Name":"Arkansas City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.95,37.274 ]
+    },
+    "properties": {
+    "City Name":"Winfield"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.8972,39.2428 ]
+    },
+    "properties": {
+    "City Name":"Lansing"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.3527,37.5648 ]
+    },
+    "properties": {
+    "City Name":"Haysville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6933,39.0186 ]
+    },
+    "properties": {
+    "City Name":"Merriam"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.1367,39.5625 ]
+    },
+    "properties": {
+    "City Name":"Atchison"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6568,39.027 ]
+    },
+    "properties": {
+    "City Name":"Mission"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.2958,37.3405 ]
+    },
+    "properties": {
+    "City Name":"Parsons"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.9919,37.6955 ]
+    },
+    "properties": {
+    "City Name":"Augusta"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.3646,37.8332 ]
+    },
+    "properties": {
+    "City Name":"Valley Center"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.618,37.0519 ]
+    },
+    "properties": {
+    "City Name":"Coffeyville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.8201,38.7565 ]
+    },
+    "properties": {
+    "City Name":"Spring Hill"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.4621,37.6695 ]
+    },
+    "properties": {
+    "City Name":"Chanute"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.8117,39.1064 ]
+    },
+    "properties": {
+    "City Name":"Fort Riley"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.7327,37.2119 ]
+    },
+    "properties": {
+    "City Name":"Independence"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.8776,39.0817 ]
+    },
+    "properties": {
+    "City Name":"Bonner Springs"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.3256,37.8101 ]
+    },
+    "properties": {
+    "City Name":"Park City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.426,37.2625 ]
+    },
+    "properties": {
+    "City Name":"Wellington"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.7038,37.8283 ]
+    },
+    "properties": {
+    "City Name":"Fort Scott"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.9333,39.1332 ]
+    },
+    "properties": {
+    "City Name":"Basehor"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6374,39.0359 ]
+    },
+    "properties": {
+    "City Name":"Roeland Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.7451,37.6765 ]
+    },
+    "properties": {
+    "City Name":"Pratt"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2252,38.923 ]
+    },
+    "properties": {
+    "City Name":"Abilene"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.9549,38.9688 ]
+    },
+    "properties": {
+    "City Name":"De Soto"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.0956,38.9345 ]
+    },
+    "properties": {
+    "City Name":"Eudora"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.462,37.7749 ]
+    },
+    "properties": {
+    "City Name":"Maize"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2724,37.4789 ]
+    },
+    "properties": {
+    "City Name":"Mulvane"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.3546,37.5774 ]
+    },
+    "properties": {
+    "City Name":"Ulysses"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.8617,38.5788 ]
+    },
+    "properties": {
+    "City Name":"Paola"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.0811,39.1088 ]
+    },
+    "properties": {
+    "City Name":"Tonganoxie"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.0452,39.3848 ]
+    },
+    "properties": {
+    "City Name":"Colby"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.4006,37.9274 ]
+    },
+    "properties": {
+    "City Name":"Iola"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.5617,37.6652 ]
+    },
+    "properties": {
+    "City Name":"Goddard"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.6467,39.5669 ]
+    },
+    "properties": {
+    "City Name":"Concordia"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.677,38.6202 ]
+    },
+    "properties": {
+    "City Name":"Louisburg"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.188,38.7782 ]
+    },
+    "properties": {
+    "City Name":"Baldwin City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.8166,39.0765 ]
+    },
+    "properties": {
+    "City Name":"Edwardsville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.1361,37.5702 ]
+    },
+    "properties": {
+    "City Name":"Rose Hill"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.8514,38.8874 ]
+    },
+    "properties": {
+    "City Name":"Russell"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.9486,38.5063 ]
+    },
+    "properties": {
+    "City Name":"Osawatomie"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.3099,39.2054 ]
+    },
+    "properties": {
+    "City Name":"Wamego"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6287,39.0245 ]
+    },
+    "properties": {
+    "City Name":"Fairway"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.1276,39.3812 ]
+    },
+    "properties": {
+    "City Name":"Clay Center"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.3447,37.1745 ]
+    },
+    "properties": {
+    "City Name":"Hugoton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.9031,38.4789 ]
+    },
+    "properties": {
+    "City Name":"Scott City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.7143,39.3489 ]
+    },
+    "properties": {
+    "City Name":"Goodland"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.7351,37.0195 ]
+    },
+    "properties": {
+    "City Name":"Baxter Springs"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.6738,38.5774 ]
+    },
+    "properties": {
+    "City Name":"Lindsborg"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.427,38.1401 ]
+    },
+    "properties": {
+    "City Name":"Hesston"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.2045,38.3462 ]
+    },
+    "properties": {
+    "City Name":"Lyons"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6172,39.0141 ]
+    },
+    "properties": {
+    "City Name":"Mission Hills"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.6387,39.8432 ]
+    },
+    "properties": {
+    "City Name":"Marysville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.7319,39.4699 ]
+    },
+    "properties": {
+    "City Name":"Holton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.7012,37.4581 ]
+    },
+    "properties": {
+    "City Name":"Frontenac"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.1012,38.1833 ]
+    },
+    "properties": {
+    "City Name":"Larned"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.538,39.8519 ]
+    },
+    "properties": {
+    "City Name":"Hiawatha"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.2408,38.2845 ]
+    },
+    "properties": {
+    "City Name":"Garnett"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.1082,39.4645 ]
+    },
+    "properties": {
+    "City Name":"Beloit"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.2285,38.7327 ]
+    },
+    "properties": {
+    "City Name":"Ellsworth"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.1167,37.648 ]
+    },
+    "properties": {
+    "City Name":"Kingman"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2984,37.6084 ]
+    },
+    "properties": {
+    "City Name":"Oaklawn-Sunview"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2891,37.8234 ]
+    },
+    "properties": {
+    "City Name":"Kechi"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.844,37.1716 ]
+    },
+    "properties": {
+    "City Name":"Columbus"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.8218,38.6337 ]
+    },
+    "properties": {
+    "City Name":"Osage City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.9429,38.0278 ]
+    },
+    "properties": {
+    "City Name":"South Hutchinson"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.0643,39.1942 ]
+    },
+    "properties": {
+    "City Name":"St. Marys"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6354,37.0751 ]
+    },
+    "properties": {
+    "City Name":"Galena"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.1992,38.3527 ]
+    },
+    "properties": {
+    "City Name":"Hillsboro"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.8456,37.5094 ]
+    },
+    "properties": {
+    "City Name":"Girard"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.8916,39.8362 ]
+    },
+    "properties": {
+    "City Name":"Norton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.7774,38.5181 ]
+    },
+    "properties": {
+    "City Name":"Hoisington"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.7452,38.1931 ]
+    },
+    "properties": {
+    "City Name":"Burlington"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.9936,37.9859 ]
+    },
+    "properties": {
+    "City Name":"Holcomb"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.4975,37.5096 ]
+    },
+    "properties": {
+    "City Name":"Clearwater"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.4909,38.6617 ]
+    },
+    "properties": {
+    "City Name":"Council Grove"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.5102,37.9999 ]
+    },
+    "properties": {
+    "City Name":"Halstead"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.2064,38.2094 ]
+    },
+    "properties": {
+    "City Name":"Sterling"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.7797,37.6353 ]
+    },
+    "properties": {
+    "City Name":"Cheney"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.7913,39.913 ]
+    },
+    "properties": {
+    "City Name":"Sabetha"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6848,37.4241 ]
+    },
+    "properties": {
+    "City Name":"Neodesha"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.289,37.8261 ]
+    },
+    "properties": {
+    "City Name":"Eureka"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.0418,37.1588 ]
+    },
+    "properties": {
+    "City Name":"Anthony"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.3475,38.0766 ]
+    },
+    "properties": {
+    "City Name":"North Newton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.5568,38.9346 ]
+    },
+    "properties": {
+    "City Name":"Ellis"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.0696,39.838 ]
+    },
+    "properties": {
+    "City Name":"Seneca"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.321,39.7512 ]
+    },
+    "properties": {
+    "City Name":"Phillipsburg"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.5536,37.269 ]
+    },
+    "properties": {
+    "City Name":"Cherryvale"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.5837,38.3574 ]
+    },
+    "properties": {
+    "City Name":"Ellinwood"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.822,37.5327 ]
+    },
+    "properties": {
+    "City Name":"Fredonia"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.8669,38.6862 ]
+    },
+    "properties": {
+    "City Name":"Herington"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.6997,39.1243 ]
+    },
+    "properties": {
+    "City Name":"Minneapolis"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.2585,37.94 ]
+    },
+    "properties": {
+    "City Name":"Lakin"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.8449,39.1233 ]
+    },
+    "properties": {
+    "City Name":"Oakley"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.6337,39.8245 ]
+    },
+    "properties": {
+    "City Name":"Belleville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.0082,38.3547 ]
+    },
+    "properties": {
+    "City Name":"Marion"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.0778,38.7175 ]
+    },
+    "properties": {
+    "City Name":"Wellsville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.4363,37.8125 ]
+    },
+    "properties": {
+    "City Name":"Humboldt"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.26,37.625 ]
+    },
+    "properties": {
+    "City Name":"McConnell AFB"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.3453,37.8097 ]
+    },
+    "properties": {
+    "City Name":"Cimarron"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6156,39.0394 ]
+    },
+    "properties": {
+    "City Name":"Westwood"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.8815,39.0234 ]
+    },
+    "properties": {
+    "City Name":"WaKeeney"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.793,39.0327 ]
+    },
+    "properties": {
+    "City Name":"Grandview Plaza"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.9706,38.7717 ]
+    },
+    "properties": {
+    "City Name":"Edgerton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.1123,37.1674 ]
+    },
+    "properties": {
+    "City Name":"Oswego"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.3009,39.2341 ]
+    },
+    "properties": {
+    "City Name":"Plainville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.5308,39.823 ]
+    },
+    "properties": {
+    "City Name":"Oberlin"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.9963,37.7954 ]
+    },
+    "properties": {
+    "City Name":"Towanda"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.8944,37.0038 ]
+    },
+    "properties": {
+    "City Name":"Elkhart"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.5326,39.6635 ]
+    },
+    "properties": {
+    "City Name":"Horton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.7782,37.962 ]
+    },
+    "properties": {
+    "City Name":"Syracuse"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.4201,37.918 ]
+    },
+    "properties": {
+    "City Name":"Sedgwick"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.515,38.2021 ]
+    },
+    "properties": {
+    "City Name":"Moundridge"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.7028,39.1128 ]
+    },
+    "properties": {
+    "City Name":"Ogden"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.5363,37.7818 ]
+    },
+    "properties": {
+    "City Name":"Colwich"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.643,37.3899 ]
+    },
+    "properties": {
+    "City Name":"Conway Springs"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.7831,39.774 ]
+    },
+    "properties": {
+    "City Name":"Smith Center"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.8563,39.0994 ]
+    },
+    "properties": {
+    "City Name":"Silver Lake"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.846,39.367 ]
+    },
+    "properties": {
+    "City Name":"Hill City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.0105,37.5169 ]
+    },
+    "properties": {
+    "City Name":"Douglass"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.2764,39.4251 ]
+    },
+    "properties": {
+    "City Name":"Stockton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.5812,37.2851 ]
+    },
+    "properties": {
+    "City Name":"Medicine Lodge"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.6994,39.4404 ]
+    },
+    "properties": {
+    "City Name":"Osborne"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2795,37.3934 ]
+    },
+    "properties": {
+    "City Name":"Belle Plaine"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.9396,39.7602 ]
+    },
+    "properties": {
+    "City Name":"Wathena"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.3579,38.4834 ]
+    },
+    "properties": {
+    "City Name":"Leoti"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.9315,37.014 ]
+    },
+    "properties": {
+    "City Name":"Caney"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.7053,38.179 ]
+    },
+    "properties": {
+    "City Name":"Pleasanton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.7715,38.2323 ]
+    },
+    "properties": {
+    "City Name":"Inman"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.8466,37.4822 ]
+    },
+    "properties": {
+    "City Name":"Sublette"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.7831,37.9016 ]
+    },
+    "properties": {
+    "City Name":"Haven"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.0418,39.8101 ]
+    },
+    "properties": {
+    "City Name":"Atwood"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.7539,37.8668 ]
+    },
+    "properties": {
+    "City Name":"Yates Center"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.7613,38.3479 ]
+    },
+    "properties": {
+    "City Name":"La Cygne"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6932,38.8192 ]
+    },
+    "properties": {
+    "City Name":"Carbondale"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.4114,37.9224 ]
+    },
+    "properties": {
+    "City Name":"Kinsley"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.2418,37.5717 ]
+    },
+    "properties": {
+    "City Name":"Erie"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.7704,38.1384 ]
+    },
+    "properties": {
+    "City Name":"Buhler"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.5898,37.2642 ]
+    },
+    "properties": {
+    "City Name":"Plains"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.4612,39.3407 ]
+    },
+    "properties": {
+    "City Name":"Valley Falls"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.343,37.2836 ]
+    },
+    "properties": {
+    "City Name":"Meade"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.8015,39.7714 ]
+    },
+    "properties": {
+    "City Name":"St. Francis"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.6276,37.7916 ]
+    },
+    "properties": {
+    "City Name":"Andale"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.7611,38 ]
+    },
+    "properties": {
+    "City Name":"St. John"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.0236,38.9746 ]
+    },
+    "properties": {
+    "City Name":"Chapman"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.7447,37.5703 ]
+    },
+    "properties": {
+    "City Name":"Johnson City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.4529,38.6108 ]
+    },
+    "properties": {
+    "City Name":"Pomona"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.0487,39.816 ]
+    },
+    "properties": {
+    "City Name":"Washington"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.4397,39.3558 ]
+    },
+    "properties": {
+    "City Name":"Hoxie"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.0276,37.2851 ]
+    },
+    "properties": {
+    "City Name":"Harper"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.8158,38.9077 ]
+    },
+    "properties": {
+    "City Name":"Auburn"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6844,38.612 ]
+    },
+    "properties": {
+    "City Name":"Lyndon"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.9496,39.1358 ]
+    },
+    "properties": {
+    "City Name":"Rossville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3145,39.2158 ]
+    },
+    "properties": {
+    "City Name":"Oskaloosa"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.889,39.7519 ]
+    },
+    "properties": {
+    "City Name":"Elwood"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.1043,38.1683 ]
+    },
+    "properties": {
+    "City Name":"Peabody"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.2615,38.5066 ]
+    },
+    "properties": {
+    "City Name":"Americus"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.9047,38.454 ]
+    },
+    "properties": {
+    "City Name":"Ness City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.7023,37.5429 ]
+    },
+    "properties": {
+    "City Name":"Arma"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.4185,39.1915 ]
+    },
+    "properties": {
+    "City Name":"St. George"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.6089,37.035 ]
+    },
+    "properties": {
+    "City Name":"Caldwell"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.0883,38.1488 ]
+    },
+    "properties": {
+    "City Name":"Nickerson"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3866,39.0732 ]
+    },
+    "properties": {
+    "City Name":"Perry"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.3095,38.5318 ]
+    },
+    "properties": {
+    "City Name":"La Crosse"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.1848,37.1284 ]
+    },
+    "properties": {
+    "City Name":"Sedan"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.6793,37.6627 ]
+    },
+    "properties": {
+    "City Name":"Garden Plain"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.7548,37.8481 ]
+    },
+    "properties": {
+    "City Name":"Spearville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.2649,39.8603 ]
+    },
+    "properties": {
+    "City Name":"Highland"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.0187,39.2164 ]
+    },
+    "properties": {
+    "City Name":"Wakefield"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.5569,38.7794 ]
+    },
+    "properties": {
+    "City Name":"Overbrook"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.1468,39.043 ]
+    },
+    "properties": {
+    "City Name":"Lincoln Center"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.5381,38.3836 ]
+    },
+    "properties": {
+    "City Name":"Galva"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.2898,37.1875 ]
+    },
+    "properties": {
+    "City Name":"Altamont"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.0923,37.0376 ]
+    },
+    "properties": {
+    "City Name":"Chetopa"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.1473,38.8538 ]
+    },
+    "properties": {
+    "City Name":"Victoria"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.8351,38.7517 ]
+    },
+    "properties": {
+    "City Name":"Burlingame"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.2871,39.0152 ]
+    },
+    "properties": {
+    "City Name":"Alma"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.2347,39.0666 ]
+    },
+    "properties": {
+    "City Name":"Quinter"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.3692,38.9215 ]
+    },
+    "properties": {
+    "City Name":"Solomon"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.5425,38.3686 ]
+    },
+    "properties": {
+    "City Name":"Cottonwood Falls"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.712,38.3758 ]
+    },
+    "properties": {
+    "City Name":"Linn Valley"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.1372,38.1336 ]
+    },
+    "properties": {
+    "City Name":"Madison"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.7685,39.0393 ]
+    },
+    "properties": {
+    "City Name":"Lake Quivira"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.6593,39.6791 ]
+    },
+    "properties": {
+    "City Name":"Blue Rapids"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.7741,37.3095 ]
+    },
+    "properties": {
+    "City Name":"Weir"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.146,37.9636 ]
+    },
+    "properties": {
+    "City Name":"Whitewater"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.1078,37.7882 ]
+    },
+    "properties": {
+    "City Name":"Benton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.1696,37.2741 ]
+    },
+    "properties": {
+    "City Name":"Oxford"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.7402,38.7778 ]
+    },
+    "properties": {
+    "City Name":"Scranton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.2083,39.1961 ]
+    },
+    "properties": {
+    "City Name":"McLouth"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.45,37.5925 ]
+    },
+    "properties": {
+    "City Name":"Montezuma"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.6715,38.0237 ]
+    },
+    "properties": {
+    "City Name":"Burrton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6114,38.6495 ]
+    },
+    "properties": {
+    "City Name":"Vassar"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.8506,38.1325 ]
+    },
+    "properties": {
+    "City Name":"Mound City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.988,37.4378 ]
+    },
+    "properties": {
+    "City Name":"Satanta"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.7511,38.8943 ]
+    },
+    "properties": {
+    "City Name":"Sharon Springs"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.1163,38.9029 ]
+    },
+    "properties": {
+    "City Name":"Enterprise"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.8753,39.8934 ]
+    },
+    "properties": {
+    "City Name":"Hanover"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.8277,39.299 ]
+    },
+    "properties": {
+    "City Name":"Riley"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.475,38.8255 ]
+    },
+    "properties": {
+    "City Name":"Wilson"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.4003,39.5918 ]
+    },
+    "properties": {
+    "City Name":"Clyde"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.7697,37.1867 ]
+    },
+    "properties": {
+    "City Name":"Ashland"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.8622,38.4156 ]
+    },
+    "properties": {
+    "City Name":"Lebo"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.2083,39.7871 ]
+    },
+    "properties": {
+    "City Name":"Mankato"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.7546,38.472 ]
+    },
+    "properties": {
+    "City Name":"Tribune"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.568,39.1897 ]
+    },
+    "properties": {
+    "City Name":"Meriden"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3304,39.4159 ]
+    },
+    "properties": {
+    "City Name":"Nortonville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.0937,39.7846 ]
+    },
+    "properties": {
+    "City Name":"Troy"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.4848,37.0174 ]
+    },
+    "properties": {
+    "City Name":"Kiowa"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.0278,39.0855 ]
+    },
+    "properties": {
+    "City Name":"Maple Hill"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2591,37.6856 ]
+    },
+    "properties": {
+    "City Name":"Eastborough"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6994,37.523 ]
+    },
+    "properties": {
+    "City Name":"Franklin"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3929,39.0358 ]
+    },
+    "properties": {
+    "City Name":"Lecompton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.1332,37.9819 ]
+    },
+    "properties": {
+    "City Name":"Deerfield"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.708,39.2493 ]
+    },
+    "properties": {
+    "City Name":"Hoyt"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.6619,37.8735 ]
+    },
+    "properties": {
+    "City Name":"Mount Hope"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.747,39.6919 ]
+    },
+    "properties": {
+    "City Name":"Waterville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.9269,37.7153 ]
+    },
+    "properties": {
+    "City Name":"Wilroads Gardens"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.4169,39.7039 ]
+    },
+    "properties": {
+    "City Name":"Frankfort"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.0131,37.4421 ]
+    },
+    "properties": {
+    "City Name":"Minneola"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.2895,37.6049 ]
+    },
+    "properties": {
+    "City Name":"Greensburg"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.4663,38.481 ]
+    },
+    "properties": {
+    "City Name":"Dighton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.8215,37.345 ]
+    },
+    "properties": {
+    "City Name":"Cherokee"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.706,37.0732 ]
+    },
+    "properties": {
+    "City Name":"Riverton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.5995,37.9624 ]
+    },
+    "properties": {
+    "City Name":"Stafford"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.1703,39.4892 ]
+    },
+    "properties": {
+    "City Name":"Onaga"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.9098,38.0301 ]
+    },
+    "properties": {
+    "City Name":"Jetmore"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.3378,37.2582 ]
+    },
+    "properties": {
+    "City Name":"Coldwater"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.1742,37.5186 ]
+    },
+    "properties": {
+    "City Name":"St. Paul"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.5472,39.5045 ]
+    },
+    "properties": {
+    "City Name":"Downs"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3969,39.5228 ]
+    },
+    "properties": {
+    "City Name":"Effingham"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.1177,37.3889 ]
+    },
+    "properties": {
+    "City Name":"Udall"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.8344,38.5555 ]
+    },
+    "properties": {
+    "City Name":"Marquette"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.4137,39.3941 ]
+    },
+    "properties": {
+    "City Name":"Westmoreland"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.6343,37.5488 ]
+    },
+    "properties": {
+    "City Name":"Bucklin"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.4303,38.3857 ]
+    },
+    "properties": {
+    "City Name":"Canton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.5673,39.6617 ]
+    },
+    "properties": {
+    "City Name":"Logan"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.5018,37.1061 ]
+    },
+    "properties": {
+    "City Name":"Cedar Vale"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.1059,37.6173 ]
+    },
+    "properties": {
+    "City Name":"Haviland"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.5932,39.0334 ]
+    },
+    "properties": {
+    "City Name":"Bennington"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.1726,38.2569 ]
+    },
+    "properties": {
+    "City Name":"Olpe"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.8596,39.3642 ]
+    },
+    "properties": {
+    "City Name":"Leonardville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.4659,39.2354 ]
+    },
+    "properties": {
+    "City Name":"Ozawkie"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.9689,37.9572 ]
+    },
+    "properties": {
+    "City Name":"Macksville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3454,37.923 ]
+    },
+    "properties": {
+    "City Name":"Gas"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.5328,39.7495 ]
+    },
+    "properties": {
+    "City Name":"Bird City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.7629,37.2679 ]
+    },
+    "properties": {
+    "City Name":"Argonia"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.0732,37.8958 ]
+    },
+    "properties": {
+    "City Name":"Bronson"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.0329,39.7667 ]
+    },
+    "properties": {
+    "City Name":"Kensington"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.1581,38.7081 ]
+    },
+    "properties": {
+    "City Name":"Kanopolis"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.0184,37.9385 ]
+    },
+    "properties": {
+    "City Name":"Potwin"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.2631,37.4695 ]
+    },
+    "properties": {
+    "City Name":"Howard"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.0224,37.78 ]
+    },
+    "properties": {
+    "City Name":"Pretty Prairie"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.7554,37.3151 ]
+    },
+    "properties": {
+    "City Name":"Burden"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.9957,37.0679 ]
+    },
+    "properties": {
+    "City Name":"Parkerfield"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.6318,37.1179 ]
+    },
+    "properties": {
+    "City Name":"Rolla"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.3454,38.2473 ]
+    },
+    "properties": {
+    "City Name":"Goessel"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.9289,38.2428 ]
+    },
+    "properties": {
+    "City Name":"Florence"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.2276,37.2426 ]
+    },
+    "properties": {
+    "City Name":"Attica"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6048,38.3962 ]
+    },
+    "properties": {
+    "City Name":"Waverly"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.3066,39.5001 ]
+    },
+    "properties": {
+    "City Name":"Glen Elder"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.7837,37.6898 ]
+    },
+    "properties": {
+    "City Name":"Leon"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.7161,37.1794 ]
+    },
+    "properties": {
+    "City Name":"Dexter"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.1957,37.3829 ]
+    },
+    "properties": {
+    "City Name":"Fowler"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.252,38.4004 ]
+    },
+    "properties": {
+    "City Name":"Richmond"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.4808,37.2004 ]
+    },
+    "properties": {
+    "City Name":"Protection"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.1301,39.7243 ]
+    },
+    "properties": {
+    "City Name":"Centralia"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.537,38.3955 ]
+    },
+    "properties": {
+    "City Name":"Strong City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.9755,37.8471 ]
+    },
+    "properties": {
+    "City Name":"Uniontown"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.5147,37.8868 ]
+    },
+    "properties": {
+    "City Name":"Bentley"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.4888,38.8628 ]
+    },
+    "properties": {
+    "City Name":"Alta Vista"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6097,39.0389 ]
+    },
+    "properties": {
+    "City Name":"Westwood Hills"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.848,37.4572 ]
+    },
+    "properties": {
+    "City Name":"Norwich"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.0869,39.6793 ]
+    },
+    "properties": {
+    "City Name":"Linn"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.2547,37.937 ]
+    },
+    "properties": {
+    "City Name":"Lewis"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.7018,37.2046 ]
+    },
+    "properties": {
+    "City Name":"Kismet"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.9497,38.1659 ]
+    },
+    "properties": {
+    "City Name":"The Highlands"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.2566,39.8711 ]
+    },
+    "properties": {
+    "City Name":"Axtell"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.0765,38.6912 ]
+    },
+    "properties": {
+    "City Name":"Hope"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6331,38.0863 ]
+    },
+    "properties": {
+    "City Name":"LeRoy"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.4312,37.6447 ]
+    },
+    "properties": {
+    "City Name":"Cunningham"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.1716,37.9166 ]
+    },
+    "properties": {
+    "City Name":"Moran"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.4845,37.4851 ]
+    },
+    "properties": {
+    "City Name":"Thayer"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.693,38.4462 ]
+    },
+    "properties": {
+    "City Name":"Bazine"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2808,39.5682 ]
+    },
+    "properties": {
+    "City Name":"Clifton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.5378,39.0587 ]
+    },
+    "properties": {
+    "City Name":"Lucas"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.7097,39.8913 ]
+    },
+    "properties": {
+    "City Name":"Almena"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.3489,38.3551 ]
+    },
+    "properties": {
+    "City Name":"Chase"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.8441,38.4239 ]
+    },
+    "properties": {
+    "City Name":"Fontana"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.9566,38.3084 ]
+    },
+    "properties": {
+    "City Name":"Hartford"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.3771,39.3631 ]
+    },
+    "properties": {
+    "City Name":"Brewster"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.7349,38.7938 ]
+    },
+    "properties": {
+    "City Name":"White City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.0533,38.5347 ]
+    },
+    "properties": {
+    "City Name":"Otis"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.5367,38.5246 ]
+    },
+    "properties": {
+    "City Name":"Claflin"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.604,38.6802 ]
+    },
+    "properties": {
+    "City Name":"Assaria"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.0149,38.3983 ]
+    },
+    "properties": {
+    "City Name":"Little River"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3023,37.9166 ]
+    },
+    "properties": {
+    "City Name":"La Harpe"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.4523,39.3496 ]
+    },
+    "properties": {
+    "City Name":"Miltonvale"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.6176,38.603 ]
+    },
+    "properties": {
+    "City Name":"Healy"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6235,37.5561 ]
+    },
+    "properties": {
+    "City Name":"Mulberry"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.4331,39.5095 ]
+    },
+    "properties": {
+    "City Name":"Cawker City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.1525,39.6715 ]
+    },
+    "properties": {
+    "City Name":"Jewell"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6615,37.5249 ]
+    },
+    "properties": {
+    "City Name":"Altoona"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.7423,38.2622 ]
+    },
+    "properties": {
+    "City Name":"New Strawn"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.7444,37.3835 ]
+    },
+    "properties": {
+    "City Name":"Chicopee"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.823,37.2781 ]
+    },
+    "properties": {
+    "City Name":"Scammon"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.178,37.8962 ]
+    },
+    "properties": {
+    "City Name":"Arlington"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.1049,38.8595 ]
+    },
+    "properties": {
+    "City Name":"Eskridge"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.4248,39.677 ]
+    },
+    "properties": {
+    "City Name":"Everest"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.4266,38.7058 ]
+    },
+    "properties": {
+    "City Name":"Gypsum"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.4681,38.4807 ]
+    },
+    "properties": {
+    "City Name":"Williamsburg"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.4119,38.5876 ]
+    },
+    "properties": {
+    "City Name":"Holyrood"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.6311,39.1266 ]
+    },
+    "properties": {
+    "City Name":"Grinnell"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.3025,37.3637 ]
+    },
+    "properties": {
+    "City Name":"Moline"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.8826,38.1007 ]
+    },
+    "properties": {
+    "City Name":"Gridley"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.5266,38.5801 ]
+    },
+    "properties": {
+    "City Name":"Quenemo"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.0241,39.1885 ]
+    },
+    "properties": {
+    "City Name":"Natoma"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3592,37.0587 ]
+    },
+    "properties": {
+    "City Name":"Edna"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.2381,39.0545 ]
+    },
+    "properties": {
+    "City Name":"McFarland"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3037,39.571 ]
+    },
+    "properties": {
+    "City Name":"Lancaster"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.0237,38.8806 ]
+    },
+    "properties": {
+    "City Name":"Gorham"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.6288,37.5405 ]
+    },
+    "properties": {
+    "City Name":"Copeland"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.7216,39.3386 ]
+    },
+    "properties": {
+    "City Name":"Mayetta"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.2688,39.3226 ]
+    },
+    "properties": {
+    "City Name":"Winchester"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.5807,39.0419 ]
+    },
+    "properties": {
+    "City Name":"Tecumseh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.8372,39.3609 ]
+    },
+    "properties": {
+    "City Name":"Glasco"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.9899,38.3285 ]
+    },
+    "properties": {
+    "City Name":"Parker"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.4013,37.0495 ]
+    },
+    "properties": {
+    "City Name":"South Haven"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.8112,39.6357 ]
+    },
+    "properties": {
+    "City Name":"Wetmore"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6954,37.0534 ]
+    },
+    "properties": {
+    "City Name":"Dearing"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.4046,37.2071 ]
+    },
+    "properties": {
+    "City Name":"Mound Valley"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.0362,39.0019 ]
+    },
+    "properties": {
+    "City Name":"Linwood"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6112,39.5878 ]
+    },
+    "properties": {
+    "City Name":"Whiting"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.98,39.7273 ]
+    },
+    "properties": {
+    "City Name":"Greenleaf"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.7653,39.2744 ]
+    },
+    "properties": {
+    "City Name":"Delphos"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.5264,38.1935 ]
+    },
+    "properties": {
+    "City Name":"Burdett"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.3944,39.0123 ]
+    },
+    "properties": {
+    "City Name":"Sylvan Grove"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3629,38.0712 ]
+    },
+    "properties": {
+    "City Name":"Colony"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.1172,39.3456 ]
+    },
+    "properties": {
+    "City Name":"Easton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.9105,39.1729 ]
+    },
+    "properties": {
+    "City Name":"Milford"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.4534,37.8287 ]
+    },
+    "properties": {
+    "City Name":"Ingalls"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.9916,38.3685 ]
+    },
+    "properties": {
+    "City Name":"Neosho Rapids"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.784,39.7969 ]
+    },
+    "properties": {
+    "City Name":"Scandia"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6377,38.5073 ]
+    },
+    "properties": {
+    "City Name":"Melvern"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.7032,37.0509 ]
+    },
+    "properties": {
+    "City Name":"Lowell"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.1272,38.3676 ]
+    },
+    "properties": {
+    "City Name":"Greeley"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.8877,38.0897 ]
+    },
+    "properties": {
+    "City Name":"Burns"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2582,38.1187 ]
+    },
+    "properties": {
+    "City Name":"Walton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.9823,38.2649 ]
+    },
+    "properties": {
+    "City Name":"Pawnee Rock"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.6339,38.2896 ]
+    },
+    "properties": {
+    "City Name":"Elyria"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.4278,37.8075 ]
+    },
+    "properties": {
+    "City Name":"Turon"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.697,37.709 ]
+    },
+    "properties": {
+    "City Name":"Buffalo"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.7282,39.8397 ]
+    },
+    "properties": {
+    "City Name":"Fairview"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.5671,39.5414 ]
+    },
+    "properties": {
+    "City Name":"Selden"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.1283,38.0534 ]
+    },
+    "properties": {
+    "City Name":"Elbing"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.0821,37.3779 ]
+    },
+    "properties": {
+    "City Name":"Longton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.9099,37.2896 ]
+    },
+    "properties": {
+    "City Name":"Elk City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.1697,38.655 ]
+    },
+    "properties": {
+    "City Name":"Allen"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6929,38.063 ]
+    },
+    "properties": {
+    "City Name":"Prescott"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.6158,39.432 ]
+    },
+    "properties": {
+    "City Name":"Olsburg"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.624,37.6412 ]
+    },
+    "properties": {
+    "City Name":"Arcadia"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.8834,38.0155 ]
+    },
+    "properties": {
+    "City Name":"Mapleton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.0191,37.3538 ]
+    },
+    "properties": {
+    "City Name":"McCune"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.8781,39.013 ]
+    },
+    "properties": {
+    "City Name":"Tescott"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.9328,38.6367 ]
+    },
+    "properties": {
+    "City Name":"Ransom"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.7127,38.1229 ]
+    },
+    "properties": {
+    "City Name":"Hanston"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.01,38.089 ]
+    },
+    "properties": {
+    "City Name":"Blue Mound"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.2144,38.9302 ]
+    },
+    "properties": {
+    "City Name":"Catharine"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.9497,37.7986 ]
+    },
+    "properties": {
+    "City Name":"Toronto"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.4684,39.1143 ]
+    },
+    "properties": {
+    "City Name":"Grainfield"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.6492,37.0144 ]
+    },
+    "properties": {
+    "City Name":"Hardtner"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.3959,38.5124 ]
+    },
+    "properties": {
+    "City Name":"Bushton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -102.0373,39.3366 ]
+    },
+    "properties": {
+    "City Name":"Kanorado"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.1671,39.0689 ]
+    },
+    "properties": {
+    "City Name":"Paxico"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.4754,37.5885 ]
+    },
+    "properties": {
+    "City Name":"Mullinville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.0743,37.6018 ]
+    },
+    "properties": {
+    "City Name":"Walnut"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.3325,38.713 ]
+    },
+    "properties": {
+    "City Name":"Schoenchen"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.4178,39.8624 ]
+    },
+    "properties": {
+    "City Name":"Beattie"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.7327,37.729 ]
+    },
+    "properties": {
+    "City Name":"Iuka"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.311,38.465 ]
+    },
+    "properties": {
+    "City Name":"Rush Center"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.1545,38.517 ]
+    },
+    "properties": {
+    "City Name":"Geneseo"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.1195,39.7612 ]
+    },
+    "properties": {
+    "City Name":"Agra"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.2915,38.1747 ]
+    },
+    "properties": {
+    "City Name":"Welda"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.5634,39.2532 ]
+    },
+    "properties": {
+    "City Name":"Palco"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.4576,39.8023 ]
+    },
+    "properties": {
+    "City Name":"Cuba"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6944,39.9291 ]
+    },
+    "properties": {
+    "City Name":"Morrill"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.4709,39.3395 ]
+    },
+    "properties": {
+    "City Name":"Tipton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.0456,39.6417 ]
+    },
+    "properties": {
+    "City Name":"Randall"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.2698,38.4874 ]
+    },
+    "properties": {
+    "City Name":"Princeton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.8613,39.5996 ]
+    },
+    "properties": {
+    "City Name":"Jamestown"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6999,38.8911 ]
+    },
+    "properties": {
+    "City Name":"Wakarusa"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.1638,37.9805 ]
+    },
+    "properties": {
+    "City Name":"Hamilton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.8645,38.7736 ]
+    },
+    "properties": {
+    "City Name":"Brookville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.9613,38.4943 ]
+    },
+    "properties": {
+    "City Name":"Lincolnville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.1888,39.8347 ]
+    },
+    "properties": {
+    "City Name":"Norcatur"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.7948,39.8965 ]
+    },
+    "properties": {
+    "City Name":"Bremen"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.1977,38.5201 ]
+    },
+    "properties": {
+    "City Name":"Bison"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.6444,37.4829 ]
+    },
+    "properties": {
+    "City Name":"Viola"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.0014,39.6109 ]
+    },
+    "properties": {
+    "City Name":"Lenora"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.2069,37.3249 ]
+    },
+    "properties": {
+    "City Name":"Moscow"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.7539,37.6366 ]
+    },
+    "properties": {
+    "City Name":"Ford"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.9574,38.5192 ]
+    },
+    "properties": {
+    "City Name":"Reading"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.4078,37.3469 ]
+    },
+    "properties": {
+    "City Name":"Dennis"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.5921,38.8449 ]
+    },
+    "properties": {
+    "City Name":"Dwight"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.59,38.8469 ]
+    },
+    "properties": {
+    "City Name":"Dorrance"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.6764,38.6357 ]
+    },
+    "properties": {
+    "City Name":"Wilsey"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.8961,39.7835 ]
+    },
+    "properties": {
+    "City Name":"Courtland"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.8218,37.0368 ]
+    },
+    "properties": {
+    "City Name":"Tyro"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.3702,39.7848 ]
+    },
+    "properties": {
+    "City Name":"McDonald"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.1505,37.1114 ]
+    },
+    "properties": {
+    "City Name":"Geuda Springs"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.3024,38.3744 ]
+    },
+    "properties": {
+    "City Name":"Lehigh"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.5572,39.8101 ]
+    },
+    "properties": {
+    "City Name":"Lebanon"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.5603,37.8907 ]
+    },
+    "properties": {
+    "City Name":"Offerle"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.0578,39.3071 ]
+    },
+    "properties": {
+    "City Name":"Emmett"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.2273,37.622 ]
+    },
+    "properties": {
+    "City Name":"Severy"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3563,37.4721 ]
+    },
+    "properties": {
+    "City Name":"Galesburg"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.0762,39.5115 ]
+    },
+    "properties": {
+    "City Name":"Havensville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.2449,39.0618 ]
+    },
+    "properties": {
+    "City Name":"Winona"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.7598,39.429 ]
+    },
+    "properties": {
+    "City Name":"Randolph"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6107,39.0341 ]
+    },
+    "properties": {
+    "City Name":"Mission Woods"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.0922,37.9666 ]
+    },
+    "properties": {
+    "City Name":"Partridge"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.4085,37.9589 ]
+    },
+    "properties": {
+    "City Name":"Sylvia"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.4117,39.8157 ]
+    },
+    "properties": {
+    "City Name":"Robinson"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.625,37.8158 ]
+    },
+    "properties": {
+    "City Name":"Rosalia"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.1554,38.0812 ]
+    },
+    "properties": {
+    "City Name":"Kincaid"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.5385,39.9126 ]
+    },
+    "properties": {
+    "City Name":"Munden"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.102,38.641 ]
+    },
+    "properties": {
+    "City Name":"Admire"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.8733,39.7116 ]
+    },
+    "properties": {
+    "City Name":"Barnes"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.3145,39.2499 ]
+    },
+    "properties": {
+    "City Name":"Louisville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.9651,39.2394 ]
+    },
+    "properties": {
+    "City Name":"Delia"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.6843,38.7381 ]
+    },
+    "properties": {
+    "City Name":"Smolan"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.1789,39.2164 ]
+    },
+    "properties": {
+    "City Name":"Belvue"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2038,39.4666 ]
+    },
+    "properties": {
+    "City Name":"Morganville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.0819,38.4398 ]
+    },
+    "properties": {
+    "City Name":"Lane"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.9624,38.7896 ]
+    },
+    "properties": {
+    "City Name":"Harveyville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.7694,37.4432 ]
+    },
+    "properties": {
+    "City Name":"Milton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.3493,39.9968 ]
+    },
+    "properties": {
+    "City Name":"Summerfield"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.0962,37.0803 ]
+    },
+    "properties": {
+    "City Name":"Peru"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.6427,37.5357 ]
+    },
+    "properties": {
+    "City Name":"Latham"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.9681,38.8653 ]
+    },
+    "properties": {
+    "City Name":"Weskan"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6285,39.3938 ]
+    },
+    "properties": {
+    "City Name":"Denison"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.6922,39.1151 ]
+    },
+    "properties": {
+    "City Name":"Luray"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.4906,38.1818 ]
+    },
+    "properties": {
+    "City Name":"Westphalia"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.7189,39.603 ]
+    },
+    "properties": {
+    "City Name":"Netawaka"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.5732,39.832 ]
+    },
+    "properties": {
+    "City Name":"Prairie View"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.9398,39.8668 ]
+    },
+    "properties": {
+    "City Name":"Oneida"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.9268,37.2839 ]
+    },
+    "properties": {
+    "City Name":"West Mineral"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.767,37.4358 ]
+    },
+    "properties": {
+    "City Name":"Atlanta"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.0288,39.657 ]
+    },
+    "properties": {
+    "City Name":"Corning"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.3174,38.569 ]
+    },
+    "properties": {
+    "City Name":"Lorraine"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.1542,38.5481 ]
+    },
+    "properties": {
+    "City Name":"Tampa"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.7511,38.6745 ]
+    },
+    "properties": {
+    "City Name":"Falun"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.7439,39.4705 ]
+    },
+    "properties": {
+    "City Name":"Rexford"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.5844,39.3192 ]
+    },
+    "properties": {
+    "City Name":"Damar"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.934,39.386 ]
+    },
+    "properties": {
+    "City Name":"Simpson"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.4494,37.3507 ]
+    },
+    "properties": {
+    "City Name":"Grenola"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.0286,37.6078 ]
+    },
+    "properties": {
+    "City Name":"Fall River"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.7065,37.1701 ]
+    },
+    "properties": {
+    "City Name":"Crestline"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.8555,39.5095 ]
+    },
+    "properties": {
+    "City Name":"Circleville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.5573,37.5609 ]
+    },
+    "properties": {
+    "City Name":"Big Bow"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.1658,37.4484 ]
+    },
+    "properties": {
+    "City Name":"Spivey"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.1724,39.8452 ]
+    },
+    "properties": {
+    "City Name":"Morrowville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.937,37.7304 ]
+    },
+    "properties": {
+    "City Name":"Fort Dodge"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.8245,39.9239 ]
+    },
+    "properties": {
+    "City Name":"Republic"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.534,39.9462 ]
+    },
+    "properties": {
+    "City Name":"Long Island"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.0743,39.3489 ]
+    },
+    "properties": {
+    "City Name":"Morland"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.1811,39.7436 ]
+    },
+    "properties": {
+    "City Name":"Bendena"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.5556,38.0058 ]
+    },
+    "properties": {
+    "City Name":"Neosho Falls"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.1399,39.6333 ]
+    },
+    "properties": {
+    "City Name":"Palmer"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.9755,39.0138 ]
+    },
+    "properties": {
+    "City Name":"Beverly"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.5204,39.5535 ]
+    },
+    "properties": {
+    "City Name":"Muscotah"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.2991,39.9744 ]
+    },
+    "properties": {
+    "City Name":"White Cloud"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6453,39.6722 ]
+    },
+    "properties": {
+    "City Name":"Kickapoo Tribal Center"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.1934,37.3733 ]
+    },
+    "properties": {
+    "City Name":"Elk Falls"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.9713,39.9612 ]
+    },
+    "properties": {
+    "City Name":"Bern"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.5066,38.879 ]
+    },
+    "properties": {
+    "City Name":"New Cambria"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.0147,37.0678 ]
+    },
+    "properties": {
+    "City Name":"Niotaze"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.5611,39.0806 ]
+    },
+    "properties": {
+    "City Name":"Grantville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.4177,37.2498 ]
+    },
+    "properties": {
+    "City Name":"Sharon"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.2696,39.732 ]
+    },
+    "properties": {
+    "City Name":"Denton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.6386,38.0386 ]
+    },
+    "properties": {
+    "City Name":"Cassoday"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.7109,39.2217 ]
+    },
+    "properties": {
+    "City Name":"Keats"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.5977,37.1564 ]
+    },
+    "properties": {
+    "City Name":"Liberty"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.9594,38.7956 ]
+    },
+    "properties": {
+    "City Name":"Woodbine"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.5578,37.7584 ]
+    },
+    "properties": {
+    "City Name":"Preston"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.9486,39.4678 ]
+    },
+    "properties": {
+    "City Name":"Alton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.4143,38.278 ]
+    },
+    "properties": {
+    "City Name":"Raymond"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.8973,39.426 ]
+    },
+    "properties": {
+    "City Name":"Gem"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.7617,37.4851 ]
+    },
+    "properties": {
+    "City Name":"Radley"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.007,37.4417 ]
+    },
+    "properties": {
+    "City Name":"Rock"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.7197,38.0098 ]
+    },
+    "properties": {
+    "City Name":"Fulton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.9999,39.4301 ]
+    },
+    "properties": {
+    "City Name":"Green"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.4574,38.9688 ]
+    },
+    "properties": {
+    "City Name":"Niles"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.5684,38.5821 ]
+    },
+    "properties": {
+    "City Name":"McCracken"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.1428,37.7489 ]
+    },
+    "properties": {
+    "City Name":"Savonburg"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.1698,38.6427 ]
+    },
+    "properties": {
+    "City Name":"Utica"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.683,37.4985 ]
+    },
+    "properties": {
+    "City Name":"Sawyer"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.9697,37.6637 ]
+    },
+    "properties": {
+    "City Name":"Hepler"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.9054,37.6303 ]
+    },
+    "properties": {
+    "City Name":"Cullison"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.4696,37.5873 ]
+    },
+    "properties": {
+    "City Name":"Earlton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.3095,37.9717 ]
+    },
+    "properties": {
+    "City Name":"Plevna"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.2674,38.8089 ]
+    },
+    "properties": {
+    "City Name":"Munjor"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.8569,38.6597 ]
+    },
+    "properties": {
+    "City Name":"Hillsdale"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.3055,39.87 ]
+    },
+    "properties": {
+    "City Name":"Burr Oak"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.1011,38.5483 ]
+    },
+    "properties": {
+    "City Name":"Rantoul"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.8253,37.5108 ]
+    },
+    "properties": {
+    "City Name":"Coats"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.2329,37.6531 ]
+    },
+    "properties": {
+    "City Name":"Ensign"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.4032,38.1954 ]
+    },
+    "properties": {
+    "City Name":"Rozel"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.7519,38.4813 ]
+    },
+    "properties": {
+    "City Name":"Olivet"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6686,37.5529 ]
+    },
+    "properties": {
+    "City Name":"Croweburg"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.3118,38.2444 ]
+    },
+    "properties": {
+    "City Name":"Alden"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.2445,38.077 ]
+    },
+    "properties": {
+    "City Name":"Garfield"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.6989,38.8753 ]
+    },
+    "properties": {
+    "City Name":"Bunker Hill"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.1774,37.0241 ]
+    },
+    "properties": {
+    "City Name":"Chautauqua"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.6874,39.3595 ]
+    },
+    "properties": {
+    "City Name":"Bogue"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6842,39.6735 ]
+    },
+    "properties": {
+    "City Name":"Kickapoo Site 5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.5989,39.9632 ]
+    },
+    "properties": {
+    "City Name":"Oketo"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.7865,39.9092 ]
+    },
+    "properties": {
+    "City Name":"Herndon"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.3045,39.8553 ]
+    },
+    "properties": {
+    "City Name":"Haddam"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.5515,37.4672 ]
+    },
+    "properties": {
+    "City Name":"Isabel"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.0111,38.454 ]
+    },
+    "properties": {
+    "City Name":"Albert"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.1269,38.936 ]
+    },
+    "properties": {
+    "City Name":"Detroit"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.3695,37.4777 ]
+    },
+    "properties": {
+    "City Name":"Peck"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.882,37.8366 ]
+    },
+    "properties": {
+    "City Name":"Redfield"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.0981,39.4539 ]
+    },
+    "properties": {
+    "City Name":"Woodston"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.6916,39.5638 ]
+    },
+    "properties": {
+    "City Name":"Portis"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2598,39.0269 ]
+    },
+    "properties": {
+    "City Name":"Talmage"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.8834,37.5245 ]
+    },
+    "properties": {
+    "City Name":"Manter"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.9317,39.6641 ]
+    },
+    "properties": {
+    "City Name":"Goff"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.4015,37.0894 ]
+    },
+    "properties": {
+    "City Name":"Hazelton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.2933,39.6806 ]
+    },
+    "properties": {
+    "City Name":"Jennings"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6342,39.7619 ]
+    },
+    "properties": {
+    "City Name":"Powhattan"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.6609,38.1049 ]
+    },
+    "properties": {
+    "City Name":"Hudson"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.7943,38.1778 ]
+    },
+    "properties": {
+    "City Name":"Seward"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.5629,37.736 ]
+    },
+    "properties": {
+    "City Name":"Saint Marks"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.1184,39.0372 ]
+    },
+    "properties": {
+    "City Name":"Collyer"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.8473,39.6463 ]
+    },
+    "properties": {
+    "City Name":"Gaylord"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.5654,39.977 ]
+    },
+    "properties": {
+    "City Name":"Reserve"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.5979,38.7407 ]
+    },
+    "properties": {
+    "City Name":"Mentor"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.3202,38.6544 ]
+    },
+    "properties": {
+    "City Name":"Liebenthal"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.0441,39.1891 ]
+    },
+    "properties": {
+    "City Name":"Barnard"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.9876,37.0405 ]
+    },
+    "properties": {
+    "City Name":"Englewood"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.1217,39.6698 ]
+    },
+    "properties": {
+    "City Name":"Kirwin"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.4076,37.0042 ]
+    },
+    "properties": {
+    "City Name":"Hunnewell"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.3189,39.502 ]
+    },
+    "properties": {
+    "City Name":"Wheaton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.6741,37.2571 ]
+    },
+    "properties": {
+    "City Name":"Milan"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.1441,37.6898 ]
+    },
+    "properties": {
+    "City Name":"Stark"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.4568,38.785 ]
+    },
+    "properties": {
+    "City Name":"Kipp"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.9927,39.7784 ]
+    },
+    "properties": {
+    "City Name":"Formoso"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.0079,39.1049 ]
+    },
+    "properties": {
+    "City Name":"Monument"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.3614,39.1117 ]
+    },
+    "properties": {
+    "City Name":"Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.7592,38.9701 ]
+    },
+    "properties": {
+    "City Name":"Culver"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.0637,38.5979 ]
+    },
+    "properties": {
+    "City Name":"Ramona"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.3201,39.0933 ]
+    },
+    "properties": {
+    "City Name":"Manchester"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.7905,38.4769 ]
+    },
+    "properties": {
+    "City Name":"Horace"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.9367,38.5164 ]
+    },
+    "properties": {
+    "City Name":"Olmitz"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.1903,39.8485 ]
+    },
+    "properties": {
+    "City Name":"Baileyville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.5199,39.8415 ]
+    },
+    "properties": {
+    "City Name":"Home"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.6615,38.7638 ]
+    },
+    "properties": {
+    "City Name":"Parkerville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.9919,38.1012 ]
+    },
+    "properties": {
+    "City Name":"Willowbrook"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.3422,39.1431 ]
+    },
+    "properties": {
+    "City Name":"Wabaunsee"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6484,39.7145 ]
+    },
+    "properties": {
+    "City Name":"Kickapoo Site 1"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.5404,37.2632 ]
+    },
+    "properties": {
+    "City Name":"Mayfield"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.6673,37.3177 ]
+    },
+    "properties": {
+    "City Name":"Cambridge"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.9657,39.5372 ]
+    },
+    "properties": {
+    "City Name":"Soldier"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.5375,37.922 ]
+    },
+    "properties": {
+    "City Name":"Piqua"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.647,37.4901 ]
+    },
+    "properties": {
+    "City Name":"Yale"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.9427,39.0941 ]
+    },
+    "properties": {
+    "City Name":"Willard"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.4322,39.7066 ]
+    },
+    "properties": {
+    "City Name":"Agenda"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.4347,39.2322 ]
+    },
+    "properties": {
+    "City Name":"Zurich"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.886,39.1622 ]
+    },
+    "properties": {
+    "City Name":"Ada"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3498,38.7166 ]
+    },
+    "properties": {
+    "City Name":"Centropolis"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.2027,37.9705 ]
+    },
+    "properties": {
+    "City Name":"Abbyville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.2112,37.0549 ]
+    },
+    "properties": {
+    "City Name":"Bartlett"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.1069,38.7989 ]
+    },
+    "properties": {
+    "City Name":"Navarre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.8226,37.6155 ]
+    },
+    "properties": {
+    "City Name":"Farlington"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.9418,37.0921 ]
+    },
+    "properties": {
+    "City Name":"Havana"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.2819,37.444 ]
+    },
+    "properties": {
+    "City Name":"Zenda"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.8958,37.6873 ]
+    },
+    "properties": {
+    "City Name":"Coyville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.9363,37.5678 ]
+    },
+    "properties": {
+    "City Name":"New Albany"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.4871,38.9595 ]
+    },
+    "properties": {
+    "City Name":"Gove City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.8459,38.7386 ]
+    },
+    "properties": {
+    "City Name":"Latimer"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.396,39.2349 ]
+    },
+    "properties": {
+    "City Name":"Hunter"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.7433,37.6269 ]
+    },
+    "properties": {
+    "City Name":"Benedict"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.4546,39.7995 ]
+    },
+    "properties": {
+    "City Name":"Stuttgart"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.6087,38.5654 ]
+    },
+    "properties": {
+    "City Name":"Odin"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.4268,39.9598 ]
+    },
+    "properties": {
+    "City Name":"Narka"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.9196,39.7663 ]
+    },
+    "properties": {
+    "City Name":"Athol"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.816,37.9227 ]
+    },
+    "properties": {
+    "City Name":"Devon"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.5623,38.1596 ]
+    },
+    "properties": {
+    "City Name":"Matfield Green"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.1029,39.8928 ]
+    },
+    "properties": {
+    "City Name":"Saint Benedict"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.4339,39.8219 ]
+    },
+    "properties": {
+    "City Name":"Esbon"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.8438,37.2805 ]
+    },
+    "properties": {
+    "City Name":"Roseland"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.3116,39.6837 ]
+    },
+    "properties": {
+    "City Name":"Glade"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.1948,39.3881 ]
+    },
+    "properties": {
+    "City Name":"Levant"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.7649,37.5064 ]
+    },
+    "properties": {
+    "City Name":"Ringo"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.1765,39.7369 ]
+    },
+    "properties": {
+    "City Name":"Clayton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.0998,37.9507 ]
+    },
+    "properties": {
+    "City Name":"Belpre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.2659,39.7183 ]
+    },
+    "properties": {
+    "City Name":"Vermillion"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.224,37.7191 ]
+    },
+    "properties": {
+    "City Name":"Climax"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2037,37.7832 ]
+    },
+    "properties": {
+    "City Name":"Greenwich"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.2806,37.0019 ]
+    },
+    "properties": {
+    "City Name":"Elgin"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2268,38.4846 ]
+    },
+    "properties": {
+    "City Name":"Durham"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.593,38.9127 ]
+    },
+    "properties": {
+    "City Name":"Wallace"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.1702,39.1954 ]
+    },
+    "properties": {
+    "City Name":"Codell"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -102.0078,38.0415 ]
+    },
+    "properties": {
+    "City Name":"Coolidge"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.0027,37.1733 ]
+    },
+    "properties": {
+    "City Name":"Hallowell"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2937,39.5674 ]
+    },
+    "properties": {
+    "City Name":"Vining"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.9102,38.3841 ]
+    },
+    "properties": {
+    "City Name":"Windom"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.4227,37.4384 ]
+    },
+    "properties": {
+    "City Name":"Nashville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.843,37.4004 ]
+    },
+    "properties": {
+    "City Name":"Lafontaine"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6713,39.6895 ]
+    },
+    "properties": {
+    "City Name":"Kickapoo Site 7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.4191,39.6228 ]
+    },
+    "properties": {
+    "City Name":"Dresden"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3214,39.7861 ]
+    },
+    "properties": {
+    "City Name":"Leona"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.9658,38.5665 ]
+    },
+    "properties": {
+    "City Name":"Lost Springs"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.15,37.7941 ]
+    },
+    "properties": {
+    "City Name":"Elsmore"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2119,37.8801 ]
+    },
+    "properties": {
+    "City Name":"Furley"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.1779,38.4732 ]
+    },
+    "properties": {
+    "City Name":"Timken"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.2492,39.7668 ]
+    },
+    "properties": {
+    "City Name":"Severance"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.2567,38.6428 ]
+    },
+    "properties": {
+    "City Name":"Bushong"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.329,39.1721 ]
+    },
+    "properties": {
+    "City Name":"Longford"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.8905,37.7753 ]
+    },
+    "properties": {
+    "City Name":"Wright"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.174,39.0846 ]
+    },
+    "properties": {
+    "City Name":"Newbury"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.7153,37.3247 ]
+    },
+    "properties": {
+    "City Name":"Sycamore"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.7779,38.6058 ]
+    },
+    "properties": {
+    "City Name":"Somerset"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.8682,37.9455 ]
+    },
+    "properties": {
+    "City Name":"Yoder"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3324,39.0642 ]
+    },
+    "properties": {
+    "City Name":"Williamstown"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.3537,39.9873 ]
+    },
+    "properties": {
+    "City Name":"Mahaska"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.5316,37.6565 ]
+    },
+    "properties": {
+    "City Name":"Beaumont"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.5058,39.7226 ]
+    },
+    "properties": {
+    "City Name":"Willis"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.2673,38.5127 ]
+    },
+    "properties": {
+    "City Name":"Frederick"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.6456,38.3732 ]
+    },
+    "properties": {
+    "City Name":"Elmdale"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.9316,37.6111 ]
+    },
+    "properties": {
+    "City Name":"Murdock"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.0809,37.8337 ]
+    },
+    "properties": {
+    "City Name":"Neal"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.9166,37.3785 ]
+    },
+    "properties": {
+    "City Name":"Sun City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.3708,37.6206 ]
+    },
+    "properties": {
+    "City Name":"Piedmont"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.8747,37.0761 ]
+    },
+    "properties": {
+    "City Name":"Bluff City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.2102,37.335 ]
+    },
+    "properties": {
+    "City Name":"Wilmore"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.9018,37.0424 ]
+    },
+    "properties": {
+    "City Name":"Silverdale"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.9184,39.1145 ]
+    },
+    "properties": {
+    "City Name":"Paradise"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.243,38.0796 ]
+    },
+    "properties": {
+    "City Name":"Lone Elm"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.7242,39.3561 ]
+    },
+    "properties": {
+    "City Name":"Menlo"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.8199,39.6272 ]
+    },
+    "properties": {
+    "City Name":"Edmond"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3512,39.6384 ]
+    },
+    "properties": {
+    "City Name":"Huron"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.324,37.8532 ]
+    },
+    "properties": {
+    "City Name":"Langdon"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.553,38.4695 ]
+    },
+    "properties": {
+    "City Name":"Alexander"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.53,39.452 ]
+    },
+    "properties": {
+    "City Name":"Aurora"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.614,38.6272 ]
+    },
+    "properties": {
+    "City Name":"Bridgeport"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2662,39.3595 ]
+    },
+    "properties": {
+    "City Name":"Idana"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.8921,37.286 ]
+    },
+    "properties": {
+    "City Name":"Danville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.7745,38.6407 ]
+    },
+    "properties": {
+    "City Name":"Susank"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.0389,38.4711 ]
+    },
+    "properties": {
+    "City Name":"Pilsen"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.8472,38.5589 ]
+    },
+    "properties": {
+    "City Name":"Burdick"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.1757,38.9128 ]
+    },
+    "properties": {
+    "City Name":"Russell Springs"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.0116,37.9807 ]
+    },
+    "properties": {
+    "City Name":"Virgil"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6244,37.7305 ]
+    },
+    "properties": {
+    "City Name":"Garland"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.8897,37.3143 ]
+    },
+    "properties": {
+    "City Name":"New Salem"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.0351,39.9344 ]
+    },
+    "properties": {
+    "City Name":"Webber"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.1836,37.23 ]
+    },
+    "properties": {
+    "City Name":"Labette"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.9578,38.6411 ]
+    },
+    "properties": {
+    "City Name":"Galatia"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.4209,39.6764 ]
+    },
+    "properties": {
+    "City Name":"Speed"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.7983,39.12 ]
+    },
+    "properties": {
+    "City Name":"Waldo"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.3676,38.5763 ]
+    },
+    "properties": {
+    "City Name":"Dunlap"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.7548,38.7955 ]
+    },
+    "properties": {
+    "City Name":"Bavaria"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6275,39.9156 ]
+    },
+    "properties": {
+    "City Name":"Hamlin"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.4279,39.1627 ]
+    },
+    "properties": {
+    "City Name":"Zeandale"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.4076,37.9063 ]
+    },
+    "properties": {
+    "City Name":"Bassett"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.9523,39.5426 ]
+    },
+    "properties": {
+    "City Name":"Scottsville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.7828,37.2653 ]
+    },
+    "properties": {
+    "City Name":"Richfield"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.2931,38.6866 ]
+    },
+    "properties": {
+    "City Name":"Carlton"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6495,39.7029 ]
+    },
+    "properties": {
+    "City Name":"Kickapoo Site 2"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3999,37.558 ]
+    },
+    "properties": {
+    "City Name":"Urbana"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.7443,38.6406 ]
+    },
+    "properties": {
+    "City Name":"Brownell"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.2245,37.435 ]
+    },
+    "properties": {
+    "City Name":"South Mound"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.0682,38.3839 ]
+    },
+    "properties": {
+    "City Name":"Eastshore"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.714,38.7237 ]
+    },
+    "properties": {
+    "City Name":"Bucyrus"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.9917,39.981 ]
+    },
+    "properties": {
+    "City Name":"Hollenberg"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.22,38.4891 ]
+    },
+    "properties": {
+    "City Name":"Marienthal"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.9583,39.8566 ]
+    },
+    "properties": {
+    "City Name":"Ludell"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.3428,39.2466 ]
+    },
+    "properties": {
+    "City Name":"Oak Hill"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.6736,38.6379 ]
+    },
+    "properties": {
+    "City Name":"Beaver"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.8944,38.1738 ]
+    },
+    "properties": {
+    "City Name":"Radium"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.1825,37.0018 ]
+    },
+    "properties": {
+    "City Name":"Waldron"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.7326,38.9946 ]
+    },
+    "properties": {
+    "City Name":"Ogallah"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -94.6245,37.3449 ]
+    },
+    "properties": {
+    "City Name":"Opolis"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.445,38.3206 ]
+    },
+    "properties": {
+    "City Name":"Harris"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.8671,37.7879 ]
+    },
+    "properties": {
+    "City Name":"Byers"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.4316,39.9876 ]
+    },
+    "properties": {
+    "City Name":"Woodruff"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.8225,38.26 ]
+    },
+    "properties": {
+    "City Name":"Cedar Point"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.4274,38.5511 ]
+    },
+    "properties": {
+    "City Name":"Roxbury"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.9402,39.6571 ]
+    },
+    "properties": {
+    "City Name":"Cedar"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.1717,38.0235 ]
+    },
+    "properties": {
+    "City Name":"Mildred"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.7738,39.6965 ]
+    },
+    "properties": {
+    "City Name":"Norway"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -101.5495,39.335 ]
+    },
+    "properties": {
+    "City Name":"Edson"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.3202,37.7156 ]
+    },
+    "properties": {
+    "City Name":"Penalosa"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.0008,39.7368 ]
+    },
+    "properties": {
+    "City Name":"Kelly"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.3439,39.6626 ]
+    },
+    "properties": {
+    "City Name":"Ionia"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.9733,39.4076 ]
+    },
+    "properties": {
+    "City Name":"Asherville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.9104,38.3738 ]
+    },
+    "properties": {
+    "City Name":"Shallow Water"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.451,39.5689 ]
+    },
+    "properties": {
+    "City Name":"Ames"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -97.5512,39.1391 ]
+    },
+    "properties": {
+    "City Name":"Wells"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.0148,38.2287 ]
+    },
+    "properties": {
+    "City Name":"Centerville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -99.6135,39.3862 ]
+    },
+    "properties": {
+    "City Name":"Nicodemus"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.8696,37.1259 ]
+    },
+    "properties": {
+    "City Name":"Wayside"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.9504,39.3108 ]
+    },
+    "properties": {
+    "City Name":"Bala"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -100.6768,37.8824 ]
+    },
+    "properties": {
+    "City Name":"Pierceville"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -98.8279,37.3569 ]
+    },
+    "properties": {
+    "City Name":"Lake City"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.3658,38.217 ]
+    },
+    "properties": {
+    "City Name":"Mont Ida"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -96.709,39.8924 ]
+    },
+    "properties": {
+    "City Name":"Herkimer"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -95.6905,39.6917 ]
+    },
+    "properties": {
+    "City Name":"Kickapoo Site 6"
+    }
+  }
+]
+}
