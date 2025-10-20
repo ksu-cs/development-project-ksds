@@ -1,9 +1,10 @@
 <script>
 import RailroadData from './RailroadData.vue';
+import BorderData from './BorderData.vue';
 import * as d3 from 'd3';
 
 export default {
-    components: { RailroadData },
+    components: { RailroadData, BorderData },
     data() {
         return {
             svg: null,
@@ -20,6 +21,7 @@ export default {
     <div class="container">
         <svg ref="svg" width="1600" height="800"></svg>
         <RailroadData :svgElement="svg" :projection="projection" />
+        <BorderData :svgElement="svg" :projection="projection" />
     </div>
 </template>
 
