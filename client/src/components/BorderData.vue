@@ -31,10 +31,20 @@ export default {
                                   String(bbox.width + 20) + " " +
                                   String(bbox.height + 20);
 
-                d3.select(this.svgElement)
-                  .transition()
-                  .duration(750)
-                    .attr("viewBox", boxString);
+                var viewBox = d3.select(this.svgElement).attr("viewBox");
+
+                if (boxString == viewBox) {
+                  d3.select(this.svgElement)
+                    .transition()
+                    .duration(750)
+                      .attr("viewBox", "0 0 1600 800")
+                }
+                else {
+                  d3.select(this.svgElement)
+                    .transition()
+                    .duration(750)
+                      .attr("viewBox", boxString);
+                }
               })
     }
 }

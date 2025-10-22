@@ -9,6 +9,8 @@ export default {
 
         const pathGen = d3.geoPath(this.projection).pointRadius(1.5)
 
+        console.log(data);
+
         d3.select(this.svgElement)
           .append("g")
             .classed("cities", true)
@@ -21,6 +23,12 @@ export default {
             .attr("d", pathGen)
             .classed("city", true);
 
+        // Project every city's lon and lat coordinates onto the svg.
+        data.features = data.features.map(feature => {
+            feature.geometry.coordinates = this.projection(feature.geometry.coordinates);
+            return feature;
+        })
+
         d3.select(this.svgElement)
           .select("g.cities")
           .append("g")
@@ -28,10 +36,10 @@ export default {
           .selectAll(".city-name")
           .data(data.features)
           .enter()
-          .filter((d, i) => d.properties["Top Ten"])
+          .filter(d => d.properties["Top Ten"])
           .append("text")
-            .attr("x", d => this.projection(d.geometry.coordinates)[0])
-            .attr("y", d => this.projection(d.geometry.coordinates)[1] - 2)
+            .attr("x", d => d.geometry.coordinates[0])
+            .attr("y", d => d.geometry.coordinates[1] - 2)
             .property("textContent", d => d.properties["City Name"])
             .classed("city-name", true);
     }
