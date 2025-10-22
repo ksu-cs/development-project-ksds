@@ -10,6 +10,8 @@ export default {
         const pathGen = d3.geoPath(this.projection);
 
         d3.select(this.svgElement)
+          .append("g")
+          .classed("railroads", true)
           .selectAll(".rail")
           .data(data.features)
           .enter()
@@ -26,5 +28,6 @@ export default {
     stroke: green;
     stroke-width: 1;
     stroke-opacity: 50%;
+    pointer-events: none;
 }
 </style>

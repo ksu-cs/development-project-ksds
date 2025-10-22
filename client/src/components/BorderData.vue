@@ -10,12 +10,32 @@ export default {
         const pathGen = d3.geoPath(this.projection);
 
         d3.select(this.svgElement)
+          .append("g")
+          .classed("borders", true)
           .selectAll(".border")
           .data(data.features)
           .enter()
           .append("path")
-            .attr("d", pathGen)
-            .classed("border", true)
+            .attr("d", d => {
+                d.geometry.coordinates[0].reverse();
+                return pathGen(d)
+            })
+            .classed("border", true);
+        
+            d3.select(this.svgElement)
+              .selectAll(".border")
+              .on("click", (eventName) => {
+                const bbox = eventName.target.getBBox();
+                const boxString = String(bbox.x - 10) + " " +
+                                  String(bbox.y - 10) + " " +
+                                  String(bbox.width + 20) + " " +
+                                  String(bbox.height + 20);
+
+                d3.select(this.svgElement)
+                  .transition()
+                  .duration(750)
+                    .attr("viewBox", boxString);
+              })
     }
 }
 </script>
@@ -24,6 +44,7 @@ export default {
 :global(.border) {
     fill: none;
     stroke: black;
-    stroke-width: 1;
+    stroke-width: 2;
+    pointer-events: all;
 }
 </style>

@@ -17,15 +17,15 @@ export default {
         };
     },
     mounted() {
-        this.svg = this.$refs.svg
-        this.projection = d3.geoAlbers().scale(10000).translate([1000, 275])
+        this.svg = this.$refs.svg;
+        this.projection = d3.geoAlbers().scale(14000).translate([1150, 375]).clipAngle(null);
     }
 }
 </script>
 
 <template>
     <div class="container">
-        <svg ref="svg" width="1600" height="800"></svg>
+        <svg ref="svg" width="1600" height="800" viewBox="0 0 1600 800"></svg>
         <RailroadData :svgElement="svg" :projection="projection" />
         <CityData :svgElement="svg" :projection="projection" />
         <BorderData :svgElement="svg" :projection="projection" />
