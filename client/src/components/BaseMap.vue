@@ -1,4 +1,10 @@
 <script>
+/**
+ * components/BaseMap.vue
+ *
+ * Contains the base svg element that all geojson data is rendered to.
+ * Calls each Data component to fetch and render geojson data.
+ */
 import RailroadData from './RailroadData.vue';
 import BorderData from './BorderData.vue';
 import CityData from './CityData.vue';
@@ -14,7 +20,9 @@ export default {
     },
     data() {
         return {
+            // The svg element in the DOM
             svg: null,
+            // The projection to render all geojson data with
             projection: null,
         };
     },
@@ -35,6 +43,8 @@ export default {
             <label><input type="checkbox"> Filter 3</label>
             <label><input type="checkbox"> Filter 4</label>
         </fieldset>
+
+        <!--Fetches and renders geojson data-->
         <RailroadData :svgElement="svg" :projection="projection" />
         <CityData :svgElement="svg" :projection="projection" />
         <BorderData :svgElement="svg" :projection="projection" />

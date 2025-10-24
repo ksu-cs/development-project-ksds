@@ -1,4 +1,11 @@
 <script setup>
+/**
+ * components/TimelineTransition.vue
+ *
+ * Handles when the input slider that represents the decade is moved
+ * Renders the relevant data and removes the irrelevant data, fetching
+ * geojson data when necessary.
+ */
 import * as d3 from 'd3';
 import { defineProps, onMounted } from 'vue';
 
@@ -26,18 +33,23 @@ async function updateRailroads(year) {
 
     const pathGen = d3.geoPath(props.projection);
 
+    // Remove all railroad path elements
     d3.select(props.svgElement)
-      .selectAll(".rail")
-      .remove()
-    
+        .selectAll(".rail")
+        .remove()
+
+    // Create all relevant railroad path elements
+    // TODO: horribly unoptimized, railroad data is
+    // already stored in the __data__ property of each
+    // railroad path element.
     d3.select(props.svgElement)
-      .selectAll(".rail")
-      .data(data.features)
-      .enter()
-      .filter(d => d.properties.InOpBy <= year)
-      .append("path")
-        .attr("d", pathGen)
-        .classed("rail", true)
+        .selectAll(".rail")
+        .data(data.features)
+        .enter()
+        .filter(d => d.properties.InOpBy <= year)
+        .append("path")
+            .attr("d", pathGen)
+            .classed("rail", true)
 }
 
 function updateMap(year) {
@@ -46,7 +58,6 @@ function updateMap(year) {
     const fileName = `/geojson/KSCounty_${year}_GeoJSON.geojson`;
 
     d3.json(fileName).then(geoData => {
-
     const pathGen = d3.geoPath(props.projection);
 
     // JOIN new data
@@ -70,6 +81,7 @@ function updateMap(year) {
       .duration(500)
       .attr("opacity", 1);
 
+      // Create onClick handlers to add zoom in and out functionality
       d3.select(props.svgElement).select("g.borders")
         .selectAll(".border")
         .on("click", (eventName) => {
