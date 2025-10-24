@@ -18,7 +18,31 @@ onMounted(() => {
 
 const props = defineProps(["svgElement", "projection"]);
 
-async function updateMap(year) {
+async function updateRailroads(year) {
+    const fileName = '/geojson/railroads.geojson';
+
+    const response = await fetch(fileName);
+    const data = await response.json();
+
+    const pathGen = d3.geoPath(props.projection);
+
+    d3.select(props.svgElement)
+      .selectAll(".rail")
+      .remove()
+    
+    d3.select(props.svgElement)
+      .selectAll(".rail")
+      .data(data.features)
+      .enter()
+      .filter(d => d.properties.InOpBy <= year)
+      .append("path")
+        .attr("d", pathGen)
+        .classed("rail", true)
+}
+
+function updateMap(year) {
+    updateRailroads(year);
+
     const fileName = `/geojson/KSCounty_${year}_GeoJSON.geojson`;
 
     d3.json(fileName).then(geoData => {

@@ -15,6 +15,7 @@ export default {
           .selectAll(".rail")
           .data(data.features)
           .enter()
+          .filter(d => d.properties.InOpBy <= 1860)
           .append("path")
             .attr("d", pathGen)
             .classed("rail", true);
