@@ -9,8 +9,6 @@ export default {
 
         const pathGen = d3.geoPath(this.projection).pointRadius(1.5)
 
-        console.log(data);
-
         d3.select(this.svgElement)
           .append("g")
             .classed("cities", true)

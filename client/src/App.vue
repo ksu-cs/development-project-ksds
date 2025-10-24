@@ -4,7 +4,8 @@ import BaseMap from './components/BaseMap.vue'
 
 <template>
   <div class="app-container">
-    <input type="range" name="year" min="0" max="10" />
+    <input type="range" id="yearSlider" min="1860" max="2025" step="10" value="1860" />
+    <span id="yearLabel">1860</span>
     <BaseMap />
   </div>
 </template>

@@ -2,13 +2,15 @@
 import RailroadData from './RailroadData.vue';
 import BorderData from './BorderData.vue';
 import CityData from './CityData.vue';
+import TimelineTransition from './TimelineTransition.vue';
 import * as d3 from 'd3';
 
 export default {
     components: {
         RailroadData,
         BorderData,
-        CityData
+        CityData,
+        TimelineTransition
     },
     data() {
         return {
@@ -36,6 +38,7 @@ export default {
         <RailroadData :svgElement="svg" :projection="projection" />
         <CityData :svgElement="svg" :projection="projection" />
         <BorderData :svgElement="svg" :projection="projection" />
+        <TimelineTransition :svgElement="svg" :projection="projection" />
     </div>
 </template>
 
