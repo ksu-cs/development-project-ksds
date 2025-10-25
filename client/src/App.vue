@@ -1,11 +1,23 @@
-<script setup></script>
+<script setup>
+import BaseMap from './components/BaseMap.vue'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div class="app-container">
+    <input type="range" id="yearSlider" min="1860" max="2025" step="10" value="1860" />
+    <span id="yearLabel">1860</span>
+    <BaseMap />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+input {
+  width: 60%;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>
