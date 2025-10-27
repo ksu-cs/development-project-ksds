@@ -15,7 +15,7 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "yarn install",
-	"postCreateCommand": "cd server && npm install && cd ../client && npm install"
+	"postCreateCommand": "chmod 777 ./.devcontainer/postCreateCommand.sh && ./.devcontainer/postCreateCommand.sh"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
