@@ -5,6 +5,7 @@
  * Contains the base svg element that all geojson data is rendered to.
  * Calls each Data component to fetch and render geojson data.
  */
+import { ref } from 'vue';
 import RailroadData from './RailroadData.vue';
 import BorderData from './BorderData.vue';
 import CityData from './CityData.vue';
@@ -20,15 +21,18 @@ export default {
     },
     data() {
         return {
-            // The svg element in the DOM
-            svg: null,
-            // The projection to render all geojson data with
-            projection: null,
-        };
+            scale: 14000,
+            translation: [1150, 375]
+        }
+    },
+    created() {
+        this.projection = d3.geoAlbers().scale(this.scale).translate(this.translation)
+        // Will reference the svg element in the template
+        // If svg is declared in data(), it will be unwrapped
+        this.svg = ref(null);
     },
     mounted() {
-        this.svg = this.$refs.svg;
-        this.projection = d3.geoAlbers().scale(14000).translate([1150, 375]).clipAngle(null);
+        this.svg.value = this.$refs.svg;
     }
 }
 </script>
