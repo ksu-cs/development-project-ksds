@@ -13,8 +13,6 @@ onMounted(() => {
     const slider = d3.select("#yearSlider");
     const label = d3.select("#yearLabel");
 
-    console.log(slider);
-
     //Whenever the slider is moved, updates label and map
     slider.on("input", function() {
     const year = +this.value;
@@ -42,7 +40,7 @@ async function updateRailroads(year) {
     // TODO: horribly unoptimized, railroad data is
     // already stored in the __data__ property of each
     // railroad path element.
-    d3.select(props.svgElement)
+    d3.select(props.svgElement.value)
         .selectAll(".rail")
         .data(data.features)
         .enter()
@@ -61,7 +59,7 @@ function updateMap(year) {
     const pathGen = d3.geoPath(props.projection);
 
     // JOIN new data
-    const paths = d3.select(props.svgElement).select("g.borders").selectAll(".border")
+    const paths = d3.select(props.svgElement.value).select("g.borders").selectAll(".border")
       .data(geoData.features, d => d.properties.id); // key by id if available
 
     // remove old paths
@@ -82,7 +80,7 @@ function updateMap(year) {
       .attr("opacity", 1);
 
       // Create onClick handlers to add zoom in and out functionality
-      d3.select(props.svgElement).select("g.borders")
+      d3.select(props.svgElement.value).select("g.borders")
         .selectAll(".border")
         .on("click", (eventName) => {
             const bbox = eventName.target.getBBox();
@@ -90,17 +88,16 @@ function updateMap(year) {
                               String(bbox.y - 10) + " " +
                               String(bbox.width + 20) + " " +
                               String(bbox.height + 20);
-            console.log("clicked");
-            var viewBox = d3.select(props.svgElement).attr("viewBox");
+            var viewBox = d3.select(props.svgElement.value).attr("viewBox");
 
             if (boxString == viewBox) {
-                d3.select(props.svgElement)
+                d3.select(props.svgElement.value)
                   .transition()
                   .duration(750)
                     .attr("viewBox", "0 0 1600 800")
             }
             else {
-                d3.select(props.svgElement)
+                d3.select(props.svgElement.value)
                   .transition()
                   .duration(750)
                     .attr("viewBox", boxString);
