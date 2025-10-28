@@ -10,14 +10,12 @@ import * as d3 from 'd3';
 
 export default {
     props: ["svgElement", "projection"],
-    async mounted() {
-        const response = await fetch('/geojson/railroads.geojson');
-        const data = await response.json();
-
+    methods: {
+        renderData(data) {
         const pathGen = d3.geoPath(this.projection);
 
         // Create path elements for each railroad
-        d3.select(this.svgElement)
+        d3.select(this.svgElement.value)
             .append("g")
             .classed("railroads", true)
             .selectAll(".rail")
@@ -27,6 +25,27 @@ export default {
             .append("path")
                 .attr("d", pathGen)
                 .classed("rail", true);
+        }
+    },
+    created() {
+        // fetch the geojson and then watch for the svg element
+        // to become mounted, unless it's already mounted
+        fetch('/geojson/railroads.geojson')
+        .then(response => response.json())
+        .then(geojson => {
+            if (this.svgElement.value) {
+                this.renderData(geojson);
+            }
+            else {
+                const unwatch = this.$watch(() => this.svgElement.value,
+                                            newValue => {
+                                                if (newValue) {
+                                                    this.renderData(geojson)
+                                                    unwatch();
+                                                }
+                                            })
+            }
+        })
     }
 }
 </script>
