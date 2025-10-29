@@ -24,30 +24,11 @@ onMounted(() => {
 const props = defineProps(["svgElement", "projection"]);
 
 async function updateRailroads(year) {
-    const fileName = '/geojson/railroads.geojson';
-
-    const response = await fetch(fileName);
-    const data = await response.json();
-
-    const pathGen = d3.geoPath(props.projection);
-
-    // Remove all railroad path elements
-    d3.select(props.svgElement)
-        .selectAll(".rail")
-        .remove()
-
-    // Create all relevant railroad path elements
-    // TODO: horribly unoptimized, railroad data is
-    // already stored in the __data__ property of each
-    // railroad path element.
+    // Select all railroads and update their stroke-opacity
+    // based on their InOpBy property and the given year.
     d3.select(props.svgElement.value)
         .selectAll(".rail")
-        .data(data.features)
-        .enter()
-        .filter(d => d.properties.InOpBy <= year)
-        .append("path")
-            .attr("d", pathGen)
-            .classed("rail", true)
+            .attr("stroke-opacity", d => d.properties.InOpBy <= year ? "60%" : "0%");
 }
 
 function updateMap(year) {

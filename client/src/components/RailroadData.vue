@@ -15,15 +15,17 @@ export default {
         const pathGen = d3.geoPath(this.projection);
 
         // Create path elements for each railroad
+        // Assign their stroke-opacity attribute based on
+        // their InOpBy property and the year 1860
         d3.select(this.svgElement.value)
             .append("g")
             .classed("railroads", true)
             .selectAll(".rail")
             .data(data.features)
             .enter()
-            .filter(d => d.properties.InOpBy <= 1860)
             .append("path")
                 .attr("d", pathGen)
+                .attr("stroke-opacity", d => d.properties.InOpBy <= 1860 ? "60%" : "0%")
                 .classed("rail", true);
         }
     },
@@ -55,7 +57,6 @@ export default {
     fill: none;
     stroke: green;
     stroke-width: 1;
-    stroke-opacity: 50%;
     pointer-events: none;
 }
 </style>
