@@ -38,8 +38,6 @@ export default {
             // Create text elements for city names
             d3.select(this.svgElement.value)
                 .select("g.cities")
-                .append("g")
-                    .classed("city-names", true)
                 .selectAll(".city-name")
                 .data(data.features)
                 .enter()

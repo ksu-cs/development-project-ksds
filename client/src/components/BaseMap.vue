@@ -39,7 +39,11 @@ export default {
 
 <template>
     <div class="container">
-        <svg ref="svg" width="1200" height="800" viewBox="0 0 1600 800"></svg>
+        <svg ref="svg" width="1200" height="800" viewBox="0 0 1600 800">
+            <g class = "borders"></g>
+            <g class = "railroads"></g>
+            <g class = "cities"></g>
+        </svg>
         <fieldset class="checkboxes">
             <legend>Filters:</legend>
             <label><input type="checkbox"> Filter 1</label>

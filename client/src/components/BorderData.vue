@@ -15,8 +15,7 @@ export default {
 
             // Create path elements for each polygon in the geojson data
             d3.select(this.svgElement.value)
-            .append("g")
-            .classed("borders", true)
+            .select("g.borders")
             .selectAll(".border")
             .data(data.features)
             .enter()

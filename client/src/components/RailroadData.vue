@@ -18,8 +18,7 @@ export default {
         // Assign their stroke-opacity attribute based on
         // their InOpBy property and the year 1860
         d3.select(this.svgElement.value)
-            .append("g")
-            .classed("railroads", true)
+            .select("g.railroads")
             .selectAll(".rail")
             .data(data.features)
             .enter()
