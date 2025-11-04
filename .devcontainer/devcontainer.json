@@ -11,6 +11,16 @@
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// This can be used to network with other containers or with the host.
+	"portsAttributes": {
+		"3000": {
+			"label": "Server",
+			"onAutoForward": "silent"
+		},
+		"5173": {
+			"label": "Client",
+			"onAutoForward": "openBrowser"
+		}
+	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "yarn install",
