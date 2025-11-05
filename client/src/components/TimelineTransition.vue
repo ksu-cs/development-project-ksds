@@ -7,7 +7,10 @@
  * geojson data when necessary.
  */
 import * as d3 from 'd3';
-import { defineProps, onMounted } from 'vue';
+import { defineEmits, defineProps, onMounted } from 'vue';
+
+const emit = defineEmits(["changeZoom"]);
+const props = defineProps(["svgElement", "projection"]);
 
 onMounted(() => {
     const slider = d3.select("#yearSlider");
@@ -20,8 +23,6 @@ onMounted(() => {
     updateMap(year);
     });
 })
-
-const props = defineProps(["svgElement", "projection"]);
 
 async function updateRailroads(year) {
     // Select all railroads and update their stroke-opacity
@@ -37,53 +38,58 @@ function updateMap(year) {
     const fileName = `/geojson/KSCounty_${year}_GeoJSON.geojson`;
 
     d3.json(fileName).then(geoData => {
-    const pathGen = d3.geoPath(props.projection);
+        const pathGen = d3.geoPath(props.projection);
 
-    // JOIN new data
-    const paths = d3.select(props.svgElement.value).select("g.borders").selectAll(".border")
-      .data(geoData.features, d => d.properties.id); // key by id if available
+        // JOIN new data
+        const paths = d3.select(props.svgElement.value).select("g.borders").selectAll(".border")
+            .data(geoData.features, d => d.properties.id); // key by id if available
 
-    // remove old paths
-    paths.exit().remove();
+        // remove old paths
+        paths.exit()
+            .transition()
+            .duration(500)
+                .attr("opacity", "0%")
+                .remove();
 
-    //new paths
-    paths.enter()
-      .append("path")
-      .attr("d", d => {
-        d.geometry.coordinates[0].reverse();
-        return pathGen(d);
-      })
-      .attr("stroke", "#333")
-      .attr("opacity", 0)
-      .classed("border", true)
-      .transition()
-      .duration(500)
-      .attr("opacity", 1);
+        //new paths
+        paths.enter()
+            .append("path")
+                .attr("d", d => {
+                    d.geometry.coordinates[0].reverse();
+                    return pathGen(d);
+                })
+                .attr("opacity", "0%")
+                .classed("border", true)
+            .transition()
+            .duration(500)
+                .attr("opacity", "100%");
 
-      // Create onClick handlers to add zoom in and out functionality
-      d3.select(props.svgElement.value).select("g.borders")
-        .selectAll(".border")
-        .on("click", (eventName) => {
-            const bbox = eventName.target.getBBox();
-            const boxString = String(bbox.x - 10) + " " +
-                              String(bbox.y - 10) + " " +
-                              String(bbox.width + 20) + " " +
-                              String(bbox.height + 20);
-            var viewBox = d3.select(props.svgElement.value).attr("viewBox");
+        // Create onClick handlers to add zoom in and out functionality
+        d3.select(props.svgElement.value)
+            .selectAll("g.borders > .border")
+            .on("click", (eventName) => {
+                const bbox = eventName.target.getBBox();
+                const boxString = String(bbox.x - 10) + " " +
+                                String(bbox.y - 10) + " " +
+                                String(bbox.width + 20) + " " +
+                                String(bbox.height + 20);
+                var viewBox = d3.select(props.svgElement.value).attr("viewBox");
 
-            if (boxString == viewBox) {
-                d3.select(props.svgElement.value)
-                  .transition()
-                  .duration(750)
-                    .attr("viewBox", "0 0 1600 800")
-            }
-            else {
-                d3.select(props.svgElement.value)
-                  .transition()
-                  .duration(750)
-                    .attr("viewBox", boxString);
+                if (boxString == viewBox) {
+                    d3.select(props.svgElement.value)
+                        .transition()
+                        .duration(750)
+                            .attr("viewBox", "0 0 1600 800")
+                        .on("end", () => emit("changeZoom", "state"));
                 }
-            });
+                else {
+                    d3.select(props.svgElement.value)
+                        .transition()
+                        .duration(750)
+                            .attr("viewBox", boxString)
+                        .on("end", () => emit("changeZoom", "county"));
+                    }
+                });
     });
 }
 </script>
