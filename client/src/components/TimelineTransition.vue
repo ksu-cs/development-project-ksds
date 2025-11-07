@@ -12,7 +12,7 @@
 import * as d3 from 'd3';
 import { defineEmits, defineProps, onMounted, watch } from 'vue';
 
-const emit = defineEmits(["changeZoom", "zoomChanged"]);
+const emit = defineEmits(["changeZoom", "zoomChanged", "zoomState"]);
 const props = defineProps(["svgElement", "projection", "inputValue"]);
 
 onMounted(() => {
@@ -91,14 +91,20 @@ function updateMap(year) {
                         .transition()
                         .duration(750)
                             .attr("viewBox", "0 0 1600 800")
-                        .on("end", () => emit("changeZoom", "state"));
+                        .on("end", () => {
+                          emit("changeZoom", "state")
+                          emit("zoomState", "zoomOut")
+                        });
                 }
                 else {
                     d3.select(props.svgElement.value)
                         .transition()
                         .duration(750)
                             .attr("viewBox", boxString)
-                        .on("end", () => emit("changeZoom", "county"));
+                        .on("end", () => {
+                          emit("changeZoom", "county")
+                          emit("zoomState", "zoomIn")
+                        });
                     }
                 });
     });

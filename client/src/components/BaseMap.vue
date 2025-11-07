@@ -113,7 +113,6 @@ export default {
                 <g class="names"></g>
             </g>
         </svg>
-        <svg ref="svg" width="1200" height="800" viewBox="0 0 1600 800"></svg>
         <fieldset class="checkboxes"> 
             <legend>Filters:</legend>
             <label><input type="checkbox"> Filter 1</label>
@@ -123,10 +122,10 @@ export default {
         </fieldset>
 
         <!--Fetches and renders geojson data-->
-        <StartupData :svgElement="svg" :projection="projection" @changeZoom="changeZoomLevel" />
+        <StartupData :svgElement="svg" :projection="projection" @zoomState="updateZoomState" @changeZoom="changeZoomLevel" />
         
-        <TractData :svgElement="svg" :projection="projection" :zoomState="zoomState"/>
-        <TimelineTransition :svgElement="svg" :projection="projection" :inputValue="inputValue" @changeZoom="changeZoomLevel" @zoomChanged="updateZoomState"/>
+        <TractData :svgElement="svg" :projection="projection"  :zoomState="zoomState"/>
+        <TimelineTransition :svgElement="svg" :projection="projection" :inputValue="inputValue" @changeZoom="changeZoomLevel" @zoomState="updateZoomState"/>
     </div>
 </template>
 

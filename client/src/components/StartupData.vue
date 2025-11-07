@@ -102,7 +102,10 @@ export default {
                             .transition()
                             .duration(750)
                                 .attr("viewBox", "0 0 1600 800") // TODO: Move default viewBox to a global parameter or prop
-                            .on("end", () => this.$emit("changeZoom", "state"));
+                            .on("end", () => {
+                                this.$emit("changeZoom", "state")
+                                this.$emit("zoomState", "zoomOut")
+                            });
                         
                     }
                     else {
@@ -110,7 +113,10 @@ export default {
                             .transition()
                             .duration(750)
                                 .attr("viewBox", boxString)
-                            .on("end", () => this.$emit("changeZoom", "county"));
+                            .on("end", () =>{
+                                this.$emit("changeZoom", "county")
+                                this.$emit("zoomState", "zoomIn")
+                            });
                     }
                 })
         }
