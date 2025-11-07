@@ -11,6 +11,7 @@ import TimelineTransition from './TimelineTransition.vue';
 import * as d3 from 'd3';
 
 export default {
+    props: ["inputValue"],
     components: {
         StartupData,
         TimelineTransition
@@ -23,7 +24,6 @@ export default {
     },
     methods: {
         changeZoomLevel(new_level) {
-            console.log(new_level);
             this.zoom_level.value = new_level;
         },
         centerText(d, i, n, dy) {
@@ -116,7 +116,7 @@ export default {
 
         <!--Fetches and renders geojson data-->
         <StartupData :svgElement="svg" :projection="projection" @changeZoom="changeZoomLevel" />
-        <TimelineTransition :svgElement="svg" :projection="projection" @changeZoom="changeZoomLevel"/>
+        <TimelineTransition :svgElement="svg" :projection="projection" :inputValue="inputValue" @changeZoom="changeZoomLevel"/>
     </div>
 </template>
 
