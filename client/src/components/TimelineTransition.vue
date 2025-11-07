@@ -1,3 +1,6 @@
+<template>
+  <g></g>
+</template>
 <script setup>
 /**
  * components/TimelineTransition.vue
@@ -9,7 +12,7 @@
 import * as d3 from 'd3';
 import { defineEmits, defineProps, onMounted, watch } from 'vue';
 
-const emit = defineEmits(["changeZoom"]);
+const emit = defineEmits(["changeZoom", "zoomChanged"]);
 const props = defineProps(["svgElement", "projection", "inputValue"]);
 
 onMounted(() => {
