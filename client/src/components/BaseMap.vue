@@ -8,18 +8,22 @@
 import { ref } from 'vue';
 import StartupData from './StartupData.vue';
 import TimelineTransition from './TimelineTransition.vue';
+import TractData from './TractData.vue';
 import * as d3 from 'd3';
+
 
 export default {
     props: ["inputValue"],
     components: {
         StartupData,
-        TimelineTransition
+        TimelineTransition,
+        TractData
     },
     data() {
         return {
             scale: 14000,
-            translation: [1150, 375]
+            translation: [1150, 375],
+            zoomState: "zoomOut"
         }
     },
     methods: {
@@ -35,6 +39,9 @@ export default {
             d3.select(n[i])
                     .attr("x", String(centeredX))
                     .attr("y", originY - dy);
+        }, 
+        updateZoomState(state) {
+            this.zoomState = state;
         }
     },
     created() {
@@ -106,7 +113,7 @@ export default {
                 <g class="names"></g>
             </g>
         </svg>
-        <fieldset class="checkboxes">
+        <fieldset class="checkboxes"> 
             <legend>Filters:</legend>
             <label><input type="checkbox"> Filter 1</label>
             <label><input type="checkbox"> Filter 2</label>
@@ -115,8 +122,10 @@ export default {
         </fieldset>
 
         <!--Fetches and renders geojson data-->
-        <StartupData :svgElement="svg" :projection="projection" @changeZoom="changeZoomLevel" />
-        <TimelineTransition :svgElement="svg" :projection="projection" :inputValue="inputValue" @changeZoom="changeZoomLevel"/>
+        <StartupData :svgElement="svg" :projection="projection" @zoomState="updateZoomState" @changeZoom="changeZoomLevel" />
+        
+        <TractData :svgElement="svg" :projection="projection"  :zoomState="zoomState"/>
+        <TimelineTransition :svgElement="svg" :projection="projection" :inputValue="inputValue" @changeZoom="changeZoomLevel" @zoomState="updateZoomState"/>
     </div>
 </template>
 
