@@ -7,20 +7,28 @@
  * geojson data when necessary.
  */
 import * as d3 from 'd3';
-import { defineEmits, defineProps, onMounted } from 'vue';
+import { defineEmits, defineProps, onMounted, watch } from 'vue';
 
 const emit = defineEmits(["changeZoom"]);
-const props = defineProps(["svgElement", "projection"]);
+const props = defineProps(["svgElement", "projection", "inputValue"]);
 
 onMounted(() => {
     const slider = d3.select("#yearSlider");
     const label = d3.select("#yearLabel");
 
+    // Called when the input slider
+    // is moved by the play button.
+    watch(() => props.inputValue,
+        (year) => {
+            label.text(year);
+            updateMap(year);
+        })
+
     //Whenever the slider is moved, updates label and map
-    slider.on("input", function() {
-    const year = +this.value;
-    label.text(year);
-    updateMap(year);
+    slider.on("change", function() {
+        const year = +this.value;
+        label.text(year);
+        updateMap(year);
     });
 })
 
