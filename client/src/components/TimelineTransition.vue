@@ -85,7 +85,7 @@ function updateMap(year) {
                                 String(bbox.width + 20) + " " +
                                 String(bbox.height + 20);
                 var viewBox = d3.select(props.svgElement.value).attr("viewBox");
-
+                //if the zoomed in county is clicked again, it zooms out, otherwise the viewBox becomes whatever county was clicked
                 if (boxString == viewBox) {
                     d3.select(props.svgElement.value)
                         .transition()

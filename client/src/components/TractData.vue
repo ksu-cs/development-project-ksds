@@ -8,9 +8,11 @@ import * as d3 from 'd3';
 export default {
   props: ["svgElement", "projection", "zoomState"],
   methods: {
+    //renders county tract lines, initially with 0 opacity
     renderData(data) {
       const pathGen = d3.geoPath(this.projection);
 
+      
       d3.select(this.svgElement.value)
         .append("g")
         .classed("tracts", true)
@@ -26,6 +28,7 @@ export default {
         .classed("tract", true);
     }
   },
+  //watches for the zoomState to change, changes opacity to 1 if zooming in and 0 if zooming out
   watch: {
   zoomState(newVal) {
     const show = newVal === "zoomIn";
@@ -37,6 +40,7 @@ export default {
       .attr("opacity", show ? 1 : 0);
   }
 },
+  //on startup fetches tracts geojson and calls funtion to render tract lines
   created() {
     fetch('/geojson/KSTracts_2000.geojson')
       .then(res => res.json())
