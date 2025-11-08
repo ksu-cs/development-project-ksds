@@ -95,29 +95,13 @@ export default {
                                     String(bbox.height + 20);
 
                     var viewBox = d3.select(this.svgElement.value).attr("viewBox");
-
-                    // Sets default viewBox specified in components/BaseMap.vue
-                    if (boxString == viewBox) {
-                        d3.select(this.svgElement.value)
-                            .transition()
-                            .duration(750)
-                                .attr("viewBox", "0 0 1600 800") // TODO: Move default viewBox to a global parameter or prop
-                            .on("end", () => {
-                                this.$emit("changeZoom", "state")
-                                this.$emit("zoomState", "zoomOut")
-                            });
-                        
-                    }
-                    else {
-                        d3.select(this.svgElement.value)
-                            .transition()
-                            .duration(750)
-                                .attr("viewBox", boxString)
-                            .on("end", () =>{
-                                this.$emit("changeZoom", "county")
-                                this.$emit("zoomState", "zoomIn")
-                            });
-                    }
+                    
+                    const zoomIn = boxString === viewBox;
+                    d3.select(this.svgElement.value)
+                        .transition()
+                        .duration(750)
+                            .attr("viewBox", zoomIn ? "0 0 1600 800" : boxString)
+                        .on("end", () => this.$emit("changeZoom", zoomIn ? "state" : "county"));
                 })
         }
     },
