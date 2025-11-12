@@ -15,11 +15,3 @@ cd $CLIENT_DIR
 
 echo "Installing npm packages for the client"
 npm install
-
-echo "Starting server"
-bash -c "cd $SERVER_DIR && npm run dev" &
-
-echo "Starting client"
-bash -c "cd $CLIENT_DIR && npm run dev" &
-
-wait

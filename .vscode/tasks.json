@@ -1,0 +1,38 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "dev",
+			"path": "server",
+			"problemMatcher": [],
+			"label": "start server",
+			"detail": "nodemon ./bin/www",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "npm",
+			"script": "dev",
+			"path": "client",
+			"problemMatcher": [],
+			"label": "start client",
+			"detail": "vite --host 0.0.0.0",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "start client and server",
+			"dependsOn": ["start server", "start client"],
+			"dependsOrder": "parallel",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}
