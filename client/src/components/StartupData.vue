@@ -1,4 +1,9 @@
 <script>
+/**
+ * components/StartupData.vue
+ * 
+ * Fetches all data needed on startup of the application.
+ */
 import * as d3 from 'd3';
 
 export default {
@@ -166,13 +171,6 @@ export default {
 </script>
 
 <style scoped>
-:global(.rail) {
-    fill: none;
-    stroke: green;
-    stroke-width: 1;
-    pointer-events: none;
-}
-
 :global(.city) {
     fill: red;
     pointer-events: none;
