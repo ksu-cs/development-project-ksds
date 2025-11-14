@@ -11,18 +11,17 @@ const props = defineProps(["projection", "inputValue", "zoomState"]);
 const pathGen = d3.geoPath(props.projection);
 const gRef = useTemplateRef("g");
 
-let result = {
-    data: ref(null),
-    loading: ref(null),
-    error: ref(null)
-}
 let selection = null;
 let gTag = null;
 
-fetchGeojson("railroads.geojson", result);
-
 onMounted(() => {
+    let result = {
+        data: ref(null),
+        loading: ref(null),
+        error: ref(null)
+    }
     gTag = d3.select(gRef.value);
+    fetchGeojson("railroads.geojson", result);
     validateData(result);
 });
 
@@ -104,5 +103,6 @@ function onYearChange(newValue) {
     fill: none;
     stroke: green;
     pointer-events: none;
+    stroke-dasharray: 4;
 }
 </style>

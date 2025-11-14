@@ -7,25 +7,49 @@ import { defineProps, onMounted, useTemplateRef, watch, defineEmits, ref } from 
 import * as d3 from 'd3';
 import { fetchGeojson } from './fetchGeojson';
 
+class FetchQueue {
+    constructor(max = 10) {
+        this.max = max;
+        this.queue = Promise.resolve();
+        this.count = 0;
+    }
+    
+    enqueue(promise, result) {
+        this.count += 1;
+        this.queue = this.queue.then(() => {
+            promise.then(() => validateData(result))
+        });
+
+        if (this.count >= 10) {
+            this.resetQueue();
+        }
+    }
+
+    resetQueue() {
+        this.queue = Promise.resolve();
+        this.count = 0;
+    }
+}
+
 const emit = defineEmits(["transition"])
 const props = defineProps(["projection", "inputValue", "zoomState"]);
 const pathGen = d3.geoPath(props.projection)
 const gRef = useTemplateRef("g");
+const queue = new FetchQueue();
 
-let result = {
-    data: ref(null),
-    loading: ref(null),
-    error: ref(null)
-}
 let selection = null;
 let gTag = null;
 let strokeWidth = 2;
 
-fetchGeojson("KSCounty_1860_GeoJSON.geojson", result);
-
 onMounted(() => {
+    let result = {
+        data: ref(null),
+        loading: ref(null),
+        error: ref(null)
+    }
     gTag = d3.select(gRef.value);
-    validateData(result);
+    let p = fetchGeojson("KSCounty_1860_GeoJSON.geojson", result);
+    queue.enqueue(p, result);
 })
 
 watch(() => props.zoomState.value, onZoom);
@@ -120,8 +144,13 @@ function onZoom(newValue) {
  * @param newValue The year selected
  */
 function onYearChange(newValue) {
-    fetchGeojson(`KSCounty_${newValue}_GeoJSON.geojson`, result);
-    validateData(result);
+    let result = {
+        data: ref(null),
+        loading: ref(null),
+        error: ref(null)
+    }
+    let p = fetchGeojson(`KSCounty_${newValue}_GeoJSON.geojson`, result);
+    queue.enqueue(p, result);
 }
 </script>
 

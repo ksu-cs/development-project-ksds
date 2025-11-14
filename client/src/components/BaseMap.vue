@@ -10,13 +10,15 @@ import * as d3 from 'd3';
 import RailroadData from './RailroadData.vue';
 import BorderData from './BorderData.vue';
 import CityData from './CityData.vue';
+import TractData from './TractData.vue';
 
 export default {
     props: ["inputValue"],
     components: {
         RailroadData,
         BorderData,
-        CityData
+        CityData,
+        TractData
     },
     data() {
         return {
@@ -25,7 +27,6 @@ export default {
     },
     methods: {
         changeZoomLevel(zoomLevel, viewBox) {
-            console.log(zoomLevel);
             this.svg.transition()
                 .duration(750)
                 .attr("viewBox", viewBox)
@@ -53,6 +54,7 @@ export default {
         <svg ref="svg" width="1200" height="800" viewBox="0 0 1600 800">
             <RailroadData :projection="projection" :inputValue="inputValue" :zoomState="zoomState" />
             <BorderData :projection="projection" :inputValue="inputValue" :zoomState="zoomState" @transition="onTransition"/>
+            <TractData :projection="projection" :inputValue="inputValue" :zoomState="zoomState" />
             <CityData :projection="projection" :inputValue="inputValue" :zoomState="zoomState" />
         </svg>
         <fieldset class="checkboxes">

@@ -27,5 +27,5 @@ export function fetchGeojson(pathString, result) {
     }
 
     // Execute async function
-    f();
+    return f();
 }

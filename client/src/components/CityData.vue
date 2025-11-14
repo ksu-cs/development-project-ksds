@@ -94,7 +94,6 @@ function centerText(d, i, n, dy) {
 }
 
 function onZoom(state) {
-    console.log(state);
     switch (state) {
         case "state":
             selectionPoints.transition()
