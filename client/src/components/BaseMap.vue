@@ -9,12 +9,14 @@ import { ref } from 'vue';
 import * as d3 from 'd3';
 import RailroadData from './RailroadData.vue';
 import BorderData from './BorderData.vue';
+import CityData from './CityData.vue';
 
 export default {
     props: ["inputValue"],
     components: {
         RailroadData,
-        BorderData
+        BorderData,
+        CityData
     },
     data() {
         return {
@@ -22,24 +24,20 @@ export default {
         }
     },
     methods: {
-        changeZoomLevel(newLevel, viewBox) {
-            this.zoomState.value = newLevel;
+        changeZoomLevel(zoomLevel, viewBox) {
+            console.log(zoomLevel);
             this.svg.transition()
                 .duration(750)
-                .attr("viewBox", viewBox);
+                .attr("viewBox", viewBox)
+                .on("end", () => this.zoomState.value = zoomLevel);
+        },
+        onTransition(type, boxString) {
+            if (boxString === this.svg.attr("viewBox")) {
+                this.changeZoomLevel("state", "0 0 1600 800");
+            } else {
+                this.changeZoomLevel("county", boxString);
+            }
         }
-        /*
-        centerText(d, i, n, dy) {
-            const bbox = n[i].getBBox();
-            const originX = d.geometry.coordinates[0];
-            const originY = d.geometry.coordinates[1];
-            const centeredX = originX - (bbox.width / 2);
-            
-            d3.select(n[i])
-                    .attr("x", String(centeredX))
-                    .attr("y", originY - dy);
-        }, 
-        */
     },
     created() {
         this.zoomState = ref("state");
@@ -54,7 +52,8 @@ export default {
     <div class="container">
         <svg ref="svg" width="1200" height="800" viewBox="0 0 1600 800">
             <RailroadData :projection="projection" :inputValue="inputValue" :zoomState="zoomState" />
-            <BorderData :projection="projection" :inputValue="inputValue" :zoomState="zoomState" />
+            <BorderData :projection="projection" :inputValue="inputValue" :zoomState="zoomState" @transition="onTransition"/>
+            <CityData :projection="projection" :inputValue="inputValue" :zoomState="zoomState" />
         </svg>
         <fieldset class="checkboxes">
             <legend>Filters:</legend>

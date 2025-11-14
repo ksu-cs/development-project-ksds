@@ -34,14 +34,14 @@ watch(() => props.inputValue.value, onYearChange);
  * prints the error recieved. Populates selection by binding
  * the data to path elements.
  */
-function validateData(result) {
-    let d = result.data.value;
-    let l = result.loading.value;
-    let e = result.error.value;
+function validateData(r) {
+    let d = r.data.value;
+    let l = r.loading.value;
+    let e = r.error.value;
 
     if (l) {
         // Watch for the data to load
-        const unwatch = watch(() => result.loading.value, () => { validateData(result); unwatch() });
+        const unwatch = watch(() => r.loading.value, () => { validateData(r); unwatch() });
     } else if (e) {
         console.log(e);
     } else {
