@@ -1,25 +1,31 @@
-import { ref, onMounted } from 'vue';
+/**
+ * components/fetchGeojson.js
+ */
 
-export function fetchGeojson(pathString) {
-    const data = ref(null);
-    const loading = ref(true);
-    const error = ref(null);
+/**
+ * fetches the geojson file located at the given pathString on startup.
+ * The data becomes available when loading is false and error is still null.
+ * @param {string} pathString The path to the geojson file relative to the /geojson/ directory
+ * @param result The object to send the data to
+ * @returns 
+ */
+export function fetchGeojson(pathString, result) {
+    result.data.value = null;
+    result.loading.value = true;
+    result.error.value = null;
     
     // Define asynchronous function to fetch data.
     const f = async () => {
         try {
             const res = await fetch('/geojson/' + pathString);
-            data.value = await res.json();
+            result.data.value = await res.json();
         } catch (e) {
-            error.value = e;
+            result.error.value = e;
         } finally {
-            loading.value = false;
+            result.loading.value = false;
         }
     }
 
-    // Execute function on mount.
-    onMounted(f);
-
-    // Expose properties.
-    return { data, loading, error };
+    // Execute async function
+    f();
 }

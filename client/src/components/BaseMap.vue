@@ -8,11 +8,13 @@
 import { ref } from 'vue';
 import * as d3 from 'd3';
 import RailroadData from './RailroadData.vue';
+import BorderData from './BorderData.vue';
 
 export default {
     props: ["inputValue"],
     components: {
-        RailroadData
+        RailroadData,
+        BorderData
     },
     data() {
         return {
@@ -52,6 +54,7 @@ export default {
     <div class="container">
         <svg ref="svg" width="1200" height="800" viewBox="0 0 1600 800">
             <RailroadData :projection="projection" :inputValue="inputValue" :zoomState="zoomState" />
+            <BorderData :projection="projection" :inputValue="inputValue" :zoomState="zoomState" />
         </svg>
         <fieldset class="checkboxes">
             <legend>Filters:</legend>

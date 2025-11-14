@@ -1,0 +1,137 @@
+<script setup>
+/**
+ * components/BorderData.vue
+ * Responsible for all changes to the county borders in BaseMap.vue
+ */
+import { defineProps, onMounted, useTemplateRef, watch, defineEmits, ref } from 'vue';
+import * as d3 from 'd3';
+import { fetchGeojson } from './fetchGeojson';
+
+const emit = defineEmits(["transition"])
+const props = defineProps(["projection", "inputValue", "zoomState"]);
+const pathGen = d3.geoPath(props.projection)
+const gRef = useTemplateRef("g");
+
+let result = {
+    data: ref(null),
+    loading: ref(null),
+    error: ref(null)
+}
+let selection = null;
+let gTag = null;
+let strokeWidth = 2;
+
+fetchGeojson("KSCounty_1860_GeoJSON.geojson", result);
+
+onMounted(() => {
+    gTag = d3.select(gRef.value);
+    validateData(result);
+})
+
+watch(() => props.zoomState.value, onZoom);
+watch(() => props.inputValue.value, onYearChange);
+/**
+ * Waits for the fetched data to load. If the fetch failed,
+ * prints the error recieved. Populates selection by binding
+ * the data to path elements.
+ * @param result The object that holds the data, loading, and error values
+ */
+function validateData(result) {
+    let d = result.data.value;
+    let l = result.loading.value;
+    let e = result.error.value;
+
+    if (l) {
+        // Watch for the data to load
+        const unwatch = watch(() => result.loading.value, () => { validateData(result); unwatch() });
+    } else if (e) {
+        console.log(e);
+    } else {
+        // Join border paths:
+        // Enter selection -> create paths, style them,
+        // add onClick handlers, fade in
+        // Update seleciton -> do nothing
+        // Exit selection -> fade out, then remove
+        selection = gTag.selectAll(".border")
+                        .data(d.features, d => d.properties.id)
+                        .join(
+                            enter => enter.append("path")
+                                                .attr("d", d => {
+                                                    // d3 expects the reverse winding order that geojson uses
+                                                    d.geometry.coordinates[0].reverse();
+                                                    return pathGen(d);
+                                                })
+                                                .attr("stroke", "black")
+                                                .attr("stroke-width", strokeWidth)
+                                                .attr("opacity", "0%")
+                                                .classed("border", true)
+                                                .on("click", onBorderClick)
+                                            .transition()
+                                                .duration(500)
+                                                .attr("opacity", "100%"),
+                            update => update,
+                            exit => exit.transition()
+                                            .duration(500)
+                                            .attr("opacity", "0%")
+                                            .remove()
+                        );
+    }
+}
+
+/**
+ * Emits a transition event to BaseMap with the
+ * the parameters "border", and the bounding box
+ * of the border clicked on.
+ * @param event The click event
+ */
+function onBorderClick(event) {
+    const bbox = event.target.getBBox();
+    const boxString = String(bbox.x - 10) + " " +
+                        String(bbox.y - 10) + " " +
+                        String(bbox.width + 20) + " " +
+                        String(bbox.height + 20);
+    emit("transition", "border", boxString);
+}
+
+/**
+ * Changes the width of the border path elements based
+ * on the zoomState
+ * @param newValue The new zoomState string
+ */
+function onZoom(newValue) {
+    switch (newValue) {
+        case "state":
+            strokeWidth = 2;
+            selection.transition()
+                    .duration(200)
+                    .attr("stroke-width", strokeWidth);
+            break;
+        case "county":
+            strokeWidth = 1;
+            selection.transition()
+                    .duration(200)
+                    .attr("stroke-width", strokeWidth);
+            break;
+    }
+}
+
+/**
+ * Fetches the border data for the given year.
+ * @param newValue The year selected
+ */
+function onYearChange(newValue) {
+    fetchGeojson(`KSCounty_${newValue}_GeoJSON.geojson`, result);
+    validateData(result);
+}
+</script>
+
+<template>
+    <g class="border" ref="g"></g>
+</template>
+
+<style scoped>
+:global(.border) {
+    fill: none;
+    pointer-events: all;
+}
+</style>

@@ -1,19 +1,29 @@
 <script setup>
-import { defineProps, onMounted, useTemplateRef, watch } from 'vue';
+/**
+ * components/RailroadData.vue
+ * Responsible for all changes to the railroad in BaseMap.vue
+ */
+import { defineProps, onMounted, useTemplateRef, watch, ref } from 'vue';
 import * as d3 from 'd3';
-import { fetchGeojson } from './fetchGeojson'
+import { fetchGeojson } from './fetchGeojson';
 
 const props = defineProps(["projection", "inputValue", "zoomState"]);
-const { data, loading, error } = fetchGeojson("railroads.geojson");
 const pathGen = d3.geoPath(props.projection);
 const gRef = useTemplateRef("g");
 
+let result = {
+    data: ref(null),
+    loading: ref(null),
+    error: ref(null)
+}
 let selection = null;
 let gTag = null;
 
+fetchGeojson("railroads.geojson", result);
+
 onMounted(() => {
     gTag = d3.select(gRef.value);
-    validateData();
+    validateData(result);
 });
 
 watch(() => props.zoomState.value, onZoom);
@@ -21,19 +31,23 @@ watch(() => props.inputValue.value, onYearChange);
 
 /**
  * Waits for the fetched data to load. If the fetch failed,
- * prints the error recieved. If the fetch succeeded, binds
- * the data to the selection.
+ * prints the error recieved. Populates selection by binding
+ * the data to path elements.
  */
-function validateData() {
-    if (loading.value) {
+function validateData(result) {
+    let d = result.data.value;
+    let l = result.loading.value;
+    let e = result.error.value;
+
+    if (l) {
         // Watch for the data to load
-        const unwatch = watch(() => loading.value, () => { validateData(); unwatch() });
-    } else if (error.value) {
-        console.log(error.value);
+        const unwatch = watch(() => result.loading.value, () => { validateData(result); unwatch() });
+    } else if (e) {
+        console.log(e);
     } else {
         // Create rail path elements
-        selection = gTag.selectAll("path")
-                                    .data(data.value.features)
+        selection = gTag.selectAll(".rail")
+                                    .data(d.features)
                                     .enter()
                                     .append("path");
         
@@ -47,7 +61,7 @@ function validateData() {
 
 /**
  * Changes width of rail path elements based on the
- * zoomState.
+ * zoomState
  * @param newValue The new zoomState string
  */
 function onZoom(newValue) {
