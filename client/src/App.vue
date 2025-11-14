@@ -1,43 +1,66 @@
 <script setup>
-import { ref, watch, useTemplateRef } from 'vue';
+import { ref, watch, useTemplateRef, onMounted } from 'vue';
 import BaseMap from './components/BaseMap.vue'
 
-const sliderTimeout = 2000; // miliseconds;
-const inputSlider = useTemplateRef("inputSlider");
-const inputValue = ref(null);
+const inputSlider = {
+    element: useTemplateRef("inputSlider"),
+    yearLabel: useTemplateRef("yearLabel"),
+    yearRef: ref(null),
+    get year() { return this.yearRef.value},
+    set year(value) { this.yearRef.value = value}
+}
 
-var intervalId = null;
-var active = ref(false);
+const playButton = {
+    activeRef: ref(false),
+    timeout: 2000,
+    intervalID: null,
+    opacityRef: ref({
+        play: "100%",
+        pause: "0%"
+    }),
+    get active() { return this.activeRef.value },
+    set active(value) { this.activeRef.value = value},
+    get opacity() { return this.opacityRef.value }
+}
 
-const play = ref({
-    playOpacity: "100%"
-})
-
-const pause = ref({
-    pauseOpacity: "0%"
-})
-
-watch(() => active.value,
-    () => {
-        if (active.value) {
-            intervalId = window.setInterval(incrementSlider, sliderTimeout);
+watch(() => playButton.active,
+    (newValue) => {
+        if (newValue) {
+            playButton.intervalID = window.setInterval(incrementSlider, playButton.timeout);
         }
         else {
-            window.clearInterval(intervalId);
+            window.clearInterval(playButton.intervalID);
         }
     })
 
+onMounted(() => {
+    inputSlider.element.value.oninput = () => {
+        updateYear(+inputSlider.element.value.value); // the + converts the value to a number
+    }
+})
+
 function playButtonClick() {
-    play.value.playOpacity = active.value ? "100%" : "0%";
-    pause.value.pauseOpacity = active.value ? "0%" : "100%";
-    active.value = !active.value;
+    if (playButton.active) {
+        playButton.opacity.play = "100%";
+        playButton.opacity.pause = "0%";
+    } else {
+        playButton.opacity.play = "0%";
+        playButton.opacity.pause = "100%";
+    }
+    playButton.active = !playButton.active;
 }
 
 function incrementSlider() {
-    const step = parseInt(inputSlider.value.value) + parseInt(inputSlider.value.step);
-    const clamp = Math.max(inputSlider.value.min, Math.min(inputSlider.value.max, step));
-    inputSlider.value.value = clamp
-    inputValue.value = clamp;
+    const element = inputSlider.element.value;
+    const step = parseInt(element.value) + parseInt(element.step);
+    const clamp = Math.max(element.min, Math.min(element.max, step));
+    element.value = clamp
+    updateYear(clamp);
+}
+
+function updateYear(year) {
+    inputSlider.year = year;
+    inputSlider.yearLabel.value.textContent = String(year);
 }
 </script>
 
@@ -45,7 +68,7 @@ function incrementSlider() {
     <div class="app-container">
         <div class="timeline">
             <div class="yearSelection">
-                <input ref="inputSlider" type="range" id="yearSlider" min="1860" max="2025" step="10" value="1860" />
+                <input ref="inputSlider" type="range" id="yearSlider" min="1860" max="2020" step="10" value="1860" />
                 <button class="playButton" @click="playButtonClick">
                     <svg viewBox="0 0 50 50">
                         <path id="play-icon" d="M36,25L15,37L15,13Z"></path>
@@ -53,9 +76,9 @@ function incrementSlider() {
                     </svg>
                 </button>
             </div>
-            <span id="yearLabel">1860</span>
+            <span id="yearLabel" ref="yearLabel">1860</span>
         </div>
-    <BaseMap :inputValue="inputValue" />
+    <BaseMap :inputValue="inputSlider.yearRef" />
   </div>
 </template>
 
@@ -104,7 +127,7 @@ input {
     stroke: #5E5E5E;
     stroke-width: 2;
     stroke-linejoin: bevel;
-    opacity: v-bind('play.playOpacity');
+    opacity: v-bind('playButton.opacity.play');
     transition: all 1s ease, opacity 200ms;
 }
 
@@ -113,7 +136,7 @@ input {
     stroke: #5E5E5E;
     stroke-width: 10;
     stroke-linecap: round;
-    opacity: v-bind('pause.pauseOpacity');
+    opacity: v-bind('playButton.opacity.pause');
     transition: all 1s ease, opacity 200ms;
 }
 
