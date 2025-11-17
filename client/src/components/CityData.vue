@@ -27,11 +27,23 @@ onMounted(() => {
     }
     fetchGeojson("cities.geojson", result);
     validateData(result);
+
+    svg.selectAll(".point")//check that you're selecting the right thing!
+    .on("mouseover", function (event, d) {
+        d3.select(this).attr("fill", "blue");
+
+        //display the town populations in a little box! And population change if after 1970
+
+        console.log("Hovered point:", d);
+    })
+    .on("mouseout", function () {
+        d3.select(this).attr("fill", "red");
+    });
 })
 
 const fnDict = {
     [watcherType.onZoomChange]: onZoom,
-    [watcherType.onYearChange]: updateTownPopulations,
+    [watcherType.onYearChange]: updateTownPopulationsOnYearChange,
 };
 
 assignWatchers(props.watchers, fnDict);
@@ -114,6 +126,8 @@ function centerText(d, i, n, dy) {
 function onZoom(state) {
     switch (state) {
         case "state":
+            selectionPoints.attr("pointer-events", "none");
+
             selectionPoints.transition()
                     .duration(200)
                     .attr("d", pathGen.pointRadius(1.5));
@@ -123,6 +137,8 @@ function onZoom(state) {
                     .attr("opacity", d => d.topTen ? "100%" : "0%");
             break;
         case "county":
+            selectionPoints.attr("pointer-events", "all");
+            
             selectionPoints.transition()
                     .duration(200)
                     .attr("d", pathGen.pointRadius(1));
@@ -136,9 +152,16 @@ function onZoom(state) {
     }
 }
 
+
+
+/**
+ * Load in and create a dictionary with the county, city name, and city population 
+ * by the given year. Delete the old dictionary??
+ * @param newValue The year selected
+ */
 //can also have the old value as an parameter if you want, otherwise just ignore
-function updateTownPopulations(newValue){
-    
+function updateTownPopulationsOnYearChange(newValue){
+    //We only have town population data starting in 1970 until 2020
 }
 </script>
 
@@ -152,7 +175,6 @@ function updateTownPopulations(newValue){
 <style scoped>
 :global(.point) {
     fill: red;
-    pointer-events: none;
 }
 
 :global(.name) {
