@@ -75,13 +75,13 @@ function onZoom(newValue) {
             selection
                 .transition()
                     .duration(200)
-                    .attr("stroke-width", 0.6);
+                    .attr("stroke-width", 1);
             break;
         case "county":
             selection
                 .transition()
                     .duration(200)
-                    .attr("stroke-width", 1);
+                    .attr("stroke-width", 0.6);
             break;
     }
 }
@@ -110,5 +110,6 @@ function onYearChange(newValue) {
     stroke: green;
     pointer-events: none;
     stroke-dasharray: 4;
+    stroke-linecap: round;
 }
 </style>

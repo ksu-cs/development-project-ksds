@@ -138,5 +138,6 @@ function boxOverlapsBox(box, otherBox) {
     stroke-width: 0.2;
     pointer-events: none;
     stroke-dasharray: 0.5 0.5;
+    stroke-linecap: round;
 }
 </style>

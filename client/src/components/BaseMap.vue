@@ -73,6 +73,7 @@ function onTransition(type, boxString, bbox) {
             <TractData :properties="properties" :watchers="watchers" />
             <CityData :properties="properties" :watchers="watchers" />
         </svg>
+        <!-- Will probably move this fieldset into its own component -->
         <fieldset class="checkboxes">
             <legend>Filters:</legend>
             <label><input type="checkbox"> Filter 1</label>
