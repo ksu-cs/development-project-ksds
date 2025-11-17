@@ -31,6 +31,7 @@ onMounted(() => {
 
 const fnDict = {
     [watcherType.onZoomChange]: onZoom,
+    [watcherType.onYearChange]: updateTownPopulations,
 };
 
 assignWatchers(props.watchers, fnDict);
@@ -133,6 +134,11 @@ function onZoom(state) {
                     .attr("opacity", "100%");
             break;
     }
+}
+
+//can also have the old value as an parameter if you want, otherwise just ignore
+function updateTownPopulations(newValue){
+    
 }
 </script>
 
