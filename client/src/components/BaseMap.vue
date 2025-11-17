@@ -1,50 +1,66 @@
-<script>
+<script setup>
 /**
  * components/BaseMap.vue
  *
  * Contains the base svg element that all geojson data is rendered to.
  * Calls each Data component to fetch and render geojson data.
  */
-import { ref } from 'vue';
+import { defineProps, onMounted, useTemplateRef, ref } from 'vue';
 import * as d3 from 'd3';
 import RailroadData from './RailroadData.vue';
 import BorderData from './BorderData.vue';
 import CityData from './CityData.vue';
 import TractData from './TractData.vue';
+import { watcherType } from './watcherType';
 
-export default {
-    props: ["inputValue"],
-    components: {
-        RailroadData,
-        BorderData,
-        CityData,
-        TractData
-    },
-    data() {
-        return {
-            projection: d3.geoAlbers().scale(14000).translate([1150, 375]),
+const props = defineProps(["inputValue"]);
+const svgRef = useTemplateRef("svg");
+const defaultViewBox = "0 0 1600 800";
+
+let properties = {
+    projection: d3.geoAlbers().scale(14000).translate([1150, 375]),
+    bbox: {
+        x: 0,
+        y: 0,
+        width: 1600,
+        height: 800
+    }
+}
+
+let countyTransition = ref(true);
+let zoomState = ref("state");
+let svgTag = null;
+
+const watchers = {
+    [watcherType.onZoomChange]: zoomState,
+    [watcherType.onYearChange]: props.inputValue,
+    [watcherType.onCountyTransition]: countyTransition,
+};
+
+onMounted(() => {
+    svgTag = d3.select(svgRef.value);
+})
+
+function changeZoomLevel(zoomLevel, viewBox) {
+    svgTag.transition()
+            .duration(750)
+            .attr("viewBox", viewBox)
+            .on("end", () => zoomState.value = zoomLevel );
+}
+
+function onTransition(type, boxString, bbox) {
+    if (boxString === svgTag.attr("viewBox")) {
+        properties.bbox = {
+            x: 0,
+            y: 0,
+            width: 1600,
+            height: 800
         }
-    },
-    methods: {
-        changeZoomLevel(zoomLevel, viewBox) {
-            this.svg.transition()
-                .duration(750)
-                .attr("viewBox", viewBox)
-                .on("end", () => this.zoomState.value = zoomLevel);
-        },
-        onTransition(type, boxString) {
-            if (boxString === this.svg.attr("viewBox")) {
-                this.changeZoomLevel("state", "0 0 1600 800");
-            } else {
-                this.changeZoomLevel("county", boxString);
-            }
-        }
-    },
-    created() {
-        this.zoomState = ref("state");
-    },
-    mounted() {
-        this.svg = d3.select(this.$refs.svg);
+        changeZoomLevel("state", defaultViewBox);
+    } else {
+        properties.bbox = bbox;
+        changeZoomLevel("county", boxString);
+        countyTransition.value = !countyTransition.value;
     }
 }
 </script>
@@ -52,10 +68,10 @@ export default {
 <template>
     <div class="container">
         <svg ref="svg" width="1200" height="800" viewBox="0 0 1600 800">
-            <RailroadData :projection="projection" :inputValue="inputValue" :zoomState="zoomState" />
-            <BorderData :projection="projection" :inputValue="inputValue" :zoomState="zoomState" @transition="onTransition"/>
-            <TractData :projection="projection" :inputValue="inputValue" :zoomState="zoomState" />
-            <CityData :projection="projection" :inputValue="inputValue" :zoomState="zoomState" />
+            <RailroadData :properties="properties" :watchers="watchers" />
+            <BorderData :properties="properties" :watchers="watchers" @transition="onTransition" />
+            <TractData :properties="properties" :watchers="watchers" />
+            <CityData :properties="properties" :watchers="watchers" />
         </svg>
         <fieldset class="checkboxes">
             <legend>Filters:</legend>

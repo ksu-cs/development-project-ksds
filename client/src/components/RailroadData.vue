@@ -6,9 +6,11 @@
 import { defineProps, onMounted, useTemplateRef, watch, ref } from 'vue';
 import * as d3 from 'd3';
 import { fetchGeojson } from './fetchGeojson';
+import { assignWatchers } from './assignWatchers';
+import { watcherType } from './watcherType';
 
-const props = defineProps(["projection", "inputValue", "zoomState"]);
-const pathGen = d3.geoPath(props.projection);
+const props = defineProps(["properties", "watchers"]);
+const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
 
 let selection = null;
@@ -25,8 +27,12 @@ onMounted(() => {
     validateData(result);
 });
 
-watch(() => props.zoomState.value, onZoom);
-watch(() => props.inputValue.value, onYearChange);
+const fnDict = {
+    [watcherType.onZoomChange]: onZoom,
+    [watcherType.onYearChange]: onYearChange,
+};
+
+assignWatchers(props.watchers, fnDict);
 
 /**
  * Waits for the fetched data to load. If the fetch failed,

@@ -6,6 +6,8 @@
 import { defineProps, onMounted, useTemplateRef, watch, defineEmits, ref } from 'vue';
 import * as d3 from 'd3';
 import { fetchGeojson } from './fetchGeojson';
+import { assignWatchers } from './assignWatchers';
+import { watcherType } from './watcherType';
 
 class FetchQueue {
     constructor(max = 10) {
@@ -32,8 +34,8 @@ class FetchQueue {
 }
 
 const emit = defineEmits(["transition"])
-const props = defineProps(["projection", "inputValue", "zoomState"]);
-const pathGen = d3.geoPath(props.projection)
+const props = defineProps(["properties", "watchers"]);
+const pathGen = d3.geoPath(props.properties.projection)
 const gRef = useTemplateRef("g");
 const queue = new FetchQueue();
 
@@ -52,8 +54,12 @@ onMounted(() => {
     queue.enqueue(p, result);
 })
 
-watch(() => props.zoomState.value, onZoom);
-watch(() => props.inputValue.value, onYearChange);
+const fnDict = {
+    [watcherType.onZoomChange]: onZoom,
+    [watcherType.onYearChange]: onYearChange,
+}
+
+assignWatchers(props.watchers, fnDict);
 /**
  * Waits for the fetched data to load. If the fetch failed,
  * prints the error recieved. Populates selection by binding
@@ -114,7 +120,7 @@ function onBorderClick(event) {
                         String(bbox.y - 10) + " " +
                         String(bbox.width + 20) + " " +
                         String(bbox.height + 20);
-    emit("transition", "border", boxString);
+    emit("transition", "border", boxString, bbox);
 }
 
 /**

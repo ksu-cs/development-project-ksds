@@ -6,9 +6,11 @@
 import { defineProps, onMounted, useTemplateRef, watch, ref } from 'vue';
 import * as d3 from 'd3';
 import { fetchGeojson } from './fetchGeojson';
+import { assignWatchers } from './assignWatchers';
+import { watcherType } from './watcherType';
 
-const props = defineProps(["projection", "inputValue", "zoomState"]);
-const pathGen = d3.geoPath(props.projection);
+const props = defineProps(["properties", "watchers"]);
+const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
 
 let result = {
@@ -27,7 +29,11 @@ onMounted(() => {
     validateData(result);
 })
 
-watch(() => props.zoomState.value, onZoom);
+const fnDict = {
+    [watcherType.onZoomChange]: onZoom,
+};
+
+assignWatchers(props.watchers, fnDict);
 
 function validateData(r) {
     let d = r.data.value;
@@ -53,7 +59,7 @@ function validateData(r) {
         // we can't use pathGen here
         const projectedFeatures = d.features.map(feature => {
             return {
-                coordinates: props.projection(feature.geometry.coordinates),
+                coordinates: props.properties.projection(feature.geometry.coordinates),
                 topTen: feature.properties["Top Ten"],
                 name: feature.properties["City Name"]
             }
