@@ -10,6 +10,7 @@ import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
 
 const props = defineProps(["properties", "watchers"]);
+
 const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
 
@@ -17,12 +18,12 @@ let selection = null;
 let gTag = null;
 
 onMounted(() => {
+    gTag = d3.select(gRef.value);
     let result = {
         data: ref(null),
         loading: ref(null),
         error: ref(null)
     }
-    gTag = d3.select(gRef.value);
     fetchGeojson("railroads.geojson", result);
     validateData(result);
 });
@@ -36,8 +37,9 @@ assignWatchers(props.watchers, fnDict);
 
 /**
  * Waits for the fetched data to load. If the fetch failed,
- * prints the error recieved. Populates selection by binding
+ * prints the error received. Populates selection by binding
  * the data to path elements.
+ * @param r The object that holds the data, loading, and error properties
  */
 function validateData(r) {
     let d = r.data.value;
