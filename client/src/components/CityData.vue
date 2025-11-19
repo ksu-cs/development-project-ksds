@@ -72,7 +72,7 @@ function validateData(r) {
                                     .attr("d", pathGen.pointRadius(5))
                                     .classed("hitbox", true)
         
-        // Project every city's lon, lat pair
+        // Project every city's (lon, lat) pair
         // pathGen does this for us, however,
         // we can't use pathGen here
         const projectedFeatures = d.features.map(feature => {
@@ -98,12 +98,12 @@ function validateData(r) {
                                     .classed("name", true)
                                     .each((d, i, n) => {
                                         centerText(d, i, n, 5);
-                                        textDict[d.name] = n[i];
+                                        textDict[d.name] = n[i]; // For quick access when setting up hover events
                                     });
         
+        // Setup events to display town name on hover
         selectionBoxes.on("mouseenter", (event) => {
-            console.log("mouse enter");
-            let properties = event.target.__data__.properties;
+            let properties = event.target.__data__.properties; // Get properties from the hit box
             if (!properties["Top Ten"] && hoverActive) {
                 d3.select(textDict[properties["City Name"]])
                     .transition()
@@ -111,7 +111,7 @@ function validateData(r) {
                         .attr("opacity", "100%");
             }
         }).on("mouseleave", (event) => {
-            let properties = event.target.__data__.properties;
+            let properties = event.target.__data__.properties; // Get properties from the hit box
             if (!properties["Top Ten"] && hoverActive) {
                 d3.select(textDict[properties["City Name"]])
                     .transition()
@@ -157,6 +157,7 @@ function onZoom(state) {
                     .each((d, i, n) => centerText(d, i, n, 5))
                     .attr("opacity", d => d.topTen ? "100%" : "0%");
             
+            // Display town names on hover
             hoverActive = true;
             break;
         case "county":
@@ -170,12 +171,11 @@ function onZoom(state) {
                     .duration(200)
                     .attr("opacity", "100%");
             
+            // Don't display town names on hover
             hoverActive = false;
             break;
     }
 }
-
-
 
 /**
  * Load in and create a dictionary with the county, city name, and city population 
