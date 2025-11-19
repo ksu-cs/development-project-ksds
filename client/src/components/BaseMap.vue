@@ -26,7 +26,6 @@ let properties = {
         height: 800
     }
 }
-
 let countyTransition = ref(true);
 let zoomState = ref("state");
 let svgTag = null;
@@ -73,7 +72,7 @@ function onTransition(type, boxString, bbox) {
             <TractData :properties="properties" :watchers="watchers" />
             <CityData :properties="properties" :watchers="watchers" />
         </svg>
-        <fieldset class="checkboxes">
+        <fieldset class="checkboxes" v-if="zoomState === 'county'">
             <legend>Filters:</legend>
             <label><input type="checkbox"> Filter 1</label>
             <label><input type="checkbox"> Filter 2</label>
