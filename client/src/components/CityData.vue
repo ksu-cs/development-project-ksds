@@ -17,6 +17,7 @@ const gRef = useTemplateRef("g");
 let selectionPoints = null;
 let selectionText = null;
 let gTag = null;
+let townPopulations = {};
 
 onMounted(() => {
     gTag = d3.select(gRef.value);
@@ -28,16 +29,31 @@ onMounted(() => {
     fetchGeojson("cities.geojson", result);
     validateData(result);
 
-    svg.selectAll(".point")//check that you're selecting the right thing!
-    .on("mouseover", function (event, d) {
+    d3.selectAll(".point")
+    .on("mouseover", function (event) {
         d3.select(this).attr("fill", "blue");
 
-        //display the town populations in a little box! And population change if after 1970
+        //If the dictionary is empty (if year is <1970), don't display anything
+        if (Object.keys(townPopulations).length === 0) {
+            return; 
+        }
 
-        console.log("Hovered point:", d);
+        //display the town populations in a tooltip box. And population change if after 1970
+        const town = event.target.dataset.properties["City Name"];
+        const population = townPopulations[town] ?? null; //could be null
+
+        tooltip
+            .style("display", "block")
+            .style("opacity", 1)
+            .html(`
+                Population: ${population.toString()}
+            `);
+
+       
     })
     .on("mouseout", function () {
         d3.select(this).attr("fill", "red");
+        //remove the box I displayed
     });
 })
 
@@ -72,7 +88,9 @@ function validateData(r) {
                                 .append("path")
                                     .attr("d", pathGen.pointRadius(1.5))
                                     .classed("point", true);
-        
+        selectionPoints.each((d,i,n) => {
+            let node = n[i]
+        })
         // Project every city's lon, lat pair
         // pathGen does this for us, however,
         // we can't use pathGen here
@@ -160,8 +178,25 @@ function onZoom(state) {
  * @param newValue The year selected
  */
 //can also have the old value as an parameter if you want, otherwise just ignore
-function updateTownPopulationsOnYearChange(newValue){
-    //We only have town population data starting in 1970 until 2020
+function updateTownPopulationsOnYearChange(newYear, oldYear) {
+    // We only have town population data starting in 1970 until 2020
+    if (newYear >= 1970) {
+        d3.csv("KSPopulation1970-2020ByCity.csv").then(data => {
+
+            const col = `AV0AA${newYear}`; // build column name dynamically
+
+            // convert population to number
+            data.forEach(d => {
+                d[col] = +d[col];
+            });
+
+            townPopulations = Object.fromEntries(
+                data.map(d => [d.CTY_SUB, d[col]])
+            );
+
+            console.log(townPopulations);
+        });
+    }
 }
 </script>
 
@@ -181,4 +216,22 @@ function updateTownPopulationsOnYearChange(newValue){
     fill: blue;
     pointer-events: none;
 }
+
+:global(.tooltip){ 
+    visibility: hidden;
+    position: absolute;
+    display: none;
+    background: white;
+    border: 1px solid #aaa;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    pointer-events: none;
+}
+
+:global(.tooltip:hover){
+    visibility: visible;
+}
+
 </style>
+
