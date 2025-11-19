@@ -16,8 +16,10 @@ const gRef = useTemplateRef("g");
 
 let selectionPoints = null;
 let selectionText = null;
+let selectionBoxes = null;
 let gTag = null;
 let townPopulations = {};
+let hoverActive = true;
 
 onMounted(() => {
     gTag = d3.select(gRef.value);
@@ -28,33 +30,6 @@ onMounted(() => {
     }
     fetchGeojson("cities.geojson", result);
     validateData(result);
-
-    d3.selectAll(".point")
-    .on("mouseover", function (event) {
-        d3.select(this).attr("fill", "blue");
-
-        //If the dictionary is empty (if year is <1970), don't display anything
-        if (Object.keys(townPopulations).length === 0) {
-            return; 
-        }
-
-        //display the town populations in a tooltip box. And population change if after 1970
-        const town = event.target.dataset.properties["City Name"];
-        const population = townPopulations[town] ?? null; //could be null
-
-        tooltip
-            .style("display", "block")
-            .style("opacity", 1)
-            .html(`
-                Population: ${population.toString()}
-            `);
-
-       
-    })
-    .on("mouseout", function () {
-        d3.select(this).attr("fill", "red");
-        //remove the box I displayed
-    });
 })
 
 const fnDict = {
@@ -86,11 +61,17 @@ function validateData(r) {
                                 .data(d.features)
                                 .enter()
                                 .append("path")
-                                    .attr("d", pathGen.pointRadius(1.5))
+                                    .attr("d", pathGen.pointRadius(2))
                                     .classed("point", true);
-        selectionPoints.each((d,i,n) => {
-            let node = n[i]
-        })
+        
+        selectionBoxes = gTag.select(".points")
+                                .selectAll(".hitbox")
+                                .data(d.features)
+                                .enter()
+                                .append("path")
+                                    .attr("d", pathGen.pointRadius(5))
+                                    .classed("hitbox", true)
+        
         // Project every city's lon, lat pair
         // pathGen does this for us, however,
         // we can't use pathGen here
@@ -102,6 +83,8 @@ function validateData(r) {
             }
         });
         
+        let textDict = { };
+
         selectionText = gTag.select(".text")
                                 .selectAll(".name")
                                 .data(projectedFeatures)
@@ -113,7 +96,29 @@ function validateData(r) {
                                     .attr("font", "italic 13px sans-serif")
                                     .property("textContent", d => d.name)
                                     .classed("name", true)
-                                    .each((d, i, n) => centerText(d, i, n, 5));
+                                    .each((d, i, n) => {
+                                        centerText(d, i, n, 5);
+                                        textDict[d.name] = n[i];
+                                    });
+        
+        selectionBoxes.on("mouseenter", (event) => {
+            console.log("mouse enter");
+            let properties = event.target.__data__.properties;
+            if (!properties["Top Ten"] && hoverActive) {
+                d3.select(textDict[properties["City Name"]])
+                    .transition()
+                        .duration(200)
+                        .attr("opacity", "100%");
+            }
+        }).on("mouseleave", (event) => {
+            let properties = event.target.__data__.properties;
+            if (!properties["Top Ten"] && hoverActive) {
+                d3.select(textDict[properties["City Name"]])
+                    .transition()
+                        .duration(200)
+                        .attr("opacity", "0%");
+            }
+        })
     }
 }
 
@@ -144,19 +149,17 @@ function centerText(d, i, n, dy) {
 function onZoom(state) {
     switch (state) {
         case "state":
-            selectionPoints.attr("pointer-events", "none");
-
             selectionPoints.transition()
                     .duration(200)
-                    .attr("d", pathGen.pointRadius(1.5));
+                    .attr("d", pathGen.pointRadius(2));
             
             selectionText.attr("font-size", "100%")
                     .each((d, i, n) => centerText(d, i, n, 5))
                     .attr("opacity", d => d.topTen ? "100%" : "0%");
+            
+            hoverActive = true;
             break;
         case "county":
-            selectionPoints.attr("pointer-events", "all");
-            
             selectionPoints.transition()
                     .duration(200)
                     .attr("d", pathGen.pointRadius(1));
@@ -166,6 +169,8 @@ function onZoom(state) {
                 .transition()
                     .duration(200)
                     .attr("opacity", "100%");
+            
+            hoverActive = false;
             break;
     }
 }
@@ -178,7 +183,7 @@ function onZoom(state) {
  * @param newValue The year selected
  */
 //can also have the old value as an parameter if you want, otherwise just ignore
-function updateTownPopulationsOnYearChange(newYear, oldYear) {
+function updateTownPopulationsOnYearChange(newYear) {
     // We only have town population data starting in 1970 until 2020
     if (newYear >= 1970) {
         d3.csv("KSPopulation1970-2020ByCity.csv").then(data => {
@@ -210,6 +215,7 @@ function updateTownPopulationsOnYearChange(newYear, oldYear) {
 <style scoped>
 :global(.point) {
     fill: red;
+    pointer-events: none;
 }
 
 :global(.name) {
@@ -217,21 +223,9 @@ function updateTownPopulationsOnYearChange(newYear, oldYear) {
     pointer-events: none;
 }
 
-:global(.tooltip){ 
-    visibility: hidden;
-    position: absolute;
-    display: none;
-    background: white;
-    border: 1px solid #aaa;
-    padding: 6px 10px;
-    border-radius: 4px;
-    font-size: 13px;
-    pointer-events: none;
+:global(.hitbox) {
+    fill: black;
+    opacity: 0%;
+    pointer-events: visible;
 }
-
-:global(.tooltip:hover){
-    visibility: visible;
-}
-
 </style>
-
