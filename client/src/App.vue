@@ -2,7 +2,7 @@
 import { ref, watch, useTemplateRef, onMounted } from 'vue';
 import BaseMap from './components/BaseMap.vue'
 
-const inputSlider = {
+const slider = {
     element: useTemplateRef("inputSlider"),
     yearLabel: useTemplateRef("yearLabel"),
     yearRef: ref(null),
@@ -23,21 +23,21 @@ const playButton = {
     get opacity() { return this.opacityRef.value }
 }
 
-watch(() => playButton.active,
-    (newValue) => {
-        if (newValue) {
-            playButton.intervalID = window.setInterval(incrementSlider, playButton.timeout);
-        }
-        else {
-            window.clearInterval(playButton.intervalID);
-        }
-    })
+watch(() => playButton.active, checkInterval);
 
 onMounted(() => {
-    inputSlider.element.value.oninput = () => {
-        updateYear(+inputSlider.element.value.value); // the + converts the value to a number
+    slider.element.value.oninput = () => {
+        updateYear(+slider.element.value.value); // the + converts the value to a number
     }
-})
+});
+
+function checkInterval(newValue) {
+    if (newValue) {
+        playButton.intervalID = window.setInterval(incrementSlider, playButton.timeout);
+    } else {
+        window.clearInterval(playButton.intervalID);
+    }
+}
 
 function playButtonClick() {
     if (playButton.active) {
@@ -51,7 +51,7 @@ function playButtonClick() {
 }
 
 function incrementSlider() {
-    const element = inputSlider.element.value;
+    const element = slider.element.value;
     const step = parseInt(element.value) + parseInt(element.step);
     const clamp = Math.max(element.min, Math.min(element.max, step));
     element.value = clamp
@@ -59,8 +59,8 @@ function incrementSlider() {
 }
 
 function updateYear(year) {
-    inputSlider.year = year;
-    inputSlider.yearLabel.value.textContent = String(year);
+    slider.year = year;
+    slider.yearLabel.value.textContent = String(year);
 }
 </script>
 
@@ -78,7 +78,7 @@ function updateYear(year) {
             </div>
             <span id="yearLabel" ref="yearLabel">1860</span>
         </div>
-    <BaseMap :inputValue="inputSlider.yearRef" />
+    <BaseMap :inputValue="slider.yearRef" />
   </div>
 </template>
 

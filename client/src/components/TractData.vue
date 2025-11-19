@@ -1,12 +1,12 @@
 <script setup>
-import { defineProps, defineEmits, onMounted, useTemplateRef, watch, ref } from 'vue';
+import { defineProps, onMounted, useTemplateRef, watch, ref } from 'vue';
 import * as d3 from 'd3';
 import { fetchGeojson } from './fetchGeojson';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
 
-const emit = defineEmits(["addHandler"]);
 const props = defineProps(["properties", "watchers"]);
+
 const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
 
@@ -16,12 +16,12 @@ let culledSelection = null;
 let gTag = null;
 
 onMounted(() => {
+    gTag = d3.select(gRef.value);
     let result = {
         data: ref(null),
         loading: ref(null),
         error: ref(null)
     }
-    gTag = d3.select(gRef.value);
     fetchGeojson("KSTracts_2000.geojson", result);
     validateData(result);
 });
@@ -32,8 +32,13 @@ const fnDict = {
 };
 
 assignWatchers(props.watchers, fnDict);
-emit("addHandler", "cull", cullSelection)
 
+/**
+ * Waits for the fetched data to load. If the fetch failed,
+ * prints the error recieved. Populates selection by binding
+ * the data to path elements.
+ * @param r The object that holds the data, loading, and error properties
+ */
 function validateData(r) {
     let d = r.data.value;
     let l = r.loading.value;
@@ -61,6 +66,11 @@ function validateData(r) {
   }
 }
 
+/**
+ * Fades out tract borders on a zoom out to
+ * the state level
+ * @param state the new zoomState
+ */
 function onZoom(state) {
     switch (state) {
         case "state":
@@ -72,48 +82,33 @@ function onZoom(state) {
     }
 }
 
+/**
+ * When transitioning to a county, cull every tract
+ * that doesn't overlap with the selected county, then
+ * fade in the tracts remaining
+ */
 function onCountyTransition() {
+    // Fade out last selection
     culledSelection.transition()
             .duration(200)
             .attr("opacity", "0%");
+    
+    // Cull selection
     culledSelection = selection.filter((d, i, n) => {
         let nodeBBox = n[i].getBBox();
         return boxOverlapsBox(nodeBBox, props.properties.bbox);
     })
+
+    // Fade in new selection
     culledSelection.transition()
             .duration(200)
             .attr("opacity", "100%");
 }
 
-function cullSelection(type, selector) {
-    // Delay this call until cullSelection has been populated
-    if (culledSelection === null) {
-        console.log("this is null");
-        watch(ref(culledSelection), () => cullSelection(type, selector));
-        return;
-    }
-
-    switch (type) {
-        case "box":
-            culledSelection.transition()
-                    .duration(200)
-                    .attr("opacity", "0%");
-            culledSelection = selection.filter((d, i, n) => {
-                let node = n[i];
-                let nodeBBox = node.getBBox();
-                return boxOverlapsBox(nodeBBox, selector);
-            })
-            culledSelection.transition()
-                    .duration(200)
-                    .attr("opacity", "100%");
-            break;
-    }
-}
-
 /**
- * Returns true if both boxes overlap
- * @param box One of the boxes to check
- * @param otherBox The other box to check
+ * Returns true if both given bounding boxes overlap
+ * @param box One of the bounding boxes to check
+ * @param otherBox The other bounding box to check
  */
 function boxOverlapsBox(box, otherBox) {
     return ((box.x >= otherBox.x &&
@@ -138,5 +133,6 @@ function boxOverlapsBox(box, otherBox) {
     stroke-width: 0.2;
     pointer-events: none;
     stroke-dasharray: 0.5 0.5;
+    stroke-linecap: round;
 }
 </style>

@@ -40,6 +40,12 @@ onMounted(() => {
     svgTag = d3.select(svgRef.value);
 })
 
+/**
+ * Changes zoomState to zoomLevel, and transitions into
+ * the given viewBox.
+ * @param zoomLevel The new zoomState as a string
+ * @param viewBox the viewBox to transition to
+ */
 function changeZoomLevel(zoomLevel, viewBox) {
     svgTag.transition()
             .duration(750)
@@ -47,6 +53,13 @@ function changeZoomLevel(zoomLevel, viewBox) {
             .on("end", () => zoomState.value = zoomLevel );
 }
 
+/**
+ * Transitions the viewBox from where it is, to 
+ * somewere else.
+ * @param type placeolder, for when different types of transitions are needed
+ * @param boxString the bounding box of the clicked on county as a string, will be replaced by a single object later
+ * @param bbox the bounding box object of the clicked on county, will be replaced by a single object later
+ */
 function onTransition(type, boxString, bbox) {
     if (boxString === svgTag.attr("viewBox")) {
         properties.bbox = {

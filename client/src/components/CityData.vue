@@ -10,22 +10,22 @@ import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
 
 const props = defineProps(["properties", "watchers"]);
+
 const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
 
-let result = {
-    data: ref(null),
-    loading: ref(null),
-    error: ref(null)
-}
 let selectionPoints = null;
 let selectionText = null;
 let gTag = null;
 
-fetchGeojson("cities.geojson", result);
-
 onMounted(() => {
     gTag = d3.select(gRef.value);
+    let result = {
+        data: ref(null),
+        loading: ref(null),
+        error: ref(null)
+    }
+    fetchGeojson("cities.geojson", result);
     validateData(result);
 })
 
@@ -35,6 +35,12 @@ const fnDict = {
 
 assignWatchers(props.watchers, fnDict);
 
+/**
+ * Waits for the fetched data to load. If the fetch failed,
+ * prints the error received. Populates selection by binding
+ * the data to path elements.
+ * @param r The object that holds the data, loading, and error properties
+ */
 function validateData(r) {
     let d = r.data.value;
     let l = r.loading.value;
@@ -99,6 +105,11 @@ function centerText(d, i, n, dy) {
             .attr("y", originY - dy);
 }
 
+/**
+ * On zoom into a county, shrinks a cities point and text,
+ * and enlarges them on a zoom out to the state
+ * @param state the new zoomState
+ */
 function onZoom(state) {
     switch (state) {
         case "state":

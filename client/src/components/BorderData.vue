@@ -3,30 +3,47 @@
  * components/BorderData.vue
  * Responsible for all changes to the county borders in BaseMap.vue
  */
-import { defineProps, onMounted, useTemplateRef, watch, defineEmits, ref } from 'vue';
+import { defineProps, onMounted, useTemplateRef, defineEmits, ref } from 'vue';
 import * as d3 from 'd3';
 import { fetchGeojson } from './fetchGeojson';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
 
+/**
+ * A class that enforces a first in first out resolution
+ * order on promises in the queue.
+ */
 class FetchQueue {
-    constructor(max = 10) {
+    /**
+     * Creates a starting resolved promise to chain onto
+     * @param max the maximum number of chained promises before reseting
+     */
+    constructor(max = 50) {
         this.max = max;
         this.queue = Promise.resolve();
         this.count = 0;
     }
     
+    /**
+     * Adds the given promise to the queue, and calls validateData
+     * wit the result associated with that promise
+     * @param promise the promise to enqueue
+     * @param result the object that the promise will update
+     */
     enqueue(promise, result) {
         this.count += 1;
-        this.queue = this.queue.then(() => {
-            promise.then(() => validateData(result))
+        this.queue = this.queue.then(async () => {
+            await promise.then(async () => await validateData(result))
         });
 
-        if (this.count >= 10) {
+        if (this.count >= this.max) {
             this.resetQueue();
         }
     }
 
+    /**
+     * Resets the queue to a single resolved promise
+     */
     resetQueue() {
         this.queue = Promise.resolve();
         this.count = 0;
@@ -35,6 +52,7 @@ class FetchQueue {
 
 const emit = defineEmits(["transition"])
 const props = defineProps(["properties", "watchers"]);
+
 const pathGen = d3.geoPath(props.properties.projection)
 const gRef = useTemplateRef("g");
 const queue = new FetchQueue();
@@ -60,21 +78,18 @@ const fnDict = {
 }
 
 assignWatchers(props.watchers, fnDict);
+
 /**
  * Waits for the fetched data to load. If the fetch failed,
- * prints the error recieved. Populates selection by binding
+ * prints the error received. Populates selection by binding
  * the data to path elements.
- * @param result The object that holds the data, loading, and error values
+ * @param result The object that holds the data, loading, and error properties
  */
 function validateData(r) {
     let d = r.data.value;
-    let l = r.loading.value;
     let e = r.error.value;
 
-    if (l) {
-        // Watch for the data to load
-        const unwatch = watch(() => r.loading.value, () => { validateData(r); unwatch() });
-    } else if (e) {
+    if (e) {
         console.log(e);
     } else {
         // Join border paths:
