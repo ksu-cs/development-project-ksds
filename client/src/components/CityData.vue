@@ -16,7 +16,10 @@ const gRef = useTemplateRef("g");
 
 let selectionPoints = null;
 let selectionText = null;
+let selectionBoxes = null;
 let gTag = null;
+let townPopulations = {};
+let hoverActive = true;
 
 onMounted(() => {
     gTag = d3.select(gRef.value);
@@ -31,6 +34,7 @@ onMounted(() => {
 
 const fnDict = {
     [watcherType.onZoomChange]: onZoom,
+    [watcherType.onYearChange]: updateTownPopulationsOnYearChange,
 };
 
 assignWatchers(props.watchers, fnDict);
@@ -57,10 +61,18 @@ function validateData(r) {
                                 .data(d.features)
                                 .enter()
                                 .append("path")
-                                    .attr("d", pathGen.pointRadius(1.5))
+                                    .attr("d", pathGen.pointRadius(2))
                                     .classed("point", true);
         
-        // Project every city's lon, lat pair
+        selectionBoxes = gTag.select(".points")
+                                .selectAll(".hitbox")
+                                .data(d.features)
+                                .enter()
+                                .append("path")
+                                    .attr("d", pathGen.pointRadius(5))
+                                    .classed("hitbox", true)
+        
+        // Project every city's (lon, lat) pair
         // pathGen does this for us, however,
         // we can't use pathGen here
         const projectedFeatures = d.features.map(feature => {
@@ -71,6 +83,8 @@ function validateData(r) {
             }
         });
         
+        let textDict = { };
+
         selectionText = gTag.select(".text")
                                 .selectAll(".name")
                                 .data(projectedFeatures)
@@ -82,7 +96,29 @@ function validateData(r) {
                                     .attr("font", "italic 13px sans-serif")
                                     .property("textContent", d => d.name)
                                     .classed("name", true)
-                                    .each((d, i, n) => centerText(d, i, n, 5));
+                                    .each((d, i, n) => {
+                                        centerText(d, i, n, 5);
+                                        textDict[d.name] = n[i]; // For quick access when setting up hover events
+                                    });
+        
+        // Setup events to display town name on hover
+        selectionBoxes.on("mouseenter", (event) => {
+            let properties = event.target.__data__.properties; // Get properties from the hit box
+            if (!properties["Top Ten"] && hoverActive) {
+                d3.select(textDict[properties["City Name"]])
+                    .transition()
+                        .duration(200)
+                        .attr("opacity", "100%");
+            }
+        }).on("mouseleave", (event) => {
+            let properties = event.target.__data__.properties; // Get properties from the hit box
+            if (!properties["Top Ten"] && hoverActive) {
+                d3.select(textDict[properties["City Name"]])
+                    .transition()
+                        .duration(200)
+                        .attr("opacity", "0%");
+            }
+        })
     }
 }
 
@@ -115,11 +151,14 @@ function onZoom(state) {
         case "state":
             selectionPoints.transition()
                     .duration(200)
-                    .attr("d", pathGen.pointRadius(1.5));
+                    .attr("d", pathGen.pointRadius(2));
             
             selectionText.attr("font-size", "100%")
                     .each((d, i, n) => centerText(d, i, n, 5))
                     .attr("opacity", d => d.topTen ? "100%" : "0%");
+            
+            // Display town names on hover
+            hoverActive = true;
             break;
         case "county":
             selectionPoints.transition()
@@ -131,7 +170,37 @@ function onZoom(state) {
                 .transition()
                     .duration(200)
                     .attr("opacity", "100%");
+            
+            // Don't display town names on hover
+            hoverActive = false;
             break;
+    }
+}
+
+/**
+ * Load in and create a dictionary with the county, city name, and city population 
+ * by the given year. Delete the old dictionary??
+ * @param newValue The year selected
+ */
+//can also have the old value as an parameter if you want, otherwise just ignore
+function updateTownPopulationsOnYearChange(newYear) {
+    // We only have town population data starting in 1970 until 2020
+    if (newYear >= 1970) {
+        d3.csv("KSPopulation1970-2020ByCity.csv").then(data => {
+
+            const col = `AV0AA${newYear}`; // build column name dynamically
+
+            // convert population to number
+            data.forEach(d => {
+                d[col] = +d[col];
+            });
+
+            townPopulations = Object.fromEntries(
+                data.map(d => [d.CTY_SUB, d[col]])
+            );
+
+            console.log(townPopulations);
+        });
     }
 }
 </script>
@@ -152,5 +221,11 @@ function onZoom(state) {
 :global(.name) {
     fill: blue;
     pointer-events: none;
+}
+
+:global(.hitbox) {
+    fill: black;
+    opacity: 0%;
+    pointer-events: visible;
 }
 </style>
