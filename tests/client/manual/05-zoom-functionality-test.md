@@ -7,7 +7,9 @@ Expected Changes:
 * The red dots, representing the cities, should shrink in radius.
 * The black borders of the counties should shrink in width.
 * Every city's name should be displayed, centered above their corresponding red dot.
-* Tract boundaries should be displayed in purple.
+* Tract boundaries should be displayed in red dotted lines.
+* The green dotted lines, representing railroads, should shrink in width.
+* The filter placeholder box should appear to the right of the map.
 
 
 
