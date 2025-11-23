@@ -3,9 +3,9 @@
  * components/RailroadData.vue
  * Responsible for all changes to the railroad in BaseMap.vue
  */
-import { defineProps, onMounted, useTemplateRef, watch, ref } from 'vue';
+import { defineProps, onMounted, useTemplateRef, watch } from 'vue';
 import * as d3 from 'd3';
-import { fetchGeojson } from './fetchGeojson';
+import { fetchGeojson } from './fetchers';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
 
@@ -19,12 +19,7 @@ let gTag = null;
 
 onMounted(() => {
     gTag = d3.select(gRef.value);
-    let result = {
-        data: ref(null),
-        loading: ref(null),
-        error: ref(null)
-    }
-    fetchGeojson("railroads.geojson", result);
+    let { result } = fetchGeojson("/geojson/railroads.geojson");
     validateData(result);
 });
 

@@ -1,7 +1,7 @@
 <script setup>
-import { defineProps, onMounted, useTemplateRef, watch, ref } from 'vue';
+import { defineProps, onMounted, useTemplateRef, watch } from 'vue';
 import * as d3 from 'd3';
-import { fetchGeojson } from './fetchGeojson';
+import { fetchGeojson } from './fetchers';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
 
@@ -17,12 +17,7 @@ let gTag = null;
 
 onMounted(() => {
     gTag = d3.select(gRef.value);
-    let result = {
-        data: ref(null),
-        loading: ref(null),
-        error: ref(null)
-    }
-    fetchGeojson("KSTracts_2000.geojson", result);
+    let { result } = fetchGeojson("/geojson/KSTracts_2000.geojson");
     validateData(result);
 });
 
@@ -129,10 +124,10 @@ function boxOverlapsBox(box, otherBox) {
 <style scoped>
 :global(.tract) {
     fill: none;
-    stroke: #b22222;
+    stroke: #ff000d;
     stroke-width: 0.2;
     pointer-events: none;
-    stroke-dasharray: 0.5 0.5;
+    stroke-dasharray: 0.5 2;
     stroke-linecap: round;
 }
 </style>

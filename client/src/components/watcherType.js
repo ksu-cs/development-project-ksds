@@ -1,3 +1,9 @@
+/**
+ * components/watcherType.js
+ * 
+ * An enum to represent each type of watcher that
+ * data components will need.
+ */
 
 export const watcherType = Object.freeze({
     /**

@@ -3,9 +3,9 @@
  * components/CityData.vue
  * Responsible for all changes to the cities in BaseMap.vue
  */
-import { defineProps, onMounted, useTemplateRef, watch, ref } from 'vue';
+import { defineProps, onMounted, useTemplateRef, watch } from 'vue';
 import * as d3 from 'd3';
-import { fetchGeojson } from './fetchGeojson';
+import { fetchGeojson } from './fetchers';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
 
@@ -23,12 +23,7 @@ let hoverActive = true;
 
 onMounted(() => {
     gTag = d3.select(gRef.value);
-    let result = {
-        data: ref(null),
-        loading: ref(null),
-        error: ref(null)
-    }
-    fetchGeojson("cities.geojson", result);
+    let { result } = fetchGeojson("/geojson/cities.geojson");
     validateData(result);
 })
 

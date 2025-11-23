@@ -3,9 +3,9 @@
  * components/BorderData.vue
  * Responsible for all changes to the county borders in BaseMap.vue
  */
-import { defineProps, onMounted, useTemplateRef, defineEmits, ref } from 'vue';
+import { defineProps, onMounted, useTemplateRef, defineEmits } from 'vue';
 import * as d3 from 'd3';
-import { fetchGeojson } from './fetchGeojson';
+import { fetchGeojson } from './fetchers';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
 
@@ -62,14 +62,9 @@ let gTag = null;
 let strokeWidth = 2;
 
 onMounted(() => {
-    let result = {
-        data: ref(null),
-        loading: ref(null),
-        error: ref(null)
-    }
     gTag = d3.select(gRef.value);
-    let p = fetchGeojson("KSCounty_1860_GeoJSON.geojson", result);
-    queue.enqueue(p, result);
+    let { result, promise} = fetchGeojson("/geojson/KSCounty_1860_GeoJSON.geojson");
+    queue.enqueue(promise, result);
 })
 
 const fnDict = {
@@ -165,13 +160,8 @@ function onZoom(newValue) {
  * @param newValue The year selected
  */
 function onYearChange(newValue) {
-    let result = {
-        data: ref(null),
-        loading: ref(null),
-        error: ref(null)
-    }
-    let p = fetchGeojson(`KSCounty_${newValue}_GeoJSON.geojson`, result);
-    queue.enqueue(p, result);
+    let {result, promise} = fetchGeojson(`/geojson/KSCounty_${newValue}_GeoJSON.geojson`);
+    queue.enqueue(promise, result);
 }
 </script>
 
