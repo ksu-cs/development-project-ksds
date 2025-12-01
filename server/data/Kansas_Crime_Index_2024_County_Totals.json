@@ -1,0 +1,422 @@
+[
+    {
+        "County":"Allen County",
+        "Crime Index Rate\/1,000 (County Total)":15.4
+    },
+    {
+        "County":"Anderson County",
+        "Crime Index Rate\/1,000 (County Total)":9.1
+    },
+    {
+        "County":"Atchison County",
+        "Crime Index Rate\/1,000 (County Total)":12.1
+    },
+    {
+        "County":"Barber County",
+        "Crime Index Rate\/1,000 (County Total)":10.9
+    },
+    {
+        "County":"Barton County",
+        "Crime Index Rate\/1,000 (County Total)":13.5
+    },
+    {
+        "County":"Bourbon County",
+        "Crime Index Rate\/1,000 (County Total)":16.6
+    },
+    {
+        "County":"Brown County",
+        "Crime Index Rate\/1,000 (County Total)":10.7
+    },
+    {
+        "County":"Butler County",
+        "Crime Index Rate\/1,000 (County Total)":12.4
+    },
+    {
+        "County":"Chase County",
+        "Crime Index Rate\/1,000 (County Total)":11.9
+    },
+    {
+        "County":"Chautauqua County",
+        "Crime Index Rate\/1,000 (County Total)":5.0
+    },
+    {
+        "County":"Cherokee County",
+        "Crime Index Rate\/1,000 (County Total)":15.7
+    },
+    {
+        "County":"Cheyenne County",
+        "Crime Index Rate\/1,000 (County Total)":7.9
+    },
+    {
+        "County":"Clark County",
+        "Crime Index Rate\/1,000 (County Total)":9.3
+    },
+    {
+        "County":"Clay County",
+        "Crime Index Rate\/1,000 (County Total)":9.6
+    },
+    {
+        "County":"Cloud County",
+        "Crime Index Rate\/1,000 (County Total)":10.2
+    },
+    {
+        "County":"Coffey County",
+        "Crime Index Rate\/1,000 (County Total)":8.3
+    },
+    {
+        "County":"Comanche County",
+        "Crime Index Rate\/1,000 (County Total)":11.1
+    },
+    {
+        "County":"Cowley County",
+        "Crime Index Rate\/1,000 (County Total)":21.2
+    },
+    {
+        "County":"Crawford County",
+        "Crime Index Rate\/1,000 (County Total)":27.2
+    },
+    {
+        "County":"Decatur County",
+        "Crime Index Rate\/1,000 (County Total)":9.5
+    },
+    {
+        "County":"Dickinson County",
+        "Crime Index Rate\/1,000 (County Total)":8.1
+    },
+    {
+        "County":"Doniphan County",
+        "Crime Index Rate\/1,000 (County Total)":21.0
+    },
+    {
+        "County":"Douglas County",
+        "Crime Index Rate\/1,000 (County Total)":22.2
+    },
+    {
+        "County":"Edwards County",
+        "Crime Index Rate\/1,000 (County Total)":8.1
+    },
+    {
+        "County":"Elk County",
+        "Crime Index Rate\/1,000 (County Total)":null
+    },
+    {
+        "County":"Ellis County",
+        "Crime Index Rate\/1,000 (County Total)":14.3
+    },
+    {
+        "County":"Ellsworth County",
+        "Crime Index Rate\/1,000 (County Total)":9.1
+    },
+    {
+        "County":"Finney County",
+        "Crime Index Rate\/1,000 (County Total)":23.6
+    },
+    {
+        "County":"Ford County",
+        "Crime Index Rate\/1,000 (County Total)":12.1
+    },
+    {
+        "County":"Franklin County",
+        "Crime Index Rate\/1,000 (County Total)":11.1
+    },
+    {
+        "County":"Geary County",
+        "Crime Index Rate\/1,000 (County Total)":20.4
+    },
+    {
+        "County":"Gove County",
+        "Crime Index Rate\/1,000 (County Total)":5.5
+    },
+    {
+        "County":"Graham County",
+        "Crime Index Rate\/1,000 (County Total)":1.3
+    },
+    {
+        "County":"Grant County",
+        "Crime Index Rate\/1,000 (County Total)":1.7
+    },
+    {
+        "County":"Gray County",
+        "Crime Index Rate\/1,000 (County Total)":5.3
+    },
+    {
+        "County":"Greeley County",
+        "Crime Index Rate\/1,000 (County Total)":4.3
+    },
+    {
+        "County":"Greenwood County",
+        "Crime Index Rate\/1,000 (County Total)":12.6
+    },
+    {
+        "County":"Hamilton County",
+        "Crime Index Rate\/1,000 (County Total)":9.4
+    },
+    {
+        "County":"Harper County",
+        "Crime Index Rate\/1,000 (County Total)":6.4
+    },
+    {
+        "County":"Harvey County",
+        "Crime Index Rate\/1,000 (County Total)":15.6
+    },
+    {
+        "County":"Haskell County",
+        "Crime Index Rate\/1,000 (County Total)":4.4
+    },
+    {
+        "County":"Hodgeman County",
+        "Crime Index Rate\/1,000 (County Total)":3.0
+    },
+    {
+        "County":"Jackson County",
+        "Crime Index Rate\/1,000 (County Total)":10.9
+    },
+    {
+        "County":"Jefferson County",
+        "Crime Index Rate\/1,000 (County Total)":11.1
+    },
+    {
+        "County":"Jewell County",
+        "Crime Index Rate\/1,000 (County Total)":0.7
+    },
+    {
+        "County":"Johnson County",
+        "Crime Index Rate\/1,000 (County Total)":17.5
+    },
+    {
+        "County":"Kearny County",
+        "Crime Index Rate\/1,000 (County Total)":10.2
+    },
+    {
+        "County":"Kingman County",
+        "Crime Index Rate\/1,000 (County Total)":8.8
+    },
+    {
+        "County":"Kiowa County",
+        "Crime Index Rate\/1,000 (County Total)":9.7
+    },
+    {
+        "County":"Labette County",
+        "Crime Index Rate\/1,000 (County Total)":25.3
+    },
+    {
+        "County":"Lane County",
+        "Crime Index Rate\/1,000 (County Total)":5.9
+    },
+    {
+        "County":"Leavenworth County",
+        "Crime Index Rate\/1,000 (County Total)":16.6
+    },
+    {
+        "County":"Lincoln County",
+        "Crime Index Rate\/1,000 (County Total)":2.4
+    },
+    {
+        "County":"Linn County",
+        "Crime Index Rate\/1,000 (County Total)":9.1
+    },
+    {
+        "County":"Logan County",
+        "Crime Index Rate\/1,000 (County Total)":1.8
+    },
+    {
+        "County":"Lyon County",
+        "Crime Index Rate\/1,000 (County Total)":21.1
+    },
+    {
+        "County":"Mc Pherson County",
+        "Crime Index Rate\/1,000 (County Total)":9.1
+    },
+    {
+        "County":"Marion County",
+        "Crime Index Rate\/1,000 (County Total)":9.9
+    },
+    {
+        "County":"Marshall County",
+        "Crime Index Rate\/1,000 (County Total)":7.0
+    },
+    {
+        "County":"Meade County",
+        "Crime Index Rate\/1,000 (County Total)":3.8
+    },
+    {
+        "County":"Miami County",
+        "Crime Index Rate\/1,000 (County Total)":9.5
+    },
+    {
+        "County":"Mitchell County",
+        "Crime Index Rate\/1,000 (County Total)":4.2
+    },
+    {
+        "County":"Montgomery County",
+        "Crime Index Rate\/1,000 (County Total)":23.8
+    },
+    {
+        "County":"Morris County",
+        "Crime Index Rate\/1,000 (County Total)":3.0
+    },
+    {
+        "County":"Morton County",
+        "Crime Index Rate\/1,000 (County Total)":7.8
+    },
+    {
+        "County":"Nemaha County",
+        "Crime Index Rate\/1,000 (County Total)":3.1
+    },
+    {
+        "County":"Neosho County",
+        "Crime Index Rate\/1,000 (County Total)":18.2
+    },
+    {
+        "County":"Ness County",
+        "Crime Index Rate\/1,000 (County Total)":5.7
+    },
+    {
+        "County":"Norton County",
+        "Crime Index Rate\/1,000 (County Total)":1.7
+    },
+    {
+        "County":"Osage County",
+        "Crime Index Rate\/1,000 (County Total)":10.3
+    },
+    {
+        "County":"Osborne County",
+        "Crime Index Rate\/1,000 (County Total)":1.2
+    },
+    {
+        "County":"Ottawa County",
+        "Crime Index Rate\/1,000 (County Total)":7.2
+    },
+    {
+        "County":"Pawnee County",
+        "Crime Index Rate\/1,000 (County Total)":9.6
+    },
+    {
+        "County":"Phillips County",
+        "Crime Index Rate\/1,000 (County Total)":2.1
+    },
+    {
+        "County":"Pottawatomie County",
+        "Crime Index Rate\/1,000 (County Total)":7.2
+    },
+    {
+        "County":"Pratt  County",
+        "Crime Index Rate\/1,000 (County Total)":11.4
+    },
+    {
+        "County":"Rawlins County",
+        "Crime Index Rate\/1,000 (County Total)":12.2
+    },
+    {
+        "County":"Reno County",
+        "Crime Index Rate\/1,000 (County Total)":20.6
+    },
+    {
+        "County":"Republic County",
+        "Crime Index Rate\/1,000 (County Total)":9.2
+    },
+    {
+        "County":"Rice County",
+        "Crime Index Rate\/1,000 (County Total)":7.7
+    },
+    {
+        "County":"Riley County",
+        "Crime Index Rate\/1,000 (County Total)":16.9
+    },
+    {
+        "County":"Rooks County",
+        "Crime Index Rate\/1,000 (County Total)":8.8
+    },
+    {
+        "County":"Rush County",
+        "Crime Index Rate\/1,000 (County Total)":9.2
+    },
+    {
+        "County":"Russell County",
+        "Crime Index Rate\/1,000 (County Total)":8.7
+    },
+    {
+        "County":"Saline County",
+        "Crime Index Rate\/1,000 (County Total)":27.1
+    },
+    {
+        "County":"Scott County",
+        "Crime Index Rate\/1,000 (County Total)":5.9
+    },
+    {
+        "County":"Sedgwick County",
+        "Crime Index Rate\/1,000 (County Total)":43.9
+    },
+    {
+        "County":"Seward County",
+        "Crime Index Rate\/1,000 (County Total)":16.0
+    },
+    {
+        "County":"Shawnee County",
+        "Crime Index Rate\/1,000 (County Total)":34.7
+    },
+    {
+        "County":"Sheridan County",
+        "Crime Index Rate\/1,000 (County Total)":3.2
+    },
+    {
+        "County":"Sherman County",
+        "Crime Index Rate\/1,000 (County Total)":17.5
+    },
+    {
+        "County":"Smith County",
+        "Crime Index Rate\/1,000 (County Total)":0.0
+    },
+    {
+        "County":"Stafford County",
+        "Crime Index Rate\/1,000 (County Total)":5.7
+    },
+    {
+        "County":"Stanton County",
+        "Crime Index Rate\/1,000 (County Total)":1.1
+    },
+    {
+        "County":"Stevens County",
+        "Crime Index Rate\/1,000 (County Total)":4.8
+    },
+    {
+        "County":"Sumner County",
+        "Crime Index Rate\/1,000 (County Total)":12.4
+    },
+    {
+        "County":"Thomas County",
+        "Crime Index Rate\/1,000 (County Total)":11.0
+    },
+    {
+        "County":"Trego County",
+        "Crime Index Rate\/1,000 (County Total)":0.0
+    },
+    {
+        "County":"Wabaunsee County",
+        "Crime Index Rate\/1,000 (County Total)":9.9
+    },
+    {
+        "County":"Wallace County",
+        "Crime Index Rate\/1,000 (County Total)":2.6
+    },
+    {
+        "County":"Washington County",
+        "Crime Index Rate\/1,000 (County Total)":3.6
+    },
+    {
+        "County":"Wichita County",
+        "Crime Index Rate\/1,000 (County Total)":5.3
+    },
+    {
+        "County":"Wilson County",
+        "Crime Index Rate\/1,000 (County Total)":15.8
+    },
+    {
+        "County":"Woodson County",
+        "Crime Index Rate\/1,000 (County Total)":10.2
+    },
+    {
+        "County":"Wyandotte County",
+        "Crime Index Rate\/1,000 (County Total)":46.8
+    }
+]

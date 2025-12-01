@@ -26,7 +26,7 @@ class FetchQueue {
     
     /**
      * Adds the given promise to the queue, and calls validateData
-     * wit the result associated with that promise
+     * with the result associated with that promise
      * @param promise the promise to enqueue
      * @param result the object that the promise will update
      */
