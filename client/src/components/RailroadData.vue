@@ -16,10 +16,14 @@ const gRef = useTemplateRef("g");
 
 let selection = null;
 let gTag = null;
+let paths = {
+    geojson: `${props.properties.path}/geojson`,
+    csv: `${props.properties.path}/csv`
+}
 
 onMounted(() => {
     gTag = d3.select(gRef.value);
-    let { result } = fetchGeojson("/geojson/railroads.geojson");
+    let { result } = fetchGeojson(`${paths.geojson}/railroads.geojson`);
     validateData(result);
 });
 

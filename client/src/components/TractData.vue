@@ -14,10 +14,14 @@ let opacity = "0%";
 let selection = null;
 let culledSelection = null;
 let gTag = null;
+let paths = {
+    geojson: `${props.properties.path}/geojson`,
+    csv: `${props.properties.path}/csv`
+}
 
 onMounted(() => {
     gTag = d3.select(gRef.value);
-    let { result } = fetchGeojson("/geojson/KSTracts_2000.geojson");
+    let { result } = fetchGeojson(`${paths.geojson}/KSTracts_2000.geojson`);
     validateData(result);
 });
 

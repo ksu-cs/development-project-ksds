@@ -23,6 +23,11 @@ const playButton = {
     get opacity() { return this.opacityRef.value }
 }
 
+// In the future, this can be set by a UI element,
+// but, since we are only focusing on Kansas right now,
+// it is constant.
+const statePath = 'kansas';
+
 watch(() => playButton.active, checkInterval);
 
 onMounted(() => {
@@ -78,7 +83,7 @@ function updateYear(year) {
             </div>
             <span id="yearLabel" ref="yearLabel">1860</span>
         </div>
-    <BaseMap :inputValue="slider.yearRef" />
+    <BaseMap :inputValue="slider.yearRef" :statePath="statePath" />
   </div>
 </template>
 

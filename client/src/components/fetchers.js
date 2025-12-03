@@ -5,13 +5,22 @@
 import { reactive, toRefs } from "vue";
 
 /**
+ * A Vue Composable for fetching resources.
+ * 
+ * Begins fetching immediately and exposes a `refresh`
+ * method that will re-fetch the given path, updating the same
+ * reactive result object.
+ * 
+ * Result object:
+ *  - data: Holds the parsed data, otherwise `null`.
+ *  - loading: `true` while the fetch has not resolved, otherwise `false` (will also be `false` if an error is thrown).
+ *  - error: Holds the error if the request fails, otherwise `null`.
  * 
  * @param {string} pathString The path to the resource
- * @param {function parseFn(res) {
-    * parses the response from the call to fetch
- }} parseFn Parses the response from the call to fetch
- * @returns Reactive properties for data, loading, and error.
- * The asynchronous function in case it needs to be called again.
+ * @param {(response: Response) => Promise<any>} parseFn Parses the Response object from the call to `fetch`
+ * @returns An object containing refs for `data`, `loading`, and `error`.
+ * A `refresh` function that will re-fetch the given path, updating the above ref.
+ * The Promise from the first call to `fetch`.
  */
 export function fetchWrapper(pathString, parseFn) {
     const result = reactive({
@@ -20,8 +29,11 @@ export function fetchWrapper(pathString, parseFn) {
         error: null
     });
 
-    // fetches and retrieves data
-    async function f() {
+    // fetches and parses data
+    async function wrapper() {
+        result.data = null;
+        result.loading = true;
+        result.error = null;
         try {
             const res = await fetch(pathString);
             result.data = await parseFn(res);
@@ -32,17 +44,20 @@ export function fetchWrapper(pathString, parseFn) {
         }
     }
 
-    let fetching = f();
+    let fetching = wrapper();
 
     return {
         result: toRefs(result),
-        refresh: f,
-        promise: fetching
+        promise: fetching,
+        refresh: wrapper
     }
 }
 
 /**
- * 
+ * Result object:
+ *  - data: Holds the parsed data, otherwise `null`.
+ *  - loading: `true` while the fetch has not resolved, otherwise `false` (will also be `false` if an error is thrown).
+ *  - error: Holds the error if the request fails, otherwise `null`.
  * @param {string} pathString The path to the resource
  * @returns 
  */

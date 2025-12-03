@@ -20,10 +20,14 @@ let selectionBoxes = null;
 let gTag = null;
 let townPopulations = {};
 let hoverActive = true;
+let paths = {
+    geojson: `${props.properties.path}/geojson`,
+    csv: `${props.properties.path}/csv`
+}
 
 onMounted(() => {
     gTag = d3.select(gRef.value);
-    let { result } = fetchGeojson("/geojson/cities.geojson");
+    let { result } = fetchGeojson(`${paths.geojson}/cities.geojson`);
     validateData(result);
 })
 

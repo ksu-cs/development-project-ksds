@@ -13,7 +13,7 @@ import CityData from './CityData.vue';
 import TractData from './TractData.vue';
 import { watcherType } from './watcherType';
 
-const props = defineProps(["inputValue"]);
+const props = defineProps(["inputValue", "statePath"]);
 const svgRef = useTemplateRef("svg");
 const defaultViewBox = "0 0 1600 800";
 
@@ -24,7 +24,8 @@ let properties = {
         y: 0,
         width: 1600,
         height: 800
-    }
+    },
+    path: `/public/${props.statePath}`
 }
 let countyTransition = ref(true);
 let zoomState = ref("state");

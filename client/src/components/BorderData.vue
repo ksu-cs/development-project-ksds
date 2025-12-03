@@ -60,10 +60,15 @@ const queue = new FetchQueue();
 let selection = null;
 let gTag = null;
 let strokeWidth = 2;
+let paths = {
+    geojson: `${props.properties.path}/geojson`,
+    json: `${props.properties.path}/json`,
+    csv: `${props.properties.path}/csv`
+}
 
 onMounted(() => {
     gTag = d3.select(gRef.value);
-    let { result, promise} = fetchGeojson("/geojson/KSCounty_1860_GeoJSON.geojson");
+    let { result, promise } = fetchGeojson(`${paths.geojson}/KSCounty_1860_GeoJSON.geojson`);
     queue.enqueue(promise, result);
 })
 
@@ -160,7 +165,7 @@ function onZoom(newValue) {
  * @param newValue The year selected
  */
 function onYearChange(newValue) {
-    let {result, promise} = fetchGeojson(`/geojson/KSCounty_${newValue}_GeoJSON.geojson`);
+    let { result, promise } = fetchGeojson(`${paths.geojson}/KSCounty_${newValue}_GeoJSON.geojson`);
     queue.enqueue(promise, result);
 }
 </script>
