@@ -27,14 +27,19 @@ let paths = {
 
 onMounted(() => {
     gTag = d3.select(gRef.value);
-    let { result } = fetchGeojson(`${paths.geojson}/cities.geojson`);
+    const { result } = fetchGeojson(`${paths.geojson}/KSPlace1900.geojson`);
     validateData(result);
 })
 
 const fnDict = {
     [watcherType.onZoomChange]: onZoom,
-    [watcherType.onYearChange]: updateTownPopulationsOnYearChange,
+    [watcherType.onYearChange]: handleYearChange,
 };
+
+function handleYearChange(newYear) {
+    updateTownPopulationsOnYearChange(newYear);
+    onChangeYear(newYear);
+}
 
 assignWatchers(props.watchers, fnDict);
 
@@ -54,6 +59,8 @@ function validateData(r) {
     } else if (e) {
         console.log(e);
     } else {
+        gTag.select(".points").selectAll("*").remove();
+        gTag.select(".text").selectAll("*").remove();
         // Create path elements for every pair of lon, lat coordinates
         selectionPoints = gTag.select(".points")
                                 .selectAll(".point")
@@ -77,8 +84,7 @@ function validateData(r) {
         const projectedFeatures = d.features.map(feature => {
             return {
                 coordinates: props.properties.projection(feature.geometry.coordinates),
-                topTen: feature.properties["Top Ten"],
-                name: feature.properties["City Name"]
+                name: feature.properties.NAME
             }
         });
         
@@ -91,7 +97,7 @@ function validateData(r) {
                                 .append("text")
                                     .attr("x", d => d.coordinates[0])
                                     .attr("y", d => d.coordinates[1])
-                                    .attr("opacity", d => d.topTen ? "100%" : "0%")
+                                    .attr("opacity", "0%")
                                     .attr("font", "italic 13px sans-serif")
                                     .property("textContent", d => d.name)
                                     .classed("name", true)
@@ -103,16 +109,16 @@ function validateData(r) {
         // Setup events to display town name on hover
         selectionBoxes.on("mouseenter", (event) => {
             let properties = event.target.__data__.properties; // Get properties from the hit box
-            if (!properties["Top Ten"] && hoverActive) {
-                d3.select(textDict[properties["City Name"]])
+            if (hoverActive) {
+                d3.select(textDict[properties.NAME])
                     .transition()
                         .duration(200)
                         .attr("opacity", "100%");
             }
         }).on("mouseleave", (event) => {
             let properties = event.target.__data__.properties; // Get properties from the hit box
-            if (!properties["Top Ten"] && hoverActive) {
-                d3.select(textDict[properties["City Name"]])
+            if (hoverActive) {
+                d3.select(textDict[properties.NAME])
                     .transition()
                         .duration(200)
                         .attr("opacity", "0%");
@@ -154,7 +160,7 @@ function onZoom(state) {
             
             selectionText.attr("font-size", "100%")
                     .each((d, i, n) => centerText(d, i, n, 5))
-                    .attr("opacity", d => d.topTen ? "100%" : "0%");
+                    .attr("opacity", "0%");
             
             // Display town names on hover
             hoverActive = true;
@@ -201,6 +207,24 @@ function updateTownPopulationsOnYearChange(newYear) {
             console.log(townPopulations);
         });
     }
+}
+
+function onChangeYear(newYear) {
+    let fileName = '';
+    if (newYear <= 1900)
+    { 
+        fileName = `${paths.geojson}/KSPlace1900.geojson`; 
+    }
+    else if (newYear >= 2010) 
+    {
+        fileName = `${paths.geojson}/KSPlace2010.geojson`;
+    }
+    else {
+        fileName = `${paths.geojson}/KSPlace${newYear}.geojson`;
+    }
+
+    const { result } = fetchGeojson(fileName);
+    validateData(result);
 }
 </script>
 
