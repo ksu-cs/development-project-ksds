@@ -34,14 +34,12 @@ onMounted(() => {
 
 const fnDict = {
     [watcherType.onZoomChange]: onZoom,
-    [watcherType.onYearChange]: handleYearChange,
+    [watcherType.onYearChange]: [
+        onChangeYear,
+        updateTownPopulationsOnYearChange,
+    ],
     [watcherType.onCitiesChecked]: onChecked,
 };
-
-function handleYearChange(newYear) {
-    updateTownPopulationsOnYearChange(newYear);
-    onChangeYear(newYear);
-}
 
 assignWatchers(props.watchers, fnDict);
 

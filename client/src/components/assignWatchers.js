@@ -18,7 +18,12 @@ export function assignWatchers(refDict, fnDict) {
         let value = entry[1];
 
         if (Object.hasOwn(fnDict, key)) {
-            watch(() => value.value, fnDict[key]);
+            let fn = fnDict[key];
+            if (Array.isArray(fn)) {
+                watch(() => value.value, (oldValue, newValue) => fn.map(item => item(oldValue, newValue)));
+            } else {
+                watch(() => value.value, fn);
+            }
         }
     })
 }
