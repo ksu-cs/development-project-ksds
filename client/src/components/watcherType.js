@@ -28,4 +28,8 @@ export const watcherType = Object.freeze({
      * is still 'county'.
      */
     onCountyTransition: 'countyTransition',
+    onCountyBordersChecked: "onCountyBordersChecked",
+    onTractsChecked: "onTractsChecked",
+    onCitiesChecked: "onCitiesChecked",
+    onRailroadsChecked: "onRailroadsChecked",
 });

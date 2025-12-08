@@ -9,7 +9,7 @@ import { fetchGeojson } from './fetchers';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
 
-const props = defineProps(["properties", "watchers"]);
+const props = defineProps(["properties", "watchers", "filters"]);
 
 const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
@@ -20,6 +20,7 @@ let selectionBoxes = null;
 let gTag = null;
 let townPopulations = {};
 let hoverActive = true;
+let zoomState = "state";
 let paths = {
     geojson: `${props.properties.path}/geojson`,
     csv: `${props.properties.path}/csv`
@@ -34,6 +35,7 @@ onMounted(() => {
 const fnDict = {
     [watcherType.onZoomChange]: onZoom,
     [watcherType.onYearChange]: handleYearChange,
+    [watcherType.onCitiesChecked]: onChecked,
 };
 
 function handleYearChange(newYear) {
@@ -67,9 +69,10 @@ function validateData(r) {
                                 .data(d.features)
                                 .enter()
                                 .append("path")
-                                    .attr("d", pathGen.pointRadius(2))
+                                    .attr("opacity", "0%")
+                                    //.attr("d", pathGen.pointRadius(2))
                                     .classed("point", true);
-        
+
         selectionBoxes = gTag.select(".points")
                                 .selectAll(".hitbox")
                                 .data(d.features)
@@ -97,8 +100,8 @@ function validateData(r) {
                                 .append("text")
                                     .attr("x", d => d.coordinates[0])
                                     .attr("y", d => d.coordinates[1])
-                                    .attr("opacity", "0%")
                                     .attr("font", "italic 13px sans-serif")
+                                    .attr("opacity", "0%")
                                     .property("textContent", d => d.name)
                                     .classed("name", true)
                                     .each((d, i, n) => {
@@ -124,6 +127,31 @@ function validateData(r) {
                         .attr("opacity", "0%");
             }
         })
+
+        switch (zoomState) {
+            case "state":
+                selectionPoints.attr("d", pathGen.pointRadius(2))
+                if (props.filters.value) {
+                    selectionPoints.transition()
+                            .duration(200)
+                            .attr("opacity", "100%");
+                }
+                break;
+            case "county":
+                selectionPoints.attr("d", pathGen.pointRadius(1));
+                selectionText
+                        .attr("font-size", "30%")
+                        .each((d, i, n) => centerText(d, i, n, 3));
+                if (props.filters.value) {
+                    selectionPoints.transition()
+                            .duration(200)
+                            .attr("opacity", "100%");
+                    selectionText.transition()
+                            .duration(200)
+                            .attr("opacity", "100%");
+                }
+                break;
+        }
     }
 }
 
@@ -152,6 +180,7 @@ function centerText(d, i, n, dy) {
  * @param state the new zoomState
  */
 function onZoom(state) {
+    zoomState = state;
     switch (state) {
         case "state":
             selectionPoints.transition()
@@ -171,10 +200,13 @@ function onZoom(state) {
                     .attr("d", pathGen.pointRadius(1));
             
             selectionText.attr("font-size", "30%")
-                    .each((d, i, n) => centerText(d, i, n, 3))
-                .transition()
-                    .duration(200)
-                    .attr("opacity", "100%");
+                    .each((d, i, n) => centerText(d, i, n, 3));
+            
+            if (props.filters.value) {
+                selectionText.transition()
+                        .duration(200)
+                        .attr("opacity", "100%");
+            }
             
             // Don't display town names on hover
             hoverActive = false;
@@ -225,6 +257,39 @@ function onChangeYear(newYear) {
 
     const { result } = fetchGeojson(fileName);
     validateData(result);
+}
+
+function onChecked(newValue) {
+    if (newValue) {
+        selectionPoints.transition()
+                .duration(200)
+                .attr("opacity", "100%");
+        switch (zoomState) {
+            case "state":
+                hoverActive = true;
+                break;
+            case "county":
+                hoverActive = false;
+                selectionText.transition()
+                        .duration(200)
+                        .attr("opacity", "100%");
+            break;
+        }
+    } else {
+        hoverActive = false;
+        selectionPoints.transition()
+                .duration(200)
+                .attr("opacity", "0%");
+        switch (zoomState) {
+            case "state": // Do nothing
+                break;
+            case "county":
+                selectionText.transition()
+                        .duration(200)
+                        .attr("opacity", "0%");
+                break;
+        }
+    }
 }
 </script>
 

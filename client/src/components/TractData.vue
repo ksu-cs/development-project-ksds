@@ -5,7 +5,7 @@ import { fetchGeojson } from './fetchers';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
 
-const props = defineProps(["properties", "watchers"]);
+const props = defineProps(["properties", "watchers", "filters"]);
 
 const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
@@ -28,6 +28,7 @@ onMounted(() => {
 const fnDict = {
     [watcherType.onZoomChange]: onZoom,
     [watcherType.onCountyTransition]: onCountyTransition,
+    [watcherType.onTractsChecked]: onChecked,
 };
 
 assignWatchers(props.watchers, fnDict);
@@ -58,10 +59,27 @@ function validateData(r) {
                                 d.geometry.coordinates[0].reverse();
                                 return pathGen(d);
                             })
-                            .attr("opacity", opacity)
+                            .attr("opacity", "0")
                             .classed("tract", true);
-    
+        
         culledSelection = selection.filter(() => true);
+
+        switch (props.properties.zoomState.value) {
+            case "state": // Do nothing
+                break;
+            case "county":
+                if (props.filters.value) {
+                    // Cull selection
+                    culledSelection = selection.filter((d, i, n) => {
+                        let nodeBBox = n[i].getBBox();
+                        return boxOverlapsBox(nodeBBox, props.properties.bbox);
+                    })
+                    culledSelection.transition()
+                            .duration(200)
+                            .attr("opacity", "100%");
+                }
+                break;
+        }
   }
 }
 
@@ -99,9 +117,11 @@ function onCountyTransition() {
     })
 
     // Fade in new selection
-    culledSelection.transition()
-            .duration(200)
-            .attr("opacity", "100%");
+    if (props.filters.value) {
+        culledSelection.transition()
+                .duration(200)
+                .attr("opacity", "100%");
+    }
 }
 
 /**
@@ -118,6 +138,30 @@ function boxOverlapsBox(box, otherBox) {
                         box.y <= otherBox.y + otherBox.height) ||
                         (box.y + box.height >= otherBox.y &&
                         box.y + box.height <= otherBox.y + otherBox.height))
+}
+
+function onChecked(newValue) {
+    if (newValue) {
+        switch (props.properties.zoomState.value) {
+            case "state": // Do nothing
+                break;
+            case "county":
+                culledSelection.transition()
+                        .duration(200)
+                        .attr("opacity", "100%");
+                break;
+        }
+    } else {
+        switch (props.properties.zoomState.value) {
+            case "state": // Do nothing
+                break;
+            case "county":
+                culledSelection.transition()
+                        .duration(200)
+                        .attr("opacity", "0%");
+                break;
+        }
+    }
 }
 </script>
 

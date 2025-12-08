@@ -9,7 +9,7 @@ import { fetchGeojson } from './fetchers';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
 
-const props = defineProps(["properties", "watchers"]);
+const props = defineProps(["properties", "watchers", "filters"]);
 
 const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
@@ -30,6 +30,7 @@ onMounted(() => {
 const fnDict = {
     [watcherType.onZoomChange]: onZoom,
     [watcherType.onYearChange]: onYearChange,
+    [watcherType.onRailroadsChecked]: onChecked,
 };
 
 assignWatchers(props.watchers, fnDict);
@@ -59,7 +60,7 @@ function validateData(r) {
         
         // Style rail path elements
         selection.attr("d", pathGen)
-                .attr("stroke-opacity", d => d.properties.InOpBy <= props.inputValue ? "60%" : "0%")
+                .attr("stroke-opacity", d => d.properties.InOpBy <= props.properties.inputValue.value ? "60%" : "0%")
                 .attr("stroke-width", 1)
                 .classed("rail", true);
     }
@@ -94,10 +95,23 @@ function onZoom(newValue) {
  * @param newValue The year selected
  */
 function onYearChange(newValue) {
-    selection
-        .transition()
-            .duration(200)
-            .attr("stroke-opacity", d => d.properties.InOpBy <= newValue ? "60%" : "0%");
+    if (props.filters.value) {
+        selection.transition()
+                .duration(200)
+                .attr("stroke-opacity", d => d.properties.InOpBy <= newValue ? "60%" : "0%");
+    }
+}
+
+function onChecked(newValue) {
+    if (newValue) {
+        selection.transition()
+                .duration(200)
+                .attr("stroke-opacity", d => d.properties.InOpBy <= props.properties.inputValue.value ? "60%" : "0%")
+    } else {
+        selection.transition()
+                .duration(200)
+                .attr("stroke-opacity", "0%");
+    }
 }
 </script>
 
