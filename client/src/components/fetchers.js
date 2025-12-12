@@ -64,3 +64,12 @@ export function fetchWrapper(pathString, parseFn) {
 export function fetchGeojson(pathString) {
     return fetchWrapper(pathString, async (res) => await res.json());
 }
+
+/**
+ * 
+ * @param {string} pathString The path to the resource
+ * @returns 
+ */
+export function fetchJson(pathString) {
+    return fetchWrapper(pathString, async (res) => await res.json());
+}

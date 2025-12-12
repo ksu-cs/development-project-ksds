@@ -5,41 +5,49 @@
  */
 import { defineProps, onMounted, useTemplateRef, watch } from 'vue';
 import * as d3 from 'd3';
-import { fetchGeojson } from './fetchers';
+import { fetchGeojson, fetchJson } from './fetchers';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
+import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
 
-const props = defineProps(["properties", "watchers"]);
+const props = defineProps(["properties", "watchers", "filters"]);
 
 const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
+const defaultYear = 1860;
 
 let selectionPoints = null;
-let selectionText = null;
 let selectionBoxes = null;
+let selectionText = null;
+let selectionPop = null;
+let cityPops = null;
 let gTag = null;
-let townPopulations = {};
 let hoverActive = true;
+let zoomState = "state";
 let paths = {
     geojson: `${props.properties.path}/geojson`,
+    json: `${props.properties.path}/json`,
     csv: `${props.properties.path}/csv`
 }
 
 onMounted(() => {
     gTag = d3.select(gRef.value);
-    const { result } = fetchGeojson(`${paths.geojson}/KSPlace1900.geojson`);
+    const { result, promise } = fetchGeojson(`${paths.geojson}/KSPlace1900.geojson`);
+    promise.then(() => {
+        const pop_result = fetchJson(`${paths.json}/city-pops.json`);
+        validatePopData(pop_result.result);
+    })
     validateData(result);
 })
 
 const fnDict = {
     [watcherType.onZoomChange]: onZoom,
-    [watcherType.onYearChange]: handleYearChange,
+    [watcherType.onYearChange]: [
+        onChangeYear,
+        getTownPopByYear,
+    ],
+    [watcherType.onCitiesChecked]: onChecked,
 };
-
-function handleYearChange(newYear) {
-    updateTownPopulationsOnYearChange(newYear);
-    onChangeYear(newYear);
-}
 
 assignWatchers(props.watchers, fnDict);
 
@@ -67,9 +75,10 @@ function validateData(r) {
                                 .data(d.features)
                                 .enter()
                                 .append("path")
-                                    .attr("d", pathGen.pointRadius(2))
+                                    .attr("opacity", "0%")
+                                    //.attr("d", pathGen.pointRadius(2))
                                     .classed("point", true);
-        
+
         selectionBoxes = gTag.select(".points")
                                 .selectAll(".hitbox")
                                 .data(d.features)
@@ -84,11 +93,13 @@ function validateData(r) {
         const projectedFeatures = d.features.map(feature => {
             return {
                 coordinates: props.properties.projection(feature.geometry.coordinates),
-                name: feature.properties.NAME
+                name: feature.properties.NAME,
+                place: feature.properties.PLACE
             }
         });
         
         let textDict = { };
+        let popDict = { };
 
         selectionText = gTag.select(".text")
                                 .selectAll(".name")
@@ -97,33 +108,68 @@ function validateData(r) {
                                 .append("text")
                                     .attr("x", d => d.coordinates[0])
                                     .attr("y", d => d.coordinates[1])
-                                    .attr("opacity", "0%")
                                     .attr("font", "italic 13px sans-serif")
+                                    .attr("opacity", "0%")
                                     .property("textContent", d => d.name)
                                     .classed("name", true)
                                     .each((d, i, n) => {
-                                        centerText(d, i, n, 5);
+                                        centerText(d, i, n, 15);
                                         textDict[d.name] = n[i]; // For quick access when setting up hover events
                                     });
+        
+        selectionPop = gTag.select(".text")
+                                .selectAll(".pop")
+                                .data(projectedFeatures)
+                                .enter()
+                                .append("text")
+                                .attr("x", d => d.coordinates[0])
+                                .attr("y", d => d.coordinates[1])
+                                .attr("font", "italic 13px sans-serif")
+                                .attr("opacity", "0%")
+                                .property("textContent", "---")
+                                .classed("pop", true)
+                                .each((d, i, n) => {
+                                    centerText(d, i, n, 5);
+                                    popDict[d.name] = n[i];
+                                })
         
         // Setup events to display town name on hover
         selectionBoxes.on("mouseenter", (event) => {
             let properties = event.target.__data__.properties; // Get properties from the hit box
             if (hoverActive) {
-                d3.select(textDict[properties.NAME])
-                    .transition()
-                        .duration(200)
-                        .attr("opacity", "100%");
+                fadeIn(d3.select(textDict[properties.NAME]));
+                fadeIn(d3.select(popDict[properties.NAME]));
             }
         }).on("mouseleave", (event) => {
             let properties = event.target.__data__.properties; // Get properties from the hit box
             if (hoverActive) {
-                d3.select(textDict[properties.NAME])
-                    .transition()
-                        .duration(200)
-                        .attr("opacity", "0%");
+                fadeOut(d3.select(textDict[properties.NAME]));
+                fadeOut(d3.select(popDict[properties.NAME]));
             }
         })
+
+        switch (zoomState) {
+            case "state":
+                selectionPoints.attr("d", pathGen.pointRadius(2))
+                if (props.filters.value) {
+                    fadeIn(selectionPoints);
+                }
+                break;
+            case "county":
+                selectionPoints.attr("d", pathGen.pointRadius(1));
+                selectionText
+                        .attr("font-size", "30%")
+                        .each((d, i, n) => centerText(d, i, n, 3));
+                selectionPop
+                        .attr("font-size", "30%")
+                        .each((d, i, n) => centerText(d, i ,n, -5))
+                if (props.filters.value) {
+                    fadeIn(selectionPoints);
+                    fadeIn(selectionText);
+                    fadeIn(selectionPop);
+                }
+                break;
+        }
     }
 }
 
@@ -152,6 +198,7 @@ function centerText(d, i, n, dy) {
  * @param state the new zoomState
  */
 function onZoom(state) {
+    zoomState = state;
     switch (state) {
         case "state":
             selectionPoints.transition()
@@ -159,6 +206,10 @@ function onZoom(state) {
                     .attr("d", pathGen.pointRadius(2));
             
             selectionText.attr("font-size", "100%")
+                    .each((d, i, n) => centerText(d, i, n, 15))
+                    .attr("opacity", "0%");
+            
+            selectionPop.attr("font-size", "100%")
                     .each((d, i, n) => centerText(d, i, n, 5))
                     .attr("opacity", "0%");
             
@@ -171,14 +222,34 @@ function onZoom(state) {
                     .attr("d", pathGen.pointRadius(1));
             
             selectionText.attr("font-size", "30%")
-                    .each((d, i, n) => centerText(d, i, n, 3))
-                .transition()
-                    .duration(200)
-                    .attr("opacity", "100%");
+                    .each((d, i, n) => centerText(d, i, n, 3));
+            
+            selectionPop.attr("font-size", "30%")
+                    .each((d, i, n) => centerText(d, i, n, -5))
+            
+            if (props.filters.value) {
+                fadeIn(selectionText);
+                fadeIn(selectionPop);
+            }
             
             // Don't display town names on hover
             hoverActive = false;
             break;
+    }
+}
+
+function validatePopData(result) {
+    let d = result.data.value;
+    let l = result.loading.value;
+    let e = result.error.value;
+
+    if (l) {
+        const unwatch = watch(() => result.loading.value, () => { validatePopData(result); unwatch() });
+    } else if (e) {
+        console.warn(e);
+    } else {
+        cityPops = d;
+        getTownPopByYear(defaultYear)
     }
 }
 
@@ -188,25 +259,40 @@ function onZoom(state) {
  * @param newValue The year selected
  */
 //can also have the old value as an parameter if you want, otherwise just ignore
-function updateTownPopulationsOnYearChange(newYear) {
+function getTownPopByYear(newYear) {
     // We only have town population data starting in 1970 until 2020
-    if (newYear >= 1970) {
-        d3.csv("KSPopulation1970-2020ByCity.csv").then(data => {
-
-            const col = `AV0AA${newYear}`; // build column name dynamically
-
-            // convert population to number
-            data.forEach(d => {
-                d[col] = +d[col];
-            });
-
-            townPopulations = Object.fromEntries(
-                data.map(d => [d.CTY_SUB, d[col]])
-            );
-
-            console.log(townPopulations);
-        });
+    if (newYear < 1970) {
+        return;
     }
+
+    selectionPop.each((d, i, n) => {
+        let node = n[i];
+        let city_name = d.name;
+        let city_place = d.place;
+
+        if (city_place === "Winfield city") {
+            console.log("equal");
+        }
+
+        let key = null;
+        
+        if (Object.hasOwn(cityPops, city_name)) {
+            key = city_name;
+        } else if (Object.hasOwn(cityPops, city_place)) {
+            key = city_place;
+        } else {
+            console.warn(`'${city_name}' or '${city_place}' has no corresponding record`);
+        }
+
+        if (key != null) {
+            let pop = cityPops[key][newYear];
+            if (pop == null) {
+                console.warn(`'${key}' has a record but no population for '${newYear}'`);
+            } else {
+                node.textContent = String(pop);
+            }
+        }
+    })
 }
 
 function onChangeYear(newYear) {
@@ -223,8 +309,34 @@ function onChangeYear(newYear) {
         fileName = `${paths.geojson}/KSPlace${newYear}.geojson`;
     }
 
-    const { result } = fetchGeojson(fileName);
+    const { result, promise } = fetchGeojson(fileName);
+    promise.then(() => getTownPopByYear(newYear));
     validateData(result);
+}
+
+function onChecked(newValue) {
+    if (newValue) {
+        fadeIn(selectionPoints);
+        switch (zoomState) {
+            case "state":
+                hoverActive = true;
+                break;
+            case "county":
+                hoverActive = false;
+                fadeIn(selectionText);
+            break;
+        }
+    } else {
+        hoverActive = false;
+        fadeOut(selectionPoints);
+        switch (zoomState) {
+            case "state": // Do nothing
+                break;
+            case "county":
+                fadeOut(selectionText);
+                break;
+        }
+    }
 }
 </script>
 
@@ -242,6 +354,11 @@ function onChangeYear(newYear) {
 }
 
 :global(.name) {
+    fill: blue;
+    pointer-events: none;
+}
+
+:global(.pop) {
     fill: blue;
     pointer-events: none;
 }

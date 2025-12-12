@@ -5,7 +5,7 @@
  * Contains the base svg element that all geojson data is rendered to.
  * Calls each Data component to fetch and render geojson data.
  */
-import { defineProps, onMounted, useTemplateRef, ref } from 'vue';
+import { defineProps, onMounted, useTemplateRef, ref, computed } from 'vue';
 import * as d3 from 'd3';
 import RailroadData from './RailroadData.vue';
 import BorderData from './BorderData.vue';
@@ -19,7 +19,13 @@ const svgRef = useTemplateRef("svg");
 let hoveredSchool = ref(null);
 const defaultViewBox = "0 0 1600 800";
 
+let countyTransition = ref(true);
+let zoomState = ref("state");
+let svgTag = null;
+
 let properties = {
+    inputValue: props.inputValue,
+    zoomState: zoomState,
     projection: d3.geoAlbers().scale(14000).translate([1150, 375]),
     bbox: {
         x: 0,
@@ -29,14 +35,43 @@ let properties = {
     },
     path: `/public/${props.statePath}`
 }
-let countyTransition = ref(true);
-let zoomState = ref("state");
-let svgTag = null;
+
+let filters = {
+    countyBorders: {
+        label: "County Borders",
+        visible: computed(() => true),
+        checked: true,
+        checkedRef: ref(true)
+    },
+    railroads: {
+        label: "Railroads",
+        visible: computed(() => true),
+        checked: true,
+        checkedRef: ref(true)
+    },
+    cities: {
+        label: "Cities",
+        visible: computed(() => true),
+        checked: true,
+        checkedRef: ref(true)
+    },
+    tracts: {
+        label: "Tracts",
+        visible: computed(() => zoomState.value === 'county'),
+        checked: true,
+        checkedRef: ref(true)
+    }
+}
+const visibleFilters = computed(() => Object.values(filters).filter(item => item.visible.value))
 
 const watchers = {
     [watcherType.onZoomChange]: zoomState,
     [watcherType.onYearChange]: props.inputValue,
     [watcherType.onCountyTransition]: countyTransition,
+    [watcherType.onRailroadsChecked]: filters.railroads.checkedRef,
+    [watcherType.onCountyBordersChecked]: filters.countyBorders.checkedRef,
+    [watcherType.onCitiesChecked]: filters.cities.checkedRef,
+    [watcherType.onTractsChecked]: filters.tracts.checkedRef,
 };
 
 onMounted(() => {
@@ -78,24 +113,38 @@ function onTransition(type, boxString, bbox) {
         countyTransition.value = !countyTransition.value;
     }
 }
+
+function onCheckboxChecked(event, item) {
+    item.checked = event.target.checked;
+    item.checkedRef.value = item.checked;
+}
 </script>
 
 <template>
     <div class="container">
         <svg ref="svg" width="1200" height="800" viewBox="0 0 1600 800">
-            <RailroadData :properties="properties" :watchers="watchers" />
-            <BorderData :properties="properties" :watchers="watchers" @transition="onTransition" />
-            <TractData :properties="properties" :watchers="watchers" />
-            <CityData :properties="properties" :watchers="watchers" />
+            <RailroadData :properties="properties" :watchers="watchers" :filters="filters.railroads.checkedRef"/>
+            <BorderData :properties="properties" :watchers="watchers" :filters="filters.countyBorders.checkedRef" @transition="onTransition" />
+            <TractData :properties="properties" :watchers="watchers" :filters="filters.tracts.checkedRef" />
+            <CityData :properties="properties" :watchers="watchers" :filters="filters.cities.checkedRef" />
             <SchoolData :properties="properties" :watchers="watchers" @school-hover="hoveredSchool = $event" />
+
         </svg>
-        <fieldset class="checkboxes" v-if="zoomState === 'county'">
+        <TransitionGroup class="test" name="filters" tag="ul">
+            <li class="filter" v-for="item in visibleFilters" :key="item.label">
+                <input type="checkbox" :checked="item.checked" @click="onCheckboxChecked($event, item)">
+                {{ item.label }}
+            </li>
+        </TransitionGroup>
+        <!--
+        <fieldset class="filters">
             <legend>Filters:</legend>
-            <label><input type="checkbox"> Filter 1</label>
-            <label><input type="checkbox"> Filter 2</label>
-            <label><input type="checkbox"> Filter 3</label>
-            <label><input type="checkbox"> Filter 4</label>
+            <label><input type="checkbox"> County Borders</label>
+            <label><input type="checkbox"> Railroads</label>
+            <label><input type="checkbox"> Cities</label>
+            <label v-if="zoomState === 'county'"><input type="checkbox"> Tracts</label>
         </fieldset>
+        -->
         <div class="school-info-box" v-if="hoveredSchool" :style="{ left: hoveredSchool.pos.x + 15 + 'px',
               top: hoveredSchool.pos.y + 15 + 'px' }">
             <h3>{{ hoveredSchool.props.bldg_name }}</h3>
@@ -116,13 +165,21 @@ function onTransition(type, boxString, bbox) {
     align-items: center;
 }
 
-.checkboxes {
+
+.column {
     display: flex;
     flex-direction: column;
 }
 
-.checkboxes label {
-    padding: 5px 0px;
+.test {
+    position: relative;
+    padding: 0;
+    list-style-type: none;
+}
+
+.filter {
+    width: 100%;
+    height: 30px;
 }
 
 .school-info-box {
@@ -133,8 +190,24 @@ function onTransition(type, boxString, bbox) {
     border-radius: 6px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.25);
     z-index: 9999;
-    pointer-events: none; /* VERY IMPORTANT — avoids interfering with hover detection */
+    pointer-events: none;
     font-size: 13px;
     max-width: 250px;
+}
+
+.filters-move,
+.filters-enter-active,
+.filters-leave-active {
+    transition: all 0.5s ease;
+}
+
+.filters-enter-from,
+.filters-leave-to {
+    opacity: 0%;
+    transform: translateX(30px);
+}
+
+.filters-leave-active {
+    position: absolute;
 }
 </style>

@@ -8,8 +8,9 @@ import * as d3 from 'd3';
 import { fetchGeojson } from './fetchers';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
+import { fadeOut } from '@/d3/transitions/fadeSelection';
 
-const props = defineProps(["properties", "watchers"]);
+const props = defineProps(["properties", "watchers", "filters"]);
 
 const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
@@ -30,6 +31,7 @@ onMounted(() => {
 const fnDict = {
     [watcherType.onZoomChange]: onZoom,
     [watcherType.onYearChange]: onYearChange,
+    [watcherType.onRailroadsChecked]: onChecked,
 };
 
 assignWatchers(props.watchers, fnDict);
@@ -59,7 +61,7 @@ function validateData(r) {
         
         // Style rail path elements
         selection.attr("d", pathGen)
-                .attr("stroke-opacity", d => d.properties.InOpBy <= props.inputValue ? "60%" : "0%")
+                .attr("opacity", d => d.properties.InOpBy <= props.properties.inputValue.value ? "60%" : "0%")
                 .attr("stroke-width", 1)
                 .classed("rail", true);
     }
@@ -73,16 +75,14 @@ function validateData(r) {
 function onZoom(newValue) {
     switch (newValue) {
         case "state":
-            selection
-                .transition()
-                    .duration(200)
-                    .attr("stroke-width", 1);
+            selection.transition()
+                        .duration(200)
+                        .attr("stroke-width", 1);
             break;
         case "county":
-            selection
-                .transition()
-                    .duration(200)
-                    .attr("stroke-width", 0.6);
+            selection.transition()
+                        .duration(200)
+                        .attr("stroke-width", 0.6);
             break;
     }
 }
@@ -94,10 +94,21 @@ function onZoom(newValue) {
  * @param newValue The year selected
  */
 function onYearChange(newValue) {
-    selection
-        .transition()
-            .duration(200)
-            .attr("stroke-opacity", d => d.properties.InOpBy <= newValue ? "60%" : "0%");
+    if (props.filters.value) {
+        selection.transition()
+                .duration(200)
+                .attr("opacity", d => d.properties.InOpBy <= newValue ? "100%" : "0%");
+    }
+}
+
+function onChecked(newValue) {
+    if (newValue) {
+        selection.transition()
+                .duration(200)
+                .attr("opacity", d => d.properties.InOpBy <= props.properties.inputValue.value ? "60%" : "0%")
+    } else {
+        fadeOut(selection);
+    }
 }
 </script>
 

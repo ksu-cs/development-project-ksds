@@ -8,6 +8,7 @@ import * as d3 from 'd3';
 import { fetchGeojson } from './fetchers';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
+import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
 
 /**
  * A class that enforces a first in first out resolution
@@ -51,11 +52,12 @@ class FetchQueue {
 }
 
 const emit = defineEmits(["transition"])
-const props = defineProps(["properties", "watchers"]);
+const props = defineProps(["properties", "watchers", "filters"]);
 
 const pathGen = d3.geoPath(props.properties.projection)
 const gRef = useTemplateRef("g");
 const queue = new FetchQueue();
+const fadeDuration = 500;
 
 let selection = null;
 let gTag = null;
@@ -75,6 +77,7 @@ onMounted(() => {
 const fnDict = {
     [watcherType.onZoomChange]: onZoom,
     [watcherType.onYearChange]: onYearChange,
+    [watcherType.onCountyBordersChecked]: onChecked,
 }
 
 assignWatchers(props.watchers, fnDict);
@@ -97,28 +100,29 @@ function validateData(r) {
         // add onClick handlers, fade in
         // Update seleciton -> do nothing
         // Exit selection -> fade out, then remove
+
         selection = gTag.selectAll(".border")
                         .data(d.features, d => d.properties.id)
                         .join(
-                            enter => enter.append("path")
-                                                .attr("d", d => {
-                                                    // d3 expects the reverse winding order that geojson uses
-                                                    d.geometry.coordinates[0].reverse();
-                                                    return pathGen(d);
-                                                })
-                                                .attr("stroke", "black")
-                                                .attr("stroke-width", strokeWidth)
-                                                .attr("opacity", "0%")
-                                                .classed("border", true)
-                                                .on("click", onBorderClick)
-                                            .transition()
-                                                .duration(500)
-                                                .attr("opacity", "100%"),
+                            enter => {
+                                let s = enter.append("path")
+                                                    .attr("d", d => {
+                                                        // d3 expects the reverse winding order that geojson uses
+                                                        d.geometry.coordinates[0].reverse();
+                                                        return pathGen(d);
+                                                    })
+                                                    .attr("stroke", "black")
+                                                    .attr("stroke-width", strokeWidth)
+                                                    .attr("opacity", "0%")
+                                                    .classed("border", true)
+                                                    .on("click", onBorderClick)
+                                if (props.filters.value) {
+                                    fadeIn(s, { duration: fadeDuration });
+                                }
+                                return s;
+                            },
                             update => update,
-                            exit => exit.transition()
-                                            .duration(500)
-                                            .attr("opacity", "0%")
-                                            .remove()
+                            exit => fadeOut(exit, { duration: fadeDuration }).remove()
                         );
     }
 }
@@ -167,6 +171,14 @@ function onZoom(newValue) {
 function onYearChange(newValue) {
     let { result, promise } = fetchGeojson(`${paths.geojson}/KSCounty_${newValue}_GeoJSON.geojson`);
     queue.enqueue(promise, result);
+}
+
+function onChecked(newValue) {
+    if (newValue) {
+        fadeIn(selection, { duration: fadeDuration });
+    } else {
+        fadeOut(selection, { duration: fadeDuration });
+    }
 }
 </script>
 
