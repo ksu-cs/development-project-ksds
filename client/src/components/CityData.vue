@@ -324,6 +324,7 @@ function onChecked(newValue) {
             case "county":
                 hoverActive = false;
                 fadeIn(selectionText);
+                fadeIn(selectionPop);
             break;
         }
     } else {
@@ -334,6 +335,7 @@ function onChecked(newValue) {
                 break;
             case "county":
                 fadeOut(selectionText);
+                fadeOut(selectionPop);
                 break;
         }
     }
