@@ -8,6 +8,7 @@ import * as d3 from 'd3';
 import { fetchGeojson } from './fetchers';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
+import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
 
 /**
  * A class that enforces a first in first out resolution
@@ -56,6 +57,7 @@ const props = defineProps(["properties", "watchers", "filters"]);
 const pathGen = d3.geoPath(props.properties.projection)
 const gRef = useTemplateRef("g");
 const queue = new FetchQueue();
+const fadeDuration = 500;
 
 let selection = null;
 let gTag = null;
@@ -115,17 +117,12 @@ function validateData(r) {
                                                     .classed("border", true)
                                                     .on("click", onBorderClick)
                                 if (props.filters.value) {
-                                    s.transition()
-                                            .duration(500)
-                                            .attr("opacity", "100%");
+                                    fadeIn(s, { duration: fadeDuration });
                                 }
                                 return s;
                             },
                             update => update,
-                            exit => exit.transition()
-                                            .duration(500)
-                                            .attr("opacity", "0%")
-                                            .remove()
+                            exit => fadeOut(exit, { duration: fadeDuration }).remove()
                         );
     }
 }
@@ -178,13 +175,9 @@ function onYearChange(newValue) {
 
 function onChecked(newValue) {
     if (newValue) {
-        selection.transition()
-            .duration(500)
-                .attr("opacity", "100%");
+        fadeIn(selection, { duration: fadeDuration });
     } else {
-        selection.transition()
-            .duration(500)
-                .attr("opacity", "0%");
+        fadeOut(selection, { duration: fadeDuration });
     }
 }
 </script>

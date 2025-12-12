@@ -4,6 +4,7 @@ import * as d3 from 'd3';
 import { fetchGeojson } from './fetchers';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
+import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
 
 const props = defineProps(["properties", "watchers", "filters"]);
 
@@ -74,9 +75,7 @@ function validateData(r) {
                         let nodeBBox = n[i].getBBox();
                         return boxOverlapsBox(nodeBBox, props.properties.bbox);
                     })
-                    culledSelection.transition()
-                            .duration(200)
-                            .attr("opacity", "100%");
+                    fadeIn(culledSelection);
                 }
                 break;
         }
@@ -106,9 +105,7 @@ function onZoom(state) {
  */
 function onCountyTransition() {
     // Fade out last selection
-    culledSelection.transition()
-            .duration(200)
-            .attr("opacity", "0%");
+    fadeOut(culledSelection);
     
     // Cull selection
     culledSelection = selection.filter((d, i, n) => {
@@ -118,9 +115,7 @@ function onCountyTransition() {
 
     // Fade in new selection
     if (props.filters.value) {
-        culledSelection.transition()
-                .duration(200)
-                .attr("opacity", "100%");
+        fadeIn(culledSelection);
     }
 }
 
@@ -146,9 +141,7 @@ function onChecked(newValue) {
             case "state": // Do nothing
                 break;
             case "county":
-                culledSelection.transition()
-                        .duration(200)
-                        .attr("opacity", "100%");
+                fadeIn(culledSelection);
                 break;
         }
     } else {
@@ -156,9 +149,7 @@ function onChecked(newValue) {
             case "state": // Do nothing
                 break;
             case "county":
-                culledSelection.transition()
-                        .duration(200)
-                        .attr("opacity", "0%");
+                fadeOut(culledSelection);
                 break;
         }
     }
