@@ -9,7 +9,7 @@ Expected Changes:
 * Every city's name should be displayed, centered above their corresponding red dot.
 * Tract boundaries should be displayed in red dotted lines.
 * The green dotted lines, representing railroads, should shrink in width.
-* The filter placeholder box should appear to the right of the map.
+* The 'Tracts' filter should appear in the list of filters to the right of the map.
 
 
 
@@ -28,6 +28,7 @@ Expected Changes:
 * Tract boundaries should be hidden.
 * Every red dot should grow in radius.
 * County borders should grow in width.
+* The 'Tracts' filter should disappear from the list of filters to the right of the map.
 
 
 

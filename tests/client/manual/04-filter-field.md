@@ -1,66 +1,119 @@
 # 04 Filter Field
 
-## Click on Filter 1
+## Click on the 'County Borders' Filter
 
 Expected Changes:
-* Filter 1 becomes checked.
-* The map doesn't change.
+* The 'County Borders' checkbox becomes unchecked.
+* All borders on the map become transparent.
 
 
 
-## Click on Filter 2
-
-Expected Changes:
-* Filter 2 becomes checked.
-* The map doesn't change.
-
-
-
-## Click on Filter 3
+## Click On Where a County Border Would Be
 
 Expected Changes:
-* Filter 3 becomes checked.
-* The map doesn't change.
+* The map zooms into the clicked on border even though it's transparent.
+* City names are rendered to the map.
+* City population is rendered to the map.
+* The 'Tracts' filter appears.
 
 
 
-## Click on Filter 4
-
-Expected Changes:
-* Filter 4 becomes checked.
-* The map doesn't change.
-
-
-
-## Click on Filter 1
+## Click on the 'County Borders' Filter
 
 Expected Changes:
-* Filter 1 becomes unchecked.
-* The map doesn't change.
+* The 'County Borders' checkbox becomes checked.
+* All borders on the map become visible.
 
 
 
-## Click on Filter 2
-
-Expected Changes:
-* Filter 2 becomes unchecked.
-* The map doesn't change.
-
-
-
-## Click on Filter 3
+## Zoom Out to the State View
 
 Expected Changes:
-* Filter 3 becomes unchecked.
-* The map doesn't change.
+* All county borders are still drawn.
+* The 'Tract' filter disappears.
 
 
 
-## Click on Filter 4
+## Move the Input Slider to its Max Value
+
+## Click on the 'Railroads' Filter
 
 Expected Changes:
-* Filter 4 becomes unchecked
-* The map doesn't change.
+* The 'Railroads' checkbox becomes unchecked.
+* All railroads on the map become transparent.
+
+
+
+## Click on a County Border
+
+Expected Changes:
+* Railroads remain transparent in the county view.
+* City names are rendered to the map.
+* City population is rendered to the map.
+
+
+
+## Click on the 'Railroads' Filter
+
+Expected Changes:
+* The 'Railroads' checkbox becomes checked.
+* All railraods on the map become visible.
+
+
+
+## Click on the 'Cities' Filter
+
+Expected Changes:
+* The 'Cities' checkbox becomes unchecked.
+* All cities on the map become transparent.
+* All city names become transparent.
+* All city populations become transparent.
+
+
+
+## Click on a County Border
+
+Expected Changes:
+* The map zooms out to the state view.
+
+
+
+## Click on the 'Cities' Filter
+
+Expected Changes:
+* The 'Cities' checkbox becomes checked.
+* The cities are rendered to the map.
+* The city names are not rendered to the map.
+* The city populations are not rendered to the map.
+
+
+
+## Click on the 'Cities' Filter
+
+## Click on a County Border
+
+## Click on the 'Cities Filter'
+
+Expected Changes:
+* All the cities are rendered to the map.
+* All the city names are rendered to the map.
+* All the city populations are rendered to the map.
+
+
+
+## Click on the 'Tracts' filter
+
+Expected Changes:
+* The 'Tracts' checkbox becomes unchecked.
+* The tracts on the map become transparent.
+
+
+
+## Click on the 'Tracts' filter
+
+Expected Changes:
+* The 'Tracts' checkbox becomes checked.
+* The tracts on the map are rendered.
 
 
 
