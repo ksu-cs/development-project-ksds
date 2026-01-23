@@ -11,9 +11,11 @@ import { watch } from 'vue';
  * @param { object } refDict A dictionary with its key being from watcherType
  * and its value the ref object to watch
  * @param { object } fnDict A dictionary with its key being from watcherType
- * and its value the function(s) to execute when it's corresponding ref object
+ * and its value the function(s) to execute when its corresponding ref object
  * changes.
  * @param { object } options An object holding each option to pass to each watcher
+ * @returns A dictionary with its key being from watcherType and its value the 
+ * function to unwatch the watcher assigned to the key.
  */
 export function assignWatchers(refDict, fnDict, options = { }) {
     if (refDict == null) {

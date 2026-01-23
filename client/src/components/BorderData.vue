@@ -9,47 +9,8 @@ import { fetchGeojson } from './fetchers';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
 import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
-
-/**
- * A class that enforces a first in first out resolution
- * order on promises in the queue.
- */
-class FetchQueue {
-    /**
-     * Creates a starting resolved promise to chain onto
-     * @param max the maximum number of chained promises before reseting
-     */
-    constructor(max = 50) {
-        this.max = max;
-        this.queue = Promise.resolve();
-        this.count = 0;
-    }
-    
-    /**
-     * Adds the given promise to the queue, and calls validateData
-     * with the result associated with that promise
-     * @param promise the promise to enqueue
-     * @param result the object that the promise will update
-     */
-    enqueue(promise, result) {
-        this.count += 1;
-        this.queue = this.queue.then(async () => {
-            await promise.then(async () => await validateData(result))
-        });
-
-        if (this.count >= this.max) {
-            this.resetQueue();
-        }
-    }
-
-    /**
-     * Resets the queue to a single resolved promise
-     */
-    resetQueue() {
-        this.queue = Promise.resolve();
-        this.count = 0;
-    }
-}
+import { createTransition } from '@/d3/transitions/createTransition';
+import { FetchQueue } from './FetchQueue';
 
 const emit = defineEmits(["transition"])
 const props = defineProps(["properties", "watchers", "filters"]);
@@ -71,7 +32,7 @@ let paths = {
 onMounted(() => {
     gTag = d3.select(gRef.value);
     let { result, promise } = fetchGeojson(`${paths.geojson}/KSCounty_1860_GeoJSON.geojson`);
-    queue.enqueue(promise, result);
+    queue.enqueue(promise, result, validateData);
 })
 
 const fnDict = {
@@ -93,7 +54,7 @@ function validateData(r) {
     let e = r.error.value;
 
     if (e) {
-        console.log(e);
+        console.error(e);
     } else {
         // Join border paths:
         // Enter selection -> create paths, style them,
@@ -101,29 +62,32 @@ function validateData(r) {
         // Update seleciton -> do nothing
         // Exit selection -> fade out, then remove
 
-        selection = gTag.selectAll(".border")
-                        .data(d.features, d => d.properties.id)
-                        .join(
-                            enter => {
-                                let s = enter.append("path")
-                                                    .attr("d", d => {
-                                                        // d3 expects the reverse winding order that geojson uses
-                                                        d.geometry.coordinates[0].reverse();
-                                                        return pathGen(d);
-                                                    })
-                                                    .attr("stroke", "black")
-                                                    .attr("stroke-width", strokeWidth)
-                                                    .attr("opacity", "0%")
-                                                    .classed("border", true)
-                                                    .on("click", onBorderClick)
-                                if (props.filters.value) {
-                                    fadeIn(s, { duration: fadeDuration });
-                                }
-                                return s;
-                            },
-                            update => update,
-                            exit => fadeOut(exit, { duration: fadeDuration }).remove()
-                        );
+        selection = gTag
+            .selectAll(".border")
+            .data(d.features, d => d.properties.id)
+            .join(
+                enter => {
+                    let s = enter
+                        .append("path")
+                            .attr("d", d => {
+                                // d3 expects the reverse winding order that geojson uses
+                                d.geometry.coordinates[0].reverse();
+                                return pathGen(d);
+                            })
+                            .attr("stroke", "black")
+                            .attr("stroke-width", strokeWidth)
+                            .attr("opacity", "0%")
+                            .classed("border", true)
+                            .on("click", onBorderClick);
+                                
+                    if (props.filters.value) {
+                        fadeIn(s, { duration: fadeDuration });
+                    }
+                    return s;
+                },
+                update => update,
+                exit => fadeOut(exit, { duration: fadeDuration }).remove()
+            );
     }
 }
 
@@ -151,14 +115,12 @@ function onZoom(newValue) {
     switch (newValue) {
         case "state":
             strokeWidth = 2;
-            selection.transition()
-                    .duration(200)
+            createTransition(selection)
                     .attr("stroke-width", strokeWidth);
             break;
         case "county":
             strokeWidth = 1;
-            selection.transition()
-                    .duration(200)
+            createTransition(selection)
                     .attr("stroke-width", strokeWidth);
             break;
     }
@@ -170,7 +132,7 @@ function onZoom(newValue) {
  */
 function onYearChange(newValue) {
     let { result, promise } = fetchGeojson(`${paths.geojson}/KSCounty_${newValue}_GeoJSON.geojson`);
-    queue.enqueue(promise, result);
+    queue.enqueue(promise, result, validateData);
 }
 
 function onChecked(newValue) {

@@ -49,19 +49,20 @@ function validateData(r) {
         // Watch for the data to load
         const unwatch = watch(() => r.loading.value, () => { validateData(r); unwatch() });
     } else if (e) {
-        console.log(e);
+        console.error(e);
     } else {
         // Create tract path elements bound to data.
-        selection = gTag.selectAll(".tract")
-                        .data(d.features)
-                        .enter()
-                        .append("path")
-                            .attr("d", d => {
-                                d.geometry.coordinates[0].reverse();
-                                return pathGen(d);
-                            })
-                            .attr("opacity", "0")
-                            .classed("tract", true);
+        selection = gTag
+            .selectAll(".tract")
+            .data(d.features)
+            .enter()
+            .append("path")
+                .attr("d", d => {
+                    d.geometry.coordinates[0].reverse();
+                    return pathGen(d);
+                })
+                .attr("opacity", "0")
+                .classed("tract", true);
         
         culledSelection = selection.filter(() => true);
 
@@ -74,7 +75,7 @@ function validateData(r) {
                     culledSelection = selection.filter((d, i, n) => {
                         let nodeBBox = n[i].getBBox();
                         return boxOverlapsBox(nodeBBox, props.properties.bbox);
-                    })
+                    });
                     fadeIn(culledSelection);
                 }
                 break;
@@ -91,7 +92,8 @@ function onZoom(state) {
     switch (state) {
         case "state":
             opacity = "0%";
-            culledSelection.transition()
+            culledSelection
+                .transition()
                 .duration(200)
                 .attr("opacity", opacity);
             break;
@@ -111,7 +113,7 @@ function onCountyTransition() {
     culledSelection = selection.filter((d, i, n) => {
         let nodeBBox = n[i].getBBox();
         return boxOverlapsBox(nodeBBox, props.properties.bbox);
-    })
+    });
 
     // Fade in new selection
     if (props.filters.value) {

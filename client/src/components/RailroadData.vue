@@ -9,6 +9,7 @@ import { fetchGeojson } from './fetchers';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
 import { fadeOut } from '@/d3/transitions/fadeSelection';
+import { createTransition } from '@/d3/transitions/createTransition';
 
 const props = defineProps(["properties", "watchers", "filters"]);
 
@@ -51,19 +52,22 @@ function validateData(r) {
         // Watch for the data to load
         const unwatch = watch(() => r.loading.value, () => { validateData(r); unwatch() });
     } else if (e) {
-        console.log(e);
+        console.error(e);
     } else {
         // Create rail path elements
-        selection = gTag.selectAll(".rail")
-                                    .data(d.features)
-                                    .enter()
-                                    .append("path");
-        
-        // Style rail path elements
-        selection.attr("d", pathGen)
-                .attr("opacity", d => d.properties.InOpBy <= props.properties.inputValue.value ? "60%" : "0%")
-                .attr("stroke-width", 1)
-                .classed("rail", true);
+        selection = gTag
+            .selectAll(".rail")
+            .data(d.features)
+            .join(
+                enter => enter
+                    .append("path")
+                        .attr("d", pathGen)
+                        .attr("opacity", d => d.properties.InOpBy <= props.properties.inputValue.value ? "100%" : "0%")
+                        .attr("stroke-width", 1)
+                        .classed("rail", true),
+                update => update,
+                exit => fadeOut(exit).remove()
+            )
     }
 }
 
@@ -75,14 +79,12 @@ function validateData(r) {
 function onZoom(newValue) {
     switch (newValue) {
         case "state":
-            selection.transition()
-                        .duration(200)
-                        .attr("stroke-width", 1);
+            createTransition(selection)
+                    .attr("stroke-width", 1);
             break;
         case "county":
-            selection.transition()
-                        .duration(200)
-                        .attr("stroke-width", 0.6);
+            createTransition(selection)
+                    .attr("stroke-width", 0.6);
             break;
     }
 }
@@ -95,17 +97,15 @@ function onZoom(newValue) {
  */
 function onYearChange(newValue) {
     if (props.filters.value) {
-        selection.transition()
-                .duration(200)
+        createTransition(selection)
                 .attr("opacity", d => d.properties.InOpBy <= newValue ? "100%" : "0%");
     }
 }
 
 function onChecked(newValue) {
     if (newValue) {
-        selection.transition()
-                .duration(200)
-                .attr("opacity", d => d.properties.InOpBy <= props.properties.inputValue.value ? "60%" : "0%")
+        createTransition(selection)
+                .attr("opacity", d => d.properties.InOpBy <= props.properties.inputValue.value ? "100%" : "0%");
     } else {
         fadeOut(selection);
     }

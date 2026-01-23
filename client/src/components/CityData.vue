@@ -9,6 +9,7 @@ import { fetchGeojson, fetchJson } from './fetchers';
 import { assignWatchers } from './assignWatchers';
 import { watcherType } from './watcherType';
 import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
+import { createTransition } from '@/d3/transitions/createTransition';
 
 const props = defineProps(["properties", "watchers", "filters"]);
 
@@ -55,37 +56,45 @@ assignWatchers(props.watchers, fnDict);
  * Waits for the fetched data to load. If the fetch failed,
  * prints the error received. Populates selection by binding
  * the data to path elements.
- * @param r The object that holds the data, loading, and error properties
+ * @param result The object that holds the data, loading, and error properties
  */
-function validateData(r) {
-    let d = r.data.value;
-    let l = r.loading.value;
-    let e = r.error.value;
+function validateData(result) {
+    let d = result.data.value;
+    let l = result.loading.value;
+    let e = result.error.value;
 
     if (l) {
-        const unwatch = watch(() => r.loading.value, () => { validateData(r); unwatch() });
+        const unwatch = watch(() => result.loading.value, () => { validateData(result); unwatch() });
     } else if (e) {
-        console.log(e);
+        console.error(e);
     } else {
-        gTag.select(".points").selectAll("*").remove();
-        gTag.select(".text").selectAll("*").remove();
-        // Create path elements for every pair of lon, lat coordinates
-        selectionPoints = gTag.select(".points")
-                                .selectAll(".point")
-                                .data(d.features)
-                                .enter()
-                                .append("path")
-                                    .attr("opacity", "0%")
-                                    //.attr("d", pathGen.pointRadius(2))
-                                    .classed("point", true);
-
-        selectionBoxes = gTag.select(".points")
-                                .selectAll(".hitbox")
-                                .data(d.features)
-                                .enter()
-                                .append("path")
-                                    .attr("d", pathGen.pointRadius(5))
-                                    .classed("hitbox", true)
+        selectionPoints = gTag
+            .select(".points")
+            .selectAll(".point")
+            .data(d.features, (d) => d.properties.NAME)
+            .join(
+                enter => enter
+                    .append("path")
+                        .attr("opacity", "0%")
+                        .classed("point", true),
+                update => update,
+                exit => fadeOut(exit).remove()
+            )
+        
+        selectionBoxes = gTag
+            .select(".points")
+            .selectAll(".hitbox")
+            .data(d.features, (d) => d.properties.NAME)
+            .join(
+                enter => {
+                    return enter
+                        .append("path")
+                            .attr("d", pathGen.pointRadius(5))
+                            .classed("hitbox", true);
+                },
+                update => update,
+                exit => exit.remove()
+            )
         
         // Project every city's (lon, lat) pair
         // pathGen does this for us, however,
@@ -101,38 +110,46 @@ function validateData(r) {
         let textDict = { };
         let popDict = { };
 
-        selectionText = gTag.select(".text")
-                                .selectAll(".name")
-                                .data(projectedFeatures)
-                                .enter()
-                                .append("text")
-                                    .attr("x", d => d.coordinates[0])
-                                    .attr("y", d => d.coordinates[1])
-                                    .attr("font", "italic 13px sans-serif")
-                                    .attr("opacity", "0%")
-                                    .property("textContent", d => d.name)
-                                    .classed("name", true)
-                                    .each((d, i, n) => {
-                                        centerText(d, i, n, 15);
-                                        textDict[d.name] = n[i]; // For quick access when setting up hover events
-                                    });
+        selectionText = gTag
+            .select(".text")
+            .selectAll(".name")
+            .data(projectedFeatures, (d) => d.name)
+            .join(
+                enter => {
+                    return enter
+                        .append("text")
+                            .attr("x", d => d.coordinates[0])
+                            .attr("y", d => d.coordinates[1])
+                            .attr("font", "italic 13px sans-serif")
+                            .attr("opacity", "0%")
+                            .property("textContent", d => d.name)
+                            .classed("name", true)
+                            .each((d, i, n) => textDict[d.name] = n[i]); // For quick access when setting up hover events.
+                },
+                update => update,
+                exit => fadeOut(exit).remove()
+            );
         
-        selectionPop = gTag.select(".text")
-                                .selectAll(".pop")
-                                .data(projectedFeatures)
-                                .enter()
-                                .append("text")
-                                .attr("x", d => d.coordinates[0])
-                                .attr("y", d => d.coordinates[1])
-                                .attr("font", "italic 13px sans-serif")
-                                .attr("opacity", "0%")
-                                .property("textContent", "---")
-                                .classed("pop", true)
-                                .each((d, i, n) => {
-                                    centerText(d, i, n, 5);
-                                    popDict[d.name] = n[i];
-                                })
-        
+        selectionPop = gTag
+            .select(".text")
+            .selectAll(".pop")
+            .data(projectedFeatures, (d) => d.name)
+            .join(
+                enter => {
+                    return enter
+                        .append("text")
+                            .attr("x", d => d.coordinates[0])
+                            .attr("y", d => d.coordinates[1])
+                            .attr("font", "italic 13px sans-serif")
+                            .attr("opacity", "0%")
+                            .property("textContent", "---")
+                            .classed("pop", true)
+                            .each((d, i, n) => popDict[d.name] = n[i]);
+                },
+                update => update,
+                exit => fadeOut(exit).remove()
+            )
+
         // Setup events to display town name on hover
         selectionBoxes.on("mouseenter", (event) => {
             let properties = event.target.__data__.properties; // Get properties from the hit box
@@ -150,13 +167,21 @@ function validateData(r) {
 
         switch (zoomState) {
             case "state":
-                selectionPoints.attr("d", pathGen.pointRadius(2))
+                selectionPoints
+                        .attr("d", pathGen.pointRadius(2));
+                selectionText
+                        .attr("font-size", "100%")
+                        .each((d, i, n) => centerText(d, i, n, 16));
+                selectionPop
+                        .attr("font-size", "100%")
+                        .each((d, i, n) => centerText(d, i, n, 5))
                 if (props.filters.value) {
                     fadeIn(selectionPoints);
                 }
                 break;
             case "county":
-                selectionPoints.attr("d", pathGen.pointRadius(1));
+                selectionPoints
+                        .attr("d", pathGen.pointRadius(1));
                 selectionText
                         .attr("font-size", "30%")
                         .each((d, i, n) => centerText(d, i, n, 3));
@@ -201,15 +226,14 @@ function onZoom(state) {
     zoomState = state;
     switch (state) {
         case "state":
-            selectionPoints.transition()
-                    .duration(200)
+            createTransition(selectionPoints)
                     .attr("d", pathGen.pointRadius(2));
-            
-            selectionText.attr("font-size", "100%")
+            selectionText
+                    .attr("font-size", "100%")
                     .each((d, i, n) => centerText(d, i, n, 15))
                     .attr("opacity", "0%");
-            
-            selectionPop.attr("font-size", "100%")
+            selectionPop
+                    .attr("font-size", "100%")
                     .each((d, i, n) => centerText(d, i, n, 5))
                     .attr("opacity", "0%");
             
@@ -217,14 +241,13 @@ function onZoom(state) {
             hoverActive = true;
             break;
         case "county":
-            selectionPoints.transition()
-                    .duration(200)
+            createTransition(selectionPoints)
                     .attr("d", pathGen.pointRadius(1));
-            
-            selectionText.attr("font-size", "30%")
+            selectionText
+                    .attr("font-size", "30%")
                     .each((d, i, n) => centerText(d, i, n, 3));
-            
-            selectionPop.attr("font-size", "30%")
+            selectionPop
+                    .attr("font-size", "30%")
                     .each((d, i, n) => centerText(d, i, n, -5))
             
             if (props.filters.value) {
@@ -269,10 +292,6 @@ function getTownPopByYear(newYear) {
         let node = n[i];
         let city_name = d.name;
         let city_place = d.place;
-
-        if (city_place === "Winfield city") {
-            console.log("equal");
-        }
 
         let key = null;
         

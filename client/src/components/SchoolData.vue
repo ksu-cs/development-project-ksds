@@ -44,7 +44,7 @@
             return;
         }
         if (e) {
-            console.log(e);
+            console.error(e);
             return;
         }
         console.log("KSSchools features:", d && d.features ? d.features.length : "no data");
