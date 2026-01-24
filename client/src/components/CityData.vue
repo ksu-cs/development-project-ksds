@@ -79,7 +79,7 @@ function validateData(result) {
                         .classed("point", true),
                 update => update,
                 exit => fadeOut(exit).remove()
-            )
+            );
         
         selectionBoxes = gTag
             .select(".points")
@@ -94,7 +94,8 @@ function validateData(result) {
                 },
                 update => update,
                 exit => exit.remove()
-            )
+            );
+        console.log(selectionBoxes);
         
         // Project every city's (lon, lat) pair
         // pathGen does this for us, however,
@@ -124,11 +125,11 @@ function validateData(result) {
                             .attr("opacity", "0%")
                             .property("textContent", d => d.name)
                             .classed("name", true)
-                            .each((d, i, n) => textDict[d.name] = n[i]); // For quick access when setting up hover events.
                 },
                 update => update,
                 exit => fadeOut(exit).remove()
-            );
+            )
+            .each((d, i, n) => textDict[d.name] = n[i]); // For quick access when setting up hover events.
         
         selectionPop = gTag
             .select(".text")
@@ -144,24 +145,24 @@ function validateData(result) {
                             .attr("opacity", "0%")
                             .property("textContent", "---")
                             .classed("pop", true)
-                            .each((d, i, n) => popDict[d.name] = n[i]);
                 },
                 update => update,
                 exit => fadeOut(exit).remove()
             )
+            .each((d, i, n) => popDict[d.name] = n[i]);
 
         // Setup events to display town name on hover
-        selectionBoxes.on("mouseenter", (event) => {
-            let properties = event.target.__data__.properties; // Get properties from the hit box
+        selectionBoxes.on("mouseenter", (event, d) => {
             if (hoverActive) {
-                fadeIn(d3.select(textDict[properties.NAME]));
-                fadeIn(d3.select(popDict[properties.NAME]));
+                console.log(textDict[d.properties.NAME]);
+                fadeIn(d3.select(textDict[d.properties.NAME]));
+                fadeIn(d3.select(popDict[d.properties.NAME]));
             }
-        }).on("mouseleave", (event) => {
-            let properties = event.target.__data__.properties; // Get properties from the hit box
+        }).on("mouseleave", (event, d) => {
             if (hoverActive) {
-                fadeOut(d3.select(textDict[properties.NAME]));
-                fadeOut(d3.select(popDict[properties.NAME]));
+                console.log("We have exited a hit box.");
+                fadeOut(d3.select(textDict[d.properties.NAME]));
+                fadeOut(d3.select(popDict[d.properties.NAME]));
             }
         })
 
