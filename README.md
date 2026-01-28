@@ -9,3 +9,7 @@ The data aggregated and displayed through this web appliation is typically publi
 ## Contributing
 
 If you'd like to learn about how you can contribute, you can view our [CONTRIBUTING](/CONTRIBUTING.md) file.
+
+## Documentation
+
+If you would like to view our specification, design, and code documentation, you can view our [Project Wiki](https://github.com/ksu-cs/development-project-ksds/wiki).
