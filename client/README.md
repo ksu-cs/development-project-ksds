@@ -1,50 +1,38 @@
-# client
+# Client
 
-This template should help get you started developing with Vue 3 in Vite.
+The client is a single-page application built with Vue and Node.js.
 
-## Recommended IDE Setup
+It features a core interactive map, represented by an SVG element in the `BaseMap.vue` component. This map manages multilpe independent data components that can hook into changes to the SVG.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+The client is intended to be highly modular, allowing new data components to be added without modifying the core map logic, or the logic of other data components.
 
-## Recommended Browser Setup
+## Architecture
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+### BaseMap.Vue
 
-## Customize configuration
+`BaseMap.vue` is the central component of the application as it manages the base SVG that all data components render to.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+This component is responsible for the state of the base SVG that represents the interactive map of Kansas. These include, but are not limited to, managing the SVG's viewBox, pan/zoom, etc. A set of hooks into this component's state changes are exposed to each data component so that they can interact with the map.
 
-## Project Setup
+This component should not depend on the structure of any data that renders to it, nor should it store this data anywhere. The business logic of all data should stay within the relevant data component.
 
-```sh
-npm install
-```
+One exception to this is the dislpay of tool tip content, which may be passed up to the `BaseMap.vue` component strictly for presentation purposes, no data processing should be done by `BaseMap.vue`
 
-### Compile and Hot-Reload for Development
+### Data Components
 
-```sh
-npm run dev
-```
+Each data component represents a specific dataset such as railroads, towns, and boundaries.
 
-### Compile and Minify for Production
+A data component is fully responsible for its own data. It should decide how it's data is loaded, how it's rendered into SVG elements (typically one or more path elements are preferred), and how it changes in response to changes to the map. It may invoke any number of hooks provided by `BaseMap.vue` or none at all if they aren't required.
 
-```sh
-npm run build
-```
+### Hooks
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+`BaseMap.vue` passes a prop containing hooks down to each data component.
 
-```sh
-npm run test:unit
-```
+# Development/Production
 
-### Lint with [ESLint](https://eslint.org/)
+In development, the client is run as a standalone application. The client should be automatically started upon mounting into the Github Codespace or the Dev Container.
 
-```sh
-npm run lint
-```
+In production, the client will be served to the user when they query the server at a specific endpoint.
+
+## Adding a New Data Component
+
