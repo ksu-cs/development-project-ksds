@@ -137,6 +137,10 @@ function boxOverlapsBox(box, otherBox) {
                         box.y + box.height <= otherBox.y + otherBox.height))
 }
 
+/**
+ * When checked, fades in the appropriate culled selection. When unchecked, fades out the culled selection.
+ * @param newValue Whether this data components filter was checked or unchecked (true/false)
+ */
 function onChecked(newValue) {
     if (newValue) {
         switch (props.properties.zoomState.value) {

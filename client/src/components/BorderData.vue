@@ -135,6 +135,10 @@ function onYearChange(newValue) {
     queue.enqueue(promise, result, validateData);
 }
 
+/**
+ * Fades in the current selection when checked and fades out when unchecked.
+ * @param newValue Whether the filters for this data component was checked or unchecked (true/false)
+ */
 function onChecked(newValue) {
     if (newValue) {
         fadeIn(selection, { duration: fadeDuration });

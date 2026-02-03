@@ -102,6 +102,10 @@ function onYearChange(newValue) {
     }
 }
 
+/**
+ * Fades in the appropriate selection when checked, fades it out when unchecked.
+ * @param newValue Whether this data components filter was checked or unchecked (true/false)
+ */
 function onChecked(newValue) {
     if (newValue) {
         createTransition(selection)

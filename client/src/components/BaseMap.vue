@@ -23,6 +23,7 @@ let countyTransition = ref(true);
 let zoomState = ref("state");
 let svgTag = null;
 
+// Object passed to each data component so they can access properties of the map.
 let properties = {
     inputValue: props.inputValue,
     zoomState: zoomState,
@@ -36,6 +37,7 @@ let properties = {
     path: `/public/${props.statePath}`
 }
 
+// Each data component has an entry here to specify when it is visible and detect when it becomes checked/unchecked
 let filters = {
     countyBorders: {
         label: "County Borders",
@@ -62,8 +64,11 @@ let filters = {
         checkedRef: ref(true)
     }
 }
+
+// List of all filters where their visible property is true.
 const visibleFilters = computed(() => Object.values(filters).filter(item => item.visible.value))
 
+// Will be replaced with hook functions.
 const watchers = {
     [watcherType.onZoomChange]: zoomState,
     [watcherType.onYearChange]: props.inputValue,
@@ -114,6 +119,11 @@ function onTransition(type, boxString, bbox) {
     }
 }
 
+/**
+ * Updates the checked state of a data components filter when it becomes checked/unchecked
+ * @param event The click event that triggered this function call
+ * @param item The entry in the filters object that corresponds to its data component.
+ */
 function onCheckboxChecked(event, item) {
     item.checked = event.target.checked;
     item.checkedRef.value = item.checked;
