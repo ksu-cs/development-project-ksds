@@ -38,6 +38,36 @@ let properties = {
     path: `/public/${props.statePath}`
 }
 
+// Holds each hook in a bucket [list] with a specific label.
+let hookBuckets = { }
+
+// A list of bucket labels that belong to a predefined group.
+// Used to unhook these labels when that group is toggled off.
+let bucketGroups = {
+    "infrastructure": [],
+}
+
+/*
+const watchers = {
+    [watcherType.onZoomChange]: zoomState,
+    [watcherType.onYearChange]: props.inputValue,
+    [watcherType.onCountyTransition]: countyTransition,
+    [watcherType.onRailroadsChecked]: filters.railroads.checkedRef,
+    [watcherType.onCountyBordersChecked]: filters.countyBorders.checkedRef,
+    [watcherType.onCitiesChecked]: filters.cities.checkedRef,
+    [watcherType.onTractsChecked]: filters.tracts.checkedRef,
+};
+*/
+
+// A factory for creating hook functions seeded with a specific label.
+let indefiniteHooks = {
+    onZoomChange: (dataLabel) => {
+        return (cb) => {
+            hookBuckets[dataLabel][watcherType.onZoomChange].push(cb);
+        }
+    }
+}
+
 // Each data component has an entry here to specify when it is visible and detect when it becomes checked/unchecked
 let filters = {
     countyBorders: {
@@ -76,6 +106,7 @@ let filters = {
 const visibleFilters = computed(() => Object.values(filters).filter(item => item.visible.value))
 
 // Will be replaced with hook functions.
+/*
 const watchers = {
     [watcherType.onZoomChange]: zoomState,
     [watcherType.onYearChange]: props.inputValue,
@@ -86,6 +117,7 @@ const watchers = {
     [watcherType.onTractsChecked]: filters.tracts.checkedRef,
     [watcherType.onInterstatesChecked]: filters.interstates.checkedRef,
 };
+*/
 
 onMounted(() => {
     svgTag = d3.select(svgRef.value);
