@@ -32,4 +32,5 @@ export const watcherType = Object.freeze({
     onTractsChecked: "onTractsChecked",
     onCitiesChecked: "onCitiesChecked",
     onRailroadsChecked: "onRailroadsChecked",
+    onInterstatesChecked: "onInterstatesChecked",
 });

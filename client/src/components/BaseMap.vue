@@ -12,6 +12,7 @@ import BorderData from './BorderData.vue';
 import CityData from './CityData.vue';
 import TractData from './TractData.vue';
 import SchoolData from './SchoolData.vue';
+import InterstateData from './InterstateData.vue';
 import { watcherType } from './watcherType';
 
 const props = defineProps(["inputValue", "statePath"]);
@@ -62,7 +63,13 @@ let filters = {
         visible: computed(() => zoomState.value === 'county'),
         checked: true,
         checkedRef: ref(true)
-    }
+    },
+    interstates: {
+        label: "Interstates",
+        visible: computed(() => true),
+        checked: true,
+        checkedRef: ref(true)
+    },
 }
 
 // List of all filters where their visible property is true.
@@ -77,6 +84,7 @@ const watchers = {
     [watcherType.onCountyBordersChecked]: filters.countyBorders.checkedRef,
     [watcherType.onCitiesChecked]: filters.cities.checkedRef,
     [watcherType.onTractsChecked]: filters.tracts.checkedRef,
+    [watcherType.onInterstatesChecked]: filters.interstates.checkedRef,
 };
 
 onMounted(() => {
@@ -138,6 +146,7 @@ function onCheckboxChecked(event, item) {
             <TractData :properties="properties" :watchers="watchers" :filters="filters.tracts.checkedRef" />
             <CityData :properties="properties" :watchers="watchers" :filters="filters.cities.checkedRef" />
             <SchoolData :properties="properties" :watchers="watchers" @school-hover="hoveredSchool = $event" />
+            <InterstateData :properties="properties" :watchers="watchers" :filters="filters.interstates.checkedRef" />
 
         </svg>
         <TransitionGroup class="test" name="filters" tag="ul">
