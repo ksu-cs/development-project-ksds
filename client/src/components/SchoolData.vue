@@ -1,14 +1,17 @@
 <script setup>
-    import { defineProps, onMounted, useTemplateRef, defineEmits, watch } from 'vue';
+    import { defineProps, onMounted, useTemplateRef, defineEmits, watch, inject } from 'vue';
     import * as d3 from 'd3';
     import { fetchGeojson } from './fetchers.js';
-    import { assignWatchers } from './assignWatchers';
-    import { watcherType } from './watcherType';
+    import { registerKey } from './RegisterKey.js';
+import { MapZoomLevel } from './MapZoomLevel.js';
+import { GroupType } from './GroupType.js';
+import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection.js';
 
     const props = defineProps(["properties", "watchers"]);
     const emit = defineEmits(["school-hover"]);
 
     const gRef = useTemplateRef("g")
+    const label = "schools";
 
     let gTag = null;
     let selectionPoints = null;
@@ -27,12 +30,53 @@
         validateData(result);
     });
 
+    const hooks = inject(registerKey)(label, {
+        filter: {
+            legibleLabel: "Schools",
+            defaultStatus: false,
+            visibleStates: new Set([
+                MapZoomLevel.COUNTY,
+            ]),
+            groups: [
+                GroupType.OTHER,
+            ],
+            onChecked: onChecked,
+            onUnchecked: onUnchecked,
+        },
+    })
+
+    hooks.onZoomChange((newValue) => {
+        switch (newValue) {
+            case MapZoomLevel.STATE:
+                hoverActive = false;
+                if (selectionPoints) {
+                    selectionPoints
+                        .transition()
+                        .duration(200)
+                        .attr("opacity", "0%");
+                }
+                emit("school-hover", null);
+                break;
+            case MapZoomLevel.COUNTY:
+                hoverActive = true;
+                updateVisibleByBBox();
+                break;
+        }
+    })
+
+    hooks.onCountyTransition(() => {
+        if (!hoverActive) return;
+        updateVisibleByBBox();
+    })
+
+/*
     const fnDict = {
         [watcherType.onZoomChange]: onZoom,
         [watcherType.onCountyTransition]: onCountyTransition,
     }
+*/
 
-    assignWatchers(props.watchers, fnDict);
+    // assignWatchers(props.watchers, fnDict);
 
     function validateData(result) {
         const d = result.data.value;
@@ -47,7 +91,7 @@
             console.error(e);
             return;
         }
-        console.log("KSSchools features:", d && d.features ? d.features.length : "no data");
+        // console.log("KSSchools features:", d && d.features ? d.features.length : "no data");
 
         projectedSchools = d.features.map(f => {
             const coords = props.properties.projection(f.geometry.coordinates);
@@ -78,6 +122,7 @@
                 });
     }
 
+/*
     function onZoom(state) {
         switch (state) {
             case "state":
@@ -97,11 +142,14 @@
                 break;
         }
     }
+*/
 
+/*
     function onCountyTransition() {
         if (!hoverActive) return;
         updateVisibleByBBox();
     }   
+*/
 
     function updateVisibleByBBox() {
         if (!selectionPoints || projectedSchools.length === 0) {
@@ -126,6 +174,14 @@
             d.y >= bbox.y &&
             d.y <= bbox.y + bbox.height
         );
+    }
+
+    function onChecked() {
+        fadeIn(selectionPoints);
+    }
+
+    function onUnchecked() {
+        fadeOut(selectionPoints);
     }
 </script>
 <template>

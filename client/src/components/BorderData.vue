@@ -3,22 +3,22 @@
  * components/BorderData.vue
  * Responsible for all changes to the county borders in BaseMap.vue
  */
-import { defineProps, onMounted, useTemplateRef, defineEmits } from 'vue';
+import { defineProps, onMounted, useTemplateRef, defineEmits, inject } from 'vue';
 import * as d3 from 'd3';
 import { fetchGeojson } from './fetchers';
-import { assignWatchers } from './assignWatchers';
-import { watcherType } from './watcherType';
 import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
 import { createTransition } from '@/d3/transitions/createTransition';
 import { FetchQueue } from './FetchQueue';
+import { registerKey } from './RegisterKey';
 
 const emit = defineEmits(["transition"])
-const props = defineProps(["properties", "watchers", "filters"]);
+const props = defineProps(["properties"]);
 
 const pathGen = d3.geoPath(props.properties.projection)
 const gRef = useTemplateRef("g");
 const queue = new FetchQueue();
 const fadeDuration = 500;
+const label = "borders"
 
 let selection = null;
 let gTag = null;
@@ -35,13 +35,37 @@ onMounted(() => {
     queue.enqueue(promise, result, validateData);
 })
 
+const hooks = inject(registerKey)(label, { })
+
+hooks.onZoomChange((newValue) => {
+    switch (newValue) {
+        case "state":
+            strokeWidth = 2;
+            createTransition(selection)
+                    .attr("stroke-width", strokeWidth);
+            break;
+        case "county":
+            strokeWidth = 1;
+            createTransition(selection)
+                    .attr("stroke-width", strokeWidth);
+            break;
+    }
+})
+
+hooks.onYearChange((newValue) => {
+    let { result, promise } = fetchGeojson(`${paths.geojson}/KSCounty_${newValue}_GeoJSON.geojson`);
+    queue.enqueue(promise, result, validateData);
+})
+
+/*
 const fnDict = {
     [watcherType.onZoomChange]: onZoom,
     [watcherType.onYearChange]: onYearChange,
     [watcherType.onCountyBordersChecked]: onChecked,
 }
+*/
 
-assignWatchers(props.watchers, fnDict);
+// assignWatchers(props.watchers, fnDict);
 
 /**
  * Waits for the fetched data to load. If the fetch failed,
@@ -79,10 +103,8 @@ function validateData(r) {
                             .attr("opacity", "0%")
                             .classed("border", true)
                             .on("click", onBorderClick);
-                                
-                    if (props.filters.value) {
-                        fadeIn(s, { duration: fadeDuration });
-                    }
+
+                    fadeIn(s, { duration: fadeDuration });
                     return s;
                 },
                 update => update,
@@ -111,6 +133,7 @@ function onBorderClick(event) {
  * on the zoomState
  * @param newValue The new zoomState string
  */
+/*
 function onZoom(newValue) {
     switch (newValue) {
         case "state":
@@ -125,20 +148,24 @@ function onZoom(newValue) {
             break;
     }
 }
+*/
 
 /**
  * Fetches the border data for the given year.
  * @param newValue The year selected
  */
+/*
 function onYearChange(newValue) {
     let { result, promise } = fetchGeojson(`${paths.geojson}/KSCounty_${newValue}_GeoJSON.geojson`);
     queue.enqueue(promise, result, validateData);
 }
+*/
 
 /**
  * Fades in the current selection when checked and fades out when unchecked.
  * @param newValue Whether the filters for this data component was checked or unchecked (true/false)
  */
+/*
 function onChecked(newValue) {
     if (newValue) {
         fadeIn(selection, { duration: fadeDuration });
@@ -146,6 +173,7 @@ function onChecked(newValue) {
         fadeOut(selection, { duration: fadeDuration });
     }
 }
+*/
 </script>
 
 <template>

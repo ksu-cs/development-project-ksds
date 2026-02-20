@@ -3,18 +3,20 @@
  * components/InterstateData.vue
  * Responsible for all changes to the interstate lines in BaseMap.vue
  */
-import { defineProps, onMounted, useTemplateRef, watch } from 'vue';
+import { defineProps, onMounted, useTemplateRef, watch, inject, onUnmounted } from 'vue';
 import * as d3 from 'd3';
 import { fetchGeojson } from './fetchers';
-import { assignWatchers } from './assignWatchers';
-import { watcherType } from './watcherType';
 import { fadeOut } from '@/d3/transitions/fadeSelection';
 import { createTransition } from '@/d3/transitions/createTransition';
+import { registerKey } from './RegisterKey';
+import { MapZoomLevel } from './MapZoomLevel';
+import { GroupType } from './GroupType';
 
 const props = defineProps(["properties", "watchers", "filters"]);
 
 const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
+const label = "interstates"
 
 let selection = null;
 let gTag = null;
@@ -30,6 +32,40 @@ onMounted(() => {
     validateData(result);
 });
 
+const hooks = inject(registerKey)(label, {
+    filter: {
+        legibleLabel: "Interstates",
+        defaultStatus: true,
+        visibleStates: new Set([
+            MapZoomLevel.STATE,
+            MapZoomLevel.COUNTY,
+        ]),
+        groups: [
+            GroupType.INFRASTRUCTURE,
+        ],
+        onChecked: onChecked,
+        onUnchecked: onUnchecked,
+    },
+})
+
+hooks.onZoomChange((newValue) => {
+    if (!selection) return;
+
+    switch (newValue) {
+        case "state":
+            createTransition(selection).attr("stroke-width", 1.2);
+            break;
+        case "county":
+            createTransition(selection).attr("stroke-width", 0.8);
+            break;
+    }
+})
+
+hooks.onYearChange((newValue) => {
+    applyVisibility(newValue);
+})
+
+/*
 const fnDict = {
     [watcherType.onZoomChange]: onZoom,
     [watcherType.onYearChange]: onYearChange,
@@ -37,6 +73,7 @@ const fnDict = {
 };
 
 assignWatchers(props.watchers, fnDict);
+*/
 
 function validateData(r) {
     const d = r.data.value;
@@ -74,10 +111,12 @@ function applyVisibility(currentYear) {
     if (!selection) return;
 
     // Checkbox off => hide all
+    /*
     if (!props.filters.value) {
         fadeOut(selection);
         return;
     }
+    */
 
     // Checkbox on => show segments open by currentYear
     createTransition(selection)
@@ -88,6 +127,7 @@ function applyVisibility(currentYear) {
         });
 }
 
+/*
 function onZoom(newValue) {
     if (!selection) return;
 
@@ -100,13 +140,28 @@ function onZoom(newValue) {
             break;
     }
 }
+*/
 
+/*
 function onYearChange(newYear) {
     applyVisibility(newYear);
 }
+*/
 
 function onChecked() {
+    switch (props.properties.zoomState.value) {
+        case "state":
+            selection.attr("stroke-width", 1.2);
+            break;
+        case "county":
+            selection.attr("stroke-width", 0.8);
+            break;
+    }
     applyVisibility(props.properties.inputValue.value);
+}
+
+function onUnchecked() {
+    fadeOut(selection);
 }
 </script>
 

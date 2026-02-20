@@ -1,15 +1,17 @@
 <script setup>
-import { defineProps, onMounted, useTemplateRef, watch } from 'vue';
+import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 import * as d3 from 'd3';
 import { fetchGeojson } from './fetchers';
-import { assignWatchers } from './assignWatchers';
-import { watcherType } from './watcherType';
 import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
+import { registerKey } from './RegisterKey';
+import { MapZoomLevel } from './MapZoomLevel';
+import { GroupType } from './GroupType';
 
-const props = defineProps(["properties", "watchers", "filters"]);
+const props = defineProps(["properties"]);
 
 const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
+const label = "tracts";
 
 let opacity = "0%";
 let selection = null;
@@ -26,13 +28,60 @@ onMounted(() => {
     validateData(result);
 });
 
+const hooks = inject(registerKey)(label, {
+    filter: {
+        legibleLabel: "Tracts",
+        defaultStatus: false,
+        visibleStates: new Set([
+            MapZoomLevel.COUNTY,
+        ]),
+        groups: [
+            GroupType.OTHER,
+        ],
+        onChecked: onChecked,
+        onUnchecked: onUnchecked
+    }
+});
+
+hooks.onZoomChange((newValue) => {
+    console.log("zoom change in tract data");
+    switch (newValue) {
+        case MapZoomLevel.STATE:
+            opacity = "0%";
+            culledSelection
+                .transition()
+                .duration(200)
+                .attr("opacity", opacity);
+            break;
+        case MapZoomLevel.COUNTY:
+            // Do nothing
+            break;
+    }
+})
+
+hooks.onCountyTransition(() => {
+    // Fade out last selection
+    fadeOut(culledSelection);
+    
+    // Cull selection
+    culledSelection = selection.filter((d, i, n) => {
+        let nodeBBox = n[i].getBBox();
+        return boxOverlapsBox(nodeBBox, props.properties.bbox);
+    });
+
+    // Fade in new selection
+    fadeIn(culledSelection);
+})
+
+/*
 const fnDict = {
     [watcherType.onZoomChange]: onZoom,
     [watcherType.onCountyTransition]: onCountyTransition,
     [watcherType.onTractsChecked]: onChecked,
 };
+*/
 
-assignWatchers(props.watchers, fnDict);
+// assignWatchers(props.watchers, fnDict);
 
 /**
  * Waits for the fetched data to load. If the fetch failed,
@@ -70,14 +119,12 @@ function validateData(r) {
             case "state": // Do nothing
                 break;
             case "county":
-                if (props.filters.value) {
-                    // Cull selection
-                    culledSelection = selection.filter((d, i, n) => {
-                        let nodeBBox = n[i].getBBox();
-                        return boxOverlapsBox(nodeBBox, props.properties.bbox);
-                    });
-                    fadeIn(culledSelection);
-                }
+                // Cull selection
+                culledSelection = selection.filter((d, i, n) => {
+                    let nodeBBox = n[i].getBBox();
+                    return boxOverlapsBox(nodeBBox, props.properties.bbox);
+                });
+                fadeIn(culledSelection);
                 break;
         }
   }
@@ -88,6 +135,7 @@ function validateData(r) {
  * the state level
  * @param state the new zoomState
  */
+/*
 function onZoom(state) {
     switch (state) {
         case "state":
@@ -99,12 +147,14 @@ function onZoom(state) {
             break;
     }
 }
+*/
 
 /**
  * When transitioning to a county, cull every tract
  * that doesn't overlap with the selected county, then
  * fade in the tracts remaining
  */
+/*
 function onCountyTransition() {
     // Fade out last selection
     fadeOut(culledSelection);
@@ -120,6 +170,7 @@ function onCountyTransition() {
         fadeIn(culledSelection);
     }
 }
+*/
 
 /**
  * Returns true if both given bounding boxes overlap
@@ -141,6 +192,7 @@ function boxOverlapsBox(box, otherBox) {
  * When checked, fades in the appropriate culled selection. When unchecked, fades out the culled selection.
  * @param newValue Whether this data components filter was checked or unchecked (true/false)
  */
+/*
 function onChecked(newValue) {
     if (newValue) {
         switch (props.properties.zoomState.value) {
@@ -158,6 +210,33 @@ function onChecked(newValue) {
                 fadeOut(culledSelection);
                 break;
         }
+    }
+}
+*/
+
+function onChecked() {
+    switch (props.properties.zoomState.value) {
+        case MapZoomLevel.STATE: // Do nothing
+            break;
+        case MapZoomLevel.COUNTY:
+            // Cull selection
+            culledSelection = selection.filter((d, i, n) => {
+                let nodeBBox = n[i].getBBox();
+                return boxOverlapsBox(nodeBBox, props.properties.bbox);
+            });
+
+            fadeIn(culledSelection);
+            break;
+    }
+}
+
+function onUnchecked() {
+    switch (props.properties.zoomState.value) {
+        case MapZoomLevel.STATE: // Do nothing
+            break;
+        case MapZoomLevel.COUNTY:
+            fadeOut(culledSelection);
+            break;
     }
 }
 </script>
