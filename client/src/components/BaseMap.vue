@@ -70,43 +70,10 @@ const watchers = {
 */
 
 // Each component that registers with a filter option will have an entry in this object
-let filters = {
-    /*
-    countyBorders: {
-        label: "County Borders",
-        visible: computed(() => true),
-        checked: true,
-        checkedRef: ref(true)
-    },
-    railroads: {
-        label: "Railroads",
-        visible: computed(() => true),
-        checked: true,
-        checkedRef: ref(true)
-    },
-    cities: {
-        label: "Cities",
-        visible: computed(() => true),
-        checked: true,
-        checkedRef: ref(true)
-    },
-    tracts: {
-        label: "Tracts",
-        visible: computed(() => zoomState.value === 'county'),
-        checked: true,
-        checkedRef: ref(true)
-    },
-    interstates: {
-        label: "Interstates",
-        visible: computed(() => true),
-        checked: true,
-        checkedRef: ref(true)
-    },
-*/
-}
+let filters = { }
 
 // List of all filters where their visible property is true.
-const visibleFilters = computed(() => Object.values(filters).filter(item => item.visible.value))
+const visibleFilters = computed(() => Object.values(filters).filter(item => item.visible.value).sort((a, b) => a.displayLabel.localeCompare(b.displayLabel)))
 
 // Will be replaced with hook functions.
 /*
@@ -287,7 +254,7 @@ function onFilterClicked(event, item) {
             <TractData :properties="properties" />
             <CityData :properties="properties" />
             <SchoolData :properties="properties" @school-hover="hoveredSchool = $event" />
-            <InterstateData :properties="properties" :watchers="watchers" :filters="filters.interstates.checkedRef" />
+            <InterstateData :properties="properties" />
         </svg>
         
         <!--
