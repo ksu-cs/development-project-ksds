@@ -5,7 +5,7 @@
  * Contains the base svg element that all geojson data is rendered to.
  * Calls each Data component to fetch and render geojson data.
  */
-import { defineProps, onMounted, useTemplateRef, ref, computed } from 'vue';
+import { defineProps, onMounted, useTemplateRef, ref, computed, provide, watch } from 'vue';
 import * as d3 from 'd3';
 import RailroadData from './RailroadData.vue';
 import BorderData from './BorderData.vue';
@@ -13,7 +13,10 @@ import CityData from './CityData.vue';
 import TractData from './TractData.vue';
 import SchoolData from './SchoolData.vue';
 import InterstateData from './InterstateData.vue';
-import { watcherType } from './watcherType';
+import { hookType } from './hookType';
+import { registerKey } from './RegisterKey';
+import { MapZoomLevel } from './MapZoomLevel';
+import { GroupType } from './GroupType';
 
 const props = defineProps(["inputValue", "statePath"]);
 const svgRef = useTemplateRef("svg");
@@ -21,7 +24,7 @@ let hoveredSchool = ref(null);
 const defaultViewBox = "0 0 1600 800";
 
 let countyTransition = ref(true);
-let zoomState = ref("state");
+let zoomState = ref(MapZoomLevel.STATE);
 let svgTag = null;
 
 // Object passed to each data component so they can access properties of the map.
@@ -38,13 +41,20 @@ let properties = {
     path: `/public/${props.statePath}`
 }
 
-// Holds each hook in a bucket [list] with a specific label.
+watch(props.inputValue, (newValue, oldValue) => {
+    invokeHook(hookType.onYearChange, newValue, oldValue, { });
+})
+
+let registeredLabels = new Set([ ]);
+
+// Holds each hook in a bucket [list] with a specific label that coincides with a data component.
 let hookBuckets = { }
 
 // A list of bucket labels that belong to a predefined group.
 // Used to unhook these labels when that group is toggled off.
 let bucketGroups = {
-    "infrastructure": [],
+    [GroupType.INFRASTRUCTURE]: [],
+    [GroupType.OTHER]: [],
 }
 
 /*
@@ -59,17 +69,9 @@ const watchers = {
 };
 */
 
-// A factory for creating hook functions seeded with a specific label.
-let indefiniteHooks = {
-    onZoomChange: (dataLabel) => {
-        return (cb) => {
-            hookBuckets[dataLabel][watcherType.onZoomChange].push(cb);
-        }
-    }
-}
-
-// Each data component has an entry here to specify when it is visible and detect when it becomes checked/unchecked
+// Each component that registers with a filter option will have an entry in this object
 let filters = {
+    /*
     countyBorders: {
         label: "County Borders",
         visible: computed(() => true),
@@ -100,6 +102,7 @@ let filters = {
         checked: true,
         checkedRef: ref(true)
     },
+*/
 }
 
 // List of all filters where their visible property is true.
@@ -124,6 +127,102 @@ onMounted(() => {
 })
 
 /**
+ * Creates an object containing each hook function, seeded with the given label.
+ * @param label The label to seed each hook with
+ */
+function createHooks(label) {
+    let hooks = { };
+
+    Object.keys(hookType).forEach((key) => {
+        if (Object.hasOwn(hookBuckets, key)) {
+            if (Object.hasOwn(hookBuckets[key], label)) {
+                if (!Array.isArray(hookBuckets[key][label])) {
+                    console.error(`BaseMap: each value in hookBuckets[key][label] must be an array, found ${typeof hookBuckets[key][label]}`);
+                    return;
+                }
+            } else {
+                hookBuckets[key][label] = [ ];
+            }
+        } else {
+            hookBuckets[key] = { };
+            hookBuckets[key][label] = [ ];
+        }
+
+        hooks[key] = (callbackFn) => {
+            hookBuckets[key][label].push(callbackFn);
+        }
+    })
+
+    return hooks;
+}
+
+/**
+ *
+*/
+function invokeHook(hookName, newValue, oldValue, params) {
+    Object.entries(hookBuckets[hookName]).forEach(([key, fnList]) => {
+        if (!(Object.hasOwn(filters, key) && !filters[key].status)) {
+            fnList.forEach((fn) => fn(newValue, oldValue, params));
+        }
+    })
+}
+
+/** @type {import('./RegisterKey').RegisterFunction} */
+function registerComponent(label, options) { // , groups, onChecked, onUnchecked
+    // Check if the given label already exists
+    if (registeredLabels.has(label)) {
+        throw new Error(`BaseMap: Component with label '${label}' already exists.`);
+    }
+
+    registeredLabels.add(label);
+
+    // Check if the component is attempting to register a filter
+    if (Object.hasOwn(options, 'filter')) {
+        // Validate filter option properties
+        if (!Object.hasOwn(options.filter, 'legibleLabel')) {
+            throw new Error(`BaseMap: 'leigibleLable' for filter does not exist.`);
+        } else if (!Object.hasOwn(options.filter, 'defaultStatus')) {
+            throw new Error(`BaseMap: 'defaultStatus' for filter does not exist.`)
+        } else if (!Object.hasOwn(options.filter, 'visibleStates')) {
+            throw new Error(`BaseMap: 'visibleStates' for filter does not exist.`);
+        } else if (!Object.hasOwn(options.filter, 'groups')) {
+            throw new Error(`BaseMap: 'groups' for filter does not exist.`);
+        } else if (!Object.hasOwn(options.filter, 'onChecked')) {
+            throw new Error(`BaseMap: 'onChecked' for filter does not exist.`)
+        } else if (!Object.hasOwn(options.filter, 'onUnchecked')) {
+            throw new Error(`BaseMap: 'onUnchecked' for filter does not exist.`)
+        }
+
+        
+
+        // Register each group from the component
+        options.filter.groups.forEach((value) => {
+            // Validate group name
+            if (!Object.hasOwn(bucketGroups, value)) {
+                throw new Error(`BaseMap: Group with name '${value}' doesn't exist.`)
+            }
+            console.log(value);
+            bucketGroups[value].push(label);
+        })
+
+        console.log(filters)
+
+        filters[label] = {
+            displayLabel: options.filter.legibleLabel,
+            status: options.filter.defaultStatus,
+            statusRef: ref(options.filter.defaultStatus),
+            visible: computed(() => options.filter.visibleStates.has(zoomState.value)),
+            onChecked: options.filter.onChecked,
+            onUnchecked: options.filter.onUnchecked,
+        }
+    }
+
+    return createHooks(label);
+}
+
+provide(registerKey, registerComponent);
+
+/**
  * Changes zoomState to zoomLevel, and transitions into
  * the given viewBox.
  * @param zoomLevel The new zoomState as a string
@@ -133,7 +232,10 @@ function changeZoomLevel(zoomLevel, viewBox) {
     svgTag.transition()
             .duration(750)
             .attr("viewBox", viewBox)
-            .on("end", () => zoomState.value = zoomLevel );
+            .on("end", () => {
+                invokeHook(hookType.onZoomChange, zoomLevel, zoomState.value, { });
+                zoomState.value = zoomLevel;
+            });
 }
 
 /**
@@ -155,6 +257,7 @@ function onTransition(type, boxString, bbox) {
     } else {
         properties.bbox = bbox;
         changeZoomLevel("county", boxString);
+        invokeHook(hookType.onCountyTransition, !countyTransition.value, countyTransition.value, { });
         countyTransition.value = !countyTransition.value;
     }
 }
@@ -164,38 +267,40 @@ function onTransition(type, boxString, bbox) {
  * @param event The click event that triggered this function call
  * @param item The entry in the filters object that corresponds to its data component.
  */
-function onCheckboxChecked(event, item) {
-    item.checked = event.target.checked;
-    item.checkedRef.value = item.checked;
+function onFilterClicked(event, item) {
+    if (event.target.checked) {
+        item.onChecked();
+    } else {
+        item.onUnchecked();
+    }
+
+    item.status = event.target.checked;
+    item.statusRef.value = item.status;
 }
 </script>
 
 <template>
     <div class="container">
         <svg ref="svg" width="1200" height="800" viewBox="0 0 1600 800">
-            <RailroadData :properties="properties" :watchers="watchers" :filters="filters.railroads.checkedRef"/>
-            <BorderData :properties="properties" :watchers="watchers" :filters="filters.countyBorders.checkedRef" @transition="onTransition" />
-            <TractData :properties="properties" :watchers="watchers" :filters="filters.tracts.checkedRef" />
-            <CityData :properties="properties" :watchers="watchers" :filters="filters.cities.checkedRef" />
-            <SchoolData :properties="properties" :watchers="watchers" @school-hover="hoveredSchool = $event" />
+            <RailroadData :properties="properties" />
+            <BorderData :properties="properties" @transition="onTransition" />
+            <TractData :properties="properties" />
+            <CityData :properties="properties" />
+            <SchoolData :properties="properties" @school-hover="hoveredSchool = $event" />
             <InterstateData :properties="properties" :watchers="watchers" :filters="filters.interstates.checkedRef" />
-
         </svg>
+        
+        <!--
+        This Transition Group represents a list of filters
+        Whenever a filter becomes visible, it fades in and slides into position
+        Whenever a filter becomes invisible, it fades out and slides out of position
+        -->
         <TransitionGroup class="test" name="filters" tag="ul">
-            <li class="filter" v-for="item in visibleFilters" :key="item.label">
-                <input type="checkbox" :checked="item.checked" @click="onCheckboxChecked($event, item)">
-                {{ item.label }}
+            <li class="filter" v-for="item in visibleFilters" :key="item.displayLabel">
+                <input type="checkbox" :checked="item.status" @click="onFilterClicked($event, item)">
+                {{ item.displayLabel }}
             </li>
         </TransitionGroup>
-        <!--
-        <fieldset class="filters">
-            <legend>Filters:</legend>
-            <label><input type="checkbox"> County Borders</label>
-            <label><input type="checkbox"> Railroads</label>
-            <label><input type="checkbox"> Cities</label>
-            <label v-if="zoomState === 'county'"><input type="checkbox"> Tracts</label>
-        </fieldset>
-        -->
         <div class="school-info-box" v-if="hoveredSchool" :style="{ left: hoveredSchool.pos.x + 15 + 'px',
               top: hoveredSchool.pos.y + 15 + 'px' }">
             <h3>{{ hoveredSchool.props.bldg_name }}</h3>

@@ -3,19 +3,21 @@
  * components/CityData.vue
  * Responsible for all changes to the cities in BaseMap.vue
  */
-import { defineProps, onMounted, useTemplateRef, watch } from 'vue';
+import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 import * as d3 from 'd3';
 import { fetchGeojson, fetchJson } from './fetchers';
-import { assignWatchers } from './assignWatchers';
-import { watcherType } from './watcherType';
 import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
 import { createTransition } from '@/d3/transitions/createTransition';
+import { registerKey } from './RegisterKey';
+import { MapZoomLevel } from './MapZoomLevel';
+import { GroupType } from './GroupType';
 
-const props = defineProps(["properties", "watchers", "filters"]);
+const props = defineProps(["properties"]);
 
 const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
 const defaultYear = 1860;
+const label = "cities"
 
 let selectionPoints = null;
 let selectionBoxes = null;
@@ -24,7 +26,7 @@ let selectionPop = null;
 let cityPops = null;
 let gTag = null;
 let hoverActive = true;
-let zoomState = "state";
+//let zoomState = "state";
 let paths = {
     geojson: `${props.properties.path}/geojson`,
     json: `${props.properties.path}/json`,
@@ -41,16 +43,106 @@ onMounted(() => {
     validateData(result);
 })
 
-const fnDict = {
-    [watcherType.onZoomChange]: onZoom,
-    [watcherType.onYearChange]: [
-        onChangeYear,
-        getTownPopByYear,
-    ],
-    [watcherType.onCitiesChecked]: onChecked,
-};
+const hooks = inject(registerKey)(label, {
+    filter: {
+        legibleLabel: "Cities",
+        defaultStatus: true,
+        visibleStates: new Set([
+            MapZoomLevel.STATE,
+            MapZoomLevel.COUNTY,
+        ]),
+        groups: [
+            GroupType.OTHER,
+        ],
+        onChecked: onChecked,
+        onUnchecked: onUnchecked,
+    },
+})
 
-assignWatchers(props.watchers, fnDict);
+hooks.onZoomChange((newValue) => {
+    switch (newValue) {
+        case MapZoomLevel.STATE:
+            createTransition(selectionPoints)
+                    .attr("d", pathGen.pointRadius(2));
+            selectionText
+                    .attr("font-size", "100%")
+                    .each((d, i, n) => centerText(d, i, n, 15))
+                    .attr("opacity", "0%");
+            selectionPop
+                    .attr("font-size", "100%")
+                    .each((d, i, n) => centerText(d, i, n, 5))
+                    .attr("opacity", "0%");
+            // Display town names on hover
+            hoverActive = true;
+            break;
+        case MapZoomLevel.COUNTY:
+            createTransition(selectionPoints)
+                    .attr("d", pathGen.pointRadius(1));
+            selectionText
+                    .attr("font-size", "30%")
+                    .each((d, i, n) => centerText(d, i, n, 3));
+            selectionPop
+                    .attr("font-size", "30%")
+                    .each((d, i, n) => centerText(d, i, n, -5))
+            
+            fadeIn(selectionText);
+            fadeIn(selectionPop);
+            // Don't display town names on hover
+            hoverActive = false;
+            break;
+    }
+})
+
+hooks.onYearChange((newValue) => {
+    let fileName = '';
+    if (newValue <= 1900)
+    { 
+        fileName = `${paths.geojson}/KSPlace1900.geojson`; 
+    }
+    else if (newValue >= 2010) 
+    {
+        fileName = `${paths.geojson}/KSPlace2010.geojson`;
+    }
+    else {
+        fileName = `${paths.geojson}/KSPlace${newValue}.geojson`;
+    }
+
+    const { result, promise } = fetchGeojson(fileName);
+    promise.then(() => getTownPopByYear(newValue));
+    validateData(result);
+})
+
+hooks.onYearChange((newValue) => {
+    // We only have town population data starting in 1970 until 2020
+    if (newValue < 1970) {
+        return;
+    }
+
+    selectionPop.each((d, i, n) => {
+        let node = n[i];
+        let city_name = d.name;
+        let city_place = d.place;
+
+        let key = null;
+        
+        if (Object.hasOwn(cityPops, city_name)) {
+            key = city_name;
+        } else if (Object.hasOwn(cityPops, city_place)) {
+            key = city_place;
+        } else {
+            console.warn(`'${city_name}' or '${city_place}' has no corresponding record`);
+        }
+
+        if (key != null) {
+            let pop = cityPops[key][newValue];
+            if (pop == null) {
+                console.warn(`'${key}' has a record but no population for '${newValue}'`);
+            } else {
+                node.textContent = String(pop);
+            }
+        }
+    })
+})
 
 /**
  * Waits for the fetched data to load. If the fetch failed,
@@ -95,7 +187,6 @@ function validateData(result) {
                 update => update,
                 exit => exit.remove()
             );
-        console.log(selectionBoxes);
         
         // Project every city's (lon, lat) pair
         // pathGen does this for us, however,
@@ -154,19 +245,17 @@ function validateData(result) {
         // Setup events to display town name on hover
         selectionBoxes.on("mouseenter", (event, d) => {
             if (hoverActive) {
-                console.log(textDict[d.properties.NAME]);
                 fadeIn(d3.select(textDict[d.properties.NAME]));
                 fadeIn(d3.select(popDict[d.properties.NAME]));
             }
         }).on("mouseleave", (event, d) => {
             if (hoverActive) {
-                console.log("We have exited a hit box.");
                 fadeOut(d3.select(textDict[d.properties.NAME]));
                 fadeOut(d3.select(popDict[d.properties.NAME]));
             }
         })
 
-        switch (zoomState) {
+        switch (props.properties.zoomState.value) {
             case "state":
                 selectionPoints
                         .attr("d", pathGen.pointRadius(2));
@@ -176,9 +265,7 @@ function validateData(result) {
                 selectionPop
                         .attr("font-size", "100%")
                         .each((d, i, n) => centerText(d, i, n, 5))
-                if (props.filters.value) {
-                    fadeIn(selectionPoints);
-                }
+                fadeIn(selectionPoints);
                 break;
             case "county":
                 selectionPoints
@@ -189,11 +276,9 @@ function validateData(result) {
                 selectionPop
                         .attr("font-size", "30%")
                         .each((d, i, n) => centerText(d, i ,n, -5))
-                if (props.filters.value) {
-                    fadeIn(selectionPoints);
-                    fadeIn(selectionText);
-                    fadeIn(selectionPop);
-                }
+                fadeIn(selectionPoints);
+                fadeIn(selectionText);
+                fadeIn(selectionPop);
                 break;
         }
     }
@@ -216,50 +301,6 @@ function centerText(d, i, n, dy) {
     d3.select(n[i])
             .attr("x", String(centeredX))
             .attr("y", originY - dy);
-}
-
-/**
- * On zoom into a county, shrinks a cities point and text,
- * and enlarges them on a zoom out to the state
- * @param state the new zoomState
- */
-function onZoom(state) {
-    zoomState = state;
-    switch (state) {
-        case "state":
-            createTransition(selectionPoints)
-                    .attr("d", pathGen.pointRadius(2));
-            selectionText
-                    .attr("font-size", "100%")
-                    .each((d, i, n) => centerText(d, i, n, 15))
-                    .attr("opacity", "0%");
-            selectionPop
-                    .attr("font-size", "100%")
-                    .each((d, i, n) => centerText(d, i, n, 5))
-                    .attr("opacity", "0%");
-            
-            // Display town names on hover
-            hoverActive = true;
-            break;
-        case "county":
-            createTransition(selectionPoints)
-                    .attr("d", pathGen.pointRadius(1));
-            selectionText
-                    .attr("font-size", "30%")
-                    .each((d, i, n) => centerText(d, i, n, 3));
-            selectionPop
-                    .attr("font-size", "30%")
-                    .each((d, i, n) => centerText(d, i, n, -5))
-            
-            if (props.filters.value) {
-                fadeIn(selectionText);
-                fadeIn(selectionPop);
-            }
-            
-            // Don't display town names on hover
-            hoverActive = false;
-            break;
-    }
 }
 
 function validatePopData(result) {
@@ -315,49 +356,50 @@ function getTownPopByYear(newYear) {
     })
 }
 
-function onChangeYear(newYear) {
-    let fileName = '';
-    if (newYear <= 1900)
-    { 
-        fileName = `${paths.geojson}/KSPlace1900.geojson`; 
+function onChecked() {
+    console.log(props.properties.zoomState.value);
+    switch (props.properties.zoomState.value) {
+        case MapZoomLevel.STATE:
+            hoverActive = true;
+            selectionPoints
+                    .attr("d", pathGen.pointRadius(2));
+            selectionText
+                    .attr("font-size", "100%")
+                    .each((d, i, n) => centerText(d, i, n, 15))
+                    .attr("opacity", "0%");
+            selectionPop
+                    .attr("font-size", "100%")
+                    .each((d, i, n) => centerText(d, i, n, 5))
+                    .attr("opacity", "0%");
+            break;
+        case MapZoomLevel.COUNTY:
+            hoverActive = false;
+            selectionPoints
+                    .attr("d", pathGen.pointRadius(1));
+            selectionText
+                    .attr("font-size", "30%")
+                    .each((d, i, n) => centerText(d, i, n, 3));
+            selectionPop
+                    .attr("font-size", "30%")
+                    .each((d, i, n) => centerText(d, i, n, -5))
+            fadeIn(selectionText);
+            fadeIn(selectionPop);
+        break;
     }
-    else if (newYear >= 2010) 
-    {
-        fileName = `${paths.geojson}/KSPlace2010.geojson`;
-    }
-    else {
-        fileName = `${paths.geojson}/KSPlace${newYear}.geojson`;
-    }
-
-    const { result, promise } = fetchGeojson(fileName);
-    promise.then(() => getTownPopByYear(newYear));
-    validateData(result);
+    fadeIn(selectionPoints);
 }
 
-function onChecked(newValue) {
-    if (newValue) {
-        fadeIn(selectionPoints);
-        switch (zoomState) {
-            case "state":
-                hoverActive = true;
-                break;
-            case "county":
-                hoverActive = false;
-                fadeIn(selectionText);
-                fadeIn(selectionPop);
+function onUnchecked() {
+    hoverActive = false;
+    fadeOut(selectionPoints);
+    switch (props.properties.zoomState.value) {
+        case MapZoomLevel.STATE:
+            // Do nothing
             break;
-        }
-    } else {
-        hoverActive = false;
-        fadeOut(selectionPoints);
-        switch (zoomState) {
-            case "state": // Do nothing
-                break;
-            case "county":
-                fadeOut(selectionText);
-                fadeOut(selectionPop);
-                break;
-        }
+        case MapZoomLevel.COUNTY:
+            fadeOut(selectionText);
+            fadeOut(selectionPop);
+            break;
     }
 }
 </script>

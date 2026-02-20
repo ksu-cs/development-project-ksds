@@ -3,19 +3,21 @@
  * components/RailroadData.vue
  * Responsible for all changes to the railroad in BaseMap.vue
  */
-import { defineProps, onMounted, useTemplateRef, watch } from 'vue';
+import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 import * as d3 from 'd3';
 import { fetchGeojson } from './fetchers';
-import { assignWatchers } from './assignWatchers';
-import { watcherType } from './watcherType';
 import { fadeOut } from '@/d3/transitions/fadeSelection';
 import { createTransition } from '@/d3/transitions/createTransition';
+import { MapZoomLevel } from './MapZoomLevel';
+import { GroupType } from './GroupType';
+import { registerKey } from './RegisterKey';
 
-const props = defineProps(["properties", "watchers", "filters"]);
+const props = defineProps(["properties"]);
 
 const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
 
+const label = "railroads"
 let selection = null;
 let gTag = null;
 let paths = {
@@ -23,19 +25,45 @@ let paths = {
     csv: `${props.properties.path}/csv`
 }
 
+const hooks = inject(registerKey)(label, {
+    filter: {
+        legibleLabel: "Railroads",
+        defaultStatus: true,
+        visibleStates: new Set([
+            MapZoomLevel.STATE,
+            MapZoomLevel.COUNTY,
+        ]),
+        groups: [
+            GroupType.INFRASTRUCTURE,
+        ],
+        onChecked: onChecked,
+        onUnchecked: onUnchecked,
+    },
+});
+
+hooks.onZoomChange((newValue) => {
+    switch (newValue) {
+        case "state":
+            createTransition(selection)
+                    .attr("stroke-width", 1);
+            break;
+        case "county":
+            createTransition(selection)
+                    .attr("stroke-width", 0.6);
+            break;
+    }
+})
+
+hooks.onYearChange((newValue) => {
+    createTransition(selection)
+            .attr("opacity", d => d.properties.InOpBy <= newValue ? "100%" : "0%");
+})
+
 onMounted(() => {
     gTag = d3.select(gRef.value);
     let { result } = fetchGeojson(`${paths.geojson}/railroads.geojson`);
     validateData(result);
 });
-
-const fnDict = {
-    [watcherType.onZoomChange]: onZoom,
-    [watcherType.onYearChange]: onYearChange,
-    [watcherType.onRailroadsChecked]: onChecked,
-};
-
-assignWatchers(props.watchers, fnDict);
 
 /**
  * Waits for the fetched data to load. If the fetch failed,
@@ -72,40 +100,10 @@ function validateData(r) {
 }
 
 /**
- * Changes width of rail path elements based on the
- * zoomState
- * @param newValue The new zoomState string
- */
-function onZoom(newValue) {
-    switch (newValue) {
-        case "state":
-            createTransition(selection)
-                    .attr("stroke-width", 1);
-            break;
-        case "county":
-            createTransition(selection)
-                    .attr("stroke-width", 0.6);
-            break;
-    }
-}
-
-/**
- * Fades in all rail path elements that were in operation
- * by the given year. Fades out those elements that were not
- * in operation by the given year.
- * @param newValue The year selected
- */
-function onYearChange(newValue) {
-    if (props.filters.value) {
-        createTransition(selection)
-                .attr("opacity", d => d.properties.InOpBy <= newValue ? "100%" : "0%");
-    }
-}
-
-/**
  * Fades in the appropriate selection when checked, fades it out when unchecked.
  * @param newValue Whether this data components filter was checked or unchecked (true/false)
  */
+/*
 function onChecked(newValue) {
     if (newValue) {
         createTransition(selection)
@@ -114,6 +112,17 @@ function onChecked(newValue) {
         fadeOut(selection);
     }
 }
+    */
+
+function onChecked() {
+    createTransition(selection)
+            .attr("opacity", d => d.properties.InOpBy <= props.properties.inputValue.value ? "100%" : "0%");
+}
+
+function onUnchecked() {
+    fadeOut(selection);
+}
+
 </script>
 
 <template>
