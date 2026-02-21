@@ -3,46 +3,35 @@
  * components/CityData.vue
  * Responsible for all changes to the cities in BaseMap.vue
  */
+
+// External imports
 import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 import * as d3 from 'd3';
+
+// Utility imports
 import { fetchGeojson, fetchJson } from './fetchers';
 import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
 import { createTransition } from '@/d3/transitions/createTransition';
 import { registerKey } from './RegisterKey';
-import { MapZoomLevel } from './MapZoomLevel';
-import { GroupType } from './GroupType';
 
+// Enum imports
+import { MapZoomLevel } from '@/enums/MapZoomLevel';
+import { GroupType } from '@/enums/GroupType';
+
+
+
+// Define props, template refs, and emits
 const props = defineProps(["properties"]);
-
-const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
+
+// Define reactive variables
+
+// Define non-reactive variables
+const pathGen = d3.geoPath(props.properties.projection);
 const defaultYear = 1860;
 const label = "cities"
 
-let selectionPoints = null;
-let selectionBoxes = null;
-let selectionText = null;
-let selectionPop = null;
-let cityPops = null;
-let gTag = null;
-let hoverActive = true;
-//let zoomState = "state";
-let paths = {
-    geojson: `${props.properties.path}/geojson`,
-    json: `${props.properties.path}/json`,
-    csv: `${props.properties.path}/csv`
-}
-
-onMounted(() => {
-    gTag = d3.select(gRef.value);
-    const { result, promise } = fetchGeojson(`${paths.geojson}/KSPlace1900.geojson`);
-    promise.then(() => {
-        const pop_result = fetchJson(`${paths.json}/city-pops.json`);
-        validatePopData(pop_result.result);
-    })
-    validateData(result);
-})
-
+// Register this component
 const hooks = inject(registerKey)(label, {
     filter: {
         legibleLabel: "Cities",
@@ -57,6 +46,36 @@ const hooks = inject(registerKey)(label, {
         onChecked: onChecked,
         onUnchecked: onUnchecked,
     },
+})
+
+// Points that represent each city
+let selectionPoints = null;
+// A 'hit-box' that is used to check if the user has hovered over a city
+let selectionBoxes = null;
+// The name of each city
+let selectionText = null;
+// The population count of each city
+let selectionPop = null;
+// Dictionary containing the population of each city
+let cityPops = null;
+let gTag = null;
+let hoverActive = true;
+let paths = {
+    geojson: `${props.properties.path}/geojson`,
+    json: `${props.properties.path}/json`,
+    csv: `${props.properties.path}/csv`
+}
+
+
+
+onMounted(() => {
+    gTag = d3.select(gRef.value);
+    const { result, promise } = fetchGeojson(`${paths.geojson}/KSPlace1900.geojson`);
+    promise.then(() => {
+        const pop_result = fetchJson(`${paths.json}/city-pops.json`);
+        validatePopData(pop_result.result);
+    })
+    validateData(result);
 })
 
 hooks.onZoomChange((newValue) => {
@@ -94,7 +113,7 @@ hooks.onZoomChange((newValue) => {
 })
 
 hooks.onYearChange((newValue) => {
-    let fileName = '';
+    let fileName;
     if (newValue <= 1900)
     { 
         fileName = `${paths.geojson}/KSPlace1900.geojson`; 
@@ -143,6 +162,8 @@ hooks.onYearChange((newValue) => {
         }
     })
 })
+
+
 
 /**
  * Waits for the fetched data to load. If the fetch failed,

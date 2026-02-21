@@ -3,23 +3,40 @@
  * components/BorderData.vue
  * Responsible for all changes to the county borders in BaseMap.vue
  */
+
+// External imports
 import { defineProps, onMounted, useTemplateRef, defineEmits, inject } from 'vue';
 import * as d3 from 'd3';
+
+// Utility imports
 import { fetchGeojson } from './fetchers';
 import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
 import { createTransition } from '@/d3/transitions/createTransition';
 import { FetchQueue } from './FetchQueue';
 import { registerKey } from './RegisterKey';
 
-const emit = defineEmits(["transition"])
-const props = defineProps(["properties"]);
+// Enum impports
+import { MapZoomLevel } from '@/enums/MapZoomLevel';
 
-const pathGen = d3.geoPath(props.properties.projection)
+
+
+// Define props, template refs, and emits
+const props = defineProps(["properties"]);
+const emit = defineEmits(["transition"])
 const gRef = useTemplateRef("g");
+
+// Define reactive variables
+
+// Define non-reactive variables
+const pathGen = d3.geoPath(props.properties.projection)
 const queue = new FetchQueue();
 const fadeDuration = 500;
 const label = "borders"
 
+// Register this component
+const hooks = inject(registerKey)(label, { })
+
+// Polylines that represent each county border
 let selection = null;
 let gTag = null;
 let strokeWidth = 2;
@@ -35,16 +52,14 @@ onMounted(() => {
     queue.enqueue(promise, result, validateData);
 })
 
-const hooks = inject(registerKey)(label, { })
-
 hooks.onZoomChange((newValue) => {
     switch (newValue) {
-        case "state":
+        case MapZoomLevel.STATE:
             strokeWidth = 2;
             createTransition(selection)
                     .attr("stroke-width", strokeWidth);
             break;
-        case "county":
+        case MapZoomLevel.COUNTY:
             strokeWidth = 1;
             createTransition(selection)
                     .attr("stroke-width", strokeWidth);
@@ -56,6 +71,8 @@ hooks.onYearChange((newValue) => {
     let { result, promise } = fetchGeojson(`${paths.geojson}/KSCounty_${newValue}_GeoJSON.geojson`);
     queue.enqueue(promise, result, validateData);
 })
+
+
 
 /**
  * Waits for the fetched data to load. If the fetch failed,

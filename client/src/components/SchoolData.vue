@@ -1,35 +1,35 @@
 <script setup>
+    /**
+     * components/SchoolData.vue
+     * Responsible for all changes to schools in BaseMap
+     */
+
+    // External imports
     import { defineProps, onMounted, useTemplateRef, defineEmits, watch, inject } from 'vue';
     import * as d3 from 'd3';
+
+    // Utility imports
     import { fetchGeojson } from './fetchers.js';
     import { registerKey } from './RegisterKey.js';
-    import { MapZoomLevel } from './MapZoomLevel.js';
-    import { GroupType } from './GroupType.js';
     import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection.js';
 
+    // Enum imports
+    import { MapZoomLevel } from '@/enums/MapZoomLevel.js';
+    import { GroupType } from '@/enums/GroupType.js';
+
+
+    
+    // Define props, template refs, and emits
     const props = defineProps(["properties", "watchers"]);
     const emit = defineEmits(["school-hover"]);
-
     const gRef = useTemplateRef("g")
+
+    // Define reactive variables
+
+    // Defie non-reactive variables
     const label = "schools";
 
-    let gTag = null;
-    let selectionPoints = null;
-    let projectedSchools = [];
-    let hoverActive = false;
-    let paths = {
-        geojson: `${props.properties.path}/geojson`,
-        json: `${props.properties.path}/json`,
-        csv: `${props.properties.path}/csv`
-    }
-
-    onMounted(() => {
-        gTag = d3.select(gRef.value);
-
-        const { result } = fetchGeojson(`${paths.geojson}/KSSchools.geojson`);
-        validateData(result);
-    });
-
+    // Register this component
     const hooks = inject(registerKey)(label, {
         filter: {
             legibleLabel: "Schools",
@@ -44,6 +44,26 @@
             onUnchecked: onUnchecked,
         },
     })
+
+    // Points that represent schools
+    let selectionPoints = null;
+    let gTag = null;
+    let projectedSchools = [];
+    let hoverActive = false;
+    let paths = {
+        geojson: `${props.properties.path}/geojson`,
+        json: `${props.properties.path}/json`,
+        csv: `${props.properties.path}/csv`
+    }
+
+
+
+    onMounted(() => {
+        gTag = d3.select(gRef.value);
+
+        const { result } = fetchGeojson(`${paths.geojson}/KSSchools.geojson`);
+        validateData(result);
+    });
 
     hooks.onZoomChange((newValue) => {
         switch (newValue) {

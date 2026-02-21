@@ -1,33 +1,35 @@
 <script setup>
+/**
+ * components/TractData.vue
+ * Responsible for all changes to tracts in BaseMap
+ */
+
+// External imports
 import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 import * as d3 from 'd3';
+
+// Utility imports
 import { fetchGeojson } from './fetchers';
 import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
 import { registerKey } from './RegisterKey';
-import { MapZoomLevel } from './MapZoomLevel';
-import { GroupType } from './GroupType';
 
+// Enum imports
+import { MapZoomLevel } from '@/enums/MapZoomLevel';
+import { GroupType } from '@/enums/GroupType';
+
+
+
+// Define props, template refs, and emits
 const props = defineProps(["properties"]);
-
-const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
+
+// Define reactive variables
+
+// Define non-reactive variables
+const pathGen = d3.geoPath(props.properties.projection);
 const label = "tracts";
 
-let opacity = "0%";
-let selection = null;
-let culledSelection = null;
-let gTag = null;
-let paths = {
-    geojson: `${props.properties.path}/geojson`,
-    csv: `${props.properties.path}/csv`
-}
-
-onMounted(() => {
-    gTag = d3.select(gRef.value);
-    let { result } = fetchGeojson(`${paths.geojson}/KSTracts_2000.geojson`);
-    validateData(result);
-});
-
+// Register this component
 const hooks = inject(registerKey)(label, {
     filter: {
         legibleLabel: "Tracts",
@@ -41,6 +43,23 @@ const hooks = inject(registerKey)(label, {
         onChecked: onChecked,
         onUnchecked: onUnchecked
     }
+});
+
+let opacity = "0%";
+let selection = null;
+let culledSelection = null;
+let gTag = null;
+let paths = {
+    geojson: `${props.properties.path}/geojson`,
+    csv: `${props.properties.path}/csv`
+}
+
+
+
+onMounted(() => {
+    gTag = d3.select(gRef.value);
+    let { result } = fetchGeojson(`${paths.geojson}/KSTracts_2000.geojson`);
+    validateData(result);
 });
 
 hooks.onZoomChange((newValue) => {

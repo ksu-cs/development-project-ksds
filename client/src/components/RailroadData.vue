@@ -1,30 +1,36 @@
 <script setup>
 /**
  * components/RailroadData.vue
- * Responsible for all changes to the railroad in BaseMap.vue
+ * Responsible for all changes to the railroad in the BaseMap
  */
+
+// External imports
 import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 import * as d3 from 'd3';
+
+// Utility Imports
 import { fetchGeojson } from './fetchers';
 import { fadeOut } from '@/d3/transitions/fadeSelection';
 import { createTransition } from '@/d3/transitions/createTransition';
-import { MapZoomLevel } from './MapZoomLevel';
-import { GroupType } from './GroupType';
 import { registerKey } from './RegisterKey';
 
-const props = defineProps(["properties"]);
+// Enum imports
+import { MapZoomLevel } from '@/enums/MapZoomLevel';
+import { GroupType } from '@/enums/GroupType';
 
-const pathGen = d3.geoPath(props.properties.projection);
+
+
+// Define props, template refs, and emits
+const props = defineProps(["properties"]);
 const gRef = useTemplateRef("g");
 
-const label = "railroads"
-let selection = null;
-let gTag = null;
-let paths = {
-    geojson: `${props.properties.path}/geojson`,
-    csv: `${props.properties.path}/csv`
-}
+// Define reactive variables
 
+// Define non-reactive variables
+const pathGen = d3.geoPath(props.properties.projection);
+const label = "railroads"
+
+// Register this component
 const hooks = inject(registerKey)(label, {
     filter: {
         legibleLabel: "Railroads",
@@ -39,6 +45,21 @@ const hooks = inject(registerKey)(label, {
         onChecked: onChecked,
         onUnchecked: onUnchecked,
     },
+});
+
+let selection = null;
+let gTag = null;
+let paths = {
+    geojson: `${props.properties.path}/geojson`,
+    csv: `${props.properties.path}/csv`
+}
+
+
+
+onMounted(() => {
+    gTag = d3.select(gRef.value);
+    let { result } = fetchGeojson(`${paths.geojson}/railroads.geojson`);
+    validateData(result);
 });
 
 hooks.onZoomChange((newValue) => {
@@ -59,11 +80,7 @@ hooks.onYearChange((newValue) => {
             .attr("opacity", d => d.properties.InOpBy <= newValue ? "100%" : "0%");
 })
 
-onMounted(() => {
-    gTag = d3.select(gRef.value);
-    let { result } = fetchGeojson(`${paths.geojson}/railroads.geojson`);
-    validateData(result);
-});
+
 
 /**
  * Waits for the fetched data to load. If the fetch failed,

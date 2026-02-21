@@ -3,35 +3,34 @@
  * components/InterstateData.vue
  * Responsible for all changes to the interstate lines in BaseMap.vue
  */
-import { defineProps, onMounted, useTemplateRef, watch, inject, onUnmounted } from 'vue';
+
+// External imports
+import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 import * as d3 from 'd3';
+
+// Utility imports
 import { fetchGeojson } from './fetchers';
 import { fadeOut } from '@/d3/transitions/fadeSelection';
 import { createTransition } from '@/d3/transitions/createTransition';
 import { registerKey } from './RegisterKey';
-import { MapZoomLevel } from './MapZoomLevel';
-import { GroupType } from './GroupType';
 
+// Enum imports
+import { MapZoomLevel } from '@/enums/MapZoomLevel';
+import { GroupType } from '@/enums/GroupType';
+
+
+
+// Define props, template refs, and emits
 const props = defineProps(["properties", "watchers", "filters"]);
-
-const pathGen = d3.geoPath(props.properties.projection);
 const gRef = useTemplateRef("g");
+
+// Define reactive variables
+
+// Define non-reactive variables
+const pathGen = d3.geoPath(props.properties.projection);
 const label = "interstates"
 
-let selection = null;
-let gTag = null;
-
-let paths = {
-    geojson: `${props.properties.path}/geojson`,
-    csv: `${props.properties.path}/csv`
-};
-
-onMounted(() => {
-    gTag = d3.select(gRef.value);
-    const { result } = fetchGeojson(`${paths.geojson}/KS_Interstate_Lines.geojson`);
-    validateData(result);
-});
-
+// Register this component
 const hooks = inject(registerKey)(label, {
     filter: {
         legibleLabel: "Interstates",
@@ -47,6 +46,23 @@ const hooks = inject(registerKey)(label, {
         onUnchecked: onUnchecked,
     },
 })
+
+// Polylines that represent highways
+let selection = null;
+let gTag = null;
+
+let paths = {
+    geojson: `${props.properties.path}/geojson`,
+    csv: `${props.properties.path}/csv`
+};
+
+
+
+onMounted(() => {
+    gTag = d3.select(gRef.value);
+    const { result } = fetchGeojson(`${paths.geojson}/KS_Interstate_Lines.geojson`);
+    validateData(result);
+});
 
 hooks.onZoomChange((newValue) => {
     if (!selection) return;
@@ -64,6 +80,8 @@ hooks.onZoomChange((newValue) => {
 hooks.onYearChange((newValue) => {
     applyVisibility(newValue);
 })
+
+
 
 function validateData(r) {
     const d = r.data.value;

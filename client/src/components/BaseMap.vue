@@ -5,27 +5,57 @@
  * Contains the base svg element that all geojson data is rendered to.
  * Calls each Data component to fetch and render geojson data.
  */
+
+// External imports
 import { defineProps, onMounted, useTemplateRef, ref, computed, provide, watch } from 'vue';
 import * as d3 from 'd3';
+
+// Component imports
 import RailroadData from './RailroadData.vue';
 import BorderData from './BorderData.vue';
 import CityData from './CityData.vue';
 import TractData from './TractData.vue';
 import SchoolData from './SchoolData.vue';
 import InterstateData from './InterstateData.vue';
-import { HookType } from './HookType';
+
+// Utility imports
 import { registerKey } from './RegisterKey';
-import { MapZoomLevel } from './MapZoomLevel';
-import { GroupType } from './GroupType';
 
-const props = defineProps(["inputValue", "statePath"]);
-const svgRef = useTemplateRef("svg");
-let hoveredSchool = ref(null);
-const defaultViewBox = "0 0 1600 800";
+// Enum Imports
+import { MapZoomLevel } from '@/enums/MapZoomLevel';
+import { GroupType } from '@/enums/GroupType';
+import { HookType } from '@/enums/HookType';
 
-let countyTransition = ref(true);
-let zoomState = ref(MapZoomLevel.STATE);
+
+
+// Define props, template refs, and emits
+const props = defineProps(["inputValue", "statePath"])
+const svgRef = useTemplateRef("svg")
+
+// Define reactive variables
+let hoveredSchool = ref(null)
+let countyTransition = ref(true)
+let zoomState = ref(MapZoomLevel.STATE)
+
+// Define non-reactive variables
+const defaultViewBox = "0 0 1600 800"
+let registeredLabels = new Set([ ])
+let hookBuckets = { } // Holds each hook in a bucket [list] with a specific label that coincides with a data component.
+
+// A list of bucket labels that belong to a predefined group.
+// Used to unhook these labels when that group is toggled off.
+let bucketGroups = {
+    [GroupType.INFRASTRUCTURE]: [],
+    [GroupType.OTHER]: [],
+}
+
 let svgTag = null;
+
+// Each component that registers with a filter option will have an entry in this object
+let filters = { }
+
+// List of all filters where their visible property is true.
+const visibleFilters = computed(() => Object.values(filters).filter(item => item.visible.value).sort((a, b) => a.displayLabel.localeCompare(b.displayLabel)))
 
 // Object passed to each data component so they can access properties of the map.
 let properties = {
@@ -41,31 +71,17 @@ let properties = {
     path: `/public/${props.statePath}`
 }
 
-watch(props.inputValue, (newValue, oldValue) => {
-    invokeHook(HookType.onYearChange, newValue, oldValue, { });
-})
 
-let registeredLabels = new Set([ ]);
-
-// Holds each hook in a bucket [list] with a specific label that coincides with a data component.
-let hookBuckets = { }
-
-// A list of bucket labels that belong to a predefined group.
-// Used to unhook these labels when that group is toggled off.
-let bucketGroups = {
-    [GroupType.INFRASTRUCTURE]: [],
-    [GroupType.OTHER]: [],
-}
-
-// Each component that registers with a filter option will have an entry in this object
-let filters = { }
-
-// List of all filters where their visible property is true.
-const visibleFilters = computed(() => Object.values(filters).filter(item => item.visible.value).sort((a, b) => a.displayLabel.localeCompare(b.displayLabel)))
 
 onMounted(() => {
     svgTag = d3.select(svgRef.value);
 })
+
+watch(props.inputValue, (newValue, oldValue) => {
+    invokeHook(HookType.onYearChange, newValue, oldValue, { });
+})
+
+
 
 /**
  * Creates an object containing each hook function, seeded with the given label.
