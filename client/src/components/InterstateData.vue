@@ -65,16 +65,6 @@ hooks.onYearChange((newValue) => {
     applyVisibility(newValue);
 })
 
-/*
-const fnDict = {
-    [watcherType.onZoomChange]: onZoom,
-    [watcherType.onYearChange]: onYearChange,
-    [watcherType.onInterstatesChecked]: onChecked,
-};
-
-assignWatchers(props.watchers, fnDict);
-*/
-
 function validateData(r) {
     const d = r.data.value;
     const l = r.loading.value;
@@ -110,14 +100,6 @@ function validateData(r) {
 function applyVisibility(currentYear) {
     if (!selection) return;
 
-    // Checkbox off => hide all
-    /*
-    if (!props.filters.value) {
-        fadeOut(selection);
-        return;
-    }
-    */
-
     // Checkbox on => show segments open by currentYear
     createTransition(selection)
         .attr("opacity", f => {
@@ -126,27 +108,6 @@ function applyVisibility(currentYear) {
             return openYear <= currentYear ? "100%" : "0%";
         });
 }
-
-/*
-function onZoom(newValue) {
-    if (!selection) return;
-
-    switch (newValue) {
-        case "state":
-            createTransition(selection).attr("stroke-width", 1.2);
-            break;
-        case "county":
-            createTransition(selection).attr("stroke-width", 0.8);
-            break;
-    }
-}
-*/
-
-/*
-function onYearChange(newYear) {
-    applyVisibility(newYear);
-}
-*/
 
 function onChecked() {
     switch (props.properties.zoomState.value) {

@@ -13,7 +13,7 @@ import CityData from './CityData.vue';
 import TractData from './TractData.vue';
 import SchoolData from './SchoolData.vue';
 import InterstateData from './InterstateData.vue';
-import { hookType } from './hookType';
+import { HookType } from './HookType';
 import { registerKey } from './RegisterKey';
 import { MapZoomLevel } from './MapZoomLevel';
 import { GroupType } from './GroupType';
@@ -42,7 +42,7 @@ let properties = {
 }
 
 watch(props.inputValue, (newValue, oldValue) => {
-    invokeHook(hookType.onYearChange, newValue, oldValue, { });
+    invokeHook(HookType.onYearChange, newValue, oldValue, { });
 })
 
 let registeredLabels = new Set([ ]);
@@ -57,37 +57,11 @@ let bucketGroups = {
     [GroupType.OTHER]: [],
 }
 
-/*
-const watchers = {
-    [watcherType.onZoomChange]: zoomState,
-    [watcherType.onYearChange]: props.inputValue,
-    [watcherType.onCountyTransition]: countyTransition,
-    [watcherType.onRailroadsChecked]: filters.railroads.checkedRef,
-    [watcherType.onCountyBordersChecked]: filters.countyBorders.checkedRef,
-    [watcherType.onCitiesChecked]: filters.cities.checkedRef,
-    [watcherType.onTractsChecked]: filters.tracts.checkedRef,
-};
-*/
-
 // Each component that registers with a filter option will have an entry in this object
 let filters = { }
 
 // List of all filters where their visible property is true.
 const visibleFilters = computed(() => Object.values(filters).filter(item => item.visible.value).sort((a, b) => a.displayLabel.localeCompare(b.displayLabel)))
-
-// Will be replaced with hook functions.
-/*
-const watchers = {
-    [watcherType.onZoomChange]: zoomState,
-    [watcherType.onYearChange]: props.inputValue,
-    [watcherType.onCountyTransition]: countyTransition,
-    [watcherType.onRailroadsChecked]: filters.railroads.checkedRef,
-    [watcherType.onCountyBordersChecked]: filters.countyBorders.checkedRef,
-    [watcherType.onCitiesChecked]: filters.cities.checkedRef,
-    [watcherType.onTractsChecked]: filters.tracts.checkedRef,
-    [watcherType.onInterstatesChecked]: filters.interstates.checkedRef,
-};
-*/
 
 onMounted(() => {
     svgTag = d3.select(svgRef.value);
@@ -100,7 +74,7 @@ onMounted(() => {
 function createHooks(label) {
     let hooks = { };
 
-    Object.keys(hookType).forEach((key) => {
+    Object.keys(HookType).forEach((key) => {
         if (Object.hasOwn(hookBuckets, key)) {
             if (Object.hasOwn(hookBuckets[key], label)) {
                 if (!Array.isArray(hookBuckets[key][label])) {
@@ -200,7 +174,7 @@ function changeZoomLevel(zoomLevel, viewBox) {
             .duration(750)
             .attr("viewBox", viewBox)
             .on("end", () => {
-                invokeHook(hookType.onZoomChange, zoomLevel, zoomState.value, { });
+                invokeHook(HookType.onZoomChange, zoomLevel, zoomState.value, { });
                 zoomState.value = zoomLevel;
             });
 }
@@ -224,7 +198,7 @@ function onTransition(type, boxString, bbox) {
     } else {
         properties.bbox = bbox;
         changeZoomLevel("county", boxString);
-        invokeHook(hookType.onCountyTransition, !countyTransition.value, countyTransition.value, { });
+        invokeHook(HookType.onCountyTransition, !countyTransition.value, countyTransition.value, { });
         countyTransition.value = !countyTransition.value;
     }
 }

@@ -3,9 +3,9 @@
     import * as d3 from 'd3';
     import { fetchGeojson } from './fetchers.js';
     import { registerKey } from './RegisterKey.js';
-import { MapZoomLevel } from './MapZoomLevel.js';
-import { GroupType } from './GroupType.js';
-import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection.js';
+    import { MapZoomLevel } from './MapZoomLevel.js';
+    import { GroupType } from './GroupType.js';
+    import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection.js';
 
     const props = defineProps(["properties", "watchers"]);
     const emit = defineEmits(["school-hover"]);
@@ -69,14 +69,6 @@ import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection.js';
         updateVisibleByBBox();
     })
 
-/*
-    const fnDict = {
-        [watcherType.onZoomChange]: onZoom,
-        [watcherType.onCountyTransition]: onCountyTransition,
-    }
-*/
-
-    // assignWatchers(props.watchers, fnDict);
 
     function validateData(result) {
         const d = result.data.value;
@@ -122,35 +114,6 @@ import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection.js';
                 });
     }
 
-/*
-    function onZoom(state) {
-        switch (state) {
-            case "state":
-                hoverActive = false;
-                if (selectionPoints) {
-                    selectionPoints
-                        .transition()
-                        .duration(200)
-                        .attr("opacity", "0%");
-                }
-                emit("school-hover", null);
-                break;
-
-            case "county":
-                hoverActive = true;
-                updateVisibleByBBox();
-                break;
-        }
-    }
-*/
-
-/*
-    function onCountyTransition() {
-        if (!hoverActive) return;
-        updateVisibleByBBox();
-    }   
-*/
-
     function updateVisibleByBBox() {
         if (!selectionPoints || projectedSchools.length === 0) {
             return;
@@ -177,10 +140,18 @@ import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection.js';
     }
 
     function onChecked() {
+        switch (props.properties.zoomState.value) {
+            case MapZoomLevel.STATE:
+                hoverActive = false
+                break;
+            case MapZoomLevel.COUNTY:
+                hoverActive = true
+        }
         fadeIn(selectionPoints);
     }
 
     function onUnchecked() {
+        hoverActive = false
         fadeOut(selectionPoints);
     }
 </script>

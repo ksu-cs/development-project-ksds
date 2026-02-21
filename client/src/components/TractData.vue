@@ -73,16 +73,6 @@ hooks.onCountyTransition(() => {
     fadeIn(culledSelection);
 })
 
-/*
-const fnDict = {
-    [watcherType.onZoomChange]: onZoom,
-    [watcherType.onCountyTransition]: onCountyTransition,
-    [watcherType.onTractsChecked]: onChecked,
-};
-*/
-
-// assignWatchers(props.watchers, fnDict);
-
 /**
  * Waits for the fetched data to load. If the fetch failed,
  * prints the error recieved. Populates selection by binding
@@ -131,48 +121,6 @@ function validateData(r) {
 }
 
 /**
- * Fades out tract borders on a zoom out to
- * the state level
- * @param state the new zoomState
- */
-/*
-function onZoom(state) {
-    switch (state) {
-        case "state":
-            opacity = "0%";
-            culledSelection
-                .transition()
-                .duration(200)
-                .attr("opacity", opacity);
-            break;
-    }
-}
-*/
-
-/**
- * When transitioning to a county, cull every tract
- * that doesn't overlap with the selected county, then
- * fade in the tracts remaining
- */
-/*
-function onCountyTransition() {
-    // Fade out last selection
-    fadeOut(culledSelection);
-    
-    // Cull selection
-    culledSelection = selection.filter((d, i, n) => {
-        let nodeBBox = n[i].getBBox();
-        return boxOverlapsBox(nodeBBox, props.properties.bbox);
-    });
-
-    // Fade in new selection
-    if (props.filters.value) {
-        fadeIn(culledSelection);
-    }
-}
-*/
-
-/**
  * Returns true if both given bounding boxes overlap
  * @param box One of the bounding boxes to check
  * @param otherBox The other bounding box to check
@@ -187,32 +135,6 @@ function boxOverlapsBox(box, otherBox) {
                         (box.y + box.height >= otherBox.y &&
                         box.y + box.height <= otherBox.y + otherBox.height))
 }
-
-/**
- * When checked, fades in the appropriate culled selection. When unchecked, fades out the culled selection.
- * @param newValue Whether this data components filter was checked or unchecked (true/false)
- */
-/*
-function onChecked(newValue) {
-    if (newValue) {
-        switch (props.properties.zoomState.value) {
-            case "state": // Do nothing
-                break;
-            case "county":
-                fadeIn(culledSelection);
-                break;
-        }
-    } else {
-        switch (props.properties.zoomState.value) {
-            case "state": // Do nothing
-                break;
-            case "county":
-                fadeOut(culledSelection);
-                break;
-        }
-    }
-}
-*/
 
 function onChecked() {
     switch (props.properties.zoomState.value) {

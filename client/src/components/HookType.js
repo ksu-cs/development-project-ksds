@@ -56,4 +56,4 @@ function createHookNames(names) {
 /**
  * effectively equivalent to an enum for each type of hook
  */
-export const hookType = Object.freeze(createHookNames(hookStrings));
+export const HookType = Object.freeze(createHookNames(hookStrings));

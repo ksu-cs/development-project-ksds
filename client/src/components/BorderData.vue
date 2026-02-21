@@ -57,16 +57,6 @@ hooks.onYearChange((newValue) => {
     queue.enqueue(promise, result, validateData);
 })
 
-/*
-const fnDict = {
-    [watcherType.onZoomChange]: onZoom,
-    [watcherType.onYearChange]: onYearChange,
-    [watcherType.onCountyBordersChecked]: onChecked,
-}
-*/
-
-// assignWatchers(props.watchers, fnDict);
-
 /**
  * Waits for the fetched data to load. If the fetch failed,
  * prints the error received. Populates selection by binding
@@ -127,53 +117,6 @@ function onBorderClick(event) {
                         String(bbox.height + 20);
     emit("transition", "border", boxString, bbox);
 }
-
-/**
- * Changes the width of the border path elements based
- * on the zoomState
- * @param newValue The new zoomState string
- */
-/*
-function onZoom(newValue) {
-    switch (newValue) {
-        case "state":
-            strokeWidth = 2;
-            createTransition(selection)
-                    .attr("stroke-width", strokeWidth);
-            break;
-        case "county":
-            strokeWidth = 1;
-            createTransition(selection)
-                    .attr("stroke-width", strokeWidth);
-            break;
-    }
-}
-*/
-
-/**
- * Fetches the border data for the given year.
- * @param newValue The year selected
- */
-/*
-function onYearChange(newValue) {
-    let { result, promise } = fetchGeojson(`${paths.geojson}/KSCounty_${newValue}_GeoJSON.geojson`);
-    queue.enqueue(promise, result, validateData);
-}
-*/
-
-/**
- * Fades in the current selection when checked and fades out when unchecked.
- * @param newValue Whether the filters for this data component was checked or unchecked (true/false)
- */
-/*
-function onChecked(newValue) {
-    if (newValue) {
-        fadeIn(selection, { duration: fadeDuration });
-    } else {
-        fadeOut(selection, { duration: fadeDuration });
-    }
-}
-*/
 </script>
 
 <template>

@@ -99,21 +99,6 @@ function validateData(r) {
     }
 }
 
-/**
- * Fades in the appropriate selection when checked, fades it out when unchecked.
- * @param newValue Whether this data components filter was checked or unchecked (true/false)
- */
-/*
-function onChecked(newValue) {
-    if (newValue) {
-        createTransition(selection)
-                .attr("opacity", d => d.properties.InOpBy <= props.properties.inputValue.value ? "100%" : "0%");
-    } else {
-        fadeOut(selection);
-    }
-}
-    */
-
 function onChecked() {
     createTransition(selection)
             .attr("opacity", d => d.properties.InOpBy <= props.properties.inputValue.value ? "100%" : "0%");
@@ -122,7 +107,6 @@ function onChecked() {
 function onUnchecked() {
     fadeOut(selection);
 }
-
 </script>
 
 <template>
