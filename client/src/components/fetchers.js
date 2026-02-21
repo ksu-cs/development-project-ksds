@@ -2,7 +2,7 @@
  * components/fetchGeojson.js
  */
 
-import { reactive, toRefs } from "vue";
+import { reactive, toRefs, watch } from "vue";
 
 /**
  * A Vue Composable for fetching resources.
@@ -18,11 +18,12 @@ import { reactive, toRefs } from "vue";
  * 
  * @param {string} pathString The path to the resource
  * @param {(response: Response) => Promise<any>} parseFn Parses the Response object from the call to `fetch`
- * @returns An object containing refs for `data`, `loading`, and `error`.
+ * @returns
+ * An object containing refs for `data`, `loading`, and `error`.
  * A `refresh` function that will re-fetch the given path, updating the above ref.
  * The Promise from the first call to `fetch`.
  */
-export function fetchWrapper(pathString, parseFn) {
+function fetchWrapper(pathString, parseFn, maxRetries = 3) {
     const result = reactive({
         data: null,
         loading: true,
@@ -31,17 +32,28 @@ export function fetchWrapper(pathString, parseFn) {
 
     // fetches and parses data
     async function wrapper() {
-        result.data = null;
-        result.loading = true;
-        result.error = null;
-        try {
-            const res = await fetch(pathString);
-            result.data = await parseFn(res);
-        } catch (err) {
-            result.error = err;
-        } finally {
-            result.loading = false;
+        let attempt = 0
+        
+        result.data = null
+        result.loading = true
+        result.error = null
+
+        while (attempt < maxRetries) {
+
+            try {
+                const res = await fetch(pathString)
+                if (!res.ok) throw new Error('Fetch failed')
+                result.data = await parseFn(res)
+                break
+            } catch (err) {
+                attempt++
+                if (attempt >= maxRetries) {
+                    result.error = err
+                }
+            }
         }
+
+        result.loading = false
     }
 
     let fetching = wrapper();
@@ -59,6 +71,7 @@ export function fetchWrapper(pathString, parseFn) {
  *  - loading: `true` while the fetch has not resolved, otherwise `false` (will also be `false` if an error is thrown).
  *  - error: Holds the error if the request fails, otherwise `null`.
  * @param {string} pathString The path to the resource
+ * @param {int} [refreshAttempts] The maximum number of times the fetch will be refreshed on an error (default = 3).
  * @returns 
  */
 export function fetchGeojson(pathString) {
