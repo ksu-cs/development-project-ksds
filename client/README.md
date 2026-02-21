@@ -2,7 +2,7 @@
 
 The client is a single-page application built with Vue and Node.js.
 
-It features a core interactive map, represented by an SVG element in the `BaseMap.vue` component. This map manages multilpe independent data components that can hook into changes to the SVG.
+It features a core interactive map, represented by an SVG element in the `BaseMap.vue` component. This map manages multiple independent data components that can hook into changes to the SVG.
 
 The client is intended to be highly modular, allowing new data components to be added without modifying the core map logic, or the logic of other data components.
 
@@ -26,7 +26,7 @@ A data component is fully responsible for its own data. It should decide how it'
 
 ### Hooks
 
-`BaseMap.vue` passes a prop containing hooks down to each data component.
+`BaseMap.vue` provides a register function that any descendant can use by injecting `registerKey` from `./RegisterKey`.
 
 # Development/Production
 
@@ -36,3 +36,102 @@ In production, the client will be served to the user when they query the server 
 
 ## Adding a New Data Component
 
+Follow the steps below to create and integrate a new data component into the map. The goal is to keep all business logic inside the component and leave `BaseMap.vue` unchanged except for registration in the template and import sections.
+
+### 1. Create the Component's File
+
+Create a new `.vue` file using the naming convenction:
+
+
+    <Name>Data.vue
+
+
+For example:
+
+    RailroadData.vue
+    CityData.vue
+    BorderData.vue
+
+### 2. Import required utilities
+
+Inside your component, import the required libraries and composables:
+
+```javascript
+import * as d3 from 'd3'
+import { fetchGeojson, fetchJson } from './fetchers'
+import { fadeIn, fadeOut} from '@/d3/transitions/fadeSelection'
+```
+
+* d3 is used for DOM manipulation and transitions
+* fetchGeojson/fetchJson are usd to retrieve data from the server
+* fadeIn/fadeOut are helpers to create fade transition effects
+
+### 3. Register the component
+
+Each data component must register itself with `BaseMap.vue`
+
+Inject `registerKey`:
+
+```javascript
+import { inject } from 'vue'
+import { registerKey } from './RegisterKey'
+
+const registerFn = inject(registerKey)
+```
+
+Then call it with a unique label:
+
+```javascript
+const label = 'railroads'
+
+registerFn(label)
+```
+
+The labe must be unique. Duplicate labels will throw an error. This label is how `BaseMap.vue` tracks the components internally.
+
+You may optionally pass a configuration object (for example, to register a filter). Refer to `RegisterKey.js` or the project wiki for the expected structure.
+
+Example with options:
+
+```javascript
+registerFn(label, {
+    filter: {
+        legibleLabel: "Railroads",
+        defaultStatus: true,
+        visibleStates: new Set([
+            MapZoomLevel.STATE,
+            MapZoomLevel.COUNtY,
+        ]),
+        groups: [
+            GroupType.INFRASTRUCTURE
+        ],
+        onChecked: onChecked,
+        onUnchecked: onUnchecked,
+    },
+})
+```
+
+### 4. Render to the SVG
+
+Use d3 to render elements (typically `<path>` elements) directly into the base SVG managed by `BaseMap.vue`.
+
+### Add the Component to `BaseMap.vue`
+
+The only required changes in `BaseMap.vue` are:
+
+1. Import the new component
+
+2. Add it to the template
+
+Example:
+
+```javascript
+import RailRoadData from './RailroadData.vue'
+...
+<RailroadData :properties="properties" />
+```
+
+Components render in the order they appar in the template.
+
+* Components lists later render on top of earlier components.
+* To draw above another dataset, place your component below it in the template.

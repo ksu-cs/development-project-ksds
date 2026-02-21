@@ -239,6 +239,10 @@ function onFilterClicked(event, item) {
 <template>
     <div class="container">
         <svg ref="svg" width="1200" height="800" viewBox="0 0 1600 800">
+            <!--
+                All components that render to the svg go here.
+                A component will be drawn over all components above it.
+            -->
             <RailroadData :properties="properties" />
             <BorderData :properties="properties" @transition="onTransition" />
             <TractData :properties="properties" />
@@ -248,9 +252,9 @@ function onFilterClicked(event, item) {
         </svg>
         
         <!--
-        This Transition Group represents a list of filters
-        Whenever a filter becomes visible, it fades in and slides into position
-        Whenever a filter becomes invisible, it fades out and slides out of position
+            This Transition Group represents a list of filters
+            Whenever a filter becomes visible, it fades in and slides into position
+            Whenever a filter becomes invisible, it fades out and slides out of position
         -->
         <TransitionGroup class="test" name="filters" tag="ul">
             <li class="filter" v-for="item in visibleFilters" :key="item.displayLabel">
