@@ -49,7 +49,7 @@ let paths = {
 onMounted(() => {
     gTag = d3.select(gRef.value);
     let { result, promise } = fetchGeojson(`${paths.geojson}/KSCounty_1860_GeoJSON.geojson`);
-    queue.enqueue(promise, result, validateData);
+    queue.enqueue(promise, result, renderToSVG);
 })
 
 hooks.onZoomChange((newValue) => {
@@ -69,7 +69,7 @@ hooks.onZoomChange((newValue) => {
 
 hooks.onYearChange((newValue) => {
     let { result, promise } = fetchGeojson(`${paths.geojson}/KSCounty_${newValue}_GeoJSON.geojson`);
-    queue.enqueue(promise, result, validateData);
+    queue.enqueue(promise, result, renderToSVG);
 })
 
 
@@ -80,44 +80,47 @@ hooks.onYearChange((newValue) => {
  * the data to path elements.
  * @param result The object that holds the data, loading, and error properties
  */
-function validateData(r) {
+function renderToSVG(r) {
     let d = r.data.value;
     let e = r.error.value;
 
-    if (e) {
+    // Data should always have loaded since we're using the fetchqueue
+
+    if (e) { // If there was an error
         console.error(e);
-    } else {
-        // Join border paths:
-        // Enter selection -> create paths, style them,
-        // add onClick handlers, fade in
-        // Update seleciton -> do nothing
-        // Exit selection -> fade out, then remove
-
-        selection = gTag
-            .selectAll(".border")
-            .data(d.features, d => d.properties.id)
-            .join(
-                enter => {
-                    let s = enter
-                        .append("path")
-                            .attr("d", d => {
-                                // d3 expects the reverse winding order that geojson uses
-                                d.geometry.coordinates[0].reverse();
-                                return pathGen(d);
-                            })
-                            .attr("stroke", "black")
-                            .attr("stroke-width", strokeWidth)
-                            .attr("opacity", "0%")
-                            .classed("border", true)
-                            .on("click", onBorderClick);
-
-                    fadeIn(s, { duration: fadeDuration });
-                    return s;
-                },
-                update => update,
-                exit => fadeOut(exit, { duration: fadeDuration }).remove()
-            );
+        return;
     }
+
+    // Join border paths:
+    // Enter selection -> create paths, style them,
+    // add onClick handlers, fade in
+    // Update seleciton -> do nothing
+    // Exit selection -> fade out, then remove
+
+    selection = gTag
+        .selectAll(".border")
+        .data(d.features, d => d.properties.id)
+        .join(
+            enter => {
+                let s = enter
+                    .append("path")
+                        .attr("d", d => {
+                            // d3 expects the reverse winding order that geojson uses
+                            d.geometry.coordinates[0].reverse();
+                            return pathGen(d);
+                        })
+                        .attr("stroke", "black")
+                        .attr("stroke-width", strokeWidth)
+                        .attr("opacity", "0%")
+                        .classed("border", true)
+                        .on("click", onBorderClick);
+
+                fadeIn(s, { duration: fadeDuration });
+                return s;
+            },
+            update => update,
+            exit => fadeOut(exit, { duration: fadeDuration }).remove()
+        );
 }
 
 /**

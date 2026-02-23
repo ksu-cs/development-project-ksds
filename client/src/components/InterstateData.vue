@@ -61,7 +61,7 @@ let paths = {
 onMounted(() => {
     gTag = d3.select(gRef.value);
     const { result } = fetchGeojson(`${paths.geojson}/KS_Interstate_Lines.geojson`);
-    validateData(result);
+    renderToSVG(result);
 });
 
 hooks.onZoomChange((newValue) => {
@@ -83,16 +83,16 @@ hooks.onYearChange((newValue) => {
 
 
 
-function validateData(r) {
+function renderToSVG(r) {
     const d = r.data.value;
     const l = r.loading.value;
     const e = r.error.value;
 
-    if (l) {
-        const unwatch = watch(() => r.loading.value, () => { validateData(r); unwatch(); });
+    if (l) { // If data is still loading
+        const unwatch = watch(() => r.loading.value, () => { renderToSVG(r); unwatch(); });
         return;
     }
-    if (e) {
+    if (e) { // If there was an error
         console.error(e);
         return;
     }

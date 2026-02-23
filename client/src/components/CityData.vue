@@ -75,7 +75,7 @@ onMounted(() => {
         const pop_result = fetchJson(`${paths.json}/city-pops.json`);
         validatePopData(pop_result.result);
     })
-    validateData(result);
+    renderToSVG(result);
 })
 
 hooks.onZoomChange((newValue) => {
@@ -128,7 +128,7 @@ hooks.onYearChange((newValue) => {
 
     const { result, promise } = fetchGeojson(fileName);
     promise.then(() => getTownPopByYear(newValue));
-    validateData(result);
+    renderToSVG(result);
 })
 
 hooks.onYearChange((newValue) => {
@@ -171,137 +171,139 @@ hooks.onYearChange((newValue) => {
  * the data to path elements.
  * @param result The object that holds the data, loading, and error properties
  */
-function validateData(result) {
+function renderToSVG(result) {
     let d = result.data.value;
     let l = result.loading.value;
     let e = result.error.value;
 
-    if (l) {
-        const unwatch = watch(() => result.loading.value, () => { validateData(result); unwatch() });
-    } else if (e) {
+    if (l) { // If data is still loading
+        const unwatch = watch(() => result.loading.value, () => { renderToSVG(result); unwatch() });
+        return;
+    } else if (e) { // If there was an error
         console.error(e);
-    } else {
-        selectionPoints = gTag
-            .select(".points")
-            .selectAll(".point")
-            .data(d.features, (d) => d.properties.NAME)
-            .join(
-                enter => enter
+        return;
+    }
+
+    selectionPoints = gTag
+        .select(".points")
+        .selectAll(".point")
+        .data(d.features, (d) => d.properties.NAME)
+        .join(
+            enter => enter
+                .append("path")
+                    .attr("opacity", "0%")
+                    .classed("point", true),
+            update => update,
+            exit => fadeOut(exit).remove()
+        );
+    
+    selectionBoxes = gTag
+        .select(".points")
+        .selectAll(".hitbox")
+        .data(d.features, (d) => d.properties.NAME)
+        .join(
+            enter => {
+                return enter
                     .append("path")
-                        .attr("opacity", "0%")
-                        .classed("point", true),
-                update => update,
-                exit => fadeOut(exit).remove()
-            );
-        
-        selectionBoxes = gTag
-            .select(".points")
-            .selectAll(".hitbox")
-            .data(d.features, (d) => d.properties.NAME)
-            .join(
-                enter => {
-                    return enter
-                        .append("path")
-                            .attr("d", pathGen.pointRadius(5))
-                            .classed("hitbox", true);
-                },
-                update => update,
-                exit => exit.remove()
-            );
-        
-        // Project every city's (lon, lat) pair
-        // pathGen does this for us, however,
-        // we can't use pathGen here
-        const projectedFeatures = d.features.map(feature => {
-            return {
-                coordinates: props.properties.projection(feature.geometry.coordinates),
-                name: feature.properties.NAME,
-                place: feature.properties.PLACE
-            }
-        });
-        
-        let textDict = { };
-        let popDict = { };
-
-        selectionText = gTag
-            .select(".text")
-            .selectAll(".name")
-            .data(projectedFeatures, (d) => d.name)
-            .join(
-                enter => {
-                    return enter
-                        .append("text")
-                            .attr("x", d => d.coordinates[0])
-                            .attr("y", d => d.coordinates[1])
-                            .attr("font", "italic 13px sans-serif")
-                            .attr("opacity", "0%")
-                            .property("textContent", d => d.name)
-                            .classed("name", true)
-                },
-                update => update,
-                exit => fadeOut(exit).remove()
-            )
-            .each((d, i, n) => textDict[d.name] = n[i]); // For quick access when setting up hover events.
-        
-        selectionPop = gTag
-            .select(".text")
-            .selectAll(".pop")
-            .data(projectedFeatures, (d) => d.name)
-            .join(
-                enter => {
-                    return enter
-                        .append("text")
-                            .attr("x", d => d.coordinates[0])
-                            .attr("y", d => d.coordinates[1])
-                            .attr("font", "italic 13px sans-serif")
-                            .attr("opacity", "0%")
-                            .property("textContent", "---")
-                            .classed("pop", true)
-                },
-                update => update,
-                exit => fadeOut(exit).remove()
-            )
-            .each((d, i, n) => popDict[d.name] = n[i]);
-
-        // Setup events to display town name on hover
-        selectionBoxes.on("mouseenter", (event, d) => {
-            if (hoverActive) {
-                fadeIn(d3.select(textDict[d.properties.NAME]));
-                fadeIn(d3.select(popDict[d.properties.NAME]));
-            }
-        }).on("mouseleave", (event, d) => {
-            if (hoverActive) {
-                fadeOut(d3.select(textDict[d.properties.NAME]));
-                fadeOut(d3.select(popDict[d.properties.NAME]));
-            }
-        })
-
-        switch (props.properties.zoomState.value) {
-            case "state":
-                selectionPoints
-                        .attr("d", pathGen.pointRadius(2));
-                selectionText
-                        .attr("font-size", "100%")
-                        .each((d, i, n) => centerText(d, i, n, 16));
-                selectionPop
-                        .attr("font-size", "100%")
-                        .each((d, i, n) => centerText(d, i, n, 5))
-                fadeIn(selectionPoints);
-                break;
-            case "county":
-                selectionPoints
-                        .attr("d", pathGen.pointRadius(1));
-                selectionText
-                        .attr("font-size", "30%")
-                        .each((d, i, n) => centerText(d, i, n, 3));
-                selectionPop
-                        .attr("font-size", "30%")
-                        .each((d, i, n) => centerText(d, i ,n, -5))
-                fadeIn(selectionPoints);
-                fadeIn(selectionText);
-                fadeIn(selectionPop);
-                break;
+                        .attr("d", pathGen.pointRadius(5))
+                        .classed("hitbox", true);
+            },
+            update => update,
+            exit => exit.remove()
+        );
+    
+    // Project every city's (lon, lat) pair
+    // pathGen does this for us, however,
+    // we can't use pathGen here
+    const projectedFeatures = d.features.map(feature => {
+        return {
+            coordinates: props.properties.projection(feature.geometry.coordinates),
+            name: feature.properties.NAME,
+            place: feature.properties.PLACE
         }
+    });
+    
+    let textDict = { };
+    let popDict = { };
+
+    selectionText = gTag
+        .select(".text")
+        .selectAll(".name")
+        .data(projectedFeatures, (d) => d.name)
+        .join(
+            enter => {
+                return enter
+                    .append("text")
+                        .attr("x", d => d.coordinates[0])
+                        .attr("y", d => d.coordinates[1])
+                        .attr("font", "italic 13px sans-serif")
+                        .attr("opacity", "0%")
+                        .property("textContent", d => d.name)
+                        .classed("name", true)
+            },
+            update => update,
+            exit => fadeOut(exit).remove()
+        )
+        .each((d, i, n) => textDict[d.name] = n[i]); // For quick access when setting up hover events.
+    
+    selectionPop = gTag
+        .select(".text")
+        .selectAll(".pop")
+        .data(projectedFeatures, (d) => d.name)
+        .join(
+            enter => {
+                return enter
+                    .append("text")
+                        .attr("x", d => d.coordinates[0])
+                        .attr("y", d => d.coordinates[1])
+                        .attr("font", "italic 13px sans-serif")
+                        .attr("opacity", "0%")
+                        .property("textContent", "---")
+                        .classed("pop", true)
+            },
+            update => update,
+            exit => fadeOut(exit).remove()
+        )
+        .each((d, i, n) => popDict[d.name] = n[i]);
+
+    // Setup events to display town name on hover
+    selectionBoxes.on("mouseenter", (event, d) => {
+        if (hoverActive) {
+            fadeIn(d3.select(textDict[d.properties.NAME]));
+            fadeIn(d3.select(popDict[d.properties.NAME]));
+        }
+    }).on("mouseleave", (event, d) => {
+        if (hoverActive) {
+            fadeOut(d3.select(textDict[d.properties.NAME]));
+            fadeOut(d3.select(popDict[d.properties.NAME]));
+        }
+    })
+
+    switch (props.properties.zoomState.value) {
+        case "state":
+            selectionPoints
+                    .attr("d", pathGen.pointRadius(2));
+            selectionText
+                    .attr("font-size", "100%")
+                    .each((d, i, n) => centerText(d, i, n, 16));
+            selectionPop
+                    .attr("font-size", "100%")
+                    .each((d, i, n) => centerText(d, i, n, 5))
+            fadeIn(selectionPoints);
+            break;
+        case "county":
+            selectionPoints
+                    .attr("d", pathGen.pointRadius(1));
+            selectionText
+                    .attr("font-size", "30%")
+                    .each((d, i, n) => centerText(d, i, n, 3));
+            selectionPop
+                    .attr("font-size", "30%")
+                    .each((d, i, n) => centerText(d, i ,n, -5))
+            fadeIn(selectionPoints);
+            fadeIn(selectionText);
+            fadeIn(selectionPop);
+            break;
     }
 }
 

@@ -59,7 +59,7 @@ let paths = {
 onMounted(() => {
     gTag = d3.select(gRef.value);
     let { result } = fetchGeojson(`${paths.geojson}/railroads.geojson`);
-    validateData(result);
+    renderToSVG(result);
 });
 
 hooks.onZoomChange((newValue) => {
@@ -88,32 +88,33 @@ hooks.onYearChange((newValue) => {
  * the data to path elements.
  * @param r The object that holds the data, loading, and error properties
  */
-function validateData(r) {
+function renderToSVG(r) {
     let d = r.data.value;
     let l = r.loading.value;
     let e = r.error.value;
 
-    if (l) {
-        // Watch for the data to load
-        const unwatch = watch(() => r.loading.value, () => { validateData(r); unwatch() });
-    } else if (e) {
+    if (l) { // If data is still loading
+        const unwatch = watch(() => r.loading.value, () => { renderToSVG(r); unwatch() });
+        return
+    } else if (e) { // If there was an error
         console.error(e);
-    } else {
-        // Create rail path elements
-        selection = gTag
-            .selectAll(".rail")
-            .data(d.features)
-            .join(
-                enter => enter
-                    .append("path")
-                        .attr("d", pathGen)
-                        .attr("opacity", d => d.properties.InOpBy <= props.properties.inputValue.value ? "100%" : "0%")
-                        .attr("stroke-width", 1)
-                        .classed("rail", true),
-                update => update,
-                exit => fadeOut(exit).remove()
-            )
+        return
     }
+    
+    // Create rail path elements
+    selection = gTag
+        .selectAll(".rail")
+        .data(d.features)
+        .join(
+            enter => enter
+                .append("path")
+                    .attr("d", pathGen)
+                    .attr("opacity", d => d.properties.InOpBy <= props.properties.inputValue.value ? "100%" : "0%")
+                    .attr("stroke-width", 1)
+                    .classed("rail", true),
+            update => update,
+            exit => fadeOut(exit).remove()
+        )
 }
 
 function onChecked() {

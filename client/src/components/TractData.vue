@@ -59,7 +59,7 @@ let paths = {
 onMounted(() => {
     gTag = d3.select(gRef.value);
     let { result } = fetchGeojson(`${paths.geojson}/KSTracts_2000.geojson`);
-    validateData(result);
+    renderToSVG(result);
 });
 
 hooks.onZoomChange((newValue) => {
@@ -98,45 +98,47 @@ hooks.onCountyTransition(() => {
  * the data to path elements.
  * @param r The object that holds the data, loading, and error properties
  */
-function validateData(r) {
+function renderToSVG(r) {
     let d = r.data.value;
     let l = r.loading.value;
     let e = r.error.value;
 
-    if (l) {
+    if (l) { // If data is still loading
         // Watch for the data to load
-        const unwatch = watch(() => r.loading.value, () => { validateData(r); unwatch() });
-    } else if (e) {
+        const unwatch = watch(() => r.loading.value, () => { renderToSVG(r); unwatch() });
+        return
+    } else if (e) { // If there was an error
         console.error(e);
-    } else {
-        // Create tract path elements bound to data.
-        selection = gTag
-            .selectAll(".tract")
-            .data(d.features)
-            .enter()
-            .append("path")
-                .attr("d", d => {
-                    d.geometry.coordinates[0].reverse();
-                    return pathGen(d);
-                })
-                .attr("opacity", "0")
-                .classed("tract", true);
-        
-        culledSelection = selection.filter(() => true);
+        return
+    }
 
-        switch (props.properties.zoomState.value) {
-            case "state": // Do nothing
-                break;
-            case "county":
-                // Cull selection
-                culledSelection = selection.filter((d, i, n) => {
-                    let nodeBBox = n[i].getBBox();
-                    return boxOverlapsBox(nodeBBox, props.properties.bbox);
-                });
-                fadeIn(culledSelection);
-                break;
-        }
-  }
+    // Create tract path elements bound to data.
+    selection = gTag
+        .selectAll(".tract")
+        .data(d.features)
+        .enter()
+        .append("path")
+            .attr("d", d => {
+                d.geometry.coordinates[0].reverse();
+                return pathGen(d);
+            })
+            .attr("opacity", "0")
+            .classed("tract", true);
+    
+    culledSelection = selection.filter(() => true);
+
+    switch (props.properties.zoomState.value) {
+        case "state": // Do nothing
+            break;
+        case "county":
+            // Cull selection
+            culledSelection = selection.filter((d, i, n) => {
+                let nodeBBox = n[i].getBBox();
+                return boxOverlapsBox(nodeBBox, props.properties.bbox);
+            });
+            fadeIn(culledSelection);
+            break;
+    }
 }
 
 /**

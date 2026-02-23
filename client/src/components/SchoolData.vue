@@ -62,7 +62,7 @@
         gTag = d3.select(gRef.value);
 
         const { result } = fetchGeojson(`${paths.geojson}/KSSchools.geojson`);
-        validateData(result);
+        renderToSVG(result);
     });
 
     hooks.onZoomChange((newValue) => {
@@ -90,16 +90,15 @@
     })
 
 
-    function validateData(result) {
+    function renderToSVG(result) {
         const d = result.data.value;
         const l = result.loading.value;
         const e = result.error.value;
 
-        if (l) {
-            const unwatch = watch(() => result.loading.value, () => { validateData(result); unwatch(); });
+        if (l) { // If data is still loading
+            const unwatch = watch(() => result.loading.value, () => { renderToSVG(result); unwatch(); });
             return;
-        }
-        if (e) {
+        } else if (e) { // If there was an error
             console.error(e);
             return;
         }
