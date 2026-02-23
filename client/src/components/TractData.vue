@@ -1,200 +1,200 @@
 <script setup>
-/**
- * components/TractData.vue
- * Responsible for all changes to tracts in BaseMap
- */
+	/**
+	 * components/TractData.vue
+	 * Responsible for all changes to tracts in BaseMap
+	 */
 
-// External imports
-import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
-import * as d3 from 'd3';
+	// External imports
+	import {defineProps, onMounted, useTemplateRef, watch, inject} from 'vue';
+	import * as d3 from 'd3';
 
-// Utility imports
-import { fetchGeojson } from './fetchers';
-import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
-import { registerKey } from './RegisterKey';
+	// Utility imports
+	import {fetchGeojson} from './fetchers';
+	import {fadeIn, fadeOut} from '@/d3/transitions/fadeSelection';
+	import {registerKey} from './RegisterKey';
 
-// Enum imports
-import { MapZoomLevel } from '@/enums/MapZoomLevel';
-import { GroupType } from '@/enums/GroupType';
+	// Enum imports
+	import {MapZoomLevel} from '@/enums/MapZoomLevel';
+	import {GroupType} from '@/enums/GroupType';
 
+	// Define props, template refs, and emits
+	const props = defineProps(['properties']);
+	const gRef = useTemplateRef('g');
 
+	// Define reactive variables
 
-// Define props, template refs, and emits
-const props = defineProps(["properties"]);
-const gRef = useTemplateRef("g");
+	// Define non-reactive variables
+	const pathGen = d3.geoPath(props.properties.projection);
+	const label = 'tracts';
 
-// Define reactive variables
+	// Register this component
+	const hooks = inject(registerKey)(label, {
+		filter: {
+			legibleLabel: 'Tracts',
+			defaultStatus: false,
+			visibleStates: new Set([MapZoomLevel.COUNTY]),
+			groups: [GroupType.OTHER],
+			onChecked: onChecked,
+			onUnchecked: onUnchecked,
+		},
+	});
 
-// Define non-reactive variables
-const pathGen = d3.geoPath(props.properties.projection);
-const label = "tracts";
+	let opacity = '0%';
+	let selection = null;
+	let culledSelection = null;
+	let gTag = null;
+	let paths = {
+		geojson: `${props.properties.path}/geojson`,
+		csv: `${props.properties.path}/csv`,
+	};
 
-// Register this component
-const hooks = inject(registerKey)(label, {
-    filter: {
-        legibleLabel: "Tracts",
-        defaultStatus: false,
-        visibleStates: new Set([
-            MapZoomLevel.COUNTY,
-        ]),
-        groups: [
-            GroupType.OTHER,
-        ],
-        onChecked: onChecked,
-        onUnchecked: onUnchecked
-    }
-});
+	onMounted(() => {
+		gTag = d3.select(gRef.value);
+		let {result} = fetchGeojson(`${paths.geojson}/KSTracts_2000.geojson`);
+		renderToSVG(result);
+	});
 
-let opacity = "0%";
-let selection = null;
-let culledSelection = null;
-let gTag = null;
-let paths = {
-    geojson: `${props.properties.path}/geojson`,
-    csv: `${props.properties.path}/csv`
-}
+	hooks.onZoomChange((newValue) => {
+		console.log('zoom change in tract data');
+		switch (newValue) {
+			case MapZoomLevel.STATE:
+				opacity = '0%';
+				culledSelection
+					.transition()
+					.duration(200)
+					.attr('opacity', opacity);
+				break;
+			case MapZoomLevel.COUNTY:
+				// Do nothing
+				break;
+		}
+	});
 
+	hooks.onCountyTransition(() => {
+		// Fade out last selection
+		fadeOut(culledSelection);
 
+		// Cull selection
+		culledSelection = selection.filter((d, i, n) => {
+			let nodeBBox = n[i].getBBox();
+			return boxOverlapsBox(nodeBBox, props.properties.bbox);
+		});
 
-onMounted(() => {
-    gTag = d3.select(gRef.value);
-    let { result } = fetchGeojson(`${paths.geojson}/KSTracts_2000.geojson`);
-    renderToSVG(result);
-});
+		// Fade in new selection
+		fadeIn(culledSelection);
+	});
 
-hooks.onZoomChange((newValue) => {
-    console.log("zoom change in tract data");
-    switch (newValue) {
-        case MapZoomLevel.STATE:
-            opacity = "0%";
-            culledSelection
-                .transition()
-                .duration(200)
-                .attr("opacity", opacity);
-            break;
-        case MapZoomLevel.COUNTY:
-            // Do nothing
-            break;
-    }
-})
+	/**
+	 * Waits for the fetched data to load. If the fetch failed,
+	 * prints the error recieved. Populates selection by binding
+	 * the data to path elements.
+	 * @param r The object that holds the data, loading, and error properties
+	 */
+	function renderToSVG(r) {
+		let d = r.data.value;
+		let l = r.loading.value;
+		let e = r.error.value;
 
-hooks.onCountyTransition(() => {
-    // Fade out last selection
-    fadeOut(culledSelection);
-    
-    // Cull selection
-    culledSelection = selection.filter((d, i, n) => {
-        let nodeBBox = n[i].getBBox();
-        return boxOverlapsBox(nodeBBox, props.properties.bbox);
-    });
+		if (l) {
+			// If data is still loading
+			// Watch for the data to load
+			const unwatch = watch(
+				() => r.loading.value,
+				() => {
+					renderToSVG(r);
+					unwatch();
+				}
+			);
+			return;
+		} else if (e) {
+			// If there was an error
+			console.error(e);
+			return;
+		}
 
-    // Fade in new selection
-    fadeIn(culledSelection);
-})
+		// Create tract path elements bound to data.
+		selection = gTag
+			.selectAll('.tract')
+			.data(d.features)
+			.enter()
+			.append('path')
+			.attr('d', (d) => {
+				d.geometry.coordinates[0].reverse();
+				return pathGen(d);
+			})
+			.attr('opacity', '0')
+			.classed('tract', true);
 
-/**
- * Waits for the fetched data to load. If the fetch failed,
- * prints the error recieved. Populates selection by binding
- * the data to path elements.
- * @param r The object that holds the data, loading, and error properties
- */
-function renderToSVG(r) {
-    let d = r.data.value;
-    let l = r.loading.value;
-    let e = r.error.value;
+		culledSelection = selection.filter(() => true);
 
-    if (l) { // If data is still loading
-        // Watch for the data to load
-        const unwatch = watch(() => r.loading.value, () => { renderToSVG(r); unwatch() });
-        return
-    } else if (e) { // If there was an error
-        console.error(e);
-        return
-    }
+		switch (props.properties.zoomState.value) {
+			case 'state': // Do nothing
+				break;
+			case 'county':
+				// Cull selection
+				culledSelection = selection.filter((d, i, n) => {
+					let nodeBBox = n[i].getBBox();
+					return boxOverlapsBox(nodeBBox, props.properties.bbox);
+				});
+				fadeIn(culledSelection);
+				break;
+		}
+	}
 
-    // Create tract path elements bound to data.
-    selection = gTag
-        .selectAll(".tract")
-        .data(d.features)
-        .enter()
-        .append("path")
-            .attr("d", d => {
-                d.geometry.coordinates[0].reverse();
-                return pathGen(d);
-            })
-            .attr("opacity", "0")
-            .classed("tract", true);
-    
-    culledSelection = selection.filter(() => true);
+	/**
+	 * Returns true if both given bounding boxes overlap
+	 * @param box One of the bounding boxes to check
+	 * @param otherBox The other bounding box to check
+	 */
+	function boxOverlapsBox(box, otherBox) {
+		return (
+			((box.x >= otherBox.x && box.x <= otherBox.x + otherBox.width) ||
+				(box.x + box.width >= otherBox.x &&
+					box.x + box.width <= otherBox.x + otherBox.width)) &&
+			((box.y >= otherBox.y && box.y <= otherBox.y + otherBox.height) ||
+				(box.y + box.height >= otherBox.y &&
+					box.y + box.height <= otherBox.y + otherBox.height))
+		);
+	}
 
-    switch (props.properties.zoomState.value) {
-        case "state": // Do nothing
-            break;
-        case "county":
-            // Cull selection
-            culledSelection = selection.filter((d, i, n) => {
-                let nodeBBox = n[i].getBBox();
-                return boxOverlapsBox(nodeBBox, props.properties.bbox);
-            });
-            fadeIn(culledSelection);
-            break;
-    }
-}
+	function onChecked() {
+		switch (props.properties.zoomState.value) {
+			case MapZoomLevel.STATE: // Do nothing
+				break;
+			case MapZoomLevel.COUNTY:
+				// Cull selection
+				culledSelection = selection.filter((d, i, n) => {
+					let nodeBBox = n[i].getBBox();
+					return boxOverlapsBox(nodeBBox, props.properties.bbox);
+				});
 
-/**
- * Returns true if both given bounding boxes overlap
- * @param box One of the bounding boxes to check
- * @param otherBox The other bounding box to check
- */
-function boxOverlapsBox(box, otherBox) {
-    return ((box.x >= otherBox.x &&
-                        box.x <= otherBox.x + otherBox.width) ||
-                        (box.x + box.width >= otherBox.x &&
-                        box.x + box.width <= otherBox.x + otherBox.width)) &&
-                        ((box.y >= otherBox.y &&
-                        box.y <= otherBox.y + otherBox.height) ||
-                        (box.y + box.height >= otherBox.y &&
-                        box.y + box.height <= otherBox.y + otherBox.height))
-}
+				fadeIn(culledSelection);
+				break;
+		}
+	}
 
-function onChecked() {
-    switch (props.properties.zoomState.value) {
-        case MapZoomLevel.STATE: // Do nothing
-            break;
-        case MapZoomLevel.COUNTY:
-            // Cull selection
-            culledSelection = selection.filter((d, i, n) => {
-                let nodeBBox = n[i].getBBox();
-                return boxOverlapsBox(nodeBBox, props.properties.bbox);
-            });
-
-            fadeIn(culledSelection);
-            break;
-    }
-}
-
-function onUnchecked() {
-    switch (props.properties.zoomState.value) {
-        case MapZoomLevel.STATE: // Do nothing
-            break;
-        case MapZoomLevel.COUNTY:
-            fadeOut(culledSelection);
-            break;
-    }
-}
+	function onUnchecked() {
+		switch (props.properties.zoomState.value) {
+			case MapZoomLevel.STATE: // Do nothing
+				break;
+			case MapZoomLevel.COUNTY:
+				fadeOut(culledSelection);
+				break;
+		}
+	}
 </script>
 
 <template>
-    <g class="tracts" ref="g"></g>
+	<g class="tracts" ref="g"></g>
 </template>
 
 <style scoped>
-:global(.tract) {
-    fill: none;
-    stroke: #ff000d;
-    stroke-width: 0.2;
-    pointer-events: none;
-    stroke-dasharray: 0.5 2;
-    stroke-linecap: round;
-}
+	:global(.tract) {
+		fill: none;
+		stroke: #ff000d;
+		stroke-width: 0.2;
+		pointer-events: none;
+		stroke-dasharray: 0.5 2;
+		stroke-linecap: round;
+	}
 </style>
