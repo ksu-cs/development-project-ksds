@@ -52,49 +52,49 @@ For example:
     CityData.vue
     BorderData.vue
 
-### 2. Import required utilities
+### 2. Import Required Utilities
 
 Inside your component, import the required libraries and composables:
 
 ```javascript
-import * as d3 from 'd3'
-import { fetchGeojson, fetchJson } from './fetchers'
-import { fadeIn, fadeOut} from '@/d3/transitions/fadeSelection'
+import * as d3 from 'd3';
+import { fetchGeojson, fetchJson } from './fetchers';
+import { fadeIn, fadeOut} from '@/d3/transitions/fadeSelection';
 ```
 
 * d3 is used for DOM manipulation and transitions
 * fetchGeojson/fetchJson are usd to retrieve data from the server
 * fadeIn/fadeOut are helpers to create fade transition effects
 
-### 3. Register the component
+### 3. Register the Component
 
-Each data component must register itself with `BaseMap.vue`
+Each data component must register itself with `BaseMap.vue` to hook into its state changes.
 
 Inject `registerKey`:
 
 ```javascript
-import { inject } from 'vue'
-import { registerKey } from './RegisterKey'
+import { inject } from 'vue';
+import { registerKey } from './RegisterKey';
 
-const registerFn = inject(registerKey)
+const registerFn = inject(registerKey);
 ```
 
 Then call it with a unique label:
 
 ```javascript
-const label = 'railroads'
+const label = 'railroads';
 
-registerFn(label)
+const hooks = registerFn(label);
 ```
 
-The labe must be unique. Duplicate labels will throw an error. This label is how `BaseMap.vue` tracks the components internally.
+The label must be unique. Duplicate labels will throw an error. This label is how `BaseMap.vue` tracks the components internally.
 
 You may optionally pass a configuration object (for example, to register a filter). Refer to `RegisterKey.js` or the project wiki for the expected structure.
 
 Example with options:
 
 ```javascript
-registerFn(label, {
+const hooks = registerFn(label, {
     filter: {
         legibleLabel: "Railroads",
         defaultStatus: true,
@@ -108,8 +108,31 @@ registerFn(label, {
         onChecked: onChecked,
         onUnchecked: onUnchecked,
     },
-})
+});
 ```
+
+Alternatively, since `registerFn` will only be used once, you can call the call to inject to directly access the hooks:
+
+```javascript
+import { inject } from 'vue';
+import { registerKey } from './RegisterKey';
+
+const hooks = inject(registerKey)(label);
+```
+
+The `hooks` object allows a component to react to state changes in `BaseMap.vue`. To call a hook, call the property associated with the state change you want to react to.
+
+For example:
+
+```javascript
+hooks.onYearChange((newValue, oldValue, params) => {
+    // Do something
+});
+```
+
+Each time the year slider in `BaseMap.vue` changes, the given anonymouse function will be called. The anonymous function passed will be given three arguments: the new value of the state, the old value of the state, and optional parameters that might be necessary for the component to calculate additional information.
+
+What hooks are available and when each hook is invoked is described in the `HookTypes.js` file and in the project's wiki.
 
 ### 4. Render to the SVG
 
@@ -128,10 +151,14 @@ Example:
 ```javascript
 import RailRoadData from './RailroadData.vue'
 ...
-<RailroadData :properties="properties" />
+<svg ref="svg" width="1200" height="800" viewBox="0 0 1600 800">
+    <!--Other Data Components-->
+    ...
+    <RailroadData :properties="properties" />
+<\svg>
 ```
 
-Components render in the order they appar in the template.
+Components render in the order they appear in the template.
 
-* Components lists later render on top of earlier components.
+* Components listed later render on top of earlier components.
 * To draw above another dataset, place your component below it in the template.
