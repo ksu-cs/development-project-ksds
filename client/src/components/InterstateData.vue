@@ -1,14 +1,14 @@
 <script setup>
 	/**
-	 * components/RailroadData.vue
-	 * Responsible for all changes to the railroad in the BaseMap
+	 * components/InterstateData.vue
+	 * Responsible for all changes to the interstate lines in BaseMap.vue
 	 */
 
 	// External imports
 	import {defineProps, onMounted, useTemplateRef, watch, inject} from 'vue';
 	import * as d3 from 'd3';
 
-	// Utility Imports
+	// Utility imports
 	import {fetchGeojson} from './fetchers';
 	import {fadeOut} from '@/d3/transitions/fadeSelection';
 	import {createTransition} from '@/d3/transitions/createTransition';
@@ -19,19 +19,19 @@
 	import {GroupType} from '@/enums/GroupType';
 
 	// Define props, template refs, and emits
-	const props = defineProps(['properties']);
+	const props = defineProps(['properties', 'watchers', 'filters']);
 	const gRef = useTemplateRef('g');
 
 	// Define reactive variables
 
 	// Define non-reactive variables
 	const pathGen = d3.geoPath(props.properties.projection);
-	const label = 'railroads';
+	const label = 'interstates';
 
 	// Register this component
 	const hooks = inject(registerKey)(label, {
 		filter: {
-			legibleLabel: 'Railroads',
+			legibleLabel: 'Interstates',
 			defaultStatus: true,
 			visibleStates: new Set([MapZoomLevel.STATE, MapZoomLevel.COUNTY]),
 			groups: [GroupType.INFRASTRUCTURE],
@@ -40,8 +40,10 @@
 		},
 	});
 
+	// Polylines that represent highways
 	let selection = null;
 	let gTag = null;
+
 	let paths = {
 		geojson: `${props.properties.path}/geojson`,
 		csv: `${props.properties.path}/csv`,
@@ -49,37 +51,33 @@
 
 	onMounted(() => {
 		gTag = d3.select(gRef.value);
-		let {result} = fetchGeojson(`${paths.geojson}/railroads.geojson`);
+		const {result} = fetchGeojson(
+			`${paths.geojson}/KS_Interstate_Lines.geojson`
+		);
 		renderToSVG(result);
 	});
 
 	hooks.onZoomChange((newValue) => {
+		if (!selection) return;
+
 		switch (newValue) {
 			case 'state':
-				createTransition(selection).attr('stroke-width', 1);
+				createTransition(selection).attr('stroke-width', 1.2);
 				break;
 			case 'county':
-				createTransition(selection).attr('stroke-width', 0.6);
+				createTransition(selection).attr('stroke-width', 0.8);
 				break;
 		}
 	});
 
 	hooks.onYearChange((newValue) => {
-		createTransition(selection).attr('opacity', (d) =>
-			d.properties.InOpBy <= newValue ? '100%' : '0%'
-		);
+		applyVisibility(newValue);
 	});
 
-	/**
-	 * Waits for the fetched data to load. If the fetch failed,
-	 * prints the error received. Populates selection by binding
-	 * the data to path elements.
-	 * @param r The object that holds the data, loading, and error properties
-	 */
 	function renderToSVG(r) {
-		let d = r.data.value;
-		let l = r.loading.value;
-		let e = r.error.value;
+		const d = r.data.value;
+		const l = r.loading.value;
+		const e = r.error.value;
 
 		if (l) {
 			// If data is still loading
@@ -91,40 +89,53 @@
 				}
 			);
 			return;
-		} else if (e) {
+		}
+		if (e) {
 			// If there was an error
 			console.error(e);
 			return;
 		}
 
-		// Create rail path elements
 		selection = gTag
-			.selectAll('.rail')
-			.data(d.features)
+			.selectAll('.interstate')
+			.data(d.features, (f) => f.id ?? f.properties?.FID)
 			.join(
 				(enter) =>
 					enter
 						.append('path')
+						// Works for LineString and MultiLineString
 						.attr('d', pathGen)
-						.attr('opacity', (d) =>
-							d.properties.InOpBy <=
-							props.properties.inputValue.value
-								? '100%'
-								: '0%'
-						)
-						.attr('stroke-width', 1)
-						.classed('rail', true),
+						.attr('stroke-width', 1.2)
+						.attr('opacity', '0%')
+						.classed('interstate', true),
 				(update) => update,
 				(exit) => fadeOut(exit).remove()
 			);
+
+		applyVisibility(props.properties.inputValue.value);
+	}
+
+	function applyVisibility(currentYear) {
+		if (!selection) return;
+
+		// Checkbox on => show segments open by currentYear
+		createTransition(selection).attr('opacity', (f) => {
+			const openYear = +f.properties?.year_open;
+			if (!Number.isFinite(openYear)) return '0%';
+			return openYear <= currentYear ? '100%' : '0%';
+		});
 	}
 
 	function onChecked() {
-		createTransition(selection).attr('opacity', (d) =>
-			d.properties.InOpBy <= props.properties.inputValue.value
-				? '100%'
-				: '0%'
-		);
+		switch (props.properties.zoomState.value) {
+			case 'state':
+				selection.attr('stroke-width', 1.2);
+				break;
+			case 'county':
+				selection.attr('stroke-width', 0.8);
+				break;
+		}
+		applyVisibility(props.properties.inputValue.value);
 	}
 
 	function onUnchecked() {
@@ -133,15 +144,15 @@
 </script>
 
 <template>
-	<g class="railroads" ref="g"></g>
+	<g class="interstates" ref="g"></g>
 </template>
 
 <style scoped>
-	:global(.rail) {
+	:global(.interstate) {
 		fill: none;
-		stroke: green;
+		stroke: #1f77b4;
 		pointer-events: none;
-		stroke-dasharray: 4;
 		stroke-linecap: round;
+		stroke-linejoin: round;
 	}
 </style>
