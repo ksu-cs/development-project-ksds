@@ -3,11 +3,16 @@
 	 * components/RiverData.vue
 	 * Responsible for rendering river lines.
 	 */
+	// External imports
 	import {defineProps, onMounted, useTemplateRef, watch, inject} from 'vue';
 	import * as d3 from 'd3';
-	import {fetchGeojson} from './fetchers';
-	import {fadeOut, fadeIn} from '@/d3/transitions/fadeSelection';
-	import {registerKey} from './RegisterKey';
+
+	// Utility imports
+	import { fetchGeojson } from '@/utility/fetchers';
+	import { fadeOut, fadeIn } from '@/d3/transitions/fadeSelection';
+	import { registerKey } from '@/utility/RegisterKey';
+
+	// Enum imports
 	import {MapZoomLevel} from '@/enums/MapZoomLevel';
 	import {GroupType} from '@/enums/GroupType';
 
