@@ -26,8 +26,14 @@ export class FetchQueue {
 	 */
 	enqueue(promise, result, callBack) {
 		this.count += 1;
+
 		this.queue = this.queue.then(async () => {
-			await promise.then(async () => await callBack(result));
+			try {
+				await promise;
+				await callBack(result);
+			} catch (err) {
+				console.error(err);
+			}
 		});
 
 		if (this.count >= this.max) {

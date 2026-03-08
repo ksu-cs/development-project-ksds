@@ -27,12 +27,12 @@
 	import InterstateData from './InterstateData.vue';
 
 	// Utility imports
-	import {registerKey} from './RegisterKey';
+	import { registerKey } from '../utility/RegisterKey';
 
 	// Enum Imports
-	import {MapZoomLevel} from '@/enums/MapZoomLevel';
-	import {GroupType} from '@/enums/GroupType';
-	import {HookType} from '@/enums/HookType';
+	import { MapZoomLevel } from '@/enums/MapZoomLevel';
+	import { GroupType } from '@/enums/GroupType';
+	import { HookType } from '@/enums/HookType';
 
 	// Define props, template refs, and emits
 	const props = defineProps(['inputValue', 'statePath']);
@@ -132,7 +132,7 @@
 		});
 	}
 
-	/** @type {import('./RegisterKey').RegisterFunction} */
+	/** @type {import('../utility/RegisterKey').RegisterFunction} */
 	function registerComponent(label, options) {
 		// , groups, onChecked, onUnchecked
 		// Check if the given label already exists

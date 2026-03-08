@@ -5,17 +5,17 @@
 	 */
 
 	// External imports
-	import {defineProps, onMounted, useTemplateRef, watch, inject} from 'vue';
+	import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 	import * as d3 from 'd3';
 
 	// Utility imports
-	import {fetchGeojson} from './fetchers';
-	import {fadeIn, fadeOut} from '@/d3/transitions/fadeSelection';
-	import {registerKey} from './RegisterKey';
+	import { fetchGeojson } from '../utility/fetchers';
+	import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
+	import { registerKey } from '../utility/RegisterKey';
 
 	// Enum imports
-	import {MapZoomLevel} from '@/enums/MapZoomLevel';
-	import {GroupType} from '@/enums/GroupType';
+	import { MapZoomLevel } from '@/enums/MapZoomLevel';
+	import { GroupType } from '@/enums/GroupType';
 
 	// Define props, template refs, and emits
 	const props = defineProps(['properties']);
@@ -50,7 +50,7 @@
 
 	onMounted(() => {
 		gTag = d3.select(gRef.value);
-		let {result} = fetchGeojson(`${paths.geojson}/KSTracts_2000.geojson`);
+		let { result } = fetchGeojson(`${paths.geojson}/KSTracts_2000.geojson`);
 		renderToSVG(result);
 	});
 

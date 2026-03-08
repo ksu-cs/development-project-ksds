@@ -1,5 +1,5 @@
 <script setup>
-	import {ref, watch, useTemplateRef, onMounted} from 'vue';
+	import { ref, watch, useTemplateRef, onMounted } from 'vue';
 	import BaseMap from './components/BaseMap.vue';
 
 	const slider = {

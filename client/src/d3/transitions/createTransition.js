@@ -8,6 +8,6 @@
  * @param { Object } options Customizable options for the transiton, like its duration
  * @returns
  */
-export function createTransition(selection, options = {duration: 200}) {
+export function createTransition(selection, options = { duration: 200 }) {
 	return selection.transition().duration(options.duration);
 }

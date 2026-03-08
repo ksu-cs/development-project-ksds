@@ -6,7 +6,7 @@
     "singleQuote": true,
     "vueIndentScriptAndStyle": true,
     "arrowParens": "always",
-    "bracketSpacing": false,
+    "bracketSpacing": true,
     "tabWidth": 4,
     "useTabs": true
 }

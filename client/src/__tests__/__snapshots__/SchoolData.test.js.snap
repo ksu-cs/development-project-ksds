@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SchoolData.vue > Populates element with paths 1`] = `"<g><circle class="school-point" cx="-25386.95137053999" cy="-21158.34759830615" r="0.5" opacity="0%"></circle><circle class="school-point" cx="-25318.27434998847" cy="-20864.76686155384" r="0.5" opacity="0%"></circle><circle class="school-point" cx="-25561.105135832026" cy="-20608.631330836517" r="0.5" opacity="0%"></circle></g>"`;

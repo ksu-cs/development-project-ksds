@@ -2,7 +2,7 @@
  * components/fetchGeojson.js
  */
 
-import {reactive, toRefs} from 'vue';
+import { reactive, toRefs } from 'vue';
 
 /**
  * A Vue Composable for fetching resources.

@@ -15,14 +15,14 @@
 	import * as d3 from 'd3';
 
 	// Utility imports
-	import {fetchGeojson} from './fetchers';
-	import {fadeIn, fadeOut} from '@/d3/transitions/fadeSelection';
-	import {createTransition} from '@/d3/transitions/createTransition';
-	import {FetchQueue} from './FetchQueue';
-	import {registerKey} from './RegisterKey';
+	import { fetchGeojson } from '../utility/fetchers';
+	import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
+	import { createTransition } from '@/d3/transitions/createTransition';
+	import { FetchQueue } from '../utility/FetchQueue';
+	import { registerKey } from '../utility/RegisterKey';
 
 	// Enum impports
-	import {MapZoomLevel} from '@/enums/MapZoomLevel';
+	import { MapZoomLevel } from '@/enums/MapZoomLevel';
 
 	// Define props, template refs, and emits
 	const props = defineProps(['properties']);
@@ -52,7 +52,7 @@
 
 	onMounted(() => {
 		gTag = d3.select(gRef.value);
-		let {result, promise} = fetchGeojson(
+		let { result, promise } = fetchGeojson(
 			`${paths.geojson}/KSCounty_1860_GeoJSON.geojson`
 		);
 		queue.enqueue(promise, result, renderToSVG);
@@ -72,7 +72,7 @@
 	});
 
 	hooks.onYearChange((newValue) => {
-		let {result, promise} = fetchGeojson(
+		let { result, promise } = fetchGeojson(
 			`${paths.geojson}/KSCounty_${newValue}_GeoJSON.geojson`
 		);
 		queue.enqueue(promise, result, renderToSVG);
@@ -120,11 +120,11 @@
 						.classed('border', true)
 						.on('click', onBorderClick);
 
-					fadeIn(s, {duration: fadeDuration});
+					fadeIn(s, { duration: fadeDuration });
 					return s;
 				},
 				(update) => update,
-				(exit) => fadeOut(exit, {duration: fadeDuration}).remove()
+				(exit) => fadeOut(exit, { duration: fadeDuration }).remove()
 			);
 	}
 

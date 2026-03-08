@@ -16,13 +16,13 @@
 	import * as d3 from 'd3';
 
 	// Utility imports
-	import {fetchGeojson} from './fetchers.js';
-	import {registerKey} from './RegisterKey.js';
-	import {fadeIn, fadeOut} from '@/d3/transitions/fadeSelection.js';
+	import { fetchGeojson } from '../utility/fetchers.js';
+	import { registerKey } from '../utility/RegisterKey.js';
+	import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection.js';
 
 	// Enum imports
-	import {MapZoomLevel} from '@/enums/MapZoomLevel.js';
-	import {GroupType} from '@/enums/GroupType.js';
+	import { MapZoomLevel } from '@/enums/MapZoomLevel.js';
+	import { GroupType } from '@/enums/GroupType.js';
 
 	// Define props, template refs, and emits
 	const props = defineProps(['properties', 'watchers']);
@@ -60,7 +60,7 @@
 	onMounted(() => {
 		gTag = d3.select(gRef.value);
 
-		const {result} = fetchGeojson(`${paths.geojson}/KSSchools.geojson`);
+		const { result } = fetchGeojson(`${paths.geojson}/KSSchools.geojson`);
 		renderToSVG(result);
 	});
 
@@ -130,8 +130,8 @@
 			.attr('opacity', '0%')
 			.on('mouseenter', (event, d) => {
 				if (!hoverActive) return;
-				const mousePos = {x: event.clientX, y: event.clientY};
-				emit('school-hover', {props: d.props, pos: mousePos});
+				const mousePos = { x: event.clientX, y: event.clientY };
+				emit('school-hover', { props: d.props, pos: mousePos });
 			})
 			.on('mouseleave', () => {
 				if (!hoverActive) return;

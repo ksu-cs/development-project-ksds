@@ -5,18 +5,18 @@
 	 */
 
 	// External imports
-	import {defineProps, onMounted, useTemplateRef, watch, inject} from 'vue';
+	import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 	import * as d3 from 'd3';
 
 	// Utility imports
-	import {fetchGeojson, fetchJson} from './fetchers';
-	import {fadeIn, fadeOut} from '@/d3/transitions/fadeSelection';
-	import {createTransition} from '@/d3/transitions/createTransition';
-	import {registerKey} from './RegisterKey';
+	import { fetchGeojson, fetchJson } from '../utility/fetchers';
+	import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
+	import { createTransition } from '@/d3/transitions/createTransition';
+	import { registerKey } from '../utility/RegisterKey';
 
 	// Enum imports
-	import {MapZoomLevel} from '@/enums/MapZoomLevel';
-	import {GroupType} from '@/enums/GroupType';
+	import { MapZoomLevel } from '@/enums/MapZoomLevel';
+	import { GroupType } from '@/enums/GroupType';
 
 	// Define props, template refs, and emits
 	const props = defineProps(['properties']);
@@ -61,7 +61,7 @@
 
 	onMounted(() => {
 		gTag = d3.select(gRef.value);
-		const {result, promise} = fetchGeojson(
+		const { result, promise } = fetchGeojson(
 			`${paths.geojson}/KSPlace1900.geojson`
 		);
 		promise.then(() => {
@@ -119,7 +119,7 @@
 			fileName = `${paths.geojson}/KSPlace${newValue}.geojson`;
 		}
 
-		const {result, promise} = fetchGeojson(fileName);
+		const { result, promise } = fetchGeojson(fileName);
 		promise.then(() => getTownPopByYear(newValue));
 		renderToSVG(result);
 	});
@@ -186,7 +186,6 @@
 			console.error(e);
 			return;
 		}
-
 		selectionPoints = gTag
 			.select('.points')
 			.selectAll('.point')
@@ -322,6 +321,10 @@
 	 * @param dy The vertical offset (positive moves upward)
 	 */
 	function centerText(d, i, n, dy) {
+		console.log(
+			'here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+		);
+		console.log(n[i]);
 		const bbox = n[i].getBBox();
 		const originX = d.coordinates[0];
 		const originY = d.coordinates[1];
@@ -396,7 +399,6 @@
 	}
 
 	function onChecked() {
-		console.log(props.properties.zoomState.value);
 		switch (props.properties.zoomState.value) {
 			case MapZoomLevel.STATE:
 				hoverActive = true;

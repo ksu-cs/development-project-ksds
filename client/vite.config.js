@@ -20,7 +20,8 @@ export default defineConfig({
       '/public': {
         target: 'http://localhost:3000',
         changeOrigin: true,
-        secure: false
+        secure: false,
+        rewrite: (path) => path.replace(/^\/public/, ''), // Remove '/public' from all fetches
       }
     }
   }
