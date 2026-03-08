@@ -280,7 +280,7 @@
                 A component will be drawn over all components above it.
             -->
 			<RiverData :properties="properties" />
-    		<LakeData :properties="properties" />
+			<LakeData :properties="properties" />
 			<RailroadData :properties="properties" />
 			<BorderData :properties="properties" @transition="onTransition" />
 			<TractData :properties="properties" />

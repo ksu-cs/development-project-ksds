@@ -4,7 +4,7 @@
 	 * Responsible for rendering river lines.
 	 */
 	// External imports
-	import {defineProps, onMounted, useTemplateRef, watch, inject} from 'vue';
+	import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 	import * as d3 from 'd3';
 
 	// Utility imports
@@ -13,8 +13,8 @@
 	import { registerKey } from '@/utility/RegisterKey';
 
 	// Enum imports
-	import {MapZoomLevel} from '@/enums/MapZoomLevel';
-	import {GroupType} from '@/enums/GroupType';
+	import { MapZoomLevel } from '@/enums/MapZoomLevel';
+	import { GroupType } from '@/enums/GroupType';
 
 	const props = defineProps(['properties']);
 	const gRef = useTemplateRef('g');
@@ -41,7 +41,7 @@
 
 	onMounted(() => {
 		gTag = d3.select(gRef.value);
-		const {result} = fetchGeojson(`${paths.geojson}/KS_Rivers.geojson`);
+		const { result } = fetchGeojson(`${paths.geojson}/KS_Rivers.geojson`);
 		renderToSVG(result);
 	});
 
