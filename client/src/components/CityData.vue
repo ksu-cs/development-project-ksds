@@ -321,10 +321,6 @@
 	 * @param dy The vertical offset (positive moves upward)
 	 */
 	function centerText(d, i, n, dy) {
-		console.log(
-			'here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-		);
-		console.log(n[i]);
 		const bbox = n[i].getBBox();
 		const originX = d.coordinates[0];
 		const originY = d.coordinates[1];

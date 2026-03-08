@@ -1,14 +1,14 @@
 # Unit Testing Guidelines
 
-This document outlines the conventions and requirements for writing unit tests in thsi repository. The goal is to ensure tests are consistent and maintainable.
+This document outlines the conventions and requirements for writing unit tests in this repository. The goal is to ensure tests are consistent and maintainable.
 
 All frontend unit tests use:
 
 * Vitest
 * Vue Test Utils
-* JSDOM
+* Node environment
 
-If you want to expand the suite of testing utilities, aadd them to the above list, preferably after consulting your teammates.
+If you want to expand the suite of testing utilities, add them to the above list, preferably after consulting your teammates.
 
 ## Test File Naming Convention
 
@@ -46,7 +46,7 @@ Example:
 ```javascript
 beforeEach(() => {
     global.fetch = vi.fn(() => {
-        Promise.resolve({
+        return Promise.resolve({
             ok: true,
             json: () => Promise.resolve(mockData),
         })
@@ -62,7 +62,7 @@ afterEach(() => {
 })
 ```
 
-We do this so that no external dependence can influence the result of the test, such as the server not being up.
+This ensures that no external dependencies can influence test results (for example, if the server is unavailable).
 
 ## Mocking SVG `getBBox`
 
@@ -87,7 +87,9 @@ beforeEach(() => {
 
 Reusable test data should be stored in fixtures.
 
-All mock data is stored in the `src/__tests__/mock-data/` directory.
+All mock data is stored in
+
+    src/__tests__/mock-data/`
 
 ## Snapshot Testing
 
@@ -101,7 +103,9 @@ expect(gEl.outerHTML).toMatchSnapshot();
 
 These are useful for ensuring data is rendered the same way across changes.
 
-All snapshots are automatically stored in the `src/__tests__/__snapshots__/` directory.
+All snapshots are automatically stored in
+
+    src/__tests__/__snapshots__/
 
 ## Component Mounting
 
@@ -111,15 +115,15 @@ Generally, data components should be mounted using:
 import { mount } from '@vue/test-utils';
 ```
 
-As they do not, and probably should not, have any child components.
+Data components typically do not have (and likely should not have) child components.
 
-If a component depends on
+If a component depends on:
 
 * Global providers
 * Composables
 * Props
 
-These should be mocked during mount.
+These dependencies should be mocked during mounting.
 
 ## Async Rendering
 
@@ -133,7 +137,7 @@ Example:
 await wrapper.vm.$nextTick();
 ```
 
-Multiple updates may require multiple ticks. It seems the current data components are all able to fully render after four ticks.
+Multiple updates may require multiple ticks. Currently, the data components appear to fully render after four ticks.
 
 ```javascript
 await wrapper.vm.$nextTick();
@@ -142,7 +146,7 @@ await wrapper.vm.$nextTick();
 await wrapper.vm.$nextTick();
 ```
 
-Looking into creating a helper function for this.
+A helper function for handling this may be introduced in the future.
 
 ## Coverage
 
@@ -152,4 +156,4 @@ Unit tests should prioritize:
 * Conditional rendering
 * Event handling
 
-Currently, all data components should be using snapshots to ensure rendered output stays consistent.
+Currently, all data components should use snapshots to ensure rendered output stays consistent.
