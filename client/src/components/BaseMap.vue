@@ -25,6 +25,8 @@
 	import TractData from './TractData.vue';
 	import SchoolData from './SchoolData.vue';
 	import InterstateData from './InterstateData.vue';
+	import RiverData from './RiverData.vue';
+	import LakeData from './LakeData.vue';
 
 	// Utility imports
 	import { registerKey } from '../utility/RegisterKey';
@@ -277,6 +279,8 @@
                 All components that render to the svg go here.
                 A component will be drawn over all components above it.
             -->
+			<RiverData :properties="properties" />
+    		<LakeData :properties="properties" />
 			<RailroadData :properties="properties" />
 			<BorderData :properties="properties" @transition="onTransition" />
 			<TractData :properties="properties" />
