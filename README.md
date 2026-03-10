@@ -1,15 +1,67 @@
-# Where Did They Go?
+# Overview
 
-development-project-ksds is an interactive web application that aggregates rural migratory data in the State of Kansas. Additional data that might reveal insights into the cause of such migration is displayed alongside an interactive map. This project seeks to identify the cause of documented rural outmigration of citizens in Kansas. In the future, we could expand this project to other states in the U.S. or even other countries.
+Where Did They Go? is an interactive web application that visualizes rural population migration in the state of Kansas. The application aggregates demographic and geographic datasets to help users explore potential causes of rural outmigration.
+
+Users can:
+- View populations trends through the decades
+- Compare changes in population with geographic data
+
+
+This project aims to provide students and teachers with tools to better understand the meaning behind changes in their communities.
+
+"development-project-ksds is an interactive web application that aggregates rural migratory data in the State of Kansas. Additional data that might reveal insights into the cause of such migration is displayed alongside an interactive map. This project seeks to identify the cause of documented rural outmigration of citizens in Kansas. In the future, we could expand this project to other states in the U.S. or even other countries."
+
+## Getting started
+
+### Prerequisites
+- Docker
+- VS Code (Recommended)
+- Node.js (if running locally without containers)
+
+1. Clone the repository
+
+    git clone https://github.com/ksu-cs/development-project-ksds.git
+
+2. Open the project in VS Code.
+
+3. Reopen the project in a Dev Container
+
+4. The client and server should start automatically.
+
+For more information, view our [CONTRIBUTING](/CONTRIBUTING.md) file
+
+## Project Structure
+
+```
+development-project-ksds/
++-- client/ # Frontend Application
++-- server/ # Backend Application
++-- tests/ # Testing information
++-- documentation/ # Documentation and design materials
+\-- .devcontainer/ # Development container information
+```
+
+Client: http://localhost:5173
+Server: http://localhost:3000
+
+## Tech Stack
+
+Frontend: Vue + Javascript + d3.js
+Backend: Node.js
+Data: JSON / GeoJSON
+Development Environment: Docker Dev Containers
 
 ## Licenses
 
-The data aggregated and displayed through this web appliation is typically publicly available. Citation for all data used can be found in the Wiki (Still Working On It).
+This project is licensed under the MIT license.
 
-## Contributing
+See [LICENSE](/LICENSE.md) for details.
 
-If you'd like to learn about how you can contribute, you can view our [CONTRIBUTING](/CONTRIBUTING.md) file.
+## Authors
 
-## Documentation
+Developed by students at Kansas State University
 
-If you would like to view our specification, design, and code documentation, you can view our [Project Wiki](https://github.com/ksu-cs/development-project-ksds/wiki).
+## Acknowledgements
+
+Data sources include:
+- U.S. Census Bureau

@@ -87,9 +87,9 @@ beforeEach(() => {
 
 Reusable test data should be stored in fixtures.
 
-All mock data is stored in
+All mock data in the client is stored in
 
-    src/__tests__/mock-data/`
+    src/__tests__/mock-data/
 
 ## Snapshot Testing
 
