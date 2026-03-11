@@ -1,9 +1,20 @@
-<script setup>
-	/**
-	 * components/TractData.vue
-	 * Responsible for all changes to tracts in BaseMap
-	 */
+<!--
+	components/TractData.vue
 
+	Updates and renders data related to county tract data in Kansas
+
+	=== Hooks ===
+	OnZoomChange: On zoom out, fade out all tracts that lie within the viewbox.
+	Fade in is handled by OnCountyTransition.
+
+	OnCountyTransition: Fade out all tracts currently visible. Fade in all
+	tracts that lie within the viewbox.
+
+	Filter: Fade in when checked, fade out when unchecked.
+
+-->
+
+<script setup>
 	// External imports
 	import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 	import * as d3 from 'd3';

@@ -1,9 +1,20 @@
-<script setup>
-	/**
-	 * components/InterstateData.vue
-	 * Responsible for all changes to the interstate lines in BaseMap.vue
-	 */
+<!--
+	components/InterstateData.vue
 
+	Renders and upates data relating to the Interstate Highways in Kansas
+
+	=== Hooks ===
+	OnZoomChange: On zoom in, widens the width of the interstate highways. On
+	zoom out, thins the width of the interstate highways.
+
+	OnYearChange: Fades in all interstate highways that were constructed by
+	the given year. Fades out all interstate highways that have yet to be
+	constructed by the given year.
+
+	Filter: Fades in when checked, fades out when unchecked.
+-->
+
+<script setup>
 	// External imports
 	import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 	import * as d3 from 'd3';

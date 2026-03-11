@@ -1,8 +1,13 @@
+<!--
+	components/LakeData.vue
+
+	Renders and updates data relating to the lakes of Kansas.
+
+	=== Hooks ===
+	Filter: Fades in when checked, fades out when unchecked.
+-->
+
 <script setup>
-	/**
-	 * components/LakeData.vue
-	 * Responsible for rendering lake polygons.
-	 */
 	// External imports
 	import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 	import * as d3 from 'd3';

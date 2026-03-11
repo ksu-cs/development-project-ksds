@@ -1,9 +1,20 @@
-<script setup>
-	/**
-	 * components/SchoolData.vue
-	 * Responsible for all changes to schools in BaseMap
-	 */
+<!--
+	components/SchoolData.vue
 
+	Updates and renders data relating to the schools in Kansas.
+
+	=== Hooks ===
+	OnZoomChange: On zoom in, fades in all schools and allows hovering over
+	schools. On zoom out, fades out all schools and disallows hovering over
+	schools.
+
+	OnCountyTransition: Fades in those schools whose bbox is inside the viewbox.
+	Fades out those schools whose bbox is outside the viewbox.
+
+	Filter: Fades in when checked, fades out when unchecked.
+-->
+
+<script setup>
 	// External imports
 	import {
 		defineProps,

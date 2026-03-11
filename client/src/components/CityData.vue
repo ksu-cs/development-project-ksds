@@ -1,9 +1,21 @@
-<script setup>
-	/**
-	 * components/CityData.vue
-	 * Responsible for all changes to the cities in BaseMap.vue
-	 */
+<!--
+	components/CityData.vue
 
+	Renders and updates data relating to the cities of Kansas
+
+	=== Hooks ===
+	OnZoomChange: On a zoom in, increases the radius of the cities and makes
+	the cities name and population, if available, visible. On a zoom out,
+	shrinks the radius of the cities and makes the cities name and population
+	not visible. Displays city name and population on hover.
+
+	OnYearChange: Fetches city data from the server corresponding to the new
+	year and renders it.
+
+	Filter: Fades in when checked, fades out when unchecked.
+-->
+
+<script setup>
 	// External imports
 	import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 	import * as d3 from 'd3';

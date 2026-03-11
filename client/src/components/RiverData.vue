@@ -1,8 +1,16 @@
+<!--
+	components/RiverData.vue
+
+	Updates and renders data relating to the rivers of Kansas.
+
+	=== Hooks ===
+	OnZoomChange: On zoom in, widens the width of all rivers. On zoom out, thins
+	the width of all rivers.
+
+	Filter: Fades in when checked, fades out when unchecked.
+-->
+
 <script setup>
-	/**
-	 * components/RiverData.vue
-	 * Responsible for rendering river lines.
-	 */
 	// External imports
 	import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 	import * as d3 from 'd3';

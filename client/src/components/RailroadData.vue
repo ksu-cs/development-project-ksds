@@ -1,9 +1,19 @@
-<script setup>
-	/**
-	 * components/RailroadData.vue
-	 * Responsible for all changes to the railroad in the BaseMap
-	 */
+<!--
+	components/RailroadData.vue
 
+	Updates and renders data relating to the railroads in Kansas
+
+	=== Hooks ===
+	OnZoomChange: On zoom in, widens the width of the railroads. On zoom out,
+	thins the width of the railroads.
+
+	OnYearChange: Fades in all railroads that were constructed by the given
+	year. Fades out all railroads that were not constructed by the given year.
+	
+	Filter: Fades in when checked, fades out when unchecked.
+-->
+
+<script setup>
 	// External imports
 	import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 	import * as d3 from 'd3';

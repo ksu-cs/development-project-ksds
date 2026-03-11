@@ -1,9 +1,19 @@
-<script setup>
-	/**
-	 * components/BorderData.vue
-	 * Responsible for all changes to the county borders in BaseMap.vue
-	 */
+<!--
+	components/BorderData.vue
 
+	Renders and updates data relating to the county borders of Kasnas.
+
+	=== Hooks ===
+	OnYearChange: Fetches border data from the server corresponding to
+	the new year and renders it.
+
+	OnZoomChange: Widens the width of rendered borders on Zoom in. Thins
+	them on zoom out.
+
+	Doesn't register a filter, user shouldn't be able to disable this data.
+-->
+
+<script setup>
 	// External imports
 	import {
 		defineProps,
