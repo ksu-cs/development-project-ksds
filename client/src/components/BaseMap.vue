@@ -27,6 +27,8 @@
 	import InterstateData from './InterstateData.vue';
 	import RiverData from './RiverData.vue';
 	import LakeData from './LakeData.vue';
+	import HealthcareData from './HealthcareData.vue';
+
 
 	// Utility imports
 	import { registerKey } from '../utility/RegisterKey';
@@ -39,11 +41,13 @@
 	// Define props, template refs, and emits
 	const props = defineProps(['inputValue', 'statePath']);
 	const svgRef = useTemplateRef('svg');
+	
 
 	// Define reactive variables
 	let hoveredSchool = ref(null);
 	let countyTransition = ref(true);
 	let zoomState = ref(MapZoomLevel.STATE);
+	const hoveredFacility = ref(null);
 
 	// Define non-reactive variables
 	const defaultViewBox = '0 0 1600 800';
@@ -285,10 +289,12 @@
 			<BorderData :properties="properties" @transition="onTransition" />
 			<TractData :properties="properties" />
 			<CityData :properties="properties" />
+			<HospitalData :properties="properties" />
 			<SchoolData
 				:properties="properties"
 				@school-hover="hoveredSchool = $event"
 			/>
+			<HealthcareData :properties="properties" @facility-hover="hoveredFacility = $event" />
 			<InterstateData :properties="properties" />
 		</svg>
 
@@ -346,6 +352,23 @@
 				{{ hoveredSchool.props.Zip }}
 			</p>
 		</div>
+
+			<div 
+            v-if="hoveredFacility" 
+            class="healthcare-info-box" 
+            :style="{ 
+                left: `min(${hoveredFacility.pos.x + 15}px, calc(100vw - 295px))`, 
+                top: `min(${hoveredFacility.pos.y + 15}px, calc(100vh - 180px))` 
+            }"
+        >
+            <h4 class="facility-title">{{ hoveredFacility.props.standard_name }}</h4>
+            <p><strong>Type:</strong> {{ hoveredFacility.props.healthcare_type }}</p>
+            <p><strong>Address:</strong> {{ hoveredFacility.props.ADDRESS || hoveredFacility.props.Address }}</p>
+            <p><strong>City:</strong> {{ hoveredFacility.props.CITY || hoveredFacility.props.City }}</p>
+            <p v-if="hoveredFacility.props.TELEPHONE"><strong>Phone:</strong> {{ hoveredFacility.props.TELEPHONE }}</p>
+            <p v-if="hoveredFacility.props.BEDS"><strong>Beds:</strong> {{ hoveredFacility.props.BEDS }}</p>
+            <p v-if="hoveredFacility.props.TRAUMA"><strong>Trauma:</strong> {{ hoveredFacility.props.TRAUMA }}</p>
+        </div>
 	</div>
 </template>
 
@@ -385,6 +408,35 @@
 		max-width: 250px;
 	}
 
+    .healthcare-info-box {
+        position: fixed;
+        background: white;
+        padding: 10px 14px;
+        border: 1px solid #d9534f;
+        border-radius: 6px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 10000;
+        pointer-events: none;
+        font-size: 13px;
+        max-width: 280px;
+        
+        transform: translateY(-100%); 
+    }
+
+    .facility-title {
+        margin: 0 0 6px 0;
+        font-size: 14px;
+        color: #333;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 4px;
+    }
+
+    .healthcare-info-box p {
+        margin: 3px 0;
+        line-height: 1.3;
+    }
+
+
 	.filters-move,
 	.filters-enter-active,
 	.filters-leave-active {
@@ -400,4 +452,5 @@
 	.filters-leave-active {
 		position: absolute;
 	}
+	
 </style>
