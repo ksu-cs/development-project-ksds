@@ -48,6 +48,8 @@
 	let countyTransition = ref(true);
 	let zoomState = ref(MapZoomLevel.STATE);
 	const hoveredFacility = ref(null);
+	const healthcareLegendData = ref(null);
+    const showHealthcareLegend = ref(false);
 
 	// Define non-reactive variables
 	const defaultViewBox = '0 0 1600 800';
@@ -294,7 +296,12 @@
 				:properties="properties"
 				@school-hover="hoveredSchool = $event"
 			/>
-			<HealthcareData :properties="properties" @facility-hover="hoveredFacility = $event" />
+			<HealthcareData 
+				:properties="properties" 
+                @facility-hover="hoveredFacility = $event" 
+                @legend-data="healthcareLegendData = $event"
+                @legend-visibility="showHealthcareLegend = $event"
+            />
 			<InterstateData :properties="properties" />
 		</svg>
 
@@ -368,6 +375,15 @@
             <p v-if="hoveredFacility.props.TELEPHONE"><strong>Phone:</strong> {{ hoveredFacility.props.TELEPHONE }}</p>
             <p v-if="hoveredFacility.props.BEDS"><strong>Beds:</strong> {{ hoveredFacility.props.BEDS }}</p>
             <p v-if="hoveredFacility.props.TRAUMA"><strong>Trauma:</strong> {{ hoveredFacility.props.TRAUMA }}</p>
+        </div>
+		<div v-if="showHealthcareLegend && healthcareLegendData" class="healthcare-legend">
+            <h4>Healthcare Facilities</h4>
+            <ul>
+                <li v-for="(data, type) in healthcareLegendData" :key="type">
+                    <span class="legend-icon" :style="{ backgroundColor: data.color }">{{ data.char }}</span>
+                    {{ type }}
+                </li>
+            </ul>
         </div>
 	</div>
 </template>
@@ -452,5 +468,53 @@
 	.filters-leave-active {
 		position: absolute;
 	}
+	
+    .healthcare-legend {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: white;
+        padding: 12px 16px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 10000;
+        font-size: 13px;
+        pointer-events: none; /* Prevents it from interfering with map clicks underneath */
+    }
+
+    .healthcare-legend h4 {
+        margin: 0 0 10px 0;
+        font-size: 14px;
+        color: #333;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+    }
+
+    .healthcare-legend ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .healthcare-legend li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+        color: #444;
+    }
+
+    .legend-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        border-radius: 3px;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+        margin-right: 10px;
+    }
 	
 </style>
