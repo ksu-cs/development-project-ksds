@@ -175,7 +175,9 @@
 	});
 
 	popHooks.onYearChange(() => {
-		rerenderHeatMap += 1
+		if (props.properties.zoomState.value == MapZoomLevel.STATE) {
+			rerenderHeatMap += 1;
+		}
 	})
 
 	/**
