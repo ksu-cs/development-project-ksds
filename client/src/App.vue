@@ -5,7 +5,7 @@
 	const slider = {
 		element: useTemplateRef('inputSlider'),
 		yearLabel: useTemplateRef('yearLabel'),
-		yearRef: ref(null),
+		yearRef: ref(1860),
 		get year() {
 			return this.yearRef.value;
 		},
@@ -16,7 +16,7 @@
 
 	const playButton = {
 		activeRef: ref(false),
-		timeout: 2000,
+		timeout: 3500,
 		intervalID: null,
 		opacityRef: ref({
 			play: '100%',

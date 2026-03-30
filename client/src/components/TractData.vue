@@ -55,7 +55,6 @@
 	});
 
 	hooks.onZoomChange((newValue) => {
-		console.log('zoom change in tract data');
 		switch (newValue) {
 			case MapZoomLevel.STATE:
 				opacity = '0%';
