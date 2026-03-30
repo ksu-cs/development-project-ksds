@@ -187,11 +187,8 @@
 						`BaseMap: Group with name '${value}' doesn't exist.`
 					);
 				}
-				console.log(value);
 				bucketGroups[value].push(label);
 			});
-
-			console.log(filters);
 
 			filters[label] = {
 				displayLabel: options.filter.legibleLabel,
@@ -285,13 +282,12 @@
                 All components that render to the svg go here.
                 A component will be drawn over all components above it.
             -->
+			<BorderData :properties="properties" @transition="onTransition" />
 			<RiverData :properties="properties" />
 			<LakeData :properties="properties" />
 			<RailroadData :properties="properties" />
-			<BorderData :properties="properties" @transition="onTransition" />
 			<TractData :properties="properties" />
 			<CityData :properties="properties" />
-			<HospitalData :properties="properties" />
 			<SchoolData
 				:properties="properties"
 				@school-hover="hoveredSchool = $event"
