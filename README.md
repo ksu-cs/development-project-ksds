@@ -40,13 +40,17 @@ development-project-ksds/
 ```
 
 Client: http://localhost:5173
+
 Server: http://localhost:3000
 
 ## Tech Stack
 
 Frontend: Vue + Javascript + d3.js
+
 Backend: Node.js
+
 Data: JSON / GeoJSON
+
 Development Environment: Docker Dev Containers
 
 ## Licenses
