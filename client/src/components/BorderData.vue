@@ -31,7 +31,7 @@
 	import { fetchGeojson } from '../utility/fetchers';
 	import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
 	import { createTransition } from '@/d3/transitions/createTransition';
-	import { normalize, interpolateColor } from '@/utility/interpolators';
+	import { normalize, interpolateColor } from '@/utility/Interpolators';
 	import { FetchQueue } from '../utility/FetchQueue';
 	import { registerKey } from '../utility/RegisterKey';
 
