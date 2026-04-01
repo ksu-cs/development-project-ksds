@@ -1,9 +1,19 @@
-<script setup>
-	/**
-	 * components/TractData.vue
-	 * Responsible for all changes to tracts in BaseMap
-	 */
+<!--
+	components/TractData.vue
 
+	Updates and renders data related to county tract data in Kansas
+
+	=== Hooks ===
+	OnZoomChange: On zoom out, fade out all tracts that lie within the viewbox.
+	Fade in is handled by OnCountyTransition.
+
+	OnCountyTransition: Fade out all tracts currently visible. Fade in all
+	tracts that lie within the viewbox.
+
+	Filter: Fade in when checked, fade out when unchecked.
+-->
+
+<script setup>
 	// External imports
 	import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 	import * as d3 from 'd3';
@@ -48,12 +58,14 @@
 		csv: `${props.properties.path}/csv`,
 	};
 
+	// Fetches starting data on mount.
 	onMounted(() => {
 		gTag = d3.select(gRef.value);
 		let { result } = fetchGeojson(`${paths.geojson}/KSTracts_2000.geojson`);
 		renderToSVG(result);
 	});
 
+	// Fades out the culled selection on zoom out to state.
 	hooks.onZoomChange((newValue) => {
 		switch (newValue) {
 			case MapZoomLevel.STATE:
@@ -69,6 +81,8 @@
 		}
 	});
 
+	// Culls the selection by the current bounding box.
+	// Fades in the culled selection.
 	hooks.onCountyTransition(() => {
 		// Fade out last selection
 		fadeOut(culledSelection);
@@ -141,9 +155,13 @@
 	}
 
 	/**
-	 * Returns true if both given bounding boxes overlap
+	 * Returns true if both given bounding boxes overlap.
+	 * Two boxes overlap if they intersect on both the x and y axes.
+	 * 
+	 * - Should rewrite in a simpler way later.
 	 * @param box One of the bounding boxes to check
 	 * @param otherBox The other bounding box to check
+	 * @returns {boolean} True if the boxes overlap; otherwise false
 	 */
 	function boxOverlapsBox(box, otherBox) {
 		return (
@@ -156,9 +174,16 @@
 		);
 	}
 
+	/**
+	 * When zoomed to the county level, filters the current selection to only
+	 * include elements whose bounding boxes overlap with the active bounding
+	 * box. The resulting culled selection is faded in.
+	 * @returns {void}
+	 */
 	function onChecked() {
 		switch (props.properties.zoomState.value) {
-			case MapZoomLevel.STATE: // Do nothing
+			case MapZoomLevel.STATE:
+				// Do nothing
 				break;
 			case MapZoomLevel.COUNTY:
 				// Cull selection
@@ -172,9 +197,14 @@
 		}
 	}
 
+	/**
+	 * When zoomed to the county level, this function fades out the previously
+	 * culled selection.
+	 */
 	function onUnchecked() {
 		switch (props.properties.zoomState.value) {
-			case MapZoomLevel.STATE: // Do nothing
+			case MapZoomLevel.STATE:
+				// Do nothing
 				break;
 			case MapZoomLevel.COUNTY:
 				fadeOut(culledSelection);

@@ -1,11 +1,19 @@
-<script setup>
-	/**
-	 * components/BaseMap.vue
-	 *
-	 * Contains the base svg element that all geojson data is rendered to.
-	 * Calls each Data component to fetch and render geojson data.
-	 */
+<!--
+	components/BaseMap.vue
+	
+	Container for the svg representing an interactive map. Responsible for
+	managing and exposing its state to child components in the form of a
+	registration API that allows child components to hook into the map's
+	lifecycle.
 
+	Child components inject the `register` function with `registerKey` to access
+	a set of hooks that notify the component of changes in state, such as:
+
+	- Changes to the timeline slider
+	- Viewbox changes (i.e. pan/zoom)
+-->
+
+<script setup>
 	// External imports
 	import {
 		defineProps,
@@ -54,7 +62,9 @@
 	// Define non-reactive variables
 	const defaultViewBox = '0 0 1600 800';
 	let registeredLabels = new Set([]);
-	let hookBuckets = {}; // Holds each hook in a bucket [list] with a specific label that coincides with a data component.
+	// Holds each hook in a bucket [list] with a specific label that coincides
+	// with a data component.
+	let hookBuckets = {};
 
 	// A list of bucket labels that belong to a predefined group.
 	// Used to unhook these labels when that group is toggled off.
@@ -65,7 +75,8 @@
 
 	let svgTag = null;
 
-	// Each component that registers with a filter option will have an entry in this object
+	// Each component that registers with a filter option will have an entry in
+	// this object
 	let filters = {};
 
 	// List of all filters where their visible property is true.
@@ -75,7 +86,9 @@
 			.sort((a, b) => a.displayLabel.localeCompare(b.displayLabel))
 	);
 
-	// Object passed to each data component so they can access properties of the map.
+	// Object passed to each data component so they can access properties of the
+	// map.
+	// Considering replacing this with passing parameters to hook callbacks.
 	let properties = {
 		inputValue: props.inputValue,
 		zoomState: zoomState,
@@ -93,13 +106,16 @@
 		svgTag = d3.select(svgRef.value);
 	});
 
+	// If the app's input slider changes, the year has changed
 	watch(props.inputValue, (newValue, oldValue) => {
 		invokeHook(HookType.onYearChange, newValue, oldValue, {});
 	});
 
 	/**
-	 * Creates an object containing each hook function, seeded with the given label.
-	 * @param label The label to seed each hook with
+	 * Creates an object containing each hook function, seeded with the given
+	 * label.
+	 * @param {string} label The label to seed each hook with
+	 * @returns {import('../utility/RegisterKey').HookObject}
 	 */
 	function createHooks(label) {
 		let hooks = {};
@@ -130,9 +146,14 @@
 	}
 
 	/**
-	 *
+	 * Calls each callback function registered from its child components
+	 * corresponding to the given hook
+	 * @param {string} hookName The name of the hook to call
+	 * @param {*} newValue The new value of the changed state
+	 * @param {*} oldValue The old value of the changed state
+	 * @param params Optional parameters based on context
 	 */
-	function invokeHook(hookName, newValue, oldValue, params) {
+	function invokeHook(hookName, newValue, oldValue, params = {}) {
 		Object.entries(hookBuckets[hookName]).forEach(([key, fnList]) => {
 			if (!(Object.hasOwn(filters, key) && !filters[key].status)) {
 				fnList.forEach((fn) => fn(newValue, oldValue, params));
@@ -208,10 +229,11 @@
 	provide(registerKey, registerComponent);
 
 	/**
-	 * Changes zoomState to zoomLevel, and transitions into
-	 * the given viewBox.
-	 * @param zoomLevel The new zoomState as a string
-	 * @param viewBox the viewBox to transition to
+	 * Changes zoomState to zoomLevel, and transitions the viewBox to the given
+	 * value.
+	 * @param {string} zoomLevel The new zoomState as a string
+	 * @param { { x: number, y: number, width: number, height: number } } viewBox
+	 * the viewBox to transition to
 	 */
 	function changeZoomLevel(zoomLevel, viewBox) {
 		svgTag
@@ -232,9 +254,14 @@
 	/**
 	 * Transitions the viewBox from where it is, to
 	 * somewere else.
-	 * @param type placeolder, for when different types of transitions are needed
-	 * @param boxString the bounding box of the clicked on county as a string, will be replaced by a single object later
-	 * @param bbox the bounding box object of the clicked on county, will be replaced by a single object later
+	 * @param type
+	 * placeolder, for when different types of transitions are needed
+	 * @param {string} boxString
+	 * the bounding box of the clicked on county as a string, will be replaced
+	 * by a single object later
+	 * @param { {x: number, y: number, width: number, height: number} } bbox
+	 * the bounding box object of the clicked on county, will be replaced by a
+	 * single object later
 	 */
 	function onTransition(type, boxString, bbox) {
 		if (boxString === svgTag.attr('viewBox')) {
@@ -259,9 +286,11 @@
 	}
 
 	/**
-	 * Updates the checked state of a data components filter when it becomes checked/unchecked
+	 * Updates the checked state of a data components filter when it becomes
+	 * checked/unchecked
 	 * @param event The click event that triggered this function call
-	 * @param item The entry in the filters object that corresponds to its data component.
+	 * @param item 
+	 * The entry in the filters object that corresponds to its data component.
 	 */
 	function onFilterClicked(event, item) {
 		if (event.target.checked) {

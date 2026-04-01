@@ -1,8 +1,13 @@
+<!--
+	components/LakeData.vue
+
+	Renders and updates data relating to the lakes of Kansas.
+
+	=== Hooks ===
+	Filter: Fades in when checked, fades out when unchecked.
+-->
+
 <script setup>
-	/**
-	 * components/LakeData.vue
-	 * Responsible for rendering lake polygons.
-	 */
 	// External imports
 	import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 	import * as d3 from 'd3';
@@ -46,6 +51,12 @@
 		renderToSVG(result);
 	});
 
+	/**
+	 * Waits for the fetched data to load. If the fetch failed, prints the error
+	 *  received. Populates selection by binding the data to path elements.
+	 * @param r The object that holds the data, loading, and error
+	 * properties
+	 */
 	function renderToSVG(r) {
 		const d = r.data.value;
 		const l = r.loading.value;

@@ -1,9 +1,20 @@
-<script setup>
-	/**
-	 * components/SchoolData.vue
-	 * Responsible for all changes to schools in BaseMap
-	 */
+<!--
+	components/SchoolData.vue
 
+	Updates and renders data relating to the schools in Kansas.
+
+	=== Hooks ===
+	OnZoomChange: On zoom in, fades in all schools and allows hovering over
+	schools. On zoom out, fades out all schools and disallows hovering over
+	schools.
+
+	OnCountyTransition: Fades in those schools whose bbox is inside the viewbox.
+	Fades out those schools whose bbox is outside the viewbox.
+
+	Filter: Fades in when checked, fades out when unchecked.
+-->
+
+<script setup>
 	// External imports
 	import {
 		defineProps,
@@ -57,13 +68,15 @@
 		csv: `${props.properties.path}/csv`,
 	};
 
+	// Fetches starting data on mount.
 	onMounted(() => {
 		gTag = d3.select(gRef.value);
-
 		const { result } = fetchGeojson(`${paths.geojson}/KSSchools.geojson`);
 		renderToSVG(result);
 	});
 
+	// Fades out schools at state level.
+	// Fades in culled schools at county level.
 	hooks.onZoomChange((newValue) => {
 		switch (newValue) {
 			case MapZoomLevel.STATE:
@@ -83,11 +96,18 @@
 		}
 	});
 
+	// Fades in/out culled selection.
 	hooks.onCountyTransition(() => {
 		if (!hoverActive) return;
 		updateVisibleByBBox();
 	});
 
+	/**
+	 * Waits for the fetched data to load. If the fetch failed, prints the error
+	 * received. Populates selection by binding the data to path elements.
+	 * @param result The object that holds the data, loading, and error
+	 * properties
+	 */
 	function renderToSVG(result) {
 		const d = result.data.value;
 		const l = result.loading.value;
@@ -139,6 +159,14 @@
 			});
 	}
 
+	/**
+	 * Updates the visibility of selected points based on the current bounding
+	 * box.
+	 * 
+	 * Specifically:
+	 * - Triggers a fade in animation for points inside the bounding box
+	 * - Triggers a fade out animation for points outside the bounding box
+	 */
 	function updateVisibleByBBox() {
 		if (!selectionPoints || projectedSchools.length === 0) {
 			return;
@@ -155,6 +183,16 @@
 			});
 	}
 
+	/**
+	 * Determines whether a point lies within a given bounding box.
+	 * The bounding box is treated as inclusive of its edges, meaning points on
+	 * the boundary are considered inside.
+	 * @param d The point to test (The data object associated with a school)
+	 * @param { {x: number, y: number, width: number, height: number} } bbox The bounding box, defined by its top-left corner and
+	 * dimensions
+	 * @returns {boolean} True if the point is inside or on the edge of the
+	 * bounding box; otherwise false.
+	 */
 	function pointInBBox(d, bbox) {
 		return (
 			d.x >= bbox.x &&
@@ -164,6 +202,15 @@
 		);
 	}
 
+	/**
+	 * Enables or disables hover interactions based on the current map zoom
+	 * state, and triggers a fade-in animation for the current selection
+	 * 
+	 * Specifically:
+	 * - Disables hover when zoomed out to the state level
+	 * - Enables  hover when zoomed in to the county levle
+	 * @returns {void}
+	 */
 	function onChecked() {
 		switch (props.properties.zoomState.value) {
 			case MapZoomLevel.STATE:
@@ -175,6 +222,11 @@
 		fadeIn(selectionPoints);
 	}
 
+	/**
+	 * Disales hover interactions and triggers a fade-out animation for the
+	 * current selection.
+	 * @returns {void}
+	 */
 	function onUnchecked() {
 		hoverActive = false;
 		fadeOut(selectionPoints);

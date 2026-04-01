@@ -1,9 +1,20 @@
-<script setup>
-	/**
-	 * components/InterstateData.vue
-	 * Responsible for all changes to the interstate lines in BaseMap.vue
-	 */
+<!--
+	components/InterstateData.vue
 
+	Renders and upates data relating to the Interstate Highways in Kansas
+
+	=== Hooks ===
+	OnZoomChange: On zoom in, widens the width of the interstate highways. On
+	zoom out, thins the width of the interstate highways.
+
+	OnYearChange: Fades in all interstate highways that were constructed by
+	the given year. Fades out all interstate highways that have yet to be
+	constructed by the given year.
+
+	Filter: Fades in when checked, fades out when unchecked.
+-->
+
+<script setup>
 	// External imports
 	import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 	import * as d3 from 'd3';
@@ -57,6 +68,7 @@
 		renderToSVG(result);
 	});
 
+	// Change width of interstate on zoom change.
 	hooks.onZoomChange((newValue) => {
 		if (!selection) return;
 
@@ -70,10 +82,17 @@
 		}
 	});
 
+	// Fade in appropriate interstates on year change.
 	hooks.onYearChange((newValue) => {
 		applyVisibility(newValue);
 	});
 
+	/**
+	 * Waits for the fetched data to load. If the fetch failed, prints the error
+	 *  received. Populates selection by binding the data to path elements.
+	 * @param r The object that holds the data, loading, and error
+	 * properties
+	 */
 	function renderToSVG(r) {
 		const d = r.data.value;
 		const l = r.loading.value;
@@ -115,6 +134,11 @@
 		applyVisibility(props.properties.inputValue.value);
 	}
 
+	/**
+	 * Fades in all interstate constructed by the given year and fades out all
+	 * interstate not constructed by the given year.
+	 * @param currentYear The year to base visiblity on.
+	 */
 	function applyVisibility(currentYear) {
 		if (!selection) return;
 
@@ -126,18 +150,25 @@
 		});
 	}
 
+	/**
+	 * Sets interstate width based on zoom state and fades in all appropriate
+	 * interstates.
+	 */
 	function onChecked() {
 		switch (props.properties.zoomState.value) {
-			case 'state':
+			case MapZoomLevel.STATE:
 				selection.attr('stroke-width', 1.2);
 				break;
-			case 'county':
+			case MapZoomLevel.COUNTY:
 				selection.attr('stroke-width', 0.8);
 				break;
 		}
 		applyVisibility(props.properties.inputValue.value);
 	}
 
+	/**
+	 * Fade out all interstates.
+	 */
 	function onUnchecked() {
 		fadeOut(selection);
 	}

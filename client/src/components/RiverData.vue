@@ -1,8 +1,16 @@
+<!--
+	components/RiverData.vue
+
+	Updates and renders data relating to the rivers of Kansas.
+
+	=== Hooks ===
+	OnZoomChange: On zoom in, widens the width of all rivers. On zoom out, thins
+	the width of all rivers.
+
+	Filter: Fades in when checked, fades out when unchecked.
+-->
+
 <script setup>
-	/**
-	 * components/RiverData.vue
-	 * Responsible for rendering river lines.
-	 */
 	// External imports
 	import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 	import * as d3 from 'd3';
@@ -39,18 +47,26 @@
 		geojson: `${props.properties.path}/geojson`,
 	};
 
+	// Fetches starting data on mount.
 	onMounted(() => {
 		gTag = d3.select(gRef.value);
 		const { result } = fetchGeojson(`${paths.geojson}/KS_Rivers.geojson`);
 		renderToSVG(result);
 	});
 
+	// Changes width of rivers on zoom change.
 	hooks.onZoomChange((newValue) => {
 		if (!selection) return;
 		const width = newValue === MapZoomLevel.STATE ? 0.8 : 0.4;
 		selection.transition().duration(500).attr('stroke-width', width);
 	});
 
+	/**
+	 * Waits for the fetched data to load. If the fetch failed, prints the error
+	 * received. Populates selection by binding the data to path elements.
+	 * @param r The object that holds the data, loading, and error
+	 * properties
+	 */
 	function renderToSVG(r) {
 		const d = r.data.value;
 		const l = r.loading.value;
