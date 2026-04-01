@@ -2,7 +2,7 @@
 	components/BaseMap.vue
 	
 	Container for the svg representing an interactive map. Responsible for
-	managing and exposing it's state to child components in the form of a
+	managing and exposing its state to child components in the form of a
 	registration API that allows child components to hook into the map's
 	lifecycle.
 
@@ -146,7 +146,12 @@
 	}
 
 	/**
-	 * 
+	 * Calls each callback function registered from its child components
+	 * corresponding to the given hook
+	 * @param hookName The name of the hook to call
+	 * @param newValue The new value of the changed state
+	 * @param oldValue The old value of the changed state
+	 * @param params Optional parameters based on context
 	 */
 	function invokeHook(hookName, newValue, oldValue, params = {}) {
 		Object.entries(hookBuckets[hookName]).forEach(([key, fnList]) => {

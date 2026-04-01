@@ -11,7 +11,6 @@
 	tracts that lie within the viewbox.
 
 	Filter: Fade in when checked, fade out when unchecked.
-
 -->
 
 <script setup>
