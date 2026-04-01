@@ -51,6 +51,12 @@
 		renderToSVG(result);
 	});
 
+	/**
+	 * Waits for the fetched data to load. If the fetch failed, prints the error
+	 *  received. Populates selection by binding the data to path elements.
+	 * @param r The object that holds the data, loading, and error
+	 * properties
+	 */
 	function renderToSVG(r) {
 		const d = r.data.value;
 		const l = r.loading.value;

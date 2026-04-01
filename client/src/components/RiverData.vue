@@ -47,18 +47,26 @@
 		geojson: `${props.properties.path}/geojson`,
 	};
 
+	// Fetches starting data on mount.
 	onMounted(() => {
 		gTag = d3.select(gRef.value);
 		const { result } = fetchGeojson(`${paths.geojson}/KS_Rivers.geojson`);
 		renderToSVG(result);
 	});
 
+	// Changes width of rivers on zoom change.
 	hooks.onZoomChange((newValue) => {
 		if (!selection) return;
 		const width = newValue === MapZoomLevel.STATE ? 0.8 : 0.4;
 		selection.transition().duration(500).attr('stroke-width', width);
 	});
 
+	/**
+	 * Waits for the fetched data to load. If the fetch failed, prints the error
+	 * received. Populates selection by binding the data to path elements.
+	 * @param r The object that holds the data, loading, and error
+	 * properties
+	 */
 	function renderToSVG(r) {
 		const d = r.data.value;
 		const l = r.loading.value;

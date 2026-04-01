@@ -57,12 +57,14 @@
 		csv: `${props.properties.path}/csv`,
 	};
 
+	// Fetch starting data on mount.
 	onMounted(() => {
 		gTag = d3.select(gRef.value);
 		let { result } = fetchGeojson(`${paths.geojson}/railroads.geojson`);
 		renderToSVG(result);
 	});
 
+	// Change width of railroads on zoom change.
 	hooks.onZoomChange((newValue) => {
 		switch (newValue) {
 			case 'state':
@@ -74,6 +76,8 @@
 		}
 	});
 
+	// Fade in/out railroads based on whether they were constructed by the given
+	// year.
 	hooks.onYearChange((newValue) => {
 		createTransition(selection).attr('opacity', (d) =>
 			d.properties.InOpBy <= newValue ? '100%' : '0%'
@@ -129,6 +133,9 @@
 			);
 	}
 
+	/**
+	 * Fades in all railroads that were in operation by the current year.
+	 */
 	function onChecked() {
 		createTransition(selection).attr('opacity', (d) =>
 			d.properties.InOpBy <= props.properties.inputValue.value
@@ -137,6 +144,9 @@
 		);
 	}
 
+	/**
+	 * Fades out all railroads.
+	 */
 	function onUnchecked() {
 		fadeOut(selection);
 	}

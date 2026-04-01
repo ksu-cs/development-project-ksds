@@ -10,7 +10,10 @@
 	OnZoomChange: Widens the width of rendered borders on Zoom in. Thins
 	them on zoom out.
 
-	Doesn't register a filter, user shouldn't be able to disable this data.
+	Doesn't register a filter for borders, user shouldn't be able to disable
+	this data.
+
+	Registers a filter for the heatmap.
 -->
 
 <script setup>
@@ -153,6 +156,7 @@
 		queue.enqueue(promise, result, renderToSVG);
 	});
 
+	// Change width of borders on zoom change.
 	borderHooks.onZoomChange((newValue) => {
 		switch (newValue) {
 			case MapZoomLevel.STATE:
@@ -166,6 +170,7 @@
 		}
 	});
 
+	// Turn on/off the heat map on zoom change.
 	popHooks.onZoomChange((newValue) => {
 		switch (newValue) {
 			case MapZoomLevel.STATE:
@@ -177,6 +182,7 @@
 		}
 	})
 
+	// Fetch data on year change.
 	borderHooks.onYearChange((newValue) => {
 		let { result, promise } = fetchGeojson(
 			`${paths.geojson}/KSCounty_${newValue}_GeoJSON.geojson`
@@ -184,6 +190,8 @@
 		queue.enqueue(promise, result, renderToSVG);
 	});
 
+	// Ensure the heat map is rerendered on year change as well.
+	// rerenderHeatMap is checked in renderToSVG
 	popHooks.onYearChange(() => {
 		if (props.properties.zoomState.value == MapZoomLevel.STATE) {
 			rerenderHeatMap += 1;
@@ -191,10 +199,10 @@
 	})
 
 	/**
-	 * Waits for the fetched data to load. If the fetch failed,
-	 * prints the error received. Populates selection by binding
-	 * the data to path elements.
-	 * @param result The object that holds the data, loading, and error properties
+	 * Waits for the fetched data to load. If the fetch failed, prints the error
+	 *  received. Populates selection by binding the data to path elements.
+	 * @param r The object that holds the data, loading, and error
+	 * properties
 	 */
 	function renderToSVG(r) {
 		let d = r.data.value;
@@ -233,6 +241,8 @@
 						.classed('border', true)
 						.on('click', onBorderClick);
 					
+					// Only render the heat map for new data if the filter is
+					// checked
 					if (rerenderHeatMap > 0) {
 						const year = props.properties.inputValue.value.toString();
 						s = s.attr('fill', (d) => getCountyColor(d, year))
@@ -247,17 +257,11 @@
 				(update) => update,
 				(exit) => fadeOut(exit, { duration: fadeDuration }).remove()
 			);
-		
-		//if (rerenderHeatMap) {
-		//	displayHeatMap();
-		//	rerenderHeatMap -= 1;
-		//}
 	}
 
 	/**
-	 * Emits a transition event to BaseMap with the
-	 * the parameters "border", and the bounding box
-	 * of the border clicked on.
+	 * Emits a transition event to BaseMap with the the parameters "border", and
+	 * the bounding box of the border clicked on.
 	 * @param event The click event
 	 */
 	function onBorderClick(event) {
@@ -273,6 +277,10 @@
 		emit('transition', 'border', boxString, bbox);
 	}
 
+	/**
+	 * Sets the fill and fill-opacity for each county correpsonding to their
+	 * population (normalized)
+	 */
 	function displayHeatMap() {
 		let year = props.properties.inputValue.value.toString();
 
@@ -281,6 +289,11 @@
 			.attr('fill-opacity', fillOpacity);
 	}
 
+	/**
+	 * Returns a string representing the css rgb value for the given border.
+	 * @param d The data associated with the border
+	 * @param year The year to normalize to
+	 */
 	function getCountyColor(d, year) {
 		const yearData = d.properties["pop-by-year"];
 		if (Object.hasOwn(yearData, year)) {
@@ -291,6 +304,9 @@
 		}
 	}
 
+	/**
+	 * Sets the fill-opacity for all borders to '0%'.
+	 */
 	function hideHeatMap() {
 		createTransition(selection)
 			.attr("fill-opacity", "0%");

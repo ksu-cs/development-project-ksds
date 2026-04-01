@@ -68,6 +68,7 @@
 		renderToSVG(result);
 	});
 
+	// Change width of interstate on zoom change.
 	hooks.onZoomChange((newValue) => {
 		if (!selection) return;
 
@@ -81,10 +82,17 @@
 		}
 	});
 
+	// Fade in appropriate interstates on year change.
 	hooks.onYearChange((newValue) => {
 		applyVisibility(newValue);
 	});
 
+	/**
+	 * Waits for the fetched data to load. If the fetch failed, prints the error
+	 *  received. Populates selection by binding the data to path elements.
+	 * @param r The object that holds the data, loading, and error
+	 * properties
+	 */
 	function renderToSVG(r) {
 		const d = r.data.value;
 		const l = r.loading.value;
@@ -126,6 +134,11 @@
 		applyVisibility(props.properties.inputValue.value);
 	}
 
+	/**
+	 * Fades in all interstate constructed by the given year and fades out all
+	 * interstate not constructed by the given year.
+	 * @param currentYear The year to base visiblity on.
+	 */
 	function applyVisibility(currentYear) {
 		if (!selection) return;
 
@@ -137,18 +150,25 @@
 		});
 	}
 
+	/**
+	 * Sets interstate width based on zoom state and fades in all appropriate
+	 * interstates.
+	 */
 	function onChecked() {
 		switch (props.properties.zoomState.value) {
-			case 'state':
+			case MapZoomLevel.STATE:
 				selection.attr('stroke-width', 1.2);
 				break;
-			case 'county':
+			case MapZoomLevel.COUNTY:
 				selection.attr('stroke-width', 0.8);
 				break;
 		}
 		applyVisibility(props.properties.inputValue.value);
 	}
 
+	/**
+	 * Fade out all interstates.
+	 */
 	function onUnchecked() {
 		fadeOut(selection);
 	}

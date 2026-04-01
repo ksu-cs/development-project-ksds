@@ -78,11 +78,13 @@
 		);
 		promise.then(() => {
 			const pop_result = fetchJson(`${paths.json}/city-pops.json`);
-			validatePopData(pop_result.result);
+			renderPopToSVG(pop_result.result);
 		});
-		renderToSVG(result);
+		renderPointsToSVG(result);
 	});
 
+	// Change the radius of cities on zoom change
+	// Disable/enable hover on zoom change
 	hooks.onZoomChange((newValue) => {
 		switch (newValue) {
 			case MapZoomLevel.STATE:
@@ -121,6 +123,7 @@
 		}
 	});
 
+	// Fetch city lat/lon data on year change.
 	hooks.onYearChange((newValue) => {
 		let fileName;
 		if (newValue <= 1900) {
@@ -133,9 +136,10 @@
 
 		const { result, promise } = fetchGeojson(fileName);
 		promise.then(() => getTownPopByYear(newValue));
-		renderToSVG(result);
+		renderPointsToSVG(result);
 	});
 
+	// Fetch city pop data on year change.
 	hooks.onYearChange((newValue) => {
 		// We only have town population data starting in 1970 until 2020
 		if (newValue < 1970) {
@@ -173,12 +177,12 @@
 	});
 
 	/**
-	 * Waits for the fetched data to load. If the fetch failed,
-	 * prints the error received. Populates selection by binding
-	 * the data to path elements.
-	 * @param result The object that holds the data, loading, and error properties
+	 * Waits for the fetched data to load. If the fetch failed, prints the error
+	 * received. Populates selection by binding the data to path elements.
+	 * @param result The object that holds the data, loading, and error
+	 * properties
 	 */
-	function renderToSVG(result) {
+	function renderPointsToSVG(result) {
 		let d = result.data.value;
 		let l = result.loading.value;
 		let e = result.error.value;
@@ -188,7 +192,7 @@
 			const unwatch = watch(
 				() => result.loading.value,
 				() => {
-					renderToSVG(result);
+					renderPointsToSVG(result);
 					unwatch();
 				}
 			);
@@ -325,12 +329,12 @@
 	}
 
 	/**
-	 * Centers every text element horizontally at its x position and
-	 * offsets it vertically by the given amount from its y position
+	 * Centers every text element horizontally at its x position and offsets it
+	 * vertically from its y position by the given amount
 	 * @param d The data for the current node
 	 * @param i The index of the current node in the list of nodes
 	 * @param n The list of all nodes
-	 * @param dy The vertical offset (positive moves upward)
+	 * @param {number} dy The vertical offset (positive moves upward)
 	 */
 	function centerText(d, i, n, dy) {
 		const bbox = n[i].getBBox();
@@ -343,7 +347,13 @@
 			.attr('y', originY - dy);
 	}
 
-	function validatePopData(result) {
+	/**
+	 * Waits for the fetched data to load. If the fetch failed, prints the error
+	 * received. Populates selection by binding the data to path elements.
+	 * @param result The object that holds the data, loading, and error
+	 * properties
+	 */
+	function renderPopToSVG(result) {
 		let d = result.data.value;
 		let l = result.loading.value;
 		let e = result.error.value;
@@ -352,7 +362,7 @@
 			const unwatch = watch(
 				() => result.loading.value,
 				() => {
-					validatePopData(result);
+					renderPopToSVG(result);
 					unwatch();
 				}
 			);
@@ -365,8 +375,8 @@
 	}
 
 	/**
-	 * Load in and create a dictionary with the county, city name, and city population
-	 * by the given year. Delete the old dictionary??
+	 * Load in and create a dictionary with the county, city name, and city
+	 * population by the given year. Delete the old dictionary??
 	 * @param newValue The year selected
 	 */
 	//can also have the old value as an parameter if you want, otherwise just ignore
@@ -406,6 +416,9 @@
 		});
 	}
 
+	/**
+	 * Fades in city points and enables hovering depending on the zoom state.
+	 */
 	function onChecked() {
 		switch (props.properties.zoomState.value) {
 			case MapZoomLevel.STATE:
@@ -436,6 +449,9 @@
 		fadeIn(selectionPoints);
 	}
 
+	/**
+	 * Fades everything out.
+	 */
 	function onUnchecked() {
 		hoverActive = false;
 		fadeOut(selectionPoints);

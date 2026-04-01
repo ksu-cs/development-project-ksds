@@ -114,7 +114,7 @@
 	/**
 	 * Creates an object containing each hook function, seeded with the given
 	 * label.
-	 * @param label The label to seed each hook with
+	 * @param {string} label The label to seed each hook with
 	 * @returns {import('../utility/RegisterKey').HookObject}
 	 */
 	function createHooks(label) {
@@ -148,9 +148,9 @@
 	/**
 	 * Calls each callback function registered from its child components
 	 * corresponding to the given hook
-	 * @param hookName The name of the hook to call
-	 * @param newValue The new value of the changed state
-	 * @param oldValue The old value of the changed state
+	 * @param {string} hookName The name of the hook to call
+	 * @param {*} newValue The new value of the changed state
+	 * @param {*} oldValue The old value of the changed state
 	 * @param params Optional parameters based on context
 	 */
 	function invokeHook(hookName, newValue, oldValue, params = {}) {
@@ -229,10 +229,11 @@
 	provide(registerKey, registerComponent);
 
 	/**
-	 * Changes zoomState to zoomLevel, and transitions into
-	 * the given viewBox.
-	 * @param zoomLevel The new zoomState as a string
-	 * @param viewBox the viewBox to transition to
+	 * Changes zoomState to zoomLevel, and transitions the viewBox to the given
+	 * value.
+	 * @param {string} zoomLevel The new zoomState as a string
+	 * @param { { x: number, y: number, width: number, height: number } } viewBox
+	 * the viewBox to transition to
 	 */
 	function changeZoomLevel(zoomLevel, viewBox) {
 		svgTag
@@ -255,10 +256,10 @@
 	 * somewere else.
 	 * @param type
 	 * placeolder, for when different types of transitions are needed
-	 * @param boxString
+	 * @param {string} boxString
 	 * the bounding box of the clicked on county as a string, will be replaced
 	 * by a single object later
-	 * @param bbox
+	 * @param { {x: number, y: number, width: number, height: number} } bbox
 	 * the bounding box object of the clicked on county, will be replaced by a
 	 * single object later
 	 */
