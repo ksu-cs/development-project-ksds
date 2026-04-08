@@ -11,6 +11,8 @@ This project aims to provide students and teachers with tools to better understa
 
 ## Getting started
 
+Our documentation can also be found at our [jolli site](https://wheredidtheygo-ksds-docs-ksu-cs.jolli.site/overview).
+
 ### Prerequisites
 - Docker
 - VS Code (Recommended)
@@ -26,7 +28,7 @@ This project aims to provide students and teachers with tools to better understa
 
 4. The client and server should start automatically.
 
-For more information, view our [CONTRIBUTING](/CONTRIBUTING.md) file
+For more information, view our [CONTRIBUTING](/CONTRIBUTING.md) file.
 
 ## Project Structure
 
