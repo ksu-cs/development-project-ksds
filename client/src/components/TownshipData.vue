@@ -1,7 +1,7 @@
 <script setup>
 /**
  * components/TownshipData.vue
- * Responsible for rendering Kansas Township grid polygons.
+ * Renders and displays Kansas Township border lines.
  */
 import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
 import * as d3 from 'd3';
@@ -18,7 +18,7 @@ const label = 'townships';
 inject(registerKey)(label, {
     filter: {
         legibleLabel: 'Townships',
-        defaultStatus: false, // Start hidden to prevent map clutter
+        defaultStatus: false,
         visibleStates: new Set([MapZoomLevel.STATE, MapZoomLevel.COUNTY]),
         groups: [GroupType.OTHER],
         onChecked: () => fadeIn(selection),
@@ -58,7 +58,6 @@ function renderToSVG(r) {
         .join('path')
         .attr('class', 'township')
         .attr('d', (f) => {
-            // Polygons usually require winding order reversal for D3 paths to render correctly
             if (f.geometry && f.geometry.coordinates && f.geometry.coordinates[0]) {
                 f.geometry.coordinates[0].reverse();
             }
