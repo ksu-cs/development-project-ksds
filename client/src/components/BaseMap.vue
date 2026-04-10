@@ -36,6 +36,7 @@
 	import RiverData from './RiverData.vue';
 	import LakeData from './LakeData.vue';
 	import HealthcareData from './HealthcareData.vue';
+	import TownshipData from './TownshipData.vue';
 
 
 	// Utility imports
@@ -314,6 +315,7 @@
 			<BorderData :properties="properties" @transition="onTransition" />
 			<RiverData :properties="properties" />
 			<LakeData :properties="properties" />
+			<TownshipData :properties="properties" />
 			<RailroadData :properties="properties" />
 			<TractData :properties="properties" />
 			<CityData :properties="properties" />
