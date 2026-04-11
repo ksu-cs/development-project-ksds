@@ -31,7 +31,7 @@
 	import { fetchGeojson } from '../utility/fetchers';
 	import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
 	import { createTransition } from '@/d3/transitions/createTransition';
-	import { normalize, interpolateColor } from '@/utility/Interpolators';
+	import { applyChoropleth } from '@/utility/RenderFunctions';
 	import { FetchQueue } from '../utility/FetchQueue';
 	import { registerKey } from '../utility/RegisterKey';
 
@@ -57,72 +57,6 @@
 	const lightColor = { r: 198, g: 219, b: 239 } // light blue
 	const darkColor = { r: 8, g: 48, b: 108 } // dark blue
 	const invalidColor = { r: 240, g: 240, b: 240} // light gray
-	const normData = {
-		1860: {
-			max: 34277,
-			min: 19,
-		},
-		1870: {
-			max: 32444,
-			min: 2,
-		},
-		1880: {
-			max: 32355,
-			min: 3,
-		},
-		1890: {
-			max: 54407,
-			min: 724,
-		},
-		1900: {
-			max: 73227,
-			min: 304
-		},
-		1910: {
-			max: 73227,
-			min: 304
-		},
-		1920: {
-			max: 122218,
-			min: 908,
-		},
-		1930: {
-			max: 141211,
-			min: 1712,
-		},
-		1940: {
-			max: 145071,
-			min: 1443,
-		},
-		1950: {
-			max: 222290,
-			min: 2010,
-		},
-		1960: {
-			max: 343231,
-			min: 2069,
-		},
-		1970: {
-			max: 350694,
-			min: 2044,
-		},
-		1980: {
-			max: 366531,
-			min: 1845,
-		},
-		1990: {
-			max: 403662,
-			min: 1774,
-		},
-		2000: {
-			max: 835135,
-			min: 2958,
-		},
-		2020: {
-			max: 1219726,
-			min: 2568,
-		}
-	}
 
 	// Register this component
 	const borderHooks = inject(registerKey)(borderLabel, {});
@@ -239,14 +173,13 @@
 						.attr('opacity', '0%')
 						.attr('fill-opacity', '0%')
 						.classed('border', true)
+						.call(applyChoropleth, lightColor, darkColor, invalidColor)
 						.on('click', onBorderClick);
 					
 					// Only render the heat map for new data if the filter is
 					// checked
 					if (rerenderHeatMap > 0) {
-						const year = props.properties.inputValue.value.toString();
-						s = s.attr('fill', (d) => getCountyColor(d, year))
-							.attr('fill-opacity', fillOpacity);
+						s = s.attr('fill-opacity', fillOpacity);
 						rerenderHeatMap -= 1;
 					}
 
@@ -282,26 +215,8 @@
 	 * population (normalized)
 	 */
 	function displayHeatMap() {
-		let year = props.properties.inputValue.value.toString();
-
 		createTransition(selection)
-			.attr('fill', (d) => getCountyColor(d, year))
 			.attr('fill-opacity', fillOpacity);
-	}
-
-	/**
-	 * Returns a string representing the css rgb value for the given border.
-	 * @param d The data associated with the border
-	 * @param year The year to normalize to
-	 */
-	function getCountyColor(d, year) {
-		const yearData = d.properties["pop-by-year"];
-		if (Object.hasOwn(yearData, year)) {
-				const t = normalize(yearData[year], normData[year].min, normData[year].max);
-				return interpolateColor(lightColor, darkColor, t);
-		} else{
-			return `rgb(${invalidColor.r}, ${invalidColor.g}, ${invalidColor.b})`
-		}
 	}
 
 	/**

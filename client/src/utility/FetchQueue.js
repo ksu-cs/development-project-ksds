@@ -1,5 +1,5 @@
 /*
- * components/FetchQueue.js
+ * @utility/FetchQueue.js
  */
 
 /**

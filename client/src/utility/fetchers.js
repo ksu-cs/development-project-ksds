@@ -1,5 +1,5 @@
 /**
- * components/fetchGeojson.js
+ * @/utility/fetchers.js
  */
 
 import { reactive, toRefs } from 'vue';
