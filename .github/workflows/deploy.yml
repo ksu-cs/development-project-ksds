@@ -32,11 +32,12 @@ jobs:
       - name: Deploy to joshzru.github.io
         run: |
           git clone https://x-access-token:${{ secrets.PAGES_PAT }}@github.com/joshzru/joshzru.github.io.git deploy
-          rm -rf deploy/*
-          cp -r client/dist/* deploy/
           cd deploy
+          git rm -rf .
+          cp -r ../client/dist/* .
           git config user.name "github-actions"
           git config user.email "joshzru@gmail.com"
           git add .
+          git diff --cached --quiet && echo "No changes to deploy" && exit 0
           git commit -m "Deploy from project-ksds repo"
           git push
