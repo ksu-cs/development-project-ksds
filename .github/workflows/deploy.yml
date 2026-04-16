@@ -1,0 +1,42 @@
+name: Deploy to joshzru.github.io
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install client deps
+        working-directory: ./client
+        run: npm install
+
+      - name: Build Vue app
+        working-directory: ./client
+        run: npm run build
+
+      - name: Copy static server files
+        run: |
+          mkdir -p ./client/dist/public/kansas
+          cp -r ./server/public/kansas/* ./client/dist/public/kansas
+
+      - name: Deploy to joshzru.github.io
+        run: |
+          git clone https://x-access-token:${{ secrets.PAGES_PAT }}@github.com/joshzru/joshzru.github.io.git deploy
+          rm -rf deploy/*
+          cp -r client/dist/* deploy/
+          cd deploy
+          git config user.name "github-actions"
+          git config user.email "joshzru@gmail.com"
+          git add .
+          git commit -m "Deploy from project-ksds repo"
+          git push
