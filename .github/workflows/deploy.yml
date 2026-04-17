@@ -31,6 +31,7 @@ jobs:
 
       - name: Deploy to joshzru.github.io
         run: |
+          mkdir deploy
           git clone https://x-access-token:${{ secrets.PAGES_PAT }}@github.com/joshzru/joshzru.github.io.git deploy
           cd deploy
           git rm -rf .
