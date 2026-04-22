@@ -19,7 +19,7 @@ jobs:
           cd client 
           npm install 
           cp -r ../server/public ./public 
-          npm run build 
+          npm run build --base=/development-project-ksds/
       - name: Upload artifact
         id: deployment
         uses: actions/upload-pages-artifact@v5.0.0
