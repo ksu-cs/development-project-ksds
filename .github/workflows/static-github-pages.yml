@@ -15,15 +15,15 @@ jobs:
         with:
           node-version: "24"
       # Pick your own package manager and build script
-      - run: cd client
-      - run: npm install
-      - run: cp ../server/public ./public
-      - run: npm run build
-      - run: 
+      - run: |
+        cd client 
+        npm install
+        cp ../server/public ./public
+        npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5.0.0
         with:
-          path: ./dist
+          path: ./client/dist
   # Deployment job
   deploy:
     # Add a dependency to the build job
