@@ -18,7 +18,7 @@ jobs:
       - run: |
           cd client 
           npm install 
-          cp ../server/public ./public 
+          cp -r ../server/public ./public 
           npm run build 
       - name: Upload artifact
         id: deployment
