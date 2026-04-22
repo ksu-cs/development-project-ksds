@@ -100,7 +100,7 @@
 			width: 1600,
 			height: 800,
 		},
-		path: `/public/${props.statePath}`,
+		path: `./public/${props.statePath}`,
 	};
 
 	onMounted(() => {
