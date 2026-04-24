@@ -30,3 +30,7 @@ export function interpolateColor(color1, color2, t) {
 
     return `rgb(${r}, ${g}, ${b})`;
 }
+
+export function lerp(start, end, t) {
+    return start * (1 - t) + end * t;
+}

@@ -18,7 +18,10 @@
         "PLACE": "Abilene city",
         "NAME": "Abilene",
         "NHGISPLACE": "G200001250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -38,7 +41,10 @@
         "PLACE": "Agra city",
         "NAME": "Agra",
         "NHGISPLACE": "G200005500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -58,7 +64,10 @@
         "PLACE": "Allen city",
         "NAME": "Allen",
         "NHGISPLACE": "G200012750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -78,7 +87,10 @@
         "PLACE": "Alma city",
         "NAME": "Alma",
         "NHGISPLACE": "G200013500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -98,7 +110,10 @@
         "PLACE": "Almena city",
         "NAME": "Almena",
         "NHGISPLACE": "G200014250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -118,7 +133,10 @@
         "PLACE": "Altamont city",
         "NAME": "Altamont",
         "NHGISPLACE": "G200015500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -138,7 +156,10 @@
         "PLACE": "Alta Vista city",
         "NAME": "Alta Vista",
         "NHGISPLACE": "G200015750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -158,7 +179,10 @@
         "PLACE": "Alton city",
         "NAME": "Alton",
         "NHGISPLACE": "G200016000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -178,7 +202,10 @@
         "PLACE": "Altoona city",
         "NAME": "Altoona",
         "NHGISPLACE": "G200016250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -198,7 +225,10 @@
         "PLACE": "Americus city",
         "NAME": "Americus",
         "NHGISPLACE": "G200016750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -218,7 +248,10 @@
         "PLACE": "Andale city",
         "NAME": "Andale",
         "NHGISPLACE": "G200017750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -238,7 +271,10 @@
         "PLACE": "Anthony city",
         "NAME": "Anthony",
         "NHGISPLACE": "G200019750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -258,7 +294,10 @@
         "PLACE": "Arcadia city",
         "NAME": "Arcadia",
         "NHGISPLACE": "G200021750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -278,7 +317,10 @@
         "PLACE": "Argonia city",
         "NAME": "Argonia",
         "NHGISPLACE": "G200022500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -298,7 +340,10 @@
         "PLACE": "Arkansas City city",
         "NAME": "Arkansas City",
         "NHGISPLACE": "G200023000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -318,7 +363,10 @@
         "PLACE": "Arlington city",
         "NAME": "Arlington",
         "NHGISPLACE": "G200023250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -338,7 +386,10 @@
         "PLACE": "Arma city",
         "NAME": "Arma",
         "NHGISPLACE": "G200023750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -358,7 +409,10 @@
         "PLACE": "Ashland city",
         "NAME": "Ashland",
         "NHGISPLACE": "G200026750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -378,7 +432,10 @@
         "PLACE": "Assaria city",
         "NAME": "Assaria",
         "NHGISPLACE": "G200028500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -398,7 +455,10 @@
         "PLACE": "Atchison city",
         "NAME": "Atchison",
         "NHGISPLACE": "G200029000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -418,7 +478,10 @@
         "PLACE": "Atlanta city",
         "NAME": "Atlanta",
         "NHGISPLACE": "G200030500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -438,7 +501,10 @@
         "PLACE": "Attica city",
         "NAME": "Attica",
         "NHGISPLACE": "G200031000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -458,7 +524,10 @@
         "PLACE": "Atwood city",
         "NAME": "Atwood",
         "NHGISPLACE": "G200031500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -478,7 +547,10 @@
         "PLACE": "Augusta city",
         "NAME": "Augusta",
         "NHGISPLACE": "G200033000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -498,7 +570,10 @@
         "PLACE": "Aurora city",
         "NAME": "Aurora",
         "NHGISPLACE": "G200034250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -518,7 +593,10 @@
         "PLACE": "Axtell city",
         "NAME": "Axtell",
         "NHGISPLACE": "G200036000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -538,7 +616,10 @@
         "PLACE": "Baldwin City city",
         "NAME": "Baldwin City",
         "NHGISPLACE": "G200039000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -558,7 +639,10 @@
         "PLACE": "Barnard city",
         "NAME": "Barnard",
         "NHGISPLACE": "G200042250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -578,7 +662,10 @@
         "PLACE": "Barnes city",
         "NAME": "Barnes",
         "NHGISPLACE": "G200042500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -598,7 +685,10 @@
         "PLACE": "Bartlett city",
         "NAME": "Bartlett",
         "NHGISPLACE": "G200043500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -618,7 +708,10 @@
         "PLACE": "Bassett city",
         "NAME": "Bassett",
         "NHGISPLACE": "G200044500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -638,7 +731,10 @@
         "PLACE": "Baxter Springs city",
         "NAME": "Baxter Springs",
         "NHGISPLACE": "G200046250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -658,7 +754,10 @@
         "PLACE": "Beattie city",
         "NAME": "Beattie",
         "NHGISPLACE": "G200049000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -678,7 +777,10 @@
         "PLACE": "Belle Plaine city",
         "NAME": "Belle Plaine",
         "NHGISPLACE": "G200055000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -698,7 +800,10 @@
         "PLACE": "Belleville city",
         "NAME": "Belleville",
         "NHGISPLACE": "G200056000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -718,7 +823,10 @@
         "PLACE": "Beloit city",
         "NAME": "Beloit",
         "NHGISPLACE": "G200057750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -738,7 +846,10 @@
         "PLACE": "Belpre city",
         "NAME": "Belpre",
         "NHGISPLACE": "G200058250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -758,7 +869,10 @@
         "PLACE": "Benedict city",
         "NAME": "Benedict",
         "NHGISPLACE": "G200060000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -778,7 +892,10 @@
         "PLACE": "Bennington city",
         "NAME": "Bennington",
         "NHGISPLACE": "G200060750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -798,7 +915,10 @@
         "PLACE": "Benton city",
         "NAME": "Benton",
         "NHGISPLACE": "G200061750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -818,7 +938,10 @@
         "PLACE": "Beverly city",
         "NAME": "Beverly",
         "NHGISPLACE": "G200065000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -838,7 +961,10 @@
         "PLACE": "Bird City city",
         "NAME": "Bird City",
         "NHGISPLACE": "G200068250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -858,7 +984,10 @@
         "PLACE": "Blue Mound city",
         "NAME": "Blue Mound",
         "NHGISPLACE": "G200076000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -878,7 +1007,10 @@
         "PLACE": "Blue Rapids city",
         "NAME": "Blue Rapids",
         "NHGISPLACE": "G200076500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -898,7 +1030,10 @@
         "PLACE": "Bluff City city",
         "NAME": "Bluff City",
         "NHGISPLACE": "G200077750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -918,7 +1053,10 @@
         "PLACE": "Bonner Springs city",
         "NAME": "Bonner Springs",
         "NHGISPLACE": "G200079750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -938,7 +1076,10 @@
         "PLACE": "Bronson city",
         "NAME": "Bronson",
         "NHGISPLACE": "G200084750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -958,7 +1099,10 @@
         "PLACE": "Brookville city",
         "NAME": "Brookville",
         "NHGISPLACE": "G200085750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -978,7 +1122,10 @@
         "PLACE": "Bruce city",
         "NAME": "Bruce",
         "NHGISPLACE": "G200088385",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -998,7 +1145,10 @@
         "PLACE": "Bucklin city",
         "NAME": "Bucklin",
         "NHGISPLACE": "G200090000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1018,7 +1168,10 @@
         "PLACE": "Buffalo city",
         "NAME": "Buffalo",
         "NHGISPLACE": "G200091500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1038,7 +1191,10 @@
         "PLACE": "Bunker Hill city",
         "NAME": "Bunker Hill",
         "NHGISPLACE": "G200092250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1058,7 +1214,10 @@
         "PLACE": "Burden city",
         "NAME": "Burden",
         "NHGISPLACE": "G200092500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1078,7 +1237,10 @@
         "PLACE": "Burlingame city",
         "NAME": "Burlingame",
         "NHGISPLACE": "G200093500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1098,7 +1260,10 @@
         "PLACE": "Burlington city",
         "NAME": "Burlington",
         "NHGISPLACE": "G200094000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1118,7 +1283,10 @@
         "PLACE": "Burns city",
         "NAME": "Burns",
         "NHGISPLACE": "G200094500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1138,7 +1306,10 @@
         "PLACE": "Burr Oak city",
         "NAME": "Burr Oak",
         "NHGISPLACE": "G200095250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1158,7 +1329,10 @@
         "PLACE": "Burrton city",
         "NAME": "Burrton",
         "NHGISPLACE": "G200095750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1178,7 +1352,10 @@
         "PLACE": "Bushton city",
         "NAME": "Bushton",
         "NHGISPLACE": "G200097000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1198,7 +1375,10 @@
         "PLACE": "Caldwell city",
         "NAME": "Caldwell",
         "NHGISPLACE": "G200099000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1218,7 +1398,10 @@
         "PLACE": "Caney city",
         "NAME": "Caney",
         "NHGISPLACE": "G200103750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1238,7 +1421,10 @@
         "PLACE": "Canton city",
         "NAME": "Canton",
         "NHGISPLACE": "G200104750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1258,7 +1444,10 @@
         "PLACE": "Carbondale city",
         "NAME": "Carbondale",
         "NHGISPLACE": "G200106000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1278,7 +1467,10 @@
         "PLACE": "Cawker City city",
         "NAME": "Cawker City",
         "NHGISPLACE": "G200111750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1298,7 +1490,10 @@
         "PLACE": "Cedar Vale city",
         "NAME": "Cedar Vale",
         "NHGISPLACE": "G200114500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1318,7 +1513,10 @@
         "PLACE": "Centralia city",
         "NAME": "Centralia",
         "NHGISPLACE": "G200124250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1338,7 +1536,10 @@
         "PLACE": "Chanute city",
         "NAME": "Chanute",
         "NHGISPLACE": "G200125000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1358,7 +1559,10 @@
         "PLACE": "Chapman city",
         "NAME": "Chapman",
         "NHGISPLACE": "G200125500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1378,7 +1582,10 @@
         "PLACE": "Chase city",
         "NAME": "Chase",
         "NHGISPLACE": "G200126500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1398,7 +1605,10 @@
         "PLACE": "Chautauqua city",
         "NAME": "Chautauqua",
         "NHGISPLACE": "G200126750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1418,7 +1628,10 @@
         "PLACE": "Cheney city",
         "NAME": "Cheney",
         "NHGISPLACE": "G200127750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1438,7 +1651,10 @@
         "PLACE": "Cherokee city",
         "NAME": "Cherokee",
         "NHGISPLACE": "G200128250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1458,7 +1674,10 @@
         "PLACE": "Cherryvale city",
         "NAME": "Cherryvale",
         "NHGISPLACE": "G200129250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1478,7 +1697,10 @@
         "PLACE": "Chetopa city",
         "NAME": "Chetopa",
         "NHGISPLACE": "G200129500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1498,7 +1720,10 @@
         "PLACE": "Cimarron city",
         "NAME": "Cimarron",
         "NHGISPLACE": "G200132750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1518,7 +1743,10 @@
         "PLACE": "Circleville city",
         "NAME": "Circleville",
         "NHGISPLACE": "G200133750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1538,7 +1766,10 @@
         "PLACE": "Claflin city",
         "NAME": "Claflin",
         "NHGISPLACE": "G200134250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1558,7 +1789,10 @@
         "PLACE": "Clay Center city",
         "NAME": "Clay Center",
         "NHGISPLACE": "G200136250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1578,7 +1812,10 @@
         "PLACE": "Clayton city",
         "NAME": "Clayton",
         "NHGISPLACE": "G200136750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1598,7 +1835,10 @@
         "PLACE": "Clearwater city",
         "NAME": "Clearwater",
         "NHGISPLACE": "G200139250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1618,7 +1858,10 @@
         "PLACE": "Clifton city",
         "NAME": "Clifton",
         "NHGISPLACE": "G200142000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1638,7 +1881,10 @@
         "PLACE": "Clyde city",
         "NAME": "Clyde",
         "NHGISPLACE": "G200144750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1658,7 +1904,10 @@
         "PLACE": "Coats city",
         "NAME": "Coats",
         "NHGISPLACE": "G200145250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1678,7 +1927,10 @@
         "PLACE": "Coffeyville city",
         "NAME": "Coffeyville",
         "NHGISPLACE": "G200146000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1698,7 +1950,10 @@
         "PLACE": "Colby city",
         "NAME": "Colby",
         "NHGISPLACE": "G200146500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1718,7 +1973,10 @@
         "PLACE": "Coldwater city",
         "NAME": "Coldwater",
         "NHGISPLACE": "G200147000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1738,7 +1996,10 @@
         "PLACE": "Colony city",
         "NAME": "Colony",
         "NHGISPLACE": "G200149500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1758,7 +2019,10 @@
         "PLACE": "Columbus city",
         "NAME": "Columbus",
         "NHGISPLACE": "G200150750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1778,7 +2042,10 @@
         "PLACE": "Colwich city",
         "NAME": "Colwich",
         "NHGISPLACE": "G200151000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1798,7 +2065,10 @@
         "PLACE": "Concordia city",
         "NAME": "Concordia",
         "NHGISPLACE": "G200152000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1818,7 +2088,10 @@
         "PLACE": "Conway Springs city",
         "NAME": "Conway Springs",
         "NHGISPLACE": "G200153250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1838,7 +2111,10 @@
         "PLACE": "Coolidge city",
         "NAME": "Coolidge",
         "NHGISPLACE": "G200154000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1858,7 +2134,10 @@
         "PLACE": "Corning city",
         "NAME": "Corning",
         "NHGISPLACE": "G200157250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1878,7 +2157,10 @@
         "PLACE": "Cottonwood Falls city",
         "NAME": "Cottonwood Falls",
         "NHGISPLACE": "G200159000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1898,7 +2180,10 @@
         "PLACE": "Council Grove city",
         "NAME": "Council Grove",
         "NHGISPLACE": "G200159250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1918,7 +2203,10 @@
         "PLACE": "Courtland city",
         "NAME": "Courtland",
         "NHGISPLACE": "G200160250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1938,7 +2226,10 @@
         "PLACE": "Coyville city",
         "NAME": "Coyville",
         "NHGISPLACE": "G200161500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1958,7 +2249,10 @@
         "PLACE": "Cuba city",
         "NAME": "Cuba",
         "NHGISPLACE": "G200166250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1978,7 +2272,10 @@
         "PLACE": "Cullison city",
         "NAME": "Cullison",
         "NHGISPLACE": "G200166750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -1998,7 +2295,10 @@
         "PLACE": "Culver city",
         "NAME": "Culver",
         "NHGISPLACE": "G200167000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2018,7 +2318,10 @@
         "PLACE": "Cunningham city",
         "NAME": "Cunningham",
         "NHGISPLACE": "G200167750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2038,7 +2341,10 @@
         "PLACE": "Dearing city",
         "NAME": "Dearing",
         "NHGISPLACE": "G200171500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2058,7 +2364,10 @@
         "PLACE": "Deerfield city",
         "NAME": "Deerfield",
         "NHGISPLACE": "G200172250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2078,7 +2387,10 @@
         "PLACE": "Delphos city",
         "NAME": "Delphos",
         "NHGISPLACE": "G200176000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2098,7 +2410,10 @@
         "PLACE": "Denison city",
         "NAME": "Denison",
         "NHGISPLACE": "G200176250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2118,7 +2433,10 @@
         "PLACE": "Denton city",
         "NAME": "Denton",
         "NHGISPLACE": "G200177500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2138,7 +2456,10 @@
         "PLACE": "El Paso city",
         "NAME": "El Paso",
         "NHGISPLACE": "G200178000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2158,7 +2479,10 @@
         "PLACE": "De Soto city",
         "NAME": "De Soto",
         "NHGISPLACE": "G200178500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2178,7 +2502,10 @@
         "PLACE": "Dexter city",
         "NAME": "Dexter",
         "NHGISPLACE": "G200179250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2198,7 +2525,10 @@
         "PLACE": "Dighton city",
         "NAME": "Dighton",
         "NHGISPLACE": "G200180500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2218,7 +2548,10 @@
         "PLACE": "Dodge City city",
         "NAME": "Dodge City",
         "NHGISPLACE": "G200182500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2238,7 +2571,10 @@
         "PLACE": "Doniphan city",
         "NAME": "Doniphan",
         "NHGISPLACE": "G200182885",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2258,7 +2594,10 @@
         "PLACE": "Dorrance city",
         "NAME": "Dorrance",
         "NHGISPLACE": "G200183250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2278,7 +2617,10 @@
         "PLACE": "Douglass city",
         "NAME": "Douglass",
         "NHGISPLACE": "G200184000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2298,7 +2640,10 @@
         "PLACE": "Downs city",
         "NAME": "Downs",
         "NHGISPLACE": "G200185000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2318,7 +2663,10 @@
         "PLACE": "Dunlap city",
         "NAME": "Dunlap",
         "NHGISPLACE": "G200189500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2338,7 +2686,10 @@
         "PLACE": "Durham city",
         "NAME": "Durham",
         "NHGISPLACE": "G200190500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2358,7 +2709,10 @@
         "PLACE": "Dwight city",
         "NAME": "Dwight",
         "NHGISPLACE": "G200191250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2378,7 +2732,10 @@
         "PLACE": "Easton city",
         "NAME": "Easton",
         "NHGISPLACE": "G200196000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2398,7 +2755,10 @@
         "PLACE": "Edgerton city",
         "NAME": "Edgerton",
         "NHGISPLACE": "G200198250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2418,7 +2778,10 @@
         "PLACE": "Edna city",
         "NAME": "Edna",
         "NHGISPLACE": "G200199000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2438,7 +2801,10 @@
         "PLACE": "Effingham city",
         "NAME": "Effingham",
         "NHGISPLACE": "G200200250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2458,7 +2824,10 @@
         "PLACE": "El Dorado city",
         "NAME": "El Dorado",
         "NHGISPLACE": "G200200750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2478,7 +2847,10 @@
         "PLACE": "Elk City city",
         "NAME": "Elk City",
         "NHGISPLACE": "G200202500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2498,7 +2870,10 @@
         "PLACE": "Elk Falls city",
         "NAME": "Elk Falls",
         "NHGISPLACE": "G200203000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2518,7 +2893,10 @@
         "PLACE": "Ellinwood city",
         "NAME": "Ellinwood",
         "NHGISPLACE": "G200204250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2538,7 +2916,10 @@
         "PLACE": "Ellis city",
         "NAME": "Ellis",
         "NHGISPLACE": "G200204500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2558,7 +2939,10 @@
         "PLACE": "Ellsworth city",
         "NAME": "Ellsworth",
         "NHGISPLACE": "G200205000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2578,7 +2962,10 @@
         "PLACE": "Elmdale city",
         "NAME": "Elmdale",
         "NHGISPLACE": "G200206750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2598,7 +2985,10 @@
         "PLACE": "Elsmore city",
         "NAME": "Elsmore",
         "NHGISPLACE": "G200208750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2618,7 +3008,10 @@
         "PLACE": "Elwood city",
         "NAME": "Elwood",
         "NHGISPLACE": "G200209500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2638,7 +3031,10 @@
         "PLACE": "Emporia city",
         "NAME": "Emporia",
         "NHGISPLACE": "G200212750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2658,7 +3054,10 @@
         "PLACE": "Englewood city",
         "NAME": "Englewood",
         "NHGISPLACE": "G200213500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2678,7 +3077,10 @@
         "PLACE": "Enterprise city",
         "NAME": "Enterprise",
         "NHGISPLACE": "G200214250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2698,7 +3100,10 @@
         "PLACE": "Erie city",
         "NAME": "Erie",
         "NHGISPLACE": "G200215000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2718,7 +3123,10 @@
         "PLACE": "Esbon city",
         "NAME": "Esbon",
         "NHGISPLACE": "G200216000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2738,7 +3146,10 @@
         "PLACE": "Eskridge city",
         "NAME": "Eskridge",
         "NHGISPLACE": "G200216500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2758,7 +3169,10 @@
         "PLACE": "Eudora city",
         "NAME": "Eudora",
         "NHGISPLACE": "G200216750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2778,7 +3192,10 @@
         "PLACE": "Eureka city",
         "NAME": "Eureka",
         "NHGISPLACE": "G200218000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2798,7 +3215,10 @@
         "PLACE": "Everest city",
         "NAME": "Everest",
         "NHGISPLACE": "G200220250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2818,7 +3238,10 @@
         "PLACE": "Fairview city",
         "NAME": "Fairview",
         "NHGISPLACE": "G200224250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2838,7 +3261,10 @@
         "PLACE": "Fall River city",
         "NAME": "Fall River",
         "NHGISPLACE": "G200227750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2858,7 +3284,10 @@
         "PLACE": "Florence city",
         "NAME": "Florence",
         "NHGISPLACE": "G200236000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2878,7 +3307,10 @@
         "PLACE": "Fontana city",
         "NAME": "Fontana",
         "NHGISPLACE": "G200236500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2898,7 +3330,10 @@
         "PLACE": "Ford city",
         "NAME": "Ford",
         "NHGISPLACE": "G200237250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2918,7 +3353,10 @@
         "PLACE": "Formoso city",
         "NAME": "Formoso",
         "NHGISPLACE": "G200238250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2938,7 +3376,10 @@
         "PLACE": "Fort Scott city",
         "NAME": "Fort Scott",
         "NHGISPLACE": "G200240000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2958,7 +3399,10 @@
         "PLACE": "Fowler city",
         "NAME": "Fowler",
         "NHGISPLACE": "G200241750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2978,7 +3422,10 @@
         "PLACE": "Frankfort city",
         "NAME": "Frankfort",
         "NHGISPLACE": "G200242750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -2998,7 +3445,10 @@
         "PLACE": "Frederick city",
         "NAME": "Frederick",
         "NHGISPLACE": "G200245500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3018,7 +3468,10 @@
         "PLACE": "Fredonia city",
         "NAME": "Fredonia",
         "NHGISPLACE": "G200245750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3038,7 +3491,10 @@
         "PLACE": "Freeport city",
         "NAME": "Freeport",
         "NHGISPLACE": "G200247250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3058,7 +3514,10 @@
         "PLACE": "Frontenac city",
         "NAME": "Frontenac",
         "NHGISPLACE": "G200248500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3078,7 +3537,10 @@
         "PLACE": "Fulton city",
         "NAME": "Fulton",
         "NHGISPLACE": "G200249250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3098,7 +3560,10 @@
         "PLACE": "Galena city",
         "NAME": "Galena",
         "NHGISPLACE": "G200251000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3118,7 +3583,10 @@
         "PLACE": "Galesburg city",
         "NAME": "Galesburg",
         "NHGISPLACE": "G200251500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3138,7 +3606,10 @@
         "PLACE": "Galva city",
         "NAME": "Galva",
         "NHGISPLACE": "G200252000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3158,7 +3629,10 @@
         "PLACE": "Garden City city",
         "NAME": "Garden City",
         "NHGISPLACE": "G200253250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3178,7 +3652,10 @@
         "PLACE": "Garden Plain city",
         "NAME": "Garden Plain",
         "NHGISPLACE": "G200253750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3198,7 +3675,10 @@
         "PLACE": "Gardner city",
         "NAME": "Gardner",
         "NHGISPLACE": "G200254250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3218,7 +3698,10 @@
         "PLACE": "Garfield city",
         "NAME": "Garfield",
         "NHGISPLACE": "G200257500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3238,7 +3721,10 @@
         "PLACE": "Garnett city",
         "NAME": "Garnett",
         "NHGISPLACE": "G200259250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3258,7 +3744,10 @@
         "PLACE": "Gas city",
         "NAME": "Gas",
         "NHGISPLACE": "G200259750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3278,7 +3767,10 @@
         "PLACE": "Gaylord city",
         "NAME": "Gaylord",
         "NHGISPLACE": "G200260000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3298,7 +3790,10 @@
         "PLACE": "Geneseo city",
         "NAME": "Geneseo",
         "NHGISPLACE": "G200260750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3318,7 +3813,10 @@
         "PLACE": "Geuda Springs city",
         "NAME": "Geuda Springs",
         "NHGISPLACE": "G200262000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3338,7 +3836,10 @@
         "PLACE": "Girard city",
         "NAME": "Girard",
         "NHGISPLACE": "G200263000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3358,7 +3859,10 @@
         "PLACE": "Glasco city",
         "NAME": "Glasco",
         "NHGISPLACE": "G200263750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3378,7 +3882,10 @@
         "PLACE": "Glen Elder city",
         "NAME": "Glen Elder",
         "NHGISPLACE": "G200265000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3398,7 +3905,10 @@
         "PLACE": "Goddard city",
         "NAME": "Goddard",
         "NHGISPLACE": "G200267250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3418,7 +3928,10 @@
         "PLACE": "Goff city",
         "NAME": "Goff",
         "NHGISPLACE": "G200267750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3438,7 +3951,10 @@
         "PLACE": "Goodland city",
         "NAME": "Goodland",
         "NHGISPLACE": "G200268750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3458,7 +3974,10 @@
         "PLACE": "Grainfield city",
         "NAME": "Grainfield",
         "NHGISPLACE": "G200272000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3478,7 +3997,10 @@
         "PLACE": "Great Bend city",
         "NAME": "Great Bend",
         "NHGISPLACE": "G200283000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3498,7 +4020,10 @@
         "PLACE": "Greeley city",
         "NAME": "Greeley",
         "NHGISPLACE": "G200283500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3518,7 +4043,10 @@
         "PLACE": "Green city",
         "NAME": "Green",
         "NHGISPLACE": "G200284250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3538,7 +4066,10 @@
         "PLACE": "Greenleaf city",
         "NAME": "Greenleaf",
         "NHGISPLACE": "G200286250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3558,7 +4089,10 @@
         "PLACE": "Greensburg city",
         "NAME": "Greensburg",
         "NHGISPLACE": "G200286750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3578,7 +4112,10 @@
         "PLACE": "Grenola city",
         "NAME": "Grenola",
         "NHGISPLACE": "G200288000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3598,7 +4135,10 @@
         "PLACE": "Gypsum city",
         "NAME": "Gypsum",
         "NHGISPLACE": "G200292500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3618,7 +4158,10 @@
         "PLACE": "Haddam city",
         "NAME": "Haddam",
         "NHGISPLACE": "G200294000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3638,7 +4181,10 @@
         "PLACE": "Halstead city",
         "NAME": "Halstead",
         "NHGISPLACE": "G200296000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3658,7 +4204,10 @@
         "PLACE": "Hamilton city",
         "NAME": "Hamilton",
         "NHGISPLACE": "G200296750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3678,7 +4227,10 @@
         "PLACE": "Hamlin city",
         "NAME": "Hamlin",
         "NHGISPLACE": "G200297000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3698,7 +4250,10 @@
         "PLACE": "Hanover city",
         "NAME": "Hanover",
         "NHGISPLACE": "G200298750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3718,7 +4273,10 @@
         "PLACE": "Harper city",
         "NAME": "Harper",
         "NHGISPLACE": "G200301750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3738,7 +4296,10 @@
         "PLACE": "Hartford city",
         "NAME": "Hartford",
         "NHGISPLACE": "G200304750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3758,7 +4319,10 @@
         "PLACE": "Harveyville city",
         "NAME": "Harveyville",
         "NHGISPLACE": "G200305750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3778,7 +4342,10 @@
         "PLACE": "Havana city",
         "NAME": "Havana",
         "NHGISPLACE": "G200307000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3798,7 +4365,10 @@
         "PLACE": "Haven city",
         "NAME": "Haven",
         "NHGISPLACE": "G200307250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3818,7 +4388,10 @@
         "PLACE": "Havensville city",
         "NAME": "Havensville",
         "NHGISPLACE": "G200307750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3838,7 +4411,10 @@
         "PLACE": "Haviland city",
         "NAME": "Haviland",
         "NHGISPLACE": "G200308250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3858,7 +4434,10 @@
         "PLACE": "Hays city",
         "NAME": "Hays",
         "NHGISPLACE": "G200311000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3878,7 +4457,10 @@
         "PLACE": "Hazelton city",
         "NAME": "Hazelton",
         "NHGISPLACE": "G200311500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3898,7 +4480,10 @@
         "PLACE": "Hepler city",
         "NAME": "Hepler",
         "NHGISPLACE": "G200313750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3918,7 +4503,10 @@
         "PLACE": "Herington city",
         "NAME": "Herington",
         "NHGISPLACE": "G200314000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3938,7 +4526,10 @@
         "PLACE": "Herndon city",
         "NAME": "Herndon",
         "NHGISPLACE": "G200314750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3958,7 +4549,10 @@
         "PLACE": "Hiawatha city",
         "NAME": "Hiawatha",
         "NHGISPLACE": "G200316750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3978,7 +4572,10 @@
         "PLACE": "Highland city",
         "NAME": "Highland",
         "NHGISPLACE": "G200318500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -3998,7 +4595,10 @@
         "PLACE": "Hill City city",
         "NAME": "Hill City",
         "NHGISPLACE": "G200321750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4018,7 +4618,10 @@
         "PLACE": "Hillsboro city",
         "NAME": "Hillsboro",
         "NHGISPLACE": "G200322750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4038,7 +4641,10 @@
         "PLACE": "Hoisington city",
         "NAME": "Hoisington",
         "NHGISPLACE": "G200325500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4058,7 +4664,10 @@
         "PLACE": "Holton city",
         "NAME": "Holton",
         "NHGISPLACE": "G200328250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4078,7 +4687,10 @@
         "PLACE": "Holyrood city",
         "NAME": "Holyrood",
         "NHGISPLACE": "G200328500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4098,7 +4710,10 @@
         "PLACE": "Hope city",
         "NAME": "Hope",
         "NHGISPLACE": "G200330750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4118,7 +4733,10 @@
         "PLACE": "Horace city",
         "NAME": "Horace",
         "NHGISPLACE": "G200331500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4138,7 +4756,10 @@
         "PLACE": "Horton city",
         "NAME": "Horton",
         "NHGISPLACE": "G200332000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4158,7 +4779,10 @@
         "PLACE": "Howard city",
         "NAME": "Howard",
         "NHGISPLACE": "G200332500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4178,7 +4802,10 @@
         "PLACE": "Hoxie city",
         "NAME": "Hoxie",
         "NHGISPLACE": "G200333500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4198,7 +4825,10 @@
         "PLACE": "Hudson city",
         "NAME": "Hudson",
         "NHGISPLACE": "G200334000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4218,7 +4848,10 @@
         "PLACE": "Hugoton city",
         "NAME": "Hugoton",
         "NHGISPLACE": "G200334250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4238,7 +4871,10 @@
         "PLACE": "Humboldt city",
         "NAME": "Humboldt",
         "NHGISPLACE": "G200334500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4258,7 +4894,10 @@
         "PLACE": "Hunnewell city",
         "NAME": "Hunnewell",
         "NHGISPLACE": "G200335000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4278,7 +4917,10 @@
         "PLACE": "Huron city",
         "NAME": "Huron",
         "NHGISPLACE": "G200335750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4298,7 +4940,10 @@
         "PLACE": "Hutchinson city",
         "NAME": "Hutchinson",
         "NHGISPLACE": "G200336250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4318,7 +4963,10 @@
         "PLACE": "Independence city",
         "NAME": "Independence",
         "NHGISPLACE": "G200338750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4338,7 +4986,10 @@
         "PLACE": "Inman city",
         "NAME": "Inman",
         "NHGISPLACE": "G200342750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4358,7 +5009,10 @@
         "PLACE": "Iola city",
         "NAME": "Iola",
         "NHGISPLACE": "G200343000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4378,7 +5032,10 @@
         "PLACE": "Irving",
         "NAME": "Irving",
         "NHGISPLACE": "G200344255",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4398,7 +5055,10 @@
         "PLACE": "Isabel city",
         "NAME": "Isabel",
         "NHGISPLACE": "G200345500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4418,7 +5078,10 @@
         "PLACE": "Iuka city",
         "NAME": "Iuka",
         "NHGISPLACE": "G200346250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4438,7 +5101,10 @@
         "PLACE": "Jamestown city",
         "NAME": "Jamestown",
         "NHGISPLACE": "G200349750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4458,7 +5124,10 @@
         "PLACE": "Jennings city",
         "NAME": "Jennings",
         "NHGISPLACE": "G200353750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4478,7 +5147,10 @@
         "PLACE": "Jetmore city",
         "NAME": "Jetmore",
         "NHGISPLACE": "G200354500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4498,7 +5170,10 @@
         "PLACE": "Jewell city",
         "NAME": "Jewell",
         "NHGISPLACE": "G200354750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4518,7 +5193,10 @@
         "PLACE": "Junction City city",
         "NAME": "Junction City",
         "NHGISPLACE": "G200357500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4538,7 +5216,10 @@
         "PLACE": "Kanopolis city",
         "NAME": "Kanopolis",
         "NHGISPLACE": "G200359500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4558,7 +5239,10 @@
         "PLACE": "Kansas City city",
         "NAME": "Kansas City",
         "NHGISPLACE": "G200360000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4578,7 +5262,10 @@
         "PLACE": "Kensington city",
         "NAME": "Kensington",
         "NHGISPLACE": "G200365500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4598,7 +5285,10 @@
         "PLACE": "Kincaid city",
         "NAME": "Kincaid",
         "NHGISPLACE": "G200368750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4618,7 +5308,10 @@
         "PLACE": "Kingman city",
         "NAME": "Kingman",
         "NHGISPLACE": "G200369500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4638,7 +5331,10 @@
         "PLACE": "Kinsley city",
         "NAME": "Kinsley",
         "NHGISPLACE": "G200370750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4658,7 +5354,10 @@
         "PLACE": "Kiowa city",
         "NAME": "Kiowa",
         "NHGISPLACE": "G200371250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4678,7 +5377,10 @@
         "PLACE": "Kirwin city",
         "NAME": "Kirwin",
         "NHGISPLACE": "G200372750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4698,7 +5400,10 @@
         "PLACE": "La Crosse city",
         "NAME": "La Crosse",
         "NHGISPLACE": "G200375000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4718,7 +5423,10 @@
         "PLACE": "La Cygne city",
         "NAME": "La Cygne",
         "NHGISPLACE": "G200375750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4738,7 +5446,10 @@
         "PLACE": "La Harpe city",
         "NAME": "La Harpe",
         "NHGISPLACE": "G200377250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4758,7 +5469,10 @@
         "PLACE": "Lakin city",
         "NAME": "Lakin",
         "NHGISPLACE": "G200381750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4778,7 +5492,10 @@
         "PLACE": "Lancaster city",
         "NAME": "Lancaster",
         "NHGISPLACE": "G200383250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4798,7 +5515,10 @@
         "PLACE": "Lane city",
         "NAME": "Lane",
         "NHGISPLACE": "G200384000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4818,7 +5538,10 @@
         "PLACE": "Larned city",
         "NAME": "Larned",
         "NHGISPLACE": "G200387000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4838,7 +5561,10 @@
         "PLACE": "Latham city",
         "NAME": "Latham",
         "NHGISPLACE": "G200387750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4858,7 +5584,10 @@
         "PLACE": "Lawrence city",
         "NAME": "Lawrence",
         "NHGISPLACE": "G200389000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4878,7 +5607,10 @@
         "PLACE": "Leavenworth city",
         "NAME": "Leavenworth",
         "NHGISPLACE": "G200390000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4898,7 +5630,10 @@
         "PLACE": "Lebanon city",
         "NAME": "Lebanon",
         "NHGISPLACE": "G200391000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4918,7 +5653,10 @@
         "PLACE": "Lebo city",
         "NAME": "Lebo",
         "NHGISPLACE": "G200391250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4938,7 +5676,10 @@
         "PLACE": "Lecompton city",
         "NAME": "Lecompton",
         "NHGISPLACE": "G200391500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4958,7 +5699,10 @@
         "PLACE": "Lehigh city",
         "NAME": "Lehigh",
         "NHGISPLACE": "G200392250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4978,7 +5722,10 @@
         "PLACE": "Lenexa city",
         "NAME": "Lenexa",
         "NHGISPLACE": "G200393500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -4998,7 +5745,10 @@
         "PLACE": "Lenora city",
         "NAME": "Lenora",
         "NHGISPLACE": "G200394000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5018,7 +5768,10 @@
         "PLACE": "Leon city",
         "NAME": "Leon",
         "NHGISPLACE": "G200394500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5038,7 +5791,10 @@
         "PLACE": "Leonardville city",
         "NAME": "Leonardville",
         "NHGISPLACE": "G200395000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5058,7 +5814,10 @@
         "PLACE": "Leoti city",
         "NAME": "Leoti",
         "NHGISPLACE": "G200395500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5078,7 +5837,10 @@
         "PLACE": "LeRoy city",
         "NAME": "LeRoy",
         "NHGISPLACE": "G200396500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5098,7 +5860,10 @@
         "PLACE": "Lewis city",
         "NAME": "Lewis",
         "NHGISPLACE": "G200397250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5118,7 +5883,10 @@
         "PLACE": "Liberal city",
         "NAME": "Liberal",
         "NHGISPLACE": "G200398250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5138,7 +5906,10 @@
         "PLACE": "Liberty city",
         "NAME": "Liberty",
         "NHGISPLACE": "G200402500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5158,7 +5929,10 @@
         "PLACE": "Lindsborg city",
         "NAME": "Lindsborg",
         "NHGISPLACE": "G200413750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5178,7 +5952,10 @@
         "PLACE": "Linwood city",
         "NAME": "Linwood",
         "NHGISPLACE": "G200414750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5198,7 +5975,10 @@
         "PLACE": "Little River city",
         "NAME": "Little River",
         "NHGISPLACE": "G200415750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5218,7 +5998,10 @@
         "PLACE": "Logan city",
         "NAME": "Logan",
         "NHGISPLACE": "G200421000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5238,7 +6021,10 @@
         "PLACE": "Long Island city",
         "NAME": "Long Island",
         "NHGISPLACE": "G200426000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5258,7 +6044,10 @@
         "PLACE": "Longton city",
         "NAME": "Longton",
         "NHGISPLACE": "G200426500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5278,7 +6067,10 @@
         "PLACE": "Lost Springs city",
         "NAME": "Lost Springs",
         "NHGISPLACE": "G200428250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5298,7 +6090,10 @@
         "PLACE": "Louisburg city",
         "NAME": "Louisburg",
         "NHGISPLACE": "G200428750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5318,7 +6113,10 @@
         "PLACE": "Louisville city",
         "NAME": "Louisville",
         "NHGISPLACE": "G200429250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5338,7 +6136,10 @@
         "PLACE": "Lucas city",
         "NAME": "Lucas",
         "NHGISPLACE": "G200431500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5358,7 +6159,10 @@
         "PLACE": "Luray city",
         "NAME": "Luray",
         "NHGISPLACE": "G200432500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5378,7 +6182,10 @@
         "PLACE": "Lyndon city",
         "NAME": "Lyndon",
         "NHGISPLACE": "G200433500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5398,7 +6205,10 @@
         "PLACE": "Lyons city",
         "NAME": "Lyons",
         "NHGISPLACE": "G200435250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5418,7 +6228,10 @@
         "PLACE": "McCracken city",
         "NAME": "McCracken",
         "NHGISPLACE": "G200437000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5438,7 +6251,10 @@
         "PLACE": "McCune city",
         "NAME": "McCune",
         "NHGISPLACE": "G200437250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5458,7 +6274,10 @@
         "PLACE": "McFarland city",
         "NAME": "McFarland",
         "NHGISPLACE": "G200437750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5478,7 +6297,10 @@
         "PLACE": "Macksville city",
         "NAME": "Macksville",
         "NHGISPLACE": "G200438500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5498,7 +6320,10 @@
         "PLACE": "McLouth city",
         "NAME": "McLouth",
         "NHGISPLACE": "G200439000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5518,7 +6343,10 @@
         "PLACE": "McPherson city",
         "NAME": "McPherson",
         "NHGISPLACE": "G200439500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5538,7 +6366,10 @@
         "PLACE": "Madison city",
         "NAME": "Madison",
         "NHGISPLACE": "G200440500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5558,7 +6389,10 @@
         "PLACE": "Mahaska city",
         "NAME": "Mahaska",
         "NHGISPLACE": "G200441500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5578,7 +6412,10 @@
         "PLACE": "Manchester city",
         "NAME": "Manchester",
         "NHGISPLACE": "G200442250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5598,7 +6435,10 @@
         "PLACE": "Manhattan city",
         "NAME": "Manhattan",
         "NHGISPLACE": "G200442500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5618,7 +6458,10 @@
         "PLACE": "Mankato city",
         "NAME": "Mankato",
         "NHGISPLACE": "G200443000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5638,7 +6481,10 @@
         "PLACE": "Maple Hill city",
         "NAME": "Maple Hill",
         "NHGISPLACE": "G200445000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5658,7 +6504,10 @@
         "PLACE": "Mapleton city",
         "NAME": "Mapleton",
         "NHGISPLACE": "G200445500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5678,7 +6527,10 @@
         "PLACE": "Marion city",
         "NAME": "Marion",
         "NHGISPLACE": "G200447500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5698,7 +6550,10 @@
         "PLACE": "Marquette city",
         "NAME": "Marquette",
         "NHGISPLACE": "G200449250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5718,7 +6573,10 @@
         "PLACE": "Marysville city",
         "NAME": "Marysville",
         "NHGISPLACE": "G200450500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5738,7 +6596,10 @@
         "PLACE": "Mayetta city",
         "NAME": "Mayetta",
         "NHGISPLACE": "G200452500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5758,7 +6619,10 @@
         "PLACE": "Meade city",
         "NAME": "Meade",
         "NHGISPLACE": "G200453250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5778,7 +6642,10 @@
         "PLACE": "Medicine Lodge city",
         "NAME": "Medicine Lodge",
         "NHGISPLACE": "G200455000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5798,7 +6665,10 @@
         "PLACE": "Melvern city",
         "NAME": "Melvern",
         "NHGISPLACE": "G200457000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5818,7 +6688,10 @@
         "PLACE": "Meriden city",
         "NAME": "Meriden",
         "NHGISPLACE": "G200459500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5838,7 +6711,10 @@
         "PLACE": "Milan city",
         "NAME": "Milan",
         "NHGISPLACE": "G200464500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5858,7 +6734,10 @@
         "PLACE": "Miltonvale city",
         "NAME": "Miltonvale",
         "NHGISPLACE": "G200469500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5878,7 +6757,10 @@
         "PLACE": "Mineral city",
         "NAME": "Mineral",
         "NHGISPLACE": "G200470135",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5898,7 +6780,10 @@
         "PLACE": "Minneapolis city",
         "NAME": "Minneapolis",
         "NHGISPLACE": "G200470750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5918,7 +6803,10 @@
         "PLACE": "Minneola city",
         "NAME": "Minneola",
         "NHGISPLACE": "G200471500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5938,7 +6826,10 @@
         "PLACE": "Moline city",
         "NAME": "Moline",
         "NHGISPLACE": "G200476000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5958,7 +6849,10 @@
         "PLACE": "Moran city",
         "NAME": "Moran",
         "NHGISPLACE": "G200481250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5978,7 +6872,10 @@
         "PLACE": "Morganville city",
         "NAME": "Morganville",
         "NHGISPLACE": "G200482250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -5998,7 +6895,10 @@
         "PLACE": "Morland city",
         "NAME": "Morland",
         "NHGISPLACE": "G200482750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6018,7 +6918,10 @@
         "PLACE": "Morrill city",
         "NAME": "Morrill",
         "NHGISPLACE": "G200483000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6038,7 +6941,10 @@
         "PLACE": "Mound City city",
         "NAME": "Mound City",
         "NHGISPLACE": "G200487500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6058,7 +6964,10 @@
         "PLACE": "Moundridge city",
         "NAME": "Moundridge",
         "NHGISPLACE": "G200488000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6078,7 +6987,10 @@
         "PLACE": "Mound Valley city",
         "NAME": "Mound Valley",
         "NHGISPLACE": "G200488250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6098,7 +7010,10 @@
         "PLACE": "Mount Hope city",
         "NAME": "Mount Hope",
         "NHGISPLACE": "G200489000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6118,7 +7033,10 @@
         "PLACE": "Mulberry city",
         "NAME": "Mulberry",
         "NHGISPLACE": "G200490250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6138,7 +7056,10 @@
         "PLACE": "Mullinville city",
         "NAME": "Mullinville",
         "NHGISPLACE": "G200490750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6158,7 +7079,10 @@
         "PLACE": "Mulvane city",
         "NAME": "Mulvane",
         "NHGISPLACE": "G200491000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6178,7 +7102,10 @@
         "PLACE": "Munden city",
         "NAME": "Munden",
         "NHGISPLACE": "G200491500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6198,7 +7125,10 @@
         "PLACE": "Muscotah city",
         "NAME": "Muscotah",
         "NHGISPLACE": "G200493250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6218,7 +7148,10 @@
         "PLACE": "Narka city",
         "NAME": "Narka",
         "NHGISPLACE": "G200493500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6238,7 +7171,10 @@
         "PLACE": "Natoma city",
         "NAME": "Natoma",
         "NHGISPLACE": "G200494250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6258,7 +7194,10 @@
         "PLACE": "Neodesha city",
         "NAME": "Neodesha",
         "NHGISPLACE": "G200496500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6278,7 +7217,10 @@
         "PLACE": "Neosho Falls city",
         "NAME": "Neosho Falls",
         "NHGISPLACE": "G200498250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6298,7 +7240,10 @@
         "PLACE": "Neosho Rapids city",
         "NAME": "Neosho Rapids",
         "NHGISPLACE": "G200498750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6318,7 +7263,10 @@
         "PLACE": "Ness City city",
         "NAME": "Ness City",
         "NHGISPLACE": "G200499250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6338,7 +7286,10 @@
         "PLACE": "Netawaka city",
         "NAME": "Netawaka",
         "NHGISPLACE": "G200499500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6358,7 +7309,10 @@
         "PLACE": "New Albany city",
         "NAME": "New Albany",
         "NHGISPLACE": "G200501500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6378,7 +7332,10 @@
         "PLACE": "Newton city",
         "NAME": "Newton",
         "NHGISPLACE": "G200504750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6398,7 +7355,10 @@
         "PLACE": "Nickerson city",
         "NAME": "Nickerson",
         "NHGISPLACE": "G200505250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6418,7 +7378,10 @@
         "PLACE": "Niotaze city",
         "NAME": "Niotaze",
         "NHGISPLACE": "G200507500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6438,7 +7401,10 @@
         "PLACE": "Norcatur city",
         "NAME": "Norcatur",
         "NHGISPLACE": "G200509250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6458,7 +7424,10 @@
         "PLACE": "Norton city",
         "NAME": "Norton",
         "NHGISPLACE": "G200515000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6478,7 +7447,10 @@
         "PLACE": "Nortonville city",
         "NAME": "Nortonville",
         "NHGISPLACE": "G200515250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6498,7 +7470,10 @@
         "PLACE": "Norwich city",
         "NAME": "Norwich",
         "NHGISPLACE": "G200516000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6518,7 +7493,10 @@
         "PLACE": "Oakland city",
         "NAME": "Oakland",
         "NHGISPLACE": "G200517555",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6538,7 +7516,10 @@
         "PLACE": "Oberlin city",
         "NAME": "Oberlin",
         "NHGISPLACE": "G200520000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6558,7 +7539,10 @@
         "PLACE": "Ogden city",
         "NAME": "Ogden",
         "NHGISPLACE": "G200522750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6578,7 +7562,10 @@
         "PLACE": "Oketo city",
         "NAME": "Oketo",
         "NHGISPLACE": "G200525250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6598,7 +7585,10 @@
         "PLACE": "Olathe city",
         "NAME": "Olathe",
         "NHGISPLACE": "G200525750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6618,7 +7608,10 @@
         "PLACE": "Olpe city",
         "NAME": "Olpe",
         "NHGISPLACE": "G200528000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6638,7 +7631,10 @@
         "PLACE": "Onaga city",
         "NAME": "Onaga",
         "NHGISPLACE": "G200528750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6658,7 +7654,10 @@
         "PLACE": "Oneida city",
         "NAME": "Oneida",
         "NHGISPLACE": "G200529000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6678,7 +7677,10 @@
         "PLACE": "Osage City city",
         "NAME": "Osage City",
         "NHGISPLACE": "G200532000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6698,7 +7700,10 @@
         "PLACE": "Osawatomie city",
         "NAME": "Osawatomie",
         "NHGISPLACE": "G200532250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6718,7 +7723,10 @@
         "PLACE": "Osborne city",
         "NAME": "Osborne",
         "NHGISPLACE": "G200533250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6738,7 +7746,10 @@
         "PLACE": "Oskaloosa city",
         "NAME": "Oskaloosa",
         "NHGISPLACE": "G200533750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6758,7 +7769,10 @@
         "PLACE": "Oswego city",
         "NAME": "Oswego",
         "NHGISPLACE": "G200534500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6778,7 +7792,10 @@
         "PLACE": "Ottawa city",
         "NAME": "Ottawa",
         "NHGISPLACE": "G200535500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6798,7 +7815,10 @@
         "PLACE": "Oxford city",
         "NAME": "Oxford",
         "NHGISPLACE": "G200538500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6818,7 +7838,10 @@
         "PLACE": "Palco city",
         "NAME": "Palco",
         "NHGISPLACE": "G200541250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6838,7 +7861,10 @@
         "PLACE": "Paola city",
         "NAME": "Paola",
         "NHGISPLACE": "G200542500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6858,7 +7884,10 @@
         "PLACE": "Parker city",
         "NAME": "Parker",
         "NHGISPLACE": "G200545000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6878,7 +7907,10 @@
         "PLACE": "Parkerville city",
         "NAME": "Parkerville",
         "NHGISPLACE": "G200545750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6898,7 +7930,10 @@
         "PLACE": "Parsons city",
         "NAME": "Parsons",
         "NHGISPLACE": "G200546750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6918,7 +7953,10 @@
         "PLACE": "Partridge city",
         "NAME": "Partridge",
         "NHGISPLACE": "G200547000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6938,7 +7976,10 @@
         "PLACE": "Pawnee Rock city",
         "NAME": "Pawnee Rock",
         "NHGISPLACE": "G200548750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6958,7 +7999,10 @@
         "PLACE": "Peabody city",
         "NAME": "Peabody",
         "NHGISPLACE": "G200551000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6978,7 +8022,10 @@
         "PLACE": "Perry city",
         "NAME": "Perry",
         "NHGISPLACE": "G200554500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -6998,7 +8045,10 @@
         "PLACE": "Peru city",
         "NAME": "Peru",
         "NHGISPLACE": "G200555250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7018,7 +8068,10 @@
         "PLACE": "Phillipsburg city",
         "NAME": "Phillipsburg",
         "NHGISPLACE": "G200556750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7038,7 +8091,10 @@
         "PLACE": "Pittsburg city",
         "NAME": "Pittsburg",
         "NHGISPLACE": "G200560250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7058,7 +8114,10 @@
         "PLACE": "West Plains",
         "NAME": "West Plains",
         "NHGISPLACE": "G200561000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7078,7 +8137,10 @@
         "PLACE": "Plainville city",
         "NAME": "Plainville",
         "NHGISPLACE": "G200561500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7098,7 +8160,10 @@
         "PLACE": "Pleasanton city",
         "NAME": "Pleasanton",
         "NHGISPLACE": "G200564500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7118,7 +8183,10 @@
         "PLACE": "Pomona city",
         "NAME": "Pomona",
         "NHGISPLACE": "G200570000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7138,7 +8206,10 @@
         "PLACE": "Portis city",
         "NAME": "Portis",
         "NHGISPLACE": "G200571000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7158,7 +8229,10 @@
         "PLACE": "Potwin city",
         "NAME": "Potwin",
         "NHGISPLACE": "G200573000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7178,7 +8252,10 @@
         "PLACE": "Powhattan city",
         "NAME": "Powhattan",
         "NHGISPLACE": "G200573500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7198,7 +8275,10 @@
         "PLACE": "Prairie View city",
         "NAME": "Prairie View",
         "NHGISPLACE": "G200575250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7218,7 +8298,10 @@
         "PLACE": "Pratt city",
         "NAME": "Pratt",
         "NHGISPLACE": "G200576250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7238,7 +8321,10 @@
         "PLACE": "Prescott city",
         "NAME": "Prescott",
         "NHGISPLACE": "G200576500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7258,7 +8344,10 @@
         "PLACE": "Preston city",
         "NAME": "Preston",
         "NHGISPLACE": "G200576750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7278,7 +8367,10 @@
         "PLACE": "Pretty Prairie city",
         "NAME": "Pretty Prairie",
         "NHGISPLACE": "G200577000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7298,7 +8390,10 @@
         "PLACE": "Protection city",
         "NAME": "Protection",
         "NHGISPLACE": "G200578500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7318,7 +8413,10 @@
         "PLACE": "Quenemo city",
         "NAME": "Quenemo",
         "NHGISPLACE": "G200581000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7338,7 +8436,10 @@
         "PLACE": "Quinter city",
         "NAME": "Quinter",
         "NHGISPLACE": "G200582500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7358,7 +8459,10 @@
         "PLACE": "Ramona city",
         "NAME": "Ramona",
         "NHGISPLACE": "G200583750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7378,7 +8482,10 @@
         "PLACE": "Randall city",
         "NAME": "Randall",
         "NHGISPLACE": "G200584500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7398,7 +8505,10 @@
         "PLACE": "Randolph city",
         "NAME": "Randolph",
         "NHGISPLACE": "G200584750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7418,7 +8528,10 @@
         "PLACE": "Ransom city",
         "NAME": "Ransom",
         "NHGISPLACE": "G200585000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7438,7 +8551,10 @@
         "PLACE": "Reading city",
         "NAME": "Reading",
         "NHGISPLACE": "G200586000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7458,7 +8574,10 @@
         "PLACE": "Redfield city",
         "NAME": "Redfield",
         "NHGISPLACE": "G200587250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7478,7 +8597,10 @@
         "PLACE": "Republic city",
         "NAME": "Republic",
         "NHGISPLACE": "G200590000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7498,7 +8620,10 @@
         "PLACE": "Richfield city",
         "NAME": "Richfield",
         "NHGISPLACE": "G200592000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7518,7 +8643,10 @@
         "PLACE": "Riley city",
         "NAME": "Riley",
         "NHGISPLACE": "G200598750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7538,7 +8666,10 @@
         "PLACE": "Robinson city",
         "NAME": "Robinson",
         "NHGISPLACE": "G200603250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7558,7 +8689,10 @@
         "PLACE": "Rosedale city",
         "NAME": "Rosedale",
         "NHGISPLACE": "G200611755",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7578,7 +8712,10 @@
         "PLACE": "Roseland city",
         "NAME": "Roseland",
         "NHGISPLACE": "G200612750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7598,7 +8735,10 @@
         "PLACE": "Rossville city",
         "NAME": "Rossville",
         "NHGISPLACE": "G200614000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7618,7 +8758,10 @@
         "PLACE": "Russell city",
         "NAME": "Russell",
         "NHGISPLACE": "G200618250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7638,7 +8781,10 @@
         "PLACE": "Russell Springs city",
         "NAME": "Russell Springs",
         "NHGISPLACE": "G200618750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7658,7 +8804,10 @@
         "PLACE": "Sabetha city",
         "NAME": "Sabetha",
         "NHGISPLACE": "G200620250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7678,7 +8827,10 @@
         "PLACE": "St. Francis city",
         "NAME": "St. Francis",
         "NHGISPLACE": "G200621750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7698,7 +8850,10 @@
         "PLACE": "St. John city",
         "NAME": "St. John",
         "NHGISPLACE": "G200622750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7718,7 +8873,10 @@
         "PLACE": "St. Marys city",
         "NAME": "St. Marys",
         "NHGISPLACE": "G200624000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7738,7 +8896,10 @@
         "PLACE": "St. Paul city",
         "NAME": "St. Paul",
         "NHGISPLACE": "G200625000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7758,7 +8919,10 @@
         "PLACE": "Salina city",
         "NAME": "Salina",
         "NHGISPLACE": "G200627000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7778,7 +8942,10 @@
         "PLACE": "Savonburg city",
         "NAME": "Savonburg",
         "NHGISPLACE": "G200632000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7798,7 +8965,10 @@
         "PLACE": "Scammon city",
         "NAME": "Scammon",
         "NHGISPLACE": "G200633250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7818,7 +8988,10 @@
         "PLACE": "Scandia city",
         "NAME": "Scandia",
         "NHGISPLACE": "G200633500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7838,7 +9011,10 @@
         "PLACE": "Scott City city",
         "NAME": "Scott City",
         "NHGISPLACE": "G200636000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7858,7 +9034,10 @@
         "PLACE": "Scottsville city",
         "NAME": "Scottsville",
         "NHGISPLACE": "G200636500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7878,7 +9057,10 @@
         "PLACE": "Scranton city",
         "NAME": "Scranton",
         "NHGISPLACE": "G200636750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7898,7 +9080,10 @@
         "PLACE": "Sedan city",
         "NAME": "Sedan",
         "NHGISPLACE": "G200637500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7918,7 +9103,10 @@
         "PLACE": "Sedgwick city",
         "NAME": "Sedgwick",
         "NHGISPLACE": "G200638000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7938,7 +9126,10 @@
         "PLACE": "Selden city",
         "NAME": "Selden",
         "NHGISPLACE": "G200638750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7958,7 +9149,10 @@
         "PLACE": "Seneca city",
         "NAME": "Seneca",
         "NHGISPLACE": "G200639500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7978,7 +9172,10 @@
         "PLACE": "Severance city",
         "NAME": "Severance",
         "NHGISPLACE": "G200640250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -7998,7 +9195,10 @@
         "PLACE": "Severy city",
         "NAME": "Severy",
         "NHGISPLACE": "G200640500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8018,7 +9218,10 @@
         "PLACE": "Sharon city",
         "NAME": "Sharon",
         "NHGISPLACE": "G200643250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8038,7 +9241,10 @@
         "PLACE": "Sharon Springs city",
         "NAME": "Sharon Springs",
         "NHGISPLACE": "G200643750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8058,7 +9264,10 @@
         "PLACE": "Silver Lake city",
         "NAME": "Silver Lake",
         "NHGISPLACE": "G200656000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8078,7 +9287,10 @@
         "PLACE": "Simpson city",
         "NAME": "Simpson",
         "NHGISPLACE": "G200656500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8098,7 +9310,10 @@
         "PLACE": "Smith Center city",
         "NAME": "Smith Center",
         "NHGISPLACE": "G200659250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8118,7 +9333,10 @@
         "PLACE": "Soldier city",
         "NAME": "Soldier",
         "NHGISPLACE": "G200661750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8138,7 +9356,10 @@
         "PLACE": "Solomon city",
         "NAME": "Solomon",
         "NHGISPLACE": "G200662750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8158,7 +9379,10 @@
         "PLACE": "South Haven city",
         "NAME": "South Haven",
         "NHGISPLACE": "G200666500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8178,7 +9402,10 @@
         "PLACE": "South Hutchinson city",
         "NAME": "South Hutchinson",
         "NHGISPLACE": "G200667500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8198,7 +9425,10 @@
         "PLACE": "Spearville city",
         "NAME": "Spearville",
         "NHGISPLACE": "G200671250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8218,7 +9448,10 @@
         "PLACE": "Spivey city",
         "NAME": "Spivey",
         "NHGISPLACE": "G200672500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8238,7 +9471,10 @@
         "PLACE": "Spring Hill city",
         "NAME": "Spring Hill",
         "NHGISPLACE": "G200676250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8258,7 +9494,10 @@
         "PLACE": "Stafford city",
         "NAME": "Stafford",
         "NHGISPLACE": "G200677750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8278,7 +9517,10 @@
         "PLACE": "Stark city",
         "NAME": "Stark",
         "NHGISPLACE": "G200680250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8298,7 +9540,10 @@
         "PLACE": "Sterling city",
         "NAME": "Sterling",
         "NHGISPLACE": "G200682000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8318,7 +9563,10 @@
         "PLACE": "Stockton city",
         "NAME": "Stockton",
         "NHGISPLACE": "G200683500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8338,7 +9586,10 @@
         "PLACE": "Strong City city",
         "NAME": "Strong City",
         "NHGISPLACE": "G200686500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8358,7 +9609,10 @@
         "PLACE": "Summerfield city",
         "NAME": "Summerfield",
         "NHGISPLACE": "G200689500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8378,7 +9632,10 @@
         "PLACE": "Sylvan Grove city",
         "NAME": "Sylvan Grove",
         "NHGISPLACE": "G200697750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8398,7 +9655,10 @@
         "PLACE": "Sylvia city",
         "NAME": "Sylvia",
         "NHGISPLACE": "G200698000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8418,7 +9678,10 @@
         "PLACE": "Syracuse city",
         "NAME": "Syracuse",
         "NHGISPLACE": "G200698500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8438,7 +9701,10 @@
         "PLACE": "Tampa city",
         "NAME": "Tampa",
         "NHGISPLACE": "G200700000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8458,7 +9724,10 @@
         "PLACE": "Tescott city",
         "NAME": "Tescott",
         "NHGISPLACE": "G200702500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8478,7 +9747,10 @@
         "PLACE": "Thayer city",
         "NAME": "Thayer",
         "NHGISPLACE": "G200703000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8498,7 +9770,10 @@
         "PLACE": "Tonganoxie city",
         "NAME": "Tonganoxie",
         "NHGISPLACE": "G200708000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8518,7 +9793,10 @@
         "PLACE": "Topeka city",
         "NAME": "Topeka",
         "NHGISPLACE": "G200710000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8538,7 +9816,10 @@
         "PLACE": "Toronto city",
         "NAME": "Toronto",
         "NHGISPLACE": "G200710500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8558,7 +9839,10 @@
         "PLACE": "Towanda city",
         "NAME": "Towanda",
         "NHGISPLACE": "G200711250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8578,7 +9862,10 @@
         "PLACE": "Tribune city",
         "NAME": "Tribune",
         "NHGISPLACE": "G200714500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8598,7 +9885,10 @@
         "PLACE": "Troy city",
         "NAME": "Troy",
         "NHGISPLACE": "G200715750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8618,7 +9908,10 @@
         "PLACE": "Turon city",
         "NAME": "Turon",
         "NHGISPLACE": "G200718000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8638,7 +9931,10 @@
         "PLACE": "Tyro city",
         "NAME": "Tyro",
         "NHGISPLACE": "G200719250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8658,7 +9954,10 @@
         "PLACE": "Udall city",
         "NAME": "Udall",
         "NHGISPLACE": "G200719500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8678,7 +9977,10 @@
         "PLACE": "Uniontown city",
         "NAME": "Uniontown",
         "NHGISPLACE": "G200725250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8698,7 +10000,10 @@
         "PLACE": "Valley Center city",
         "NAME": "Valley Center",
         "NHGISPLACE": "G200732500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8718,7 +10023,10 @@
         "PLACE": "Valley Falls city",
         "NAME": "Valley Falls",
         "NHGISPLACE": "G200733000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8738,7 +10046,10 @@
         "PLACE": "Vermillion city",
         "NAME": "Vermillion",
         "NHGISPLACE": "G200735250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8758,7 +10069,10 @@
         "PLACE": "Vining city",
         "NAME": "Vining",
         "NHGISPLACE": "G200739500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8778,7 +10092,10 @@
         "PLACE": "Viola city",
         "NAME": "Viola",
         "NHGISPLACE": "G200740250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8798,7 +10115,10 @@
         "PLACE": "WaKeeney city",
         "NAME": "WaKeeney",
         "NHGISPLACE": "G200744500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8818,7 +10138,10 @@
         "PLACE": "Wakefield city",
         "NAME": "Wakefield",
         "NHGISPLACE": "G200745250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8838,7 +10161,10 @@
         "PLACE": "Waldron city",
         "NAME": "Waldron",
         "NHGISPLACE": "G200746250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8858,7 +10184,10 @@
         "PLACE": "Walnut city",
         "NAME": "Walnut",
         "NHGISPLACE": "G200749500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8878,7 +10207,10 @@
         "PLACE": "Walton city",
         "NAME": "Walton",
         "NHGISPLACE": "G200752000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8898,7 +10230,10 @@
         "PLACE": "Wamego city",
         "NAME": "Wamego",
         "NHGISPLACE": "G200753250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8918,7 +10253,10 @@
         "PLACE": "Washington city",
         "NAME": "Washington",
         "NHGISPLACE": "G200758250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8938,7 +10276,10 @@
         "PLACE": "Waterville city",
         "NAME": "Waterville",
         "NHGISPLACE": "G200759500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8958,7 +10299,10 @@
         "PLACE": "Wathena city",
         "NAME": "Wathena",
         "NHGISPLACE": "G200760000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8978,7 +10322,10 @@
         "PLACE": "Waverly city",
         "NAME": "Waverly",
         "NHGISPLACE": "G200760500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -8998,7 +10345,10 @@
         "PLACE": "Weir city",
         "NAME": "Weir",
         "NHGISPLACE": "G200763500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9018,7 +10368,10 @@
         "PLACE": "Wellington city",
         "NAME": "Wellington",
         "NHGISPLACE": "G200764750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9038,7 +10391,10 @@
         "PLACE": "Wellsville city",
         "NAME": "Wellsville",
         "NHGISPLACE": "G200766250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9058,7 +10414,10 @@
         "PLACE": "Westmoreland city",
         "NAME": "Westmoreland",
         "NHGISPLACE": "G200772000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9078,7 +10437,10 @@
         "PLACE": "Wetmore city",
         "NAME": "Wetmore",
         "NHGISPLACE": "G200775500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9098,7 +10460,10 @@
         "PLACE": "White City city",
         "NAME": "White City",
         "NHGISPLACE": "G200778250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9118,7 +10483,10 @@
         "PLACE": "White Cloud city",
         "NAME": "White Cloud",
         "NHGISPLACE": "G200778500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9138,7 +10506,10 @@
         "PLACE": "Whitewater city",
         "NAME": "Whitewater",
         "NHGISPLACE": "G200780500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9158,7 +10529,10 @@
         "PLACE": "Whiting city",
         "NAME": "Whiting",
         "NHGISPLACE": "G200781000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9178,7 +10552,10 @@
         "PLACE": "Wichita city",
         "NAME": "Wichita",
         "NHGISPLACE": "G200790000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9198,7 +10575,10 @@
         "PLACE": "Williamsburg city",
         "NAME": "Williamsburg",
         "NHGISPLACE": "G200793000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9218,7 +10598,10 @@
         "PLACE": "Willis city",
         "NAME": "Willis",
         "NHGISPLACE": "G200794000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9238,7 +10621,10 @@
         "PLACE": "Wilson city",
         "NAME": "Wilson",
         "NHGISPLACE": "G200796750",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9258,7 +10644,10 @@
         "PLACE": "Winchester city",
         "NAME": "Winchester",
         "NHGISPLACE": "G200798000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9278,7 +10667,10 @@
         "PLACE": "Windom city",
         "NAME": "Windom",
         "NHGISPLACE": "G200798500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9298,7 +10690,10 @@
         "PLACE": "Winfield city",
         "NAME": "Winfield",
         "NHGISPLACE": "G200799500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9318,7 +10713,10 @@
         "PLACE": "Woodbine city",
         "NAME": "Woodbine",
         "NHGISPLACE": "G200803500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9338,7 +10736,10 @@
         "PLACE": "Woodston city",
         "NAME": "Woodston",
         "NHGISPLACE": "G200804500",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9358,7 +10759,10 @@
         "PLACE": "Yates Center city",
         "NAME": "Yates Center",
         "NHGISPLACE": "G200807000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9378,7 +10782,10 @@
         "PLACE": "Curranville city",
         "NAME": "Curranville",
         "NHGISPLACE": "G200168755",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9398,7 +10805,10 @@
         "PLACE": "Gove city",
         "NAME": "Gove",
         "NHGISPLACE": "G200271250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9418,7 +10828,10 @@
         "PLACE": "Lincoln Center city",
         "NAME": "Lincoln Center",
         "NHGISPLACE": "G200413000",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     },
     {
@@ -9438,7 +10851,10 @@
         "PLACE": "Oakley city",
         "NAME": "Oakley",
         "NHGISPLACE": "G200518250",
-        "YEAR": 1910
+        "YEAR": 1910,
+        "pop-data": {
+          "valid": false
+        }
       }
     }
   ]

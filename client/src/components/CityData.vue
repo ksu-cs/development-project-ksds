@@ -25,6 +25,8 @@
 	import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
 	import { createTransition } from '@/d3/transitions/createTransition';
 	import { registerKey } from '../utility/RegisterKey';
+	import { createBubblePlotSimulation } from '@/utility/SimulatorFunctions';
+	import { lerp } from '@/utility/Interpolators';
 
 	// Enum imports
 	import { MapZoomLevel } from '@/enums/MapZoomLevel';
@@ -38,8 +40,11 @@
 
 	// Define non-reactive variables
 	const pathGen = d3.geoPath(props.properties.projection);
+	const pathIdentity = d3.geoPath();
 	const defaultYear = 1860;
 	const label = 'cities';
+	const plotLable = 'cicites-bubble-plot'
+	let bubblePlot = null;
 
 	// Register this component
 	const hooks = inject(registerKey)(label, {
@@ -51,6 +56,22 @@
 			onChecked: onChecked,
 			onUnchecked: onUnchecked,
 		},
+	});
+	const bubblePlotHooks = inject(registerKey)(plotLable, {
+		filter: {
+			legibleLabel: 'City Bubble Plot',
+			defaultStatus: false,
+			visibleStates: new Set([MapZoomLevel.STATE, MapZoomLevel.COUNTY]),
+			groups: [GroupType.OTHER],
+			onChecked: () => {
+				bubblePlot = createBubblePlotSimulation(selectionPoints, 3, 50)
+					.on("tick", () => onSimulationTick(bubblePlot));
+			},
+			onUnchecked: () => {
+				bubblePlot.stop();
+				resetBubblePlot();
+			},
+		}
 	});
 
 	// Points that represent each city
@@ -208,10 +229,10 @@
 			.data(d.features, (d) => d.properties.NAME)
 			.join(
 				(enter) =>
-					enter
-						.append('path')
-						.attr('opacity', '0%')
-						.classed('point', true),
+					enter.append('path')
+							.attr('opacity', '0%')
+							.attr('r', 1)
+							.classed('point', true),
 				(update) => update,
 				(exit) => fadeOut(exit).remove()
 			);
@@ -302,6 +323,51 @@
 				}
 			});
 
+		let r, textDy, popDy, textFontSize, popFontSize;
+		switch (props.properties.zoomState.value) {
+			case MapZoomLevel.STATE:
+				r = 2;
+				textDy = 16;
+				popDy = 5
+				textFontSize = '100%';
+				popFontSize = '100%';
+				break;
+			case MapZoomLevel.COUNTY:
+				r = 3;
+				textDy = 3;
+				popDy = -5;
+				textFontSize = '30%';
+				popFontSize = '30%';
+				break;
+		}
+
+		selectionPoints
+				.attr('d', pathGen.pointRadius(r))
+				.each((d) => {
+					let projected = props.properties.projection(d.geometry.coordinates)
+
+					d.properties.origin = {
+						x: d.geometry.coordinates[0],
+						y: d.geometry.coordinates[1],
+						xProjected: projected[0],
+						yProjected: projected[1],
+					};
+				});
+		selectionText
+				.attr('font-size', textFontSize)
+				.each((d, i, n) => centerText(d, i, n, textDy));
+		selectionPop
+				.attr('font-size', popFontSize)
+				.each((d, i, n) => centerText(d, i, n, popDy));
+
+		fadeIn(selectionPoints);
+
+		if (props.properties.zoomState.value === MapZoomLevel.COUNTY) {
+			fadeIn(selectionText);
+			fadeIn(selectionPop);
+		}
+	
+		/*
 		switch (props.properties.zoomState.value) {
 			case 'state':
 				selectionPoints.attr('d', pathGen.pointRadius(2));
@@ -326,6 +392,7 @@
 				fadeIn(selectionPop);
 				break;
 		}
+		*/
 	}
 
 	/**
@@ -391,27 +458,30 @@
 			let city_name = d.name;
 			let city_place = d.place;
 
-			let key = null;
+			let key;
 
 			if (Object.hasOwn(cityPops, city_name)) {
 				key = city_name;
 			} else if (Object.hasOwn(cityPops, city_place)) {
 				key = city_place;
+			} else if (Object.keys(cityPops).some(key => key.includes(city_name))) {
+				key = Object.keys(cityPops).find(key => key.includes(city_name))
+			} else if (Object.keys(cityPops).some(key => key.includes(city_place))) {
+				key = Object.keys(cityPops).find(key => key.includes(city_place))
 			} else {
 				console.warn(
 					`'${city_name}' or '${city_place}' has no corresponding record`
 				);
+				return;
 			}
 
-			if (key != null) {
-				let pop = cityPops[key][newYear];
-				if (pop == null) {
-					console.warn(
-						`'${key}' has a record but no population for '${newYear}'`
-					);
-				} else {
-					node.textContent = String(pop);
-				}
+			let pop = cityPops[key][newYear];
+			if (pop == null) {
+				console.warn(
+					`'${key}' has a record but no population for '${newYear}'`
+				);
+			} else {
+				node.textContent = String(pop);
 			}
 		});
 	}
@@ -464,6 +534,71 @@
 				fadeOut(selectionPop);
 				break;
 		}
+	}
+
+	/**
+	 * 
+	 * @param {d3.Simulation} simulation 
+	 */
+	function onSimulationTick(simulation) {
+		let nodes = simulation.nodes()
+
+		nodes.forEach((node) => {
+			node.data.properties.simX = node.x;
+			node.data.properties.simY = node.y;
+			node.data.properties.r = lerp(3, 50, node.data.properties['pop-data'].norm);
+		})
+
+		/*
+		selectionPoints
+			.filter((d) => d.properties['pop-data'].valid)
+				.each((d, i) => {
+					let node = nodes.find((n) => n.oldIndex === i);
+					if (node === undefined) return;
+
+					d.properties.r = lerp(1, 3, d.properties['pop-data'].norm);
+					d.geometry.coordinates[0] = node.x;
+					d.geometry.coordinates[1] = node.y;
+		})
+		*/
+
+		redrawBubblePlot();
+	}
+
+	function redrawBubblePlot() {
+		selectionPoints
+			.filter((d) => d.properties['pop-data'].valid)
+				.attr('d', (d) => {
+					const x = d.properties.simX;
+					console.log(x);
+					const y = d.properties.simY;
+					console.log(y);
+					const r = d.properties.r;
+					console.log(r);
+
+					return `M ${x},${y} m -${r},0 a ${r},${r} 0 1,0 ${2*r},0 a ${r},${r} 0 1,0 -${2*r},0`;
+		})
+	}
+
+	function resetBubblePlot() {
+		selectionPoints
+			.filter((d) => d.properties['pop-data'].valid)
+				.attr('d', (d) => {
+					d.geometry.coordinates[0] = d.properties.origin.x
+					d.geometry.coordinates[1] = d.properties.origin.y
+					
+					switch (props.properties.zoomState.value) {
+						case MapZoomLevel.STATE:
+							d.properties.r = 3;
+							break;
+						case MapZoomLevel.COUNTY:
+							d.properties.r = 2;
+							break;
+					}
+					let path = pathGen.pointRadius(d.properties.r);
+
+					return path(d);
+				})
 	}
 </script>
 
