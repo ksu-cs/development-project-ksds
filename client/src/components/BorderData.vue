@@ -158,14 +158,20 @@
 
 		selection = gTag
 			.selectAll('.border')
-			.data(d.features, (d) => d.properties.id)
+			.data(d.features, (d) => d.properties.COUNTY)
 			.join(
 				(enter) => {
 					let s = enter
 						.append('path')
 						.attr('d', (d) => {
 							// d3 expects the reverse winding order that geojson uses
-							d.geometry.coordinates[0].reverse();
+							//console.log(ringArea(d.geometry.coordinates[0]) > 0 ? "Clockwise" : "Counterclockwise");
+							if (d.geometry.type === "Polygon") {
+								d.geometry.coordinates[0].reverse();
+							} else if (d.geometry.type === "MultiPolygon") {
+								d.geometry.coordinates[0][0].reverse();
+								d.geometry.coordinates[1][0].reverse();
+							}
 							return pathGen(d);
 						})
 						.attr('stroke', 'black')
@@ -187,7 +193,22 @@
 
 					return s;
 				},
-				(update) => update,
+				(update) => {
+					return update
+							.attr('d', (d) => {
+								// d3 expects the reverse winding order that geojson uses
+								if (d.geometry.type === "Polygon") {
+									d.geometry.coordinates[0].reverse();
+								} else if (d.geometry.type === "MultiPolygon") {
+									d.geometry.coordinates[0][0].reverse();
+									d.geometry.coordinates[1][0].reverse();
+								}
+								//d.geometry.coordinates[0].reverse();
+								return pathGen(d);
+							})
+							.attr('stroke-width', strokeWidth)
+							.call(applyChoropleth, lightColor, darkColor, invalidColor);
+				},
 				(exit) => fadeOut(exit, { duration: fadeDuration }).remove()
 			);
 	}
@@ -225,6 +246,16 @@
 	function hideHeatMap() {
 		createTransition(selection)
 			.attr("fill-opacity", "0%");
+	}
+
+	function ringArea(coords) {
+		let sum = 0;
+		for (let i = 0, len = coords.length; i < len; i++) {
+			const [x1, y1] = coords[i];
+			const [x2, y2] = coords[(i + 1) % len];
+			sum += (x2 - x1) * (y2 + y1);
+		}
+		return sum;
 	}
 </script>
 

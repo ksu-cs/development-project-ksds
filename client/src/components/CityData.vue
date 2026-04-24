@@ -549,19 +549,6 @@
 			node.data.properties.r = lerp(3, 50, node.data.properties['pop-data'].norm);
 		})
 
-		/*
-		selectionPoints
-			.filter((d) => d.properties['pop-data'].valid)
-				.each((d, i) => {
-					let node = nodes.find((n) => n.oldIndex === i);
-					if (node === undefined) return;
-
-					d.properties.r = lerp(1, 3, d.properties['pop-data'].norm);
-					d.geometry.coordinates[0] = node.x;
-					d.geometry.coordinates[1] = node.y;
-		})
-		*/
-
 		redrawBubblePlot();
 	}
 
