@@ -40,7 +40,6 @@
 
 	// Define non-reactive variables
 	const pathGen = d3.geoPath(props.properties.projection);
-	const pathIdentity = d3.geoPath();
 	const defaultYear = 1860;
 	const label = 'cities';
 	const plotLable = 'cicites-bubble-plot'
@@ -57,7 +56,9 @@
 			onUnchecked: onUnchecked,
 		},
 	});
+	/* eslint-disable no-unused-vars */
 	const bubblePlotHooks = inject(registerKey)(plotLable, {
+	/* eslint-enable no-unused-vars */
 		filter: {
 			legibleLabel: 'City Bubble Plot',
 			defaultStatus: false,

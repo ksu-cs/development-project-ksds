@@ -21,16 +21,17 @@ export class FetchQueue {
 	 * Enqueues the given promise, which passes the given result
 	 * object to the given callBack function.
 	 * @param { Promise } promise The promise to enqueue.
-	 * @param { Object } result The result object to pass to the callBack.
+	 * @param { d3.selection } selection
+	 * @param { Object } state
 	 * @param { Function } callBack The callback to call once the prior promise resolves.
 	 */
-	enqueue(promise, result, callBack) {
+	enqueue(promise, selection, state, onClick, callBack) {
 		this.count += 1;
 
 		this.queue = this.queue.then(async () => {
 			try {
 				await promise;
-				await callBack(result);
+				await callBack(selection, state, { onClick });
 			} catch (err) {
 				console.error(err);
 			}

@@ -24,16 +24,16 @@
 		useTemplateRef,
 		defineEmits,
 		inject,
+		computed,
 	} from 'vue';
 	import * as d3 from 'd3';
+	import { watch, ref } from 'vue';
 
 	// Utility imports
 	import { fetchGeojson } from '../utility/fetchers';
-	import { fadeIn, fadeOut } from '@/d3/transitions/fadeSelection';
-	import { createTransition } from '@/d3/transitions/createTransition';
-	import { applyChoropleth } from '@/utility/RenderFunctions';
-	import { FetchQueue } from '../utility/FetchQueue';
 	import { registerKey } from '../utility/RegisterKey';
+	import { normalizeGeometry } from '../utility/geometry';
+	import { renderPolygonPaths, getChoroplethScale } from '@/utility/RenderFunctions';
 
 	// Enum impports
 	import { MapZoomLevel } from '@/enums/MapZoomLevel';
@@ -45,172 +45,141 @@
 	const gRef = useTemplateRef('g');
 
 	// Define reactive variables
+	let showHeatmap = ref(false);
+	let zoomState = ref(MapZoomLevel.STATE);
 
 	// Define non-reactive variables
-	let rerenderHeatMap = 0;
 	const pathGen = d3.geoPath(props.properties.projection);
-	const queue = new FetchQueue();
 	const fadeDuration = 500;
 	const borderLabel = 'county-borders';
 	const popLabel = 'county-pop';
-	const fillOpacity = '100%';
 	const lightColor = { r: 198, g: 219, b: 239 } // light blue
 	const darkColor = { r: 8, g: 48, b: 108 } // dark blue
 	const invalidColor = { r: 240, g: 240, b: 240} // light gray
 
+
 	// Register this component
 	const borderHooks = inject(registerKey)(borderLabel, {});
+	/* eslint-disable no-unused-vars */
 	const popHooks = inject(registerKey)(popLabel, {
+	/* eslint-enable no-unused-vars */
 		filter: {
 			legibleLabel: "County Pop Heat Map",
 			defaultStatus: false,
 			visibleStates: new Set([MapZoomLevel.STATE]),
 			groups: [GroupType.OTHER],
-			onChecked: displayHeatMap,
-			onUnchecked: hideHeatMap,
+			onChecked: handleHeatmapChecked,
+			onUnchecked: handleHeatmapUnchecked,
 		},
 	})
 
 
-	// Polylines that represent each county border
+	// Polygons that represent each county border
 	let selection = null;
 	let gTag = null;
-	let strokeWidth = 2;
+	let state = null;
 	let paths = {
 		geojson: `${props.properties.path}/geojson`,
 		json: `${props.properties.path}/json`,
 		csv: `${props.properties.path}/csv`,
 	};
+	// Gets the path to the server for a specific year.
+	const getCountyPath = (year) => `${paths.geojson}/KSCounty_${year}_GeoJSON.geojson`;
 
 	onMounted(() => {
 		gTag = d3.select(gRef.value);
-		let { result, promise } = fetchGeojson(
-			`${paths.geojson}/KSCounty_1860_GeoJSON.geojson`
-		);
-		queue.enqueue(promise, result, renderToSVG);
+		selection = gTag.selectAll('.border');
+
+		let { features, result } = useCountyBorders(1860);
+		state = useCountyRenderState(features);
+
+		watch(result.loading, () => {
+			selection = renderPolygonPaths(selection, state, { duration: fadeDuration}, { onClick: handleBorderClick })
+		});
 	});
 
-	// Change width of borders on zoom change.
 	borderHooks.onZoomChange((newValue) => {
-		switch (newValue) {
-			case MapZoomLevel.STATE:
-				strokeWidth = 2;
-				createTransition(selection).attr('stroke-width', strokeWidth);
-				break;
-			case MapZoomLevel.COUNTY:
-				strokeWidth = 1;
-				createTransition(selection).attr('stroke-width', strokeWidth);
-				break;
-		}
-	});
-
-	// Turn on/off the heat map on zoom change.
-	popHooks.onZoomChange((newValue) => {
-		switch (newValue) {
-			case MapZoomLevel.STATE:
-				displayHeatMap();
-				break;
-			case MapZoomLevel.COUNTY:
-				hideHeatMap();
-				break;
-		}
+		zoomState.value = newValue;
+		selection = renderPolygonPaths(selection, state, { duration: fadeDuration}, { onClick: handleBorderClick });
 	})
 
 	// Fetch data on year change.
 	borderHooks.onYearChange((newValue) => {
-		let { result, promise } = fetchGeojson(
-			`${paths.geojson}/KSCounty_${newValue}_GeoJSON.geojson`
-		);
-		queue.enqueue(promise, result, renderToSVG);
+		let {features, result} = useCountyBorders(newValue);
+		state = useCountyRenderState(features);
+
+		watch(result.loading, () => {
+			selection = renderPolygonPaths(selection, state, { duration: fadeDuration}, { onClick: handleBorderClick });
+		})
 	});
 
-	// Ensure the heat map is rerendered on year change as well.
-	// rerenderHeatMap is checked in renderToSVG
-	popHooks.onYearChange(() => {
-		if (props.properties.zoomState.value == MapZoomLevel.STATE) {
-			rerenderHeatMap += 1;
+	/**
+	 * Fetches and processes county borders geojson data for a given year.
+	 * @param {number} year - The year for which to fetch and process the county
+	 * border data.
+	 * @returns {Object} An object containing the following properties:
+	 * - `features`: A computed property that maps each county feature to an
+	 * object containing:
+	 *    - `id`: The unique county identifier (`NHGISNAM`).
+	 *    - `geometry`: The normalized geometry of the county border.
+	 *    - `norm`: A normalized population value if the population data is
+	 * valid; otherwise `null`.
+	 * - `result`: The raw result object returned from the `fetchGeojson`
+	 * function.
+	 * - `promise`: The promise associated with the geojson fetch request.
+	 */
+	function useCountyBorders(year) {
+		const { result, promise } = fetchGeojson(getCountyPath(year));
+
+		const features = computed(() => {
+			return result.data.value?.features.map((f) => {
+				return {
+					id: f.properties.NHGISNAM,
+					geometry: normalizeGeometry(f.geometry),
+					norm: f.properties['pop-data'].valid ? f.properties['pop-data'].norm : null,
+				}
+			})
+		});
+
+		return {
+			features,
+			result,
+			promise,
 		}
-	})
+	}
 
 	/**
-	 * Waits for the fetched data to load. If the fetch failed, prints the error
-	 *  received. Populates selection by binding the data to path elements.
-	 * @param r The object that holds the data, loading, and error
-	 * properties
+	 * Computes the rendering state for county features based on their properties.
+	 * @param {Array<Object>} features - A computed property containing an array of county features.
+	 * 
+	 * @returns {ComputedRef<Array<Object>>} A computed property that returns an
+	 * array of rendering attributes for each county, with the following structure:
+	 * - `id`: The unique identifier for the county.
+	 * - `path`: The path data generated for the county's geometry.
+	 * - `fill`: The fill color for the county, determined by a choropleth scale
+	 * based on the county's `norm` property.
+	 * - `opacity`: A constant value of `1`, as opacity is controlled through
+	 * other properties.
+	 * - `fillOpacity`: A dynamic value based on the `showHeatmap` and
+	 * `zoomState` properties, which determines whether to show the heatmap fill
+	 * opacity.
+	 * - `stroke`: The color of the stroke for the county's path, always set to
+	 * `'black'`.
+	 * - `strokeWidth`: The width of the stroke, which changes depending on the
+	 * current zoom level (`MapZoomLevel.STATE` results in a wider stroke).
 	 */
-	function renderToSVG(r) {
-		let d = r.data.value;
-		let e = r.error.value;
-
-		// Data should always have loaded since we're using the fetchqueue
-
-		if (e) {
-			// If there was an error
-			console.error(e);
-			return;
-		}
-
-		// Join border paths:
-		// Enter selection -> create paths, style them,
-		// add onClick handlers, fade in
-		// Update seleciton -> do nothing
-		// Exit selection -> fade out, then remove
-
-		selection = gTag
-			.selectAll('.border')
-			.data(d.features, (d) => d.properties.COUNTY)
-			.join(
-				(enter) => {
-					let s = enter
-						.append('path')
-						.attr('d', (d) => {
-							// d3 expects the reverse winding order that geojson uses
-							//console.log(ringArea(d.geometry.coordinates[0]) > 0 ? "Clockwise" : "Counterclockwise");
-							if (d.geometry.type === "Polygon") {
-								d.geometry.coordinates[0].reverse();
-							} else if (d.geometry.type === "MultiPolygon") {
-								d.geometry.coordinates[0][0].reverse();
-								d.geometry.coordinates[1][0].reverse();
-							}
-							return pathGen(d);
-						})
-						.attr('stroke', 'black')
-						.attr('stroke-width', strokeWidth)
-						.attr('opacity', '0%')
-						.attr('fill-opacity', '0%')
-						.classed('border', true)
-						.call(applyChoropleth, lightColor, darkColor, invalidColor)
-						.on('click', onBorderClick);
-					
-					// Only render the heat map for new data if the filter is
-					// checked
-					if (rerenderHeatMap > 0) {
-						s = s.attr('fill-opacity', fillOpacity);
-						rerenderHeatMap -= 1;
-					}
-
-					fadeIn(s, { duration: fadeDuration })
-
-					return s;
-				},
-				(update) => {
-					return update
-							.attr('d', (d) => {
-								// d3 expects the reverse winding order that geojson uses
-								if (d.geometry.type === "Polygon") {
-									d.geometry.coordinates[0].reverse();
-								} else if (d.geometry.type === "MultiPolygon") {
-									d.geometry.coordinates[0][0].reverse();
-									d.geometry.coordinates[1][0].reverse();
-								}
-								//d.geometry.coordinates[0].reverse();
-								return pathGen(d);
-							})
-							.attr('stroke-width', strokeWidth)
-							.call(applyChoropleth, lightColor, darkColor, invalidColor);
-				},
-				(exit) => fadeOut(exit, { duration: fadeDuration }).remove()
-			);
+	function useCountyRenderState(features) {
+		return computed(() => {
+			return features.value.map((f) => ({
+				id: f.id,
+				path: pathGen(f.geometry),
+				fill: getChoroplethScale(lightColor, darkColor, invalidColor, f.norm),
+				opacity: 1,
+				fillOpacity: showHeatmap.value && zoomState.value != MapZoomLevel.COUNTY ? 1 : 0,
+				stroke: 'black',
+				strokeWidth: zoomState.value == MapZoomLevel.STATE ? 2 : 1,
+			}))
+		});
 	}
 
 	/**
@@ -218,7 +187,7 @@
 	 * the bounding box of the border clicked on.
 	 * @param event The click event
 	 */
-	function onBorderClick(event) {
+	function handleBorderClick(event) {
 		const bbox = event.target.getBBox();
 		const boxString =
 			String(bbox.x - 10) +
@@ -231,31 +200,14 @@
 		emit('transition', 'border', boxString, bbox);
 	}
 
-	/**
-	 * Sets the fill and fill-opacity for each county correpsonding to their
-	 * population (normalized)
-	 */
-	function displayHeatMap() {
-		createTransition(selection)
-			.attr('fill-opacity', fillOpacity);
+	function handleHeatmapChecked() {
+		showHeatmap.value = true;
+		selection = renderPolygonPaths(selection, state, { duration: fadeDuration}, { onClick: handleBorderClick });
 	}
 
-	/**
-	 * Sets the fill-opacity for all borders to '0%'.
-	 */
-	function hideHeatMap() {
-		createTransition(selection)
-			.attr("fill-opacity", "0%");
-	}
-
-	function ringArea(coords) {
-		let sum = 0;
-		for (let i = 0, len = coords.length; i < len; i++) {
-			const [x1, y1] = coords[i];
-			const [x2, y2] = coords[(i + 1) % len];
-			sum += (x2 - x1) * (y2 + y1);
-		}
-		return sum;
+	function handleHeatmapUnchecked() {
+		showHeatmap.value = false;
+		selection = renderPolygonPaths(selection, state, { duration: fadeDuration}, { onClick: handleBorderClick });
 	}
 </script>
 

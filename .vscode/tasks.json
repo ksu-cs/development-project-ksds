@@ -33,6 +33,26 @@
 				"kind": "build",
 				"isDefault": true
 			}
+		},
+		{
+			"label": "Kill server",
+			"type": "shell",
+			"command": "lsof -t -i:3000 | xargs kill -9",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "Finds and kills the process listening on port 3000"
+		},
+		{
+			"label": "Kill client",
+			"type": "shell",
+			"command": "lsof -t -i:5173 | xargs kill -9",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "Finds and kills the process listening on port 3000"
 		}
 	]
 }

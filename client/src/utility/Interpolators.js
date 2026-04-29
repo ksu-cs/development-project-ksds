@@ -16,12 +16,12 @@ export function normalize(value, min, max) {
 }
 
 /**
- * This function calcualtes an intermediate color and returns it as a CSS RGB
+ * This function calculates an intermediate color and returns it as a CSS RGB
  * string.
- * @param { {r: number, g: number, b: number} } color1 The starting color.
- * @param { {r: number, g: number, b: number} } color2 The ending color.
- * @param {number} t Interpolation factor (usually between 0 and 1).
- * @returns {string} A CSS RGB string (e.g., "rgb(255, 255, 255)")
+ * @param { { r: Number, g: Number, b: Number}} color1 The starting color.
+ * @param { { r: Number, g: Number, b: Number} } color2 The ending color.
+ * @param { number } t Interpolation factor (usually between 0 and 1).
+ * @returns { string } A CSS RGB string (e.g., "rgb(255, 255, 255)")
  */
 export function interpolateColor(color1, color2, t) {
     const r = Math.round(color1.r + (color2.r - color1.r) * t);
@@ -31,6 +31,13 @@ export function interpolateColor(color1, color2, t) {
     return `rgb(${r}, ${g}, ${b})`;
 }
 
+/**
+ * Linear interpolation by a percentage between two numbers
+ * @param { number } start The starting value
+ * @param { number } end The ending value
+ * @param { number } t Percentage between start and end
+ * @returns { number } Interpolation factor (between 0 and 1).
+ */
 export function lerp(start, end, t) {
     return start * (1 - t) + end * t;
 }

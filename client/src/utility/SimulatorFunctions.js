@@ -9,9 +9,12 @@ import * as d3 from 'd3';
 import { lerp } from './Interpolators';
 
 /**
- * 
- * @param {d3.Selection} pointSelection The points to simulate
- * @returns {d3.Simulation} Simulation of the bubble plot
+ * Creates a simulation for a bubble plot using d3.js's force simulation
+ * @param { d3.Selection } pointSelection The d3.js selection of points to
+ * simulate.
+ * @param { Number } minR the minimum radius for the nodes in the bubble plot.
+ * @param { Number } maxR the maximum radius for the nodes in the bubble plot.
+ * @returns { d3.Simulation } Simulation of the bubble plot
  */
 export function createBubblePlotSimulation(pointSelection, minR, maxR) {
     let nodes = getNodes(pointSelection);
@@ -25,8 +28,10 @@ export function createBubblePlotSimulation(pointSelection, minR, maxR) {
 }
 
 /**
- * 
- * @param {d3.Selection} selection 
+ * Extracts and processes node data from a d3.js selection.
+ * @param { d3.Selection } selection The d3.js selection containing the nodes to
+ * process
+ * @returns { Array<Object> } An aray of node objects
  */
 function getNodes(selection) {
     let nodes = [];
