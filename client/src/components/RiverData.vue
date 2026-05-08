@@ -102,7 +102,15 @@
 <style scoped>
 	:global(.river) {
 		fill: none;
-		stroke: #5bc0de;
+
+		stroke: #3f83b3;
+		stroke-width: 1.2;
+
+		stroke-linecap: round;
+		stroke-linejoin: round;
+
+		filter: drop-shadow(0 0 0.4px white);
+
 		pointer-events: none;
 	}
 </style>

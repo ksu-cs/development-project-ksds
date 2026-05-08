@@ -146,7 +146,7 @@
 			.attr('class', 'school-point')
 			.attr('cx', (d) => d.x)
 			.attr('cy', (d) => d.y)
-			.attr('r', 0.5)
+			.attr('r', 0.8)
 			.attr('opacity', '0%')
 			.on('mouseenter', (event, d) => {
 				if (!hoverActive) return;
@@ -238,7 +238,9 @@
 
 <style scoped>
 	:global(.school-point) {
-		fill: black;
+		fill: #242c34;
+		stroke:#d1d5db;
+		stroke-width: 0.25;
 		pointer-events: visible;
 	}
 </style>
