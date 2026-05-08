@@ -181,7 +181,9 @@
 <style scoped>
 	:global(.interstate) {
 		fill: none;
-		stroke: #1f77b4;
+		stroke: #4f81bd;
+		stroke-width: 1.8;
+
 		pointer-events: none;
 		stroke-linecap: round;
 		stroke-linejoin: round;

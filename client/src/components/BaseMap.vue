@@ -316,6 +316,7 @@
 			<RiverData :properties="properties" />
 			<LakeData :properties="properties" />
 			<CitySubdivisionData :properties="properties" />
+			<InterstateData :properties="properties" />
 			<RailroadData :properties="properties" />
 			<TractData :properties="properties" />
 			<CityData :properties="properties" />
@@ -329,7 +330,7 @@
                 @legend-data="healthcareLegendData = $event"
                 @legend-visibility="showHealthcareLegend = $event"
             />
-			<InterstateData :properties="properties" />
+
 		</svg>
 
 		<!--

@@ -219,5 +219,8 @@
 	:global(.border) {
 		fill-rule: evenodd;
 		pointer-events: all;
+		stroke: #888;
+		stroke-width: 0.8;
+		
 	}
 </style>
