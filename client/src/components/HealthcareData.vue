@@ -31,12 +31,20 @@ let isChecked = false;
 let selection = null;
 let gTag = null;
 
+const legendArray = Object.entries(symbolMap).map(([type, data]) => ({
+    label: type,
+    color: data.color,
+    char: data.char,
+    type: 'symbol'
+}));
+
 const hooks = inject(registerKey)(label, {
     filter: {
         legibleLabel: 'Healthcare Facilities',
         defaultStatus: false,
         visibleStates: new Set([MapZoomLevel.COUNTY]),
         groups: [GroupType.OTHER],
+        legend: legendArray,
         onChecked: () => {
             isChecked = true;
             if (props.properties.zoomState.value === MapZoomLevel.COUNTY) {

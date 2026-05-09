@@ -52,6 +52,7 @@
 			defaultStatus: false,
 			visibleStates: new Set([MapZoomLevel.COUNTY]),
 			groups: [GroupType.OTHER],
+			legend: [{ label: 'School', color: 'black', type: 'symbol' }],
 			onChecked: onChecked,
 			onUnchecked: onUnchecked,
 		},

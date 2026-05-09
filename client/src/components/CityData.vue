@@ -52,6 +52,7 @@
 			defaultStatus: true,
 			visibleStates: new Set([MapZoomLevel.STATE, MapZoomLevel.COUNTY]),
 			groups: [GroupType.OTHER],
+			legend: [{ label: 'City', color: 'red', type: 'symbol' }],
 			onChecked: onChecked,
 			onUnchecked: onUnchecked,
 		},

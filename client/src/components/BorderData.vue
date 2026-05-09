@@ -68,6 +68,11 @@
 			defaultStatus: false,
 			visibleStates: new Set([MapZoomLevel.STATE]),
 			groups: [GroupType.OTHER],
+			legend: [
+                { label: 'High Population', color: `rgb(${darkColor.r}, ${darkColor.g}, ${darkColor.b})`, type: 'symbol' },
+                { label: 'Low Population', color: `rgb(${lightColor.r}, ${lightColor.g}, ${lightColor.b})`, type: 'symbol' },
+				{ label: 'No Data', color: `rgb(${invalidColor.r}, ${invalidColor.g}, ${invalidColor.b})`, type: 'symbol' }
+			],
 			onChecked: handleHeatmapChecked,
 			onUnchecked: handleHeatmapUnchecked,
 		},

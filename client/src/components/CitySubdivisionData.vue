@@ -40,6 +40,9 @@ const subHooks = inject(registerKey)(label, {
         defaultStatus: false,
         visibleStates: new Set([MapZoomLevel.STATE, MapZoomLevel.COUNTY]),
         groups: [GroupType.OTHER],
+        legend: [
+            { label: 'Subdivision Border', color: '#f0ad4e', type: 'line' }
+        ],
         onChecked: () => { isLinesChecked = true; updateStyles(); },
         onUnchecked: () => { isLinesChecked = false; updateStyles(); },
     },
@@ -51,6 +54,11 @@ const popHooks = inject(registerKey)(popLabel, {
         defaultStatus: false,
         visibleStates: new Set([MapZoomLevel.STATE]),
         groups: [GroupType.OTHER],
+        legend: [
+            { label: 'High Population', color: `rgb(${darkColor.r}, ${darkColor.g}, ${darkColor.b})`, type: 'symbol' },
+            { label: 'Low Population', color: `rgb(${lightColor.r}, ${lightColor.g}, ${lightColor.b})`, type: 'symbol' },
+            { label: 'No Data', color: `rgb(${invalidColor.r}, ${invalidColor.g}, ${invalidColor.b})`, type: 'symbol' }
+        ],
         onChecked: () => { isPopChecked = true; updateStyles(); },
         onUnchecked: () => { isPopChecked = false; updateStyles(); },
     },

@@ -46,6 +46,7 @@
 			defaultStatus: true,
 			visibleStates: new Set([MapZoomLevel.STATE, MapZoomLevel.COUNTY]),
 			groups: [GroupType.INFRASTRUCTURE],
+			legend: [{ label: 'Interstate', color: '#1f77b4', type: 'line' }],
 			onChecked: onChecked,
 			onUnchecked: onUnchecked,
 		},

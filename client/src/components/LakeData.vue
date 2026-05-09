@@ -34,6 +34,7 @@
 			defaultStatus: true,
 			visibleStates: new Set([MapZoomLevel.STATE, MapZoomLevel.COUNTY]),
 			groups: [GroupType.OTHER],
+			legend: [{ label: 'Lake', color: '#add8e6', type: 'symbol' }],
 			onChecked: () => fadeIn(selection),
 			onUnchecked: () => fadeOut(selection),
 		},
