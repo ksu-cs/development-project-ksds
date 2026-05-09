@@ -20,6 +20,7 @@
 		onMounted,
 		useTemplateRef,
 		ref,
+		shallowReactive,
 		computed,
 		provide,
 		watch,
@@ -57,8 +58,8 @@
 	let countyTransition = ref(true);
 	let zoomState = ref(MapZoomLevel.STATE);
 	const hoveredFacility = ref(null);
-	const healthcareLegendData = ref(null);
-    const showHealthcareLegend = ref(false);
+
+	const filters = shallowReactive({});
 
 	// Define non-reactive variables
 	const defaultViewBox = '0 0 1600 800';
@@ -76,9 +77,6 @@
 
 	let svgTag = null;
 
-	// Each component that registers with a filter option will have an entry in
-	// this object
-	let filters = {};
 
 	// List of all filters where their visible property is true.
 	const visibleFilters = computed(() =>
@@ -86,6 +84,16 @@
 			.filter((item) => item.visible.value)
 			.sort((a, b) => a.displayLabel.localeCompare(b.displayLabel))
 	);
+
+	const activeLegendItems = computed(() => {
+        let items = [];
+        visibleFilters.value.forEach((filter) => {
+            if (filter.statusRef.value && filter.legend) {
+                items.push(...filter.legend);
+            }
+        });
+        return items;
+    });
 
 	// Object passed to each data component so they can access properties of the
 	// map.
@@ -221,6 +229,7 @@
 				),
 				onChecked: options.filter.onChecked,
 				onUnchecked: options.filter.onUnchecked,
+				legend: options.filter.legend || null,
 			};
 		}
 
@@ -327,8 +336,6 @@
 			<HealthcareData 
 				:properties="properties" 
                 @facility-hover="hoveredFacility = $event" 
-                @legend-data="healthcareLegendData = $event"
-                @legend-visibility="showHealthcareLegend = $event"
             />
 
 		</svg>
@@ -404,12 +411,24 @@
             <p v-if="hoveredFacility.props.BEDS"><strong>Beds:</strong> {{ hoveredFacility.props.BEDS }}</p>
             <p v-if="hoveredFacility.props.TRAUMA"><strong>Trauma:</strong> {{ hoveredFacility.props.TRAUMA }}</p>
         </div>
-		<div v-if="showHealthcareLegend && healthcareLegendData" class="healthcare-legend">
-            <h4>Healthcare Facilities</h4>
+		<div v-if="activeLegendItems.length > 0" class="global-legend">
+            <h4>Map Legend</h4>
             <ul>
-                <li v-for="(data, type) in healthcareLegendData" :key="type">
-                    <span class="legend-icon" :style="{ backgroundColor: data.color }">{{ data.char }}</span>
-                    {{ type }}
+                <li v-for="item in activeLegendItems" :key="item.label">
+                    <span 
+                        v-if="item.type === 'symbol'" 
+                        class="legend-icon" 
+                        :style="{ backgroundColor: item.color }"
+                    >
+                        {{ item.char || '' }}
+                    </span>
+                    <span 
+                        v-else-if="item.type === 'line'" 
+                        class="legend-line" 
+                        :style="{ borderBottomColor: item.color }"
+                    ></span>
+                    
+                    {{ item.label }}
                 </li>
             </ul>
         </div>
@@ -497,21 +516,22 @@
 		position: absolute;
 	}
 	
-    .healthcare-legend {
+    .global-legend {
         position: fixed;
         top: 20px;
         right: 20px;
-        background: white;
+        background: rgba(255, 255, 255, 0.95);
         padding: 12px 16px;
         border: 1px solid #ccc;
         border-radius: 6px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         z-index: 10000;
         font-size: 13px;
-        pointer-events: none; /* Prevents it from interfering with map clicks underneath */
+        pointer-events: none;
+        min-width: 150px;
     }
 
-    .healthcare-legend h4 {
+    .global-legend h4 {
         margin: 0 0 10px 0;
         font-size: 14px;
         color: #333;
@@ -519,17 +539,39 @@
         padding-bottom: 5px;
     }
 
-    .healthcare-legend ul {
+    .global-legend ul {
         list-style: none;
         padding: 0;
         margin: 0;
     }
 
-    .healthcare-legend li {
+    .global-legend li {
         display: flex;
         align-items: center;
         margin-bottom: 6px;
         color: #444;
+    }
+
+    .legend-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        border-radius: 3px;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+        margin-right: 10px;
+    }
+
+    .legend-line {
+        display: inline-block;
+        width: 18px;
+        height: 0;
+        border-bottom-width: 3px;
+        border-bottom-style: solid;
+        margin-right: 10px;
     }
 
     .legend-icon {

@@ -36,6 +36,7 @@
 			defaultStatus: true,
 			visibleStates: new Set([MapZoomLevel.STATE, MapZoomLevel.COUNTY]),
 			groups: [GroupType.INFRASTRUCTURE],
+			legend: [{ label: 'River', color: '#5bc0de', type: 'line' }],
 			onChecked: () => fadeIn(selection),
 			onUnchecked: () => fadeOut(selection),
 		},

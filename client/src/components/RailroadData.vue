@@ -45,6 +45,7 @@
 			defaultStatus: true,
 			visibleStates: new Set([MapZoomLevel.STATE, MapZoomLevel.COUNTY]),
 			groups: [GroupType.INFRASTRUCTURE],
+			legend: [{ label: 'Railroad', color: 'green', type: 'line' }],
 			onChecked: onChecked,
 			onUnchecked: onUnchecked,
 		},

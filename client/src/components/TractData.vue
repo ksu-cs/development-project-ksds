@@ -44,6 +44,7 @@
 			defaultStatus: false,
 			visibleStates: new Set([MapZoomLevel.COUNTY]),
 			groups: [GroupType.OTHER],
+			legend: [{ label: 'County Tract', color: '#ff000d', type: 'line' }],
 			onChecked: onChecked,
 			onUnchecked: onUnchecked,
 		},
