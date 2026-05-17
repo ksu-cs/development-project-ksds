@@ -5,20 +5,25 @@
 import { reactive, toRefs } from 'vue';
 
 /**
+ * @typedef { Object } FetchResult
+ * @property { str } data - Holds parsed data once the fetch resolves, otherwise
+ * `null`.
+ * @property { boolean } loading - `true` while the fetch has not resolved,
+ * otherwise `false` (will also be `false` if an error is thrown).
+ * @property { Error } error - Holds the error if the request fails, otherwise
+ * `null`.
+ */
+
+/**
  * A Vue Composable for fetching resources.
  *
  * Begins fetching immediately and exposes a `refresh`
  * method that will re-fetch the given path, updating the same
  * reactive result object.
  *
- * Result object:
- *  - data: Holds the parsed data, otherwise `null`.
- *  - loading: `true` while the fetch has not resolved, otherwise `false` (will also be `false` if an error is thrown).
- *  - error: Holds the error if the request fails, otherwise `null`.
- *
  * @param {string} pathString The path to the resource
  * @param {(response: Response) => Promise<any>} parseFn Parses the Response object from the call to `fetch`
- * @returns
+ * @returns { { result: FetchResult, promise: Promise<void>, refresh: () => Promise<void> } }
  * An object containing refs for `data`, `loading`, and `error`.
  * A `refresh` function that will re-fetch the given path, updating the above ref.
  * The Promise from the first call to `fetch`.
@@ -55,7 +60,7 @@ function fetchWrapper(pathString, parseFn, maxRetries = 3) {
 		result.loading = false;
 	}
 
-	let fetching = wrapper();
+	const fetching = wrapper();
 
 	return {
 		result: toRefs(result),
@@ -65,22 +70,19 @@ function fetchWrapper(pathString, parseFn, maxRetries = 3) {
 }
 
 /**
- * Result object:
- *  - data: Holds the parsed data, otherwise `null`.
- *  - loading: `true` while the fetch has not resolved, otherwise `false` (will also be `false` if an error is thrown).
- *  - error: Holds the error if the request fails, otherwise `null`.
+ * Fetches a GeoJSON file from the given path and parses it as JSON.
  * @param {string} pathString The path to the resource
  * @param {int} [refreshAttempts] The maximum number of times the fetch will be refreshed on an error (default = 3).
- * @returns
+ * @returns { { result: FetchResult, promise: Promise<void>, refresh: () => Promise<void> } }
  */
 export function fetchGeojson(pathString) {
 	return fetchWrapper(pathString, async (res) => await res.json());
 }
 
 /**
- *
+ * Fetches a JSON file from the given path and parses it as JSON.
  * @param {string} pathString The path to the resource
- * @returns
+ * @returns { { result: FetchResult, promise: Promise<void>, refresh: () => Promise<void> } }
  */
 export function fetchJson(pathString) {
 	return fetchWrapper(pathString, async (res) => await res.json());

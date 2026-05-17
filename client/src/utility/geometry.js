@@ -26,6 +26,10 @@ export function normalizeGeometry(geometry) {
 		return normalizePolygon(geometry);
 	} else if (geometry.type === "MultiPolygon") {
 		return normalizeMultiPolygon(geometry);
+	} else if (geometry.type === "Point") {
+		return normalizePoint(geometry);
+	} else if (geometry.type === "LineString") {
+		return normalizeLineString(geometry);
 	}
 }
 
@@ -88,6 +92,14 @@ function normalizeMultiPolygon(geometry) {
 		type: "MultiPolygon",
 		coordinates: normalized,
 	}
+}
+
+function normalizePoint(geometry) {
+	return geometry;
+}
+
+function normalizeLineString(geometry) {
+	return geometry;
 }
 
 /**

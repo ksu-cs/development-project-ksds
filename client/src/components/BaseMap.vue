@@ -251,13 +251,13 @@
 			.duration(750)
 			.attr('viewBox', viewBox)
 			.on('end', () => {
+				zoomState.value = zoomLevel;
 				invokeHook(
 					HookType.onZoomChange,
 					zoomLevel,
 					zoomState.value,
 					{}
 				);
-				zoomState.value = zoomLevel;
 			});
 	}
 
@@ -367,31 +367,31 @@
 				top: hoveredSchool.pos.y + 15 + 'px',
 			}"
 		>
-			<h3>{{ hoveredSchool.props.bldg_name }}</h3>
+			<h3>{{ hoveredSchool.data.buildingName }}</h3>
 			<p>
 				<strong>District:</strong>
-				{{ hoveredSchool.props.org_name }} ({{
-					hoveredSchool.props.org_no
+				{{ hoveredSchool.data.district }} ({{
+					hoveredSchool.data.orgNumber
 				}})
 			</p>
 			<p>
-				<strong>Building No:</strong> {{ hoveredSchool.props.bldg_no }}
+				<strong>Building No:</strong> {{ hoveredSchool.data.buildingNumber }}
 			</p>
 			<p>
 				<strong>Level:</strong>
-				{{ hoveredSchool.props['Buildng Level'] }}
+				{{ hoveredSchool.data.buildingLevel }}
 			</p>
 			<p>
-				<strong>Opened:</strong> {{ hoveredSchool.props.Date_Opened }}
+				<strong>Opened:</strong> {{ hoveredSchool.data.dateOpened }}
 			</p>
 			<p>
 				<strong>Homepage:</strong>
-				{{ hoveredSchool.props.homepage_addr }}
+				{{ hoveredSchool.data.homepage }}
 			</p>
 			<p>
-				<strong>Address:</strong> {{ hoveredSchool.props.Address }},
-				{{ hoveredSchool.props.City }}, {{ hoveredSchool.props.State }}
-				{{ hoveredSchool.props.Zip }}
+				<strong>Address:</strong> {{ hoveredSchool.data.address }},
+				{{ hoveredSchool.data.city }}, {{ hoveredSchool.data.state }}
+				{{ hoveredSchool.data.zip }}
 			</p>
 		</div>
 

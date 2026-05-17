@@ -48,12 +48,14 @@ const hooks = inject(registerKey)(label, {
         onChecked: () => {
             isChecked = true;
             if (props.properties.zoomState.value === MapZoomLevel.COUNTY) {
+                selection.attr('pointer-events', 'visible');
                 if (selection) fadeIn(selection);
                 emit('legend-visibility', true);
             }
         },
         onUnchecked: () => {
             isChecked = false;
+            selection.attr('pointer-events', 'none');
             if (selection) fadeOut(selection);
             emit('legend-visibility', false);
             emit('facility-hover', null);
@@ -73,10 +75,12 @@ hooks.onZoomChange((newZoom) => {
     if (!selection) return;
     
     if (newZoom === MapZoomLevel.STATE) {
+        selection.attr('pointer-events', 'none');
         fadeOut(selection);
         emit('legend-visibility', false);
         emit('facility-hover', null);
     } else if (newZoom === MapZoomLevel.COUNTY && isChecked) {
+        selection.attr('pointer-events', 'visible');
         fadeIn(selection);
         emit('legend-visibility', true);
     }
@@ -109,6 +113,7 @@ function renderToSVG(r) {
                         return `translate(${p[0]}, ${p[1]})`;
                     })
                     .attr('opacity', initialOpacity)
+                    .attr('pointer-events', 'none')
                     .on('mouseover', (event, f) => {
                         if (!isChecked) return;
                         emit('facility-hover', { props: f.properties, pos: { x: event.clientX, y: event.clientY } });

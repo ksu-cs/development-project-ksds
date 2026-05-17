@@ -35,17 +35,19 @@ import { createTransition } from '@/d3/transitions/createTransition';
  * @returns { d3.selection } The updated d3.js selection of the rendered paths,
  * with any applied transitions or event listeners.
  */
-export function renderPolygonPaths(selection, state, { duration=500 }, { onClick }) {
-	let s = selection
+export function renderPolygons(selection, state, { duration=500, classStr='polygon' }={}) {
+	return selection
 		.data(state.value, d => d.id)
 		.join(
-			enter => enter.append('path')
-					.classed('border', true)
+			enter => enter
+				.append('path')
+					.classed(classStr, true)
 					.attr('d', d => d.path)
 					.attr('fill', d => d.fill)
 					.attr('stroke', d => d.stroke)
 					.attr('stroke-width', d => d.strokeWidth)
 					.attr('fill-opacity', 0)
+					.attr('pointer-events', d => d.pointerEvents)
 					.attr('opacity', 0)
 					.call(enter => createTransition(enter, { duration })
 							.attr('opacity', d => d.opacity)
@@ -54,14 +56,104 @@ export function renderPolygonPaths(selection, state, { duration=500 }, { onClick
 					.attr('d', d => d.path)
 					.attr('fill', d => d.fill)
 					.attr('fill-opacity', d => d.fillOpacity)
-					.attr('stroke-width', d => d.strokeWidth),
+					.attr('stroke-width', d => d.strokeWidth)
+					.attr('pointer-events', d => d.pointerEvents),
 			exit => fadeOut(exit, { duration }).remove()
 		)
-	if (onClick) {
-		s = s.on('click', (event, d) => onClick(event, d));
-	}
+}
 
-	return s;
+export function renderCircles(selection, state, { duration=500, classStr='circle' }={}) {
+	return selection
+		.data(state.value, d => d.id )
+		.join(
+			enter => enter
+				.append('circle')
+					.classed(classStr, true)
+					.attr('cx', d => d.cx)
+					.attr('cy', d => d.cy)
+					.attr('r', d => d.r)
+					.attr('pointer-events', d => d.pointerEvents)
+					.call(enter => createTransition(enter, { duration })
+						.attr('opacity', d => d.opacity)),
+			update => createTransition(update, { duration })
+					.attr('cx', d => d.cx)
+					.attr('cy', d => d.cy)
+					.attr('r', d => d.r)
+					.attr('opacity', d => d.opacity)
+					.attr('pointer-events', d => d.pointerEvents),
+			exit => fadeOut(exit, { duration }).remove()
+		);
+}
+
+export function renderText(selection, state, { duration=500, classStr='text' }={}) {
+	return selection
+		.data(state.value, d => d.id)
+		.join(
+			enter => enter
+				.append('text')
+					.classed(classStr, true)
+					.attr('x', d => d.x)
+					.attr('y', d => d.y)
+					.attr('font', d => d.font)
+					.attr('font-size', d => d.fontSize)
+					.property('textContent', d => d.text)
+					.attr('opacity', d => d.opacity)
+					.attr('pointer-events', d => d.pointerEvents),
+			update => update
+					.attr('x', d => d.x)
+					.attr('y', d => d.y)
+					.attr('font-size', d => d.fontSize)
+					.attr('opacity', d => d.opacity)
+					.attr('pointer-events', d => d.pointerEvents),
+			exit => fadeOut(exit, { duration }).remove()
+		);
+}
+
+export function renderLineStrings(selection, state, { duration=500, classStr='text' }={}) {
+	return selection
+		.data(state.value, d => d.id)
+		.join(
+			enter => enter
+				.append('path')
+					.classed(classStr, true)
+					.attr('d', d => d.path)
+					.attr('stroke-width', d => d.strokeWidth)
+					.attr('opacity', d => d.opacity)
+					.attr('pointer-events', d => d.pointerEvents),
+			update => createTransition(update, { duration })
+					.attr('d', d => d.path)
+					.attr('stroke-width', d => d.strokeWidth)
+					.attr('opacity', d => d.opacity)
+					.attr('pointer-events', d => d.pointerEvents),
+			exit => fadeOut(exit, { duration }).remove()
+		);
+}
+
+export function renderRectangles(selection, state, { duration=500, classStr='rect' }={}) {
+	return selection
+		.data(state.value, d => d.id)
+		.join(
+			enter => enter
+				.append('rect')
+					.attr('x', d => d.x)
+					.attr('y', d => d.y)
+					.attr('width', d => d.width)
+					.attr('height', d => d.height)
+					.attr('rx', d => d.rx)
+					.attr('fill', d => d.fill)
+					.attr('opacity', d => d.opacity)
+					.attr('pointer-events', d => d.pointerEvents),
+			update => createTransition(update, { duration })
+					.attr('x', d => d.x)
+					.attr('y', d => d.y)
+					.attr('width', d => d.width)
+					.attr('height', d => d.height)
+					.attr('rx', d => d.rx)
+					.attr('fill', d => d.fill)
+					.attr('opacity', d => d.opacity)
+					.attr('pointer-events', d => d.pointerEvents),
+			exit => fadeOut(exit, { duration }).remove(),
+		);
 }
 
 /**

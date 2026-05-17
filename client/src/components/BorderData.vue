@@ -27,13 +27,13 @@
 		computed,
 	} from 'vue';
 	import * as d3 from 'd3';
-	import { watch, ref } from 'vue';
+	import { ref } from 'vue';
 
 	// Utility imports
 	import { fetchGeojson } from '../utility/fetchers';
 	import { registerKey } from '../utility/RegisterKey';
 	import { normalizeGeometry } from '../utility/geometry';
-	import { renderPolygonPaths, getChoroplethScale } from '@/utility/RenderFunctions';
+	import { renderPolygons, getChoroplethScale } from '@/utility/RenderFunctions';
 
 	// Enum impports
 	import { MapZoomLevel } from '@/enums/MapZoomLevel';
@@ -95,34 +95,50 @@
 		gTag = d3.select(gRef.value);
 		selection = gTag.selectAll('.border');
 
-		let { features, result } = useCountyBorders(1860);
-		state = useCountyRenderState(features);
+		let { features, promise } = getData(1860);
+		state = getState(features);
 
-		watch(result.loading, () => {
-			selection = renderPolygonPaths(selection, state, { duration: fadeDuration}, { onClick: handleBorderClick })
+		promise.then(() => {
+			render();
+		}).catch((error) => {
+			console.error("Error resolving promise: ", error)
 		});
 	});
 
 	borderHooks.onZoomChange((newValue) => {
 		zoomState.value = newValue;
-		selection = renderPolygonPaths(selection, state, { duration: fadeDuration}, { onClick: handleBorderClick });
+		render();
 	})
 
 	// Fetch data on year change.
 	borderHooks.onYearChange((newValue) => {
-		let {features, result} = useCountyBorders(newValue);
-		state = useCountyRenderState(features);
+		let {features, promise} = getData(newValue);
+		state = getState(features);
 
-		watch(result.loading, () => {
-			selection = renderPolygonPaths(selection, state, { duration: fadeDuration}, { onClick: handleBorderClick });
-		})
+		promise.then(() => {
+			render();
+		}).catch((error) => {
+			console.error("Error fetching border data: ", error)
+		});
+
+		//watch(result.loading, () => render(), { once: true })
 	});
+
+	/**
+	 * Helper function to pass the transition and event options to the
+	 * renderPolygonPaths function.
+	 */
+	function render() {
+		selection = renderPolygons(selection, state, { duration: fadeDuration, classStr: 'border'});
+		selection.on('click', handleBorderClick);
+	}
 
 	/**
 	 * Fetches and processes county borders geojson data for a given year.
 	 * @param {number} year - The year for which to fetch and process the county
 	 * border data.
-	 * @returns {Object} An object containing the following properties:
+	 * @returns { { features: ComputedRef<Array<Object>>, result: FetchResult, promise: Promise<void>} }
+	 * An object containing the following properties:
 	 * - `features`: A computed property that maps each county feature to an
 	 * object containing:
 	 *    - `id`: The unique county identifier (`NHGISNAM`).
@@ -133,7 +149,7 @@
 	 * function.
 	 * - `promise`: The promise associated with the geojson fetch request.
 	 */
-	function useCountyBorders(year) {
+	function getData(year) {
 		const { result, promise } = fetchGeojson(getCountyPath(year));
 
 		const features = computed(() => {
@@ -142,7 +158,7 @@
 					id: f.properties.NHGISNAM,
 					geometry: normalizeGeometry(f.geometry),
 					norm: f.properties['pop-data'].valid ? f.properties['pop-data'].norm : null,
-				}
+				};
 			})
 		});
 
@@ -173,7 +189,7 @@
 	 * - `strokeWidth`: The width of the stroke, which changes depending on the
 	 * current zoom level (`MapZoomLevel.STATE` results in a wider stroke).
 	 */
-	function useCountyRenderState(features) {
+	function getState(features) {
 		return computed(() => {
 			return features.value.map((f) => ({
 				id: f.id,
@@ -181,8 +197,9 @@
 				fill: getChoroplethScale(lightColor, darkColor, invalidColor, f.norm),
 				opacity: 1,
 				fillOpacity: showHeatmap.value && zoomState.value != MapZoomLevel.COUNTY ? 1 : 0,
-				stroke: 'black',
-				strokeWidth: zoomState.value == MapZoomLevel.STATE ? 2 : 1,
+				stroke: '#888',
+				strokeWidth: 0.8,
+				pointerEvents: 'all',
 			}))
 		});
 	}
@@ -205,14 +222,20 @@
 		emit('transition', 'border', boxString, bbox);
 	}
 
+	/**
+	 * Handles the event when the heatmap filter is checked.
+	 */
 	function handleHeatmapChecked() {
 		showHeatmap.value = true;
-		selection = renderPolygonPaths(selection, state, { duration: fadeDuration}, { onClick: handleBorderClick });
+		render();
 	}
 
+	/**
+	 * Handles the event when the heatmap filter is unchecked.
+	 */
 	function handleHeatmapUnchecked() {
 		showHeatmap.value = false;
-		selection = renderPolygonPaths(selection, state, { duration: fadeDuration}, { onClick: handleBorderClick });
+		render();
 	}
 </script>
 
@@ -223,9 +246,5 @@
 <style scoped>
 	:global(.border) {
 		fill-rule: evenodd;
-		pointer-events: all;
-		stroke: #888;
-		stroke-width: 0.8;
-		
 	}
 </style>

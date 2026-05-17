@@ -15,28 +15,39 @@
 
 <script setup>
 	// External imports
-	import { defineProps, onMounted, useTemplateRef, watch, inject } from 'vue';
+	import { defineProps, onMounted, useTemplateRef, ref, computed, inject } from 'vue';
 	import * as d3 from 'd3';
 
 	// Utility Imports
 	import { fetchGeojson } from '../utility/fetchers';
-	import { fadeOut } from '@/d3/transitions/fadeSelection';
-	import { createTransition } from '@/d3/transitions/createTransition';
 	import { registerKey } from '../utility/RegisterKey';
 
 	// Enum imports
 	import { MapZoomLevel } from '@/enums/MapZoomLevel';
 	import { GroupType } from '@/enums/GroupType';
+	import { normalizeGeometry } from '@/utility/geometry';
+import { renderLineStrings } from '@/utility/RenderFunctions';
 
 	// Define props, template refs, and emits
 	const props = defineProps(['properties']);
 	const gRef = useTemplateRef('g');
 
 	// Define reactive variables
+	let showLines = ref(true);
+	let zoomState = ref(MapZoomLevel.STATE);
+	let yearValue = ref(1860);
 
 	// Define non-reactive variables
 	const pathGen = d3.geoPath(props.properties.projection);
+	const fadeDuration = 500;
 	const label = 'railroads';
+	let selection = null;
+	let state = null;
+	let gTag = null;
+	let paths = {
+		geojson: `${props.properties.path}/geojson`,
+		csv: `${props.properties.path}/csv`,
+	};
 
 	// Register this component
 	const hooks = inject(registerKey)(label, {
@@ -51,105 +62,88 @@
 		},
 	});
 
-	let selection = null;
-	let gTag = null;
-	let paths = {
-		geojson: `${props.properties.path}/geojson`,
-		csv: `${props.properties.path}/csv`,
-	};
+	const getRailroadPath = () =>`${paths.geojson}/railroads.geojson`;
 
 	// Fetch starting data on mount.
 	onMounted(() => {
 		gTag = d3.select(gRef.value);
-		let { result } = fetchGeojson(`${paths.geojson}/railroads.geojson`);
-		renderToSVG(result);
+		selection = gTag.selectAll('.railroads');
+
+		let { features, promise } = getData();
+		state = getState(features);
+
+		promise.then(() => {
+			render();
+		}).catch(error => {
+			console.error("Error fetching border data: ", error);
+		});
 	});
 
 	// Change width of railroads on zoom change.
-	hooks.onZoomChange((newValue) => {
-		switch (newValue) {
-			case 'state':
-				createTransition(selection).attr('stroke-width', 1);
-				break;
-			case 'county':
-				createTransition(selection).attr('stroke-width', 0.6);
-				break;
-		}
+	hooks.onZoomChange((newZoomState) => {
+		zoomState.value = newZoomState;
+		render();
 	});
 
 	// Fade in/out railroads based on whether they were constructed by the given
 	// year.
-	hooks.onYearChange((newValue) => {
-		createTransition(selection).attr('opacity', (d) =>
-			d.properties.InOpBy <= newValue ? '100%' : '0%'
-		);
+	hooks.onYearChange(newYear => {
+		yearValue.value = newYear;
+		render();
 	});
 
-	/**
-	 * Waits for the fetched data to load. If the fetch failed,
-	 * prints the error received. Populates selection by binding
-	 * the data to path elements.
-	 * @param r The object that holds the data, loading, and error properties
-	 */
-	function renderToSVG(r) {
-		let d = r.data.value;
-		let l = r.loading.value;
-		let e = r.error.value;
+	function getData() {
+		const { result, promise } = fetchGeojson(getRailroadPath());
 
-		if (l) {
-			// If data is still loading
-			const unwatch = watch(
-				() => r.loading.value,
-				() => {
-					renderToSVG(r);
-					unwatch();
-				}
-			);
-			return;
-		} else if (e) {
-			// If there was an error
-			console.error(e);
-			return;
+		const features = computed(() => {
+			return result.data.value?.features.map(f => {
+				return {
+					id: f.properties.FID,
+					geometry: normalizeGeometry(f.geometry),
+					inOperationBy: f.properties.InOpBy,
+				};
+			})
+		});
+
+		return {
+			features,
+			result,
+			promise,
 		}
+	}
 
-		// Create rail path elements
-		selection = gTag
-			.selectAll('.rail')
-			.data(d.features)
-			.join(
-				(enter) =>
-					enter
-						.append('path')
-						.attr('d', pathGen)
-						.attr('opacity', (d) =>
-							d.properties.InOpBy <=
-							props.properties.inputValue.value
-								? '100%'
-								: '0%'
-						)
-						.attr('stroke-width', 1)
-						.classed('rail', true),
-				(update) => update,
-				(exit) => fadeOut(exit).remove()
-			);
+	function getState(features) {
+		return computed(() => {
+			return features.value.map(f => {
+				return {
+					id: f.id,
+					path: pathGen(f.geometry),
+					strokeWidth: zoomState.value === MapZoomLevel.STATE ? 1 : 0.6,
+					opacity: showLines.value && f.inOperationBy <= yearValue.value ? 1 : 0,
+					pointerEvents: 'none',
+				}
+			})
+		})
+	}
+
+	function render() {
+		selection = renderLineStrings(selection, state, { duration: fadeDuration, classStr: 'rail' })
 	}
 
 	/**
 	 * Fades in all railroads that were in operation by the current year.
 	 */
 	function onChecked() {
-		createTransition(selection).attr('opacity', (d) =>
-			d.properties.InOpBy <= props.properties.inputValue.value
-				? '100%'
-				: '0%'
-		);
+		showLines.value = true;
+		render();
 	}
 
 	/**
 	 * Fades out all railroads.
 	 */
 	function onUnchecked() {
-		fadeOut(selection);
+		showLines.value = false;
+		render();
 	}
 </script>
 
@@ -161,7 +155,6 @@
 	:global(.rail) {
 		fill: none;
 		stroke: green;
-		pointer-events: none;
 		stroke-dasharray: 4;
 		stroke-linecap: round;
 	}

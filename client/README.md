@@ -24,6 +24,97 @@ Each data component represents a specific dataset such as railroads, towns, and 
 
 A data component is fully responsible for its own data. It should decide how it's data is loaded, how it's rendered into SVG elements (typically one or more path elements are preferred), and how it changes in response to changes to the map. It may invoke any number of hooks provided by `BaseMap.vue` or none at all if they aren't required.
 
+### Reactive State
+
+The client now uses a computed-state rendering model for data components. Instead of mutating SVG elements in response to events, each data component derives a reactive rendering state from:
+
+* fetched data
+* map hooks
+* zoom state
+* filter state
+
+Rendering functions take this derived state and synchronize the SVG using D3.js
+
+#### Rendering flow
+
+Each data component should generally follow this lifecycle:
+
+1. Fetch data
+2. Normalize/process data into reactive `features`
+3. Derive a computed render `state` from `features`
+4. Re-render when hooks mutate reactive inputs
+
+#### Reactive Rendering Pattern
+
+#### 1. Fetch Data
+
+Data components should fetch and own their data.
+
+Example:
+```javascript
+const { result, promise } fetchGeojson(getPath(year));
+```
+Fetched data should remain local to the component.
+
+`BaseMap.vue` shouldn't manage data-specific business logic.
+
+#### 2. Normalize Features
+
+The RAW GeoJSON is transformed into a simplified, reactive features object using `computed`
+
+Example:
+```javascript
+const features = computed(() => {
+    return result.data.value?.features.map(f => {
+        return {
+            id: f.properties.NHGISNAM,
+            geometry: normalizeGeometry(f.geometry),
+            norm: f.properties['pop-data'].norm,
+        };
+    });
+});
+```
+
+Feature normalization should:
+
+* Strip unused properties
+* Normalize geometry (This may be unecessary with a data pipeline)
+
+#### 3. Derive Rendering State
+
+Rendering state is computed from:
+
+* Feature data
+* Filter state
+* Zoom state
+* Local component reactive state
+
+Example:
+```javascript
+const state = computed(() => {
+    return features.value.map(f => {
+        return {
+            id: f.id,
+            path: pathGen(f.geometry),
+            fillOpacity: showHeatmap.value ? 1 : 0,
+            strokeWidth: zoomState.value === MapZoomLevel.STATE ? 1 : 0.5,
+        };
+    });
+});
+```
+
+This rendering state should fully describe how the SVG should appear.
+
+#### Render Functions
+
+Rendering is delegated to reusable rendering helpers.
+
+Example:
+```javascript
+renderPolygons(selection, state, options);
+renderCircles(selection, state, optiosn);
+```
+
 ### Hooks
 
 `BaseMap.vue` provides a register function that any descendant can use by injecting `registerKey` from `./RegisterKey`.
